@@ -183,7 +183,29 @@ class Buyer_model extends CI_Model {
         exit;
       }
 		}
+		/**
+		 * [buyer_queries_new_bid this section belong for buyer queries for technical bid]
+		 * @param  string $value  [bid serial no which need to identify bid which we need]
+		 * @param  string $value1 [value1 which contained status ]
+		 * @return [type]         [list of serial or queries]
+		 */
+		public function buyer_queries_new_bid($value='',$value1=''){
+			$data_array_query = array('bid_slno' => $value, 'status_responds'=>$value1);
 
+      $query = $this->db->get_where('master_bid_query',$data_array_query);
+      if($query->num_rows() == 0){
+        $data_send = array('no_bid_query' =>2 );
+        return $data_send;
+        exit;
+      }else{
+        $results=$query->result();
+        $data_send = array('no_bid_query' =>1, 'bid_query_list'=>$results);
+        return $data_send;
+        exit;
+
+    // code...
+		}
+}
 
 
 

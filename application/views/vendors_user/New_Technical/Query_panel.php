@@ -11,6 +11,9 @@ if($result_title['no_new_tech']!=1){
 	redirect('user-vendor-home');
 }
 ?>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+
 <!-- begin #content -->
 		<div id="content" class="content">
 			<!-- begin breadcrumb -->
@@ -101,7 +104,7 @@ if($result_title['no_new_tech']!=1){
 					</div>
 					<div class="panel-body">
 						<div class="table-responsive-sm">
-								<table id="example" class="display" style="width:100%">
+								<table class="display table vendor_example"  style="width:100%">
 									<thead>
 										 <tr>
 											 <th>Slno .</th>
@@ -134,7 +137,7 @@ if($result_title['no_new_tech']!=1){
 													}?>
 													</tr>
 													<?php
-													
+
 												}
 
 											}

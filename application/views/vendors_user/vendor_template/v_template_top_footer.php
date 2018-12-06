@@ -1,6 +1,6 @@
 </div>
 	<!-- end page container -->
-	
+
 	<!-- ================== BEGIN BASE JS ================== -->
 	<script src="<?=base_url()?>file_css_admin/assets/plugins/jquery/jquery-3.2.1.min.js"></script>
 	<script src="<?=base_url()?>file_css_admin/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -15,15 +15,14 @@
 	<script src="<?=base_url()?>file_css_admin/assets/js/theme/default.min.js"></script>
 	<script src="<?=base_url()?>file_css_admin/assets/js/apps.min.js"></script>
 	<!-- ================== END BASE JS ================== -->
-	
+
 	<script>
 		$(document).ready(function() {
 			App.init();
 		});
 	</script>
-
+<?=$script_js?>
 </body>
 
 
 </html>
-

@@ -1,5 +1,8 @@
 $(document).ready(function() {
 	var date = new Date();
+
+    $('.vendor_example').DataTable();
+
 	$('#example_scroll').DataTable( {
         "scrollY":        "200px",
         "scrollCollapse": true,

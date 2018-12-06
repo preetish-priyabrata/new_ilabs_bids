@@ -4,8 +4,11 @@ if(empty($email_id)){
 
 	redirect('buy-logout-by-pass');
 }
-$result_drafted=$this->buyer_user->drafted_bid_information($email_id,1,'');
-
+$value=$value; // bid slno
+$value1=$value1; // mateial category status
+$results_pending=$this->buyer_user->buyer_queries_new_bid($value,0);
+$results_responds=$this->buyer_user->buyer_queries_new_bid($value,1);
+$results_pending_respond=$this->buyer_user->buyer_queries_new_bid($value,0);
 ?>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
@@ -17,8 +20,8 @@ $result_drafted=$this->buyer_user->drafted_bid_information($email_id,1,'');
 			<!-- begin breadcrumb -->
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item active"><a href="#" class="fa fa-home ">Home</a></li>
-				<li class="breadcrumb-item"><a href="javascript:;">Query Bid Technical Information</a></li>
-				<li class="breadcrumb-item active">Query Bid Information of Technical</li>
+				<li class="breadcrumb-item"><a href="javascript:;">Query Bid Pending Information</a></li>
+				<li class="breadcrumb-item active">Query Bid Respond Information</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
@@ -59,11 +62,11 @@ $result_drafted=$this->buyer_user->drafted_bid_information($email_id,1,'');
 					<div class="table-responsive">
 						<?php
 
-						// print_r($result_drafted);
+
 						// Array ( [no_bid] => 1 [bid_list] => Array ( [0] => stdClass Object ( [Slno_bid] => 1 [buyer_slno] => 1 [bid_date_entry] => 2018-12-03 [bid_ref] => REF 2018 [bid_id] => REF 2018 [category] => 3 [mode_bid] => Closed Bid [technical_bid_type] => 1 [status_bid] => 4 [mr_slno] => 3 [mr_no] => 2018-11-05-pUgws [job_code] => 679034 [edit_id] => 1 [material_category_name] => logistics [ logistics ] [bid_title] => SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [bid_description] => INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [data_entry] => 2018-12-03 14:55:44 [bid_creator_id] => buy1@ilab.com ) ) )
 
 						?>
-						<table id="example_buyer" class="display" style="width:100%">
+						<table class="display vendor_example" style="width:100%">
 					        <thead>
 					            <tr>
 					                <th>Slno .</th>
@@ -73,46 +76,27 @@ $result_drafted=$this->buyer_user->drafted_bid_information($email_id,1,'');
 					            </tr>
 					        </thead>
 					        <tbody>
-					        	<?php
-					        	$x=0;
-					        		if($result_drafted['no_bid']==1){
-					        			foreach ($result_drafted['bid_list'] as $key_techniacl) {
-					        				$x++;
-					        				$bid_ref=$key_techniacl->bid_ref;
-					        				$Slno_bid=$key_techniacl->Slno_bid;
-					        				$result_drafted_dates=$this->buyer_user->drafted_bid_information_DATE($Slno_bid,1);
-					        				// print_r($result_drafted_dates);
-					        				 // Array ( [no_bid_date] => 1 [bid_date_list] => Array ( [0] => stdClass Object ( [Slno_bid_date] => 1 [bid_slno] => 3 [buyer_slno] => 1 [bid_start_date] => 2018-12-04 [bid_closed_date] => 2018-12-15 [bid_query_closed_date] => 2018-12-06 [status] => 4 [master_bid_id] => 1 ) ) )
-					        				$category=$key_techniacl->category;
-					        				switch ($category) {
-					        					case '1':
-					        						$edit=base_url()."buyer-bid-send-tech-view/".$Slno_bid."/".$category;
-					        						$send=base_url()."buyer-bid-query-tech/".$Slno_bid."/".$category;
-					        						break;
-					        					case '2':
-					        						$edit=base_url()."buyer-bid-send-tech-view/".$Slno_bid."/".$category;
-					        						$send=base_url()."buyer-bid-query-tech/".$Slno_bid."/".$category;
-					        						break;
-					        					case '3':
-					        						$edit=base_url()."buyer-bid-send-tech-view/".$Slno_bid."/".$category;
-					        						$send=base_url()."buyer-bid-query-tech/".$Slno_bid."/".$category;
-					        						break;
-					        					default:
-					        						$edit="#";
-					        						$send="#";
-					        						break;
-					        				}
-					        				?>
-					        				<tr>
-					        					<td><?=$x?></td>
-					        					<td><a href="<?=$edit?>"<a href="<?=$send?>" class="btn-warning btn-sm"><i class="fa fa-question-circle" aria-hidden="true"></i> Query</a></td>
-					        				</tr>
+										<?php
+										$X=0;
+										if($results_pending['no_bid_query']==1){
+											foreach ($results_pending['bid_query_list'] as $key_pending) {
+												$X++;
 
-					        				<?php
-					        				# code...
-					        			}
-					        		}
-					        	?>
+												?>
+												<tr>
+														<td><?=$X?></td>
+														<td><?=$key_pending->Vendor_id?></td>
+														<td><?=$key_pending->query_details?>
+															<br/>
+															<small><?=$key_pending->date_query?></small>
+														</td>
+														<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?=$key_pending->Slno_query?>">Reply</button></td>
+												</tr>
+											<?php
+											}
+										}
+										?>
+
 					        </tbody>
 					    </table>
 					</div>
@@ -121,28 +105,15 @@ $result_drafted=$this->buyer_user->drafted_bid_information($email_id,1,'');
 			<!-- end panel -->
 		</div>
 		<!-- end #content -->
-<?php
-$email_id=$this->session->userdata('buy_email_id');
-if(empty($email_id)){
 
-	redirect('buy-logout-by-pass');
-}
-$result_drafted=$this->buyer_user->drafted_bid_information($email_id,1,'');
 
-?>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
 <div class="sidebar-bg"></div>
 		<!-- end #sidebar -->
 
 		<!-- begin #content -->
 		<div id="content" class="content">
 			<!-- begin breadcrumb -->
-			<ol class="breadcrumb pull-right">
-				<li class="breadcrumb-item active"><a href="#" class="fa fa-home ">Home</a></li>
-				<li class="breadcrumb-item"><a href="javascript:;">Query Respond Bid of Technical Information</a></li>
-				<li class="breadcrumb-item active">Query Respond Bid Technical Information</li>
-			</ol>
+
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
 			<h1 class="page-header">Query Respond</h1>
@@ -186,7 +157,7 @@ $result_drafted=$this->buyer_user->drafted_bid_information($email_id,1,'');
 						// Array ( [no_bid] => 1 [bid_list] => Array ( [0] => stdClass Object ( [Slno_bid] => 1 [buyer_slno] => 1 [bid_date_entry] => 2018-12-03 [bid_ref] => REF 2018 [bid_id] => REF 2018 [category] => 3 [mode_bid] => Closed Bid [technical_bid_type] => 1 [status_bid] => 4 [mr_slno] => 3 [mr_no] => 2018-11-05-pUgws [job_code] => 679034 [edit_id] => 1 [material_category_name] => logistics [ logistics ] [bid_title] => SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [bid_description] => INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [data_entry] => 2018-12-03 14:55:44 [bid_creator_id] => buy1@ilab.com ) ) )
 
 						?>
-						<table id="example_buyer" class="display" style="width:100%">
+						<table  class="vendor_example" style="width:100%">
 					        <thead>
 					            <tr>
 					                <th>Slno .</th>
@@ -196,43 +167,28 @@ $result_drafted=$this->buyer_user->drafted_bid_information($email_id,1,'');
 					            </tr>
 					        </thead>
 					        <tbody>
-					        	<?php
-					        	$x=0;
-					        		if($result_drafted['no_bid']==1){
-					        			foreach ($result_drafted['bid_list'] as $key_techniacl) {
-					        				$x++;
-					        				$bid_ref=$key_techniacl->bid_ref;
-					        				$Slno_bid=$key_techniacl->Slno_bid;
-					        				$result_drafted_dates=$this->buyer_user->drafted_bid_information_DATE($Slno_bid,1);
-					        				// print_r($result_drafted_dates);
-					        				 // Array ( [no_bid_date] => 1 [bid_date_list] => Array ( [0] => stdClass Object ( [Slno_bid_date] => 1 [bid_slno] => 3 [buyer_slno] => 1 [bid_start_date] => 2018-12-04 [bid_closed_date] => 2018-12-15 [bid_query_closed_date] => 2018-12-06 [status] => 4 [master_bid_id] => 1 ) ) )
-					        				$category=$key_techniacl->category;
-					        				switch ($category) {
-					        					case '1':
-					        						$edit=base_url()."buyer-bid-send-tech-view/".$Slno_bid."/".$category;
-					        						$send=base_url()."buyer-bid-query-tech/".$Slno_bid."/".$category;
-					        						break;
-					        					case '2':
-					        						$edit=base_url()."buyer-bid-send-tech-view/".$Slno_bid."/".$category;
-					        						$send=base_url()."buyer-bid-query-tech/".$Slno_bid."/".$category;
-					        						break;
-					        					case '3':
-					        						$edit=base_url()."buyer-bid-send-tech-view/".$Slno_bid."/".$category;
-					        						$send=base_url()."buyer-bid-query-tech/".$Slno_bid."/".$category;
-					        						break;
-					        					default:
-					        						$edit="#";
-					        						$send="#";
-					        						break;
-					        				}
-					        				?>
-					        				
+										<?php
+										$X=0;
+										if($results_responds['no_bid_query']==1){
+											foreach ($results_responds['bid_query_list'] as $key_responds) {
+												$X++;
 
-					        				<?php
-					        				# code...
-					        			}
-					        		}
-					        	?>
+												?>
+												<tr>
+														<td><?=$X?></td>
+														<td><?=$key_responds->Vendor_id?></td>
+														<td><?=$key_responds->query_details?>
+															<br/>
+															<small><?=$key_responds->date_query?></small>
+														</td>
+														<td><?=$key_responds->response_detail?>
+															<br/>
+															<small><?=$key_responds->date_respond?></small></td>
+												</tr>
+											<?php
+											}
+										}
+										?>
 					        </tbody>
 					    </table>
 					</div>
@@ -241,3 +197,39 @@ $result_drafted=$this->buyer_user->drafted_bid_information($email_id,1,'');
 			<!-- end panel -->
 		</div>
 		<!-- end #content -->
+
+		<?php
+if($results_pending_respond['no_bid_query']==1){
+foreach ($results_pending_respond['bid_query_list'] as $key_responds_pend) {
+
+		?>
+
+
+		<!-- The Modal -->
+<div class="modal" id="myModal<?=$key_responds_pend->Slno_query?>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"><?=$key_responds_pend->query_details?></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+				<input type="hidden" name="Slno_query" value="<?=$key_responds_pend->Slno_query?>">
+					<input type="hidden" name="value1" value="<?=$value1?>">
+        <label class="">Responds : </label><textarea required name="respond_name"></textarea>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<?php } } ?>

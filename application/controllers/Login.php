@@ -111,7 +111,7 @@ class Login extends CI_Controller {
 											redirect("home");
 							 			}
 						 			break;
-						 		case '8':  //design user 
+						 		case '8':  //Approver user 
 						 			// echo "string";
 						 			// exit;
 						 				$newdata = array('Username'=>$row->Username,'approver_email_id'=>$row->email_id,'role_id'=>$row->role_id,'logged_in' => TRUE,'session_id'=>$session_id);
@@ -132,7 +132,7 @@ class Login extends CI_Controller {
 											redirect("home");
 							 			}
 						 			break;
-						 		case '4':  //design user 
+						 		case '4':  //procurement user 
 						 			// echo "string";
 						 			// exit;
 						 				$newdata = array('Username'=>$row->Username,'procurement_email_id'=>$row->email_id,'role_id'=>$row->role_id,'logged_in' => TRUE,'session_id'=>$session_id);
@@ -153,7 +153,7 @@ class Login extends CI_Controller {
 											redirect("home");
 							 			}
 						 			break;
-						 		case '7':  //design user 
+						 		case '7':  //buyer user 
 						 			// echo "string";
 						 			// exit;
 						 				$newdata = array('Username'=>$row->Username,'buy_email_id'=>$row->email_id,'role_id'=>$row->role_id,'logged_in' => TRUE,'session_id'=>$session_id);
@@ -166,6 +166,27 @@ class Login extends CI_Controller {
 						 					$this->session->set_flashdata('success_message', 'Welcome To Buyer User Panel');
 							 				$this->session->set_userdata($newdata);
 							 				redirect('user-buyer-home');
+							 				exit();
+							 			}else{
+							 				// Set flash data 
+											$this->session->set_flashdata('error_msg', 'Unable find user Please Try Again');
+											// After that you need to used redirect function instead of load view such as 
+											redirect("home");
+							 			}
+						 			break;
+						 		case '9':  //Technical user 
+						 			// echo "string";
+						 			// exit;
+						 				$newdata = array('Username'=>$row->Username,'technical_email_id'=>$row->email_id,'role_id'=>$row->role_id,'logged_in' => TRUE,'session_id'=>$session_id);
+						 				$user_data = array('user_id'=>$row->email_id, 'username'=>$row->Username, 'user_role'=>$row->role_id, 'browser_detail'=>$date_nrowser_json, 'ip'=>$ip, 'entry_date'=>$date, 'entry_time'=>$time, 'status'=>'1', 'session_id'=>$session_id);
+						 				$user_hstory_table="master_session_history";
+						 				$result_history = $this->user->common_insert($user_hstory_table,$user_data);
+
+						 				// common_insert
+						 				if($result_history==1){
+						 					$this->session->set_flashdata('success_message', 'Welcome To Technical Evalutor User Panel');
+							 				$this->session->set_userdata($newdata);
+							 				redirect('user-technical-evalutor-home');
 							 				exit();
 							 			}else{
 							 				// Set flash data 

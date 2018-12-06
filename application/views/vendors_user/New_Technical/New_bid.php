@@ -6,6 +6,9 @@ if(empty($Vendor_email_id)){
 }
 $result_new_bid=$this->vendor_db_users->vendor_new_technical_bid_list($Vendor_email_id)
 ?>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+
 <!-- begin #content -->
 		<div id="content" class="content">
 			<!-- begin breadcrumb -->
@@ -53,12 +56,13 @@ $result_new_bid=$this->vendor_db_users->vendor_new_technical_bid_list($Vendor_em
 						<?php
 						// print_r($result_new_bid);
 						?>
-						<table id="example" class="display table" style="width:100%">
+						<table class="display table vendor_example" style="width:100%">
 					        <thead>
 					            <tr>
 					                <th>Slno .</th>
 					                <th>Bid Ref</th>
-					                <th>Status</th>
+					                <th>View Status</th>
+													<th>Bid Type Category</th>
 					                <th>Type of Bid</th>
 					                <th>Bid Start date</th>
 					              	<th>Bid End date</th>
@@ -99,10 +103,16 @@ $result_new_bid=$this->vendor_db_users->vendor_new_technical_bid_list($Vendor_em
 																			}
 																	?>
 															  </td>
+																<td>
+																	<?php
+																			echo "<b style='color:blue;'>".$key_technical->material_category_name."</b>";
+
+																	?>
+															  </td>
 													     	<td><?php echo $key_technical->mode_bid;?></td>
 													     	<td><?php echo $key_technical->date_start;?></td>
 													     	<td><?php echo $key_technical->date_end;?></td>
-																<td><a href="<?=base_url()?>user-vendor-bid-view-technical-details/<?=$key_technical->slno_vendor?>" class="btn btn-sm btn-success">View</a></td>
+																<td><a href="<?=base_url()?>user-vendor-bid-view-technical-details/<?=$key_technical->slno_vendor?>/<?=$key_technical->category?>" class="btn btn-sm btn-success">View</a></td>
 																<td><a href="<?=base_url()?>user-vendor-query-panel/<?=$key_technical->slno_vendor?>" class="btn btn-sm btn-warning">Query</a></td>
 													  </tr>
   												<?php }
