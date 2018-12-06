@@ -22,8 +22,17 @@ class Technicalevalutor extends CI_Controller {
 
 
     }
+    public function tech_evalutor_home($value=''){
+      $scripts='';
+            $data=array('title' =>"Technical Evalutor User Dashboard",'script_js'=>$scripts,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
+            $this->load->view('template/template_header',$data);
+            $this->load->view('tech_evalutor_user/template/template_top_head');
+            $this->load->view('tech_evalutor_user/template/template_side_bar',$data);
+            $this->load->view('tech_evalutor_user/user_dashboard');
+            $this->load->view('template/template_footer',$data);
+    }
 
-  
+
 
 
 
@@ -47,7 +56,7 @@ class Technicalevalutor extends CI_Controller {
                         $result_history = $this->user->common_update($user_hstory_table,$user_data,$id);
                         session_destroy();
                         session_start();
-                        $this->session->set_flashdata('success_message', 'Signout from Vendor User Portal');
+                        $this->session->set_flashdata('success_message', 'Signout from Technical Evalutors User Portal');
                         redirect('vendor');
 
                 }else{
@@ -58,13 +67,13 @@ class Technicalevalutor extends CI_Controller {
                         $result_history = $this->user->common_update($user_hstory_table,$user_data,$id);
                         session_destroy();
                         session_start();
-                        $this->session->set_flashdata('success_message', 'Sign-out from Vendor User Portal');
+                        $this->session->set_flashdata('success_message', 'Sign-out from Technical Evalutors User Portal');
                         redirect('vendor');
                 }
         # code...
     }
     public function tech_evalutor_logout_bypass(){
-        $this->session->set_flashdata('error_msg', 'Invalid entry to Vendor User Portal');
+        $this->session->set_flashdata('error_msg', 'Invalid entry to Technical Evalutors User Portal');
         redirect('vendor');
 
     }
