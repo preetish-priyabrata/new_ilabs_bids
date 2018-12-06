@@ -57,7 +57,7 @@ class Technicalevalutor extends CI_Controller {
                         session_destroy();
                         session_start();
                         $this->session->set_flashdata('success_message', 'Signout from Technical Evalutors User Portal');
-                        redirect('vendor');
+                        redirect('home');
 
                 }else{
 
@@ -68,13 +68,13 @@ class Technicalevalutor extends CI_Controller {
                         session_destroy();
                         session_start();
                         $this->session->set_flashdata('success_message', 'Sign-out from Technical Evalutors User Portal');
-                        redirect('vendor');
+                        redirect('home');
                 }
         # code...
     }
     public function tech_evalutor_logout_bypass(){
         $this->session->set_flashdata('error_msg', 'Invalid entry to Technical Evalutors User Portal');
-        redirect('vendor');
+        redirect('home');
 
     }
 
