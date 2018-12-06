@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=Windows shares on 192.168.0.4: lnt_bid
+Comment=Open 'smb://192.168.0.4/._lnt_bid'
+Icon=folder-remote
+Name[en_US]=Windows shares on 192.168.0.4: lnt_bid
+Comment[en_US]=Open 'smb://192.168.0.4/._lnt_bid'
+Icon[en_US]=folder-remote
+URL=smb://192.168.0.4/._lnt_bid
+Type=Link
