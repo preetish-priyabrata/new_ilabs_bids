@@ -1,6 +1,6 @@
 <?php 
 $technical_email_id=$this->session->userdata('technical_email_id');
-if(empty($email_id)){
+if(empty($technical_email_id)){
 	
 	redirect('tech-evalutor-logout-by-pass');
 }
