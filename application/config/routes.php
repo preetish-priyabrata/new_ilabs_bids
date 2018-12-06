@@ -391,7 +391,8 @@ $route['bid-tech-entry']='buyeruser/buyer_bid_tech_entry';
 ##################################################################################################################################
 $route['user-technical-evalutor-home']='technicalevalutor/tech_evalutor_home';
 
-
+$route['tech-evalutor-logout-by-pass']='technicalevalutor/tech_evalutor_logout_bypass';
+$route['tech-evalutor-logout']='technicalevalutor/tech_evalutor_logout';
 ######################################################################################################################################
 #
 # Vendor section user
@@ -415,6 +416,8 @@ $route['vendor-page-final']='vendoruser/vendor_page_final';
 // vendor_logout_bypass
 $route['vendor-logout']='vendoruser/vendor_logout';
 $route['vendor-logout-pass']='vendoruser/vendor_logout_bypass';
+
+
 ######################################################################################################################################
 #
 #	Logout Of all section here
