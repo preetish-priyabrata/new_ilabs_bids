@@ -8,7 +8,7 @@ if(empty($created_session_id)){
 <style type="text/css">
 	.page-sidebar-toggled.page-sidebar-minified .sidebar.sidebar-transparent,.sidebar-bg,
 .sidebar.sidebar-transparent,.sidebar-bg {
-    background: linear-gradient(rgba(38, 45, 185, 0.8), rgba(6, 132, 16, 0.63)), url(<?=base_url()?>file_css_admin/assets/css/default/images/cover-sidebar.jpg);
+    background: linear-gradient(rgba(185, 38, 64, 0.8), rgba(6, 106, 132, 0.6)), url(<?=base_url()?>file_css_admin/assets/css/default/images/cover-sidebar.jpg);
     background-size: cover
 }
 </style>
