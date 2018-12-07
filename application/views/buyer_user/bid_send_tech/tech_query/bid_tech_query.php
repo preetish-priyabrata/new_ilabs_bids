@@ -209,7 +209,7 @@ foreach ($results_pending_respond['bid_query_list'] as $key_responds_pend) {
 <div class="modal" id="myModal<?=$key_responds_pend->Slno_query?>">
   <div class="modal-dialog">
     <div class="modal-content">
-
+     <form action="<?=base_url()?>buyer-query-respond-technical" method="POST" class="form-horizontal form-inline" enctype="multipart/form-data">  
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title"><?=$key_responds_pend->query_details?></h4>
@@ -226,9 +226,9 @@ foreach ($results_pending_respond['bid_query_list'] as $key_responds_pend) {
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+        <button type="submit" class="btn btn-success">Submit</button>
       </div>
-
+     </form>
     </div>
   </div>
 </div>
