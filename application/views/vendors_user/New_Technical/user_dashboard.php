@@ -1,8 +1,8 @@
 <?php 
-$technical_email_id=$this->session->userdata('technical_email_id');
-if(empty($technical_email_id)){
+$email_id=$this->session->userdata('procurement_email_id');
+if(empty($email_id)){
 	
-	redirect('tech-evalutor-logout-by-pass');
+	redirect('procurement-logout-by-pass');
 }
 ?>
 

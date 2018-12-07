@@ -1,14 +1,14 @@
-<?php
+<?php 
 $created_session_id=$this->session->userdata('session_id');
 if(empty($created_session_id)){
-
-	redirect('tech-evalutor-logout-by-pass');
+	
+	redirect('procurement-logout-by-pass');
 }
 ?>
 <style type="text/css">
 	.page-sidebar-toggled.page-sidebar-minified .sidebar.sidebar-transparent,.sidebar-bg,
 .sidebar.sidebar-transparent,.sidebar-bg {
-    background: linear-gradient(rgba(185, 38, 64, 0.8), rgba(6, 106, 132, 0.6)), url(<?=base_url()?>file_css_admin/assets/css/default/images/cover-sidebar.jpg);
+    background: linear-gradient(rgba(38, 45, 185, 0.8), rgba(6, 132, 16, 0.63)), url(<?=base_url()?>file_css_admin/assets/css/default/images/cover-sidebar.jpg);
     background-size: cover
 }
 </style>
@@ -24,12 +24,12 @@ if(empty($created_session_id)){
 				</button>
 			</div>
 			<!-- end navbar-header -->
-
+			
 			<!-- begin header-nav -->
-			<ul class="navbar-nav navbar-right">
+			<ul class="navbar-nav navbar-right">				
 				<li class="dropdown navbar-user">
 					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-						<img src="<?=base_url()?>file_css_admin/assets/img/user/user-13.jpg" alt="" />
+						<img src="<?=base_url()?>file_css_admin/assets/img/user/user-13.jpg" alt="" /> 
 						<span class="d-none d-md-inline"><?=$this->session->userdata('Username');?></span> <b class="caret"></b>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right">
@@ -45,3 +45,4 @@ if(empty($created_session_id)){
 			<!-- end header navigation right -->
 		</div>
 		<!-- end #header -->
+		
