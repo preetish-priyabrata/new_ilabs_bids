@@ -391,7 +391,7 @@ $route['bid-tech-entry']='buyeruser/buyer_bid_tech_entry';
 #
 ##################################################################################################################################
 $route['user-technical-evalutor-home']='technicalevalutor/tech_evalutor_home';
-
+$route['user-technical-evaluator-bid-new-list']='technicalevalutor/technical_evaluator_bid_new_list';
 $route['tech-evalutor-logout-by-pass']='technicalevalutor/tech_evalutor_logout_bypass';
 $route['tech-evalutor-logout']='technicalevalutor/tech_evalutor_logout';
 ######################################################################################################################################
