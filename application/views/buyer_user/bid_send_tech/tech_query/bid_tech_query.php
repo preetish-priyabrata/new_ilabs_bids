@@ -5,7 +5,8 @@ if(empty($email_id)){
 	redirect('buy-logout-by-pass');
 }
 $value=$value; // bid slno
-$value1=$value1; // mateial category status
+$id=$value1=$value1; // mateial category status
+
 $results_pending=$this->buyer_user->buyer_queries_new_bid($value,0);
 $results_responds=$this->buyer_user->buyer_queries_new_bid($value,1);
 $results_pending_respond=$this->buyer_user->buyer_queries_new_bid($value,0);
@@ -209,7 +210,7 @@ foreach ($results_pending_respond['bid_query_list'] as $key_responds_pend) {
 <div class="modal" id="myModal<?=$key_responds_pend->Slno_query?>">
   <div class="modal-dialog">
     <div class="modal-content">
-     <form action="<?=base_url()?>buyer-query-respond-technical" method="POST" class="form-horizontal form-inline" enctype="multipart/form-data">  
+     <form action="<?=base_url()?>buyer-query-respond-technical" method="POST" >
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title"><?=$key_responds_pend->query_details?></h4>
@@ -219,7 +220,8 @@ foreach ($results_pending_respond['bid_query_list'] as $key_responds_pend) {
       <!-- Modal body -->
       <div class="modal-body">
 				<input type="hidden" name="Slno_query" value="<?=$key_responds_pend->Slno_query?>">
-					<input type="hidden" name="value1" value="<?=$value1?>">
+					<input type="hidden" name="category_id" value="<?=$id?>">
+					<input type="hidden" name="value" value="<?=$value?>">
         <label class="">Responds : </label><textarea required name="respond_name"></textarea>
       </div>
 

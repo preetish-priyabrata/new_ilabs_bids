@@ -14,7 +14,8 @@ if($result_title['no_new_tech']!=1){
 $edit_id=$result_title['new_tech_list'][0]->edit_id;
 $mr_slno=$result_title['new_tech_list'][0]->mr_slno;
 $mr_no=$result_title['new_tech_list'][0]->mr_no;
-$query_item_details_list=$this->design_user->get_design_master_mr_items_material_single($edit_id,$mr_no,$mr_slno);
+$query_item_details_list=$this->design_user->get_design_master_mr_items_material_single($edit_id,$mr_no,$mr_slno); /// item Details
+ $result_file=$this->design_user->get_design_mr_file_list($mr_slno,$mr_no); // file information
 ?>
 <!-- begin #content -->
 	<div id="content" class="content">
@@ -138,39 +139,58 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 												$code=$value_item->material_item_id;
 												$material_quantity=$value_item->material_quantity;
 												$query_item_details=$this->design_user->get_design_master_items_material_single($code);
-												?>
-
-																		<tr>
-																			<td><?=$query_item_details['materials_list'][0]->item_name?></td>
-																			<td><?=$query_item_details['materials_list'][0]->item_id?></td>
-																			<td><?=$material_quantity?></td>
-																					<td><?=$query_item_details['materials_list'][0]->item_uom?></td>
-																					<td>
-																						<?php
-
-																						if($get_technical['no_received']==1){
-																							$procuremenr_list_single=$get_technical['procuremenr_list_single'];
-																							foreach ($procuremenr_list_single as $key_value_technical) {
-																								echo $key_value_technical->tech_name."<br>";
-																								# code...
-																							}
-																						}else{
-																							echo " No Parameter is been Selected";
-																						}
-																						?>
-
-																					</td>
-
-
-																		</tr>
-																		<?php
-
-																	}
-																	}?>
-
-															</tbody>
-													</table>
+									?>
+									<tr>
+										<td><?=$query_item_details['materials_list'][0]->item_name?></td>
+										<td><?=$query_item_details['materials_list'][0]->item_id?></td>
+										<td><?=$material_quantity?></td>
+										<td><?=$query_item_details['materials_list'][0]->item_uom?></td>
+										<td>
+											<?php
+														if($get_technical['no_received']==1){
+															$procuremenr_list_single=$get_technical['procuremenr_list_single'];
+															foreach ($procuremenr_list_single as $key_value_technical) {
+																echo $key_value_technical->tech_name."<br>";
+															}
+														}else{
+															echo " <b style='color:red;'>No Parameter is been Selected</b>";
+														}
+											?>
+										</td>
+									</tr>
+									<?php
+											}
+										}
+									?>
+								</tbody>
+						</table>
 				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<h5 class="text-center">Attach File Information</h5>
+					<hr style="height: 3px;background: #0257ab;margin-top: 1.5rem; margin-bottom: 1.5rem"/>
+				<table class="table table-bordered" cellpadding="10" cellspacing="1" width="100%">
+					<thead>
+							<tr>
+									<th><strong>File Name</strong></th>
+									<th><strong>Click View</strong></th>
+
+							</tr>
+					</thead>
+					<tbody>
+							<?php foreach($result_file['files_list'] as $key_files){ ?>
+									<tr>
+											<td><strong><?=$key_files->file_name_actucal?></strong></td>
+											<td><strong><a target="_blank" href="<?=base_url()?>upload_files/design_upload/<?=$key_files->attach_name?>">Click View</a> </strong></td>
+
+									</tr>
+
+
+							<?php }?>
+
+					</tbody>
+				</table>
 			</div>
 		</div>
 		<!-- end panel -->

@@ -377,9 +377,9 @@ $route['user-buyer-conform-send/(:any)']='buyeruser/buyer_bid_conform_send/$1';
 
 // Bid Technical Send
 $route['buyer-send-bid-tech']='buyeruser/buyer_send_bid_tech';
-$route['buyer-bid-query-tech/(:any)/(:any)']='buyeruser/buyer_bid_query_tech/$1,$2';
+$route['buyer-bid-query-tech/(:any)/(:any)']='buyeruser/buyer_bid_query_tech/$1/$2';
 $route['buyer-bid-send-tech-view/(:any)/(:any)']='buyeruser/buyer_bid_send_tech_view/$1/$2';
-$route['buyer-query-respond-technical']='buyeruser/buyeruser/buyer_query_respond_technical';
+$route['buyer-query-respond-technical']='buyeruser/buyer_query_respond_technical';
 // ajax mr file upload
 $route['buyer-file-upload-data']='buyeruser/buyer_file_upload_data';
 $route['bid-tech-entry']='buyeruser/buyer_bid_tech_entry';
