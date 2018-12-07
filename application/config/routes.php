@@ -362,7 +362,7 @@ $route['bu-view-edit-tracking-tool/(:any)']='buuser/bu_view_edit_tracking_tool/$
 
 ###########################################################################################################################################
 #
-#
+#                                          Buyer Section
 #
 ############################################################################################################################################
 $route['user-buyer-home']='buyeruser/home';
@@ -379,6 +379,7 @@ $route['user-buyer-conform-send/(:any)']='buyeruser/buyer_bid_conform_send/$1';
 $route['buyer-send-bid-tech']='buyeruser/buyer_send_bid_tech';
 $route['buyer-bid-query-tech/(:any)/(:any)']='buyeruser/buyer_bid_query_tech/$1,$2';
 $route['buyer-bid-send-tech-view/(:any)/(:any)']='buyeruser/buyer_bid_send_tech_view/$1/$2';
+$route['buyer-query-respond-technical']='buyeruser/buyeruser/buyer_query_respond_technical';
 // ajax mr file upload
 $route['buyer-file-upload-data']='buyeruser/buyer_file_upload_data';
 $route['bid-tech-entry']='buyeruser/buyer_bid_tech_entry';
@@ -404,7 +405,7 @@ $route['vendor/login-process']='vendoruser/vendor_login_process';
 $route['user-vendor-home']='vendoruser/vendor_dashboard';
 $route['user-vendor-new-technical']='vendoruser/vendor_new_technical';
 $route['user-vendor-query-panel/(:any)']='vendoruser/vendor_query_panel/$1';
-$route['user-vendor-bid-view-technical-details/(:any)']='vendoruser/vendor_view_details/$1';
+$route['user-vendor-bid-view-technical-details/(:any)/(:any)']='vendoruser/vendor_new_tech_view_details/$1/$2';
 
 $route['vendor-bid-query-tech']='vendoruser/vendor_bid_query_tech';
 // this two pages will be removed
