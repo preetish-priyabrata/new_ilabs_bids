@@ -457,6 +457,36 @@ class Buyeruser extends CI_Controller {
           $this->load->view('template/template_footer',$data);
       # code...
     }
+
+    public function buyer_query_respond_technical($value='')    {
+      $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
+          $data=array('title' =>"Buyer List Of Mr Received",'script_js'=>$scripts,'menu_status'=>'3','sub_menu'=>'3','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1);
+          $this->load->view('template/template_header',$data);
+          $this->load->view('buyer_user/template/template_top_head');
+          $this->load->view('buyer_user/template/template_side_bar',$data);
+          $this->load->view('buyer_user/bid_send_tech/tech_query/bid_tech_query',$data);
+          $this->load->view('buyer_user/bid_send_tech/tech_query/query_respond/buyer_query_respond_technical',$data);  # code...
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function buy_logout(){
         $session_id=session_id();
                 // print_r($this->session->userdata());
