@@ -22,7 +22,7 @@
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
-      
+           
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">Query</h4>
