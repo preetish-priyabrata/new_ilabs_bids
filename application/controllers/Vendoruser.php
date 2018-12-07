@@ -132,15 +132,32 @@ class Vendoruser extends CI_Controller {
 
 
     }
-    public function vendor_view_details($value=''){
-
+    public function vendor_new_tech_view_details($value='',$value1=''){
+      $data_update=array('status_view'=>6);
+      $data_id=array('slno_vendor'=>$value);
+      $query=$this->db->update('master_bid_vendor',$data_update,$data_id);
+        switch ($value1) {
+          case '1':
+            $page="'vendors_user/New_Technical/view_details_technical_bid'";
+            break;
+          case '2':
+              $page='vendors_user/New_Technical/view_details_technical_bid';
+              break;
+          case '3':
+              $page='vendors_user/New_Technical/view_details_technical_bid_logistic' ;
+                break;
+          default:
+            // code...
+            break;
+        }
      $scripts='';
-            $data=array('title' =>"Vendor Dashboard",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value);
+            $data=array('title' =>"Vendor Dashboard",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1);
+
             $this->load->view('vendors_user/vendor_template/v_template_header',$data);
             $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
             $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
 
-            $this->load->view('vendors_user/New_Technical/view_details_technical_bid',$data);
+            $this->load->view($page,$data);
             $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
 
 
