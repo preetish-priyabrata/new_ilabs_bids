@@ -459,7 +459,31 @@ class Buyeruser extends CI_Controller {
     }
 
     public function buyer_query_respond_technical($value='')    {
-     print_r($this->input->post());  // )
+      $email_id=$this->session->userdata('buy_email_id');
+      if(empty($email_id)){
+
+      	redirect('buy-logout-by-pass');
+      }
+     // print_r($this->input->post());  // )
+
+     $Slno_query=$this->input->post('Slno_query'); // query id
+     $category_id=$this->input->post('category_id'); // material id
+     $value=$this->input->post('value'); // bid id
+     $respond_name=$this->input->post('respond_name'); // respond to query hich was send by vendor
+     $date=date('Y-m-d'); // when it is been upadte
+     $data_update = array('response_detail'=>$respond_name, 'responser_id'=>$email_id, 'date_respond'=>$date, 'status_responds'=>1); // data which will update to data of query
+     $data_id=array('Slno_query'=>$Slno_query); // serial id which need to update
+     $query=$this->db->update('master_bid_query',$data_update,$data_id); // here update is been done
+     if($query){ // checking query executed successfully or not
+       $this->session->set_flashdata('success_message', 'Query has reponded successfully'); // here is message is been toasted
+       redirect('buyer-bid-query-tech/'.$value.'/'.$category_id); // here is redirection
+     }else {
+       $this->session->set_flashdata('error_msg', 'Some Error occured Try Again !');
+       redirect('user-buyer-home');
+     }
+
+
+
     }
 
 

@@ -184,6 +184,15 @@ class Vendoruser extends CI_Controller {
       	redirect('user-vendor-home');
       }
     }
+    public function vendor_tech_bid_submission($value=''){
+      $scripts='';
+             $data=array('title' =>"Vendor Bid Submission",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value);
+             $this->load->view('vendors_user/vendor_template/v_template_header',$data);
+             $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
+             $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
+             $this->load->view('vendors_user/submission_tech_bid/submission_bid',$data);
+             $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
+    }
 
 
 

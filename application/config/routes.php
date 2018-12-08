@@ -413,8 +413,7 @@ $route['vendor-bid-query-tech']='vendoruser/vendor_bid_query_tech';
 // this two pages will be removed
 $route['vendor-page']='vendoruser/vendor_page';
 $route['vendor-page-final']='vendoruser/vendor_page_final';
-
-// vendor Logout
+$route['user-vendor-bid-submission/(:any)']='vendoruser/vendor_tech_bid_submission/$1';
 // vendor_logout
 // vendor_logout_bypass
 $route['vendor-logout']='vendoruser/vendor_logout';
