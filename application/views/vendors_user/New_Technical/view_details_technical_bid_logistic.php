@@ -1,227 +1,202 @@
-<?php 
+<?php
 $Vendor_email_id=$this->session->userdata('Vendor_email_id');
 if(empty($Vendor_email_id)){
-	
+
 	redirect('vendor-logout-pass');
 }
 $value=$value;
+$value1=$value1;
 $result_title=$this->vendor_db_users->vendor_new_query_tech_title($value,$Vendor_email_id);
 if($result_title['no_new_tech']!=1){
 	$this->session->set_flashdata('error_message', 'Unable find Bid');
 	redirect('user-vendor-home');
 }
+$edit_id=$result_title['new_tech_list'][0]->edit_id;
+$mr_slno=$result_title['new_tech_list'][0]->mr_slno;
+$mr_no=$result_title['new_tech_list'][0]->mr_no;
+$result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id,$mr_no,$mr_slno);
+
+ $result_file=$this->design_user->get_design_mr_file_list($mr_slno,$mr_no); // file information
 ?>
 <!-- begin #content -->
-		<div id="content" class="content">
-			<!-- begin breadcrumb -->
-			<ol class="breadcrumb pull-right">
-				<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-				<!-- <li class="breadcrumb-item"><a href="javascript:;">Page Options</a></li>
-				<li class="breadcrumb-item active">Page with Top Menu</li> -->
-			</ol>
-			<!-- end breadcrumb -->
-			<!-- begin page-header -->
-			<h1 class="page-header">Technical Bid View Details<small></small></h1>
-			<!-- end page-header -->
-			<?php if(!empty($this->session->flashdata('success_message'))){?>
+	<div id="content" class="content">
+		<!-- begin breadcrumb -->
+		<ol class="breadcrumb pull-right">
+			<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+			<li class="breadcrumb-item"><a href="javascript:;">New Technical Bid</a></li>
+			<li class="breadcrumb-item active">Technical Bid Information</li>
+		</ol>
+		<!-- end breadcrumb -->
+		<!-- begin page-header -->
+		<h1 class="page-header">Technical Bid View Details<small></small></h1>
+		<!-- end page-header -->
+		<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
-			  <span class="close" data-dismiss="alert">×</span>
-			  <strong>Success!</strong>
-			  <?=$this->session->flashdata('success_message')?> 
-			  <!-- <a href="#" class="alert-link">an example link</a>.  -->
+				<span class="close" data-dismiss="alert">×</span>
+				<strong>Success!</strong>
+				<?=$this->session->flashdata('success_message')?>
+				<!-- <a href="#" class="alert-link">an example link</a>.  -->
 			</div>
-			<?php 
-			} if(!empty($this->session->flashdata('error_message'))){?>
+			<?php
+		} if(!empty($this->session->flashdata('error_message'))){?>
 			<div class="alert alert-danger fade show">
-			  <span class="close" data-dismiss="alert">×</span>
-			  <strong>Error !</strong>
-			  <?=$this->session->flashdata('error_message')?> 
-			  <!-- <a href="#" class="alert-link">an example link</a>.  -->
+				<span class="close" data-dismiss="alert">×</span>
+				<strong>Error !</strong>
+				<?=$this->session->flashdata('error_message')?>
+				<!-- <a href="#" class="alert-link">an example link</a>.  -->
 			</div>
-			<?php 
-			}
-			  //print_r($result_title);
-			 ?>
-			<!-- begin panel -->
-			<div class="panel panel-inverse">
-				<div class="panel-heading">
-					<div class="panel-heading-btn">
-						
-						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
-						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+			<?php
+		}
+		
+		?>
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+				</div>
+				<h4 class="panel-title">Panel Title here</h4>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-6 col-lg-6">
+						<div class="form-group row m-b-15">
+							<label class="col-form-label col-md-3" for="Date_creation"> Bid Ref <span style="color: red"></span></label>
+							<div class="col-md-9">
+								<?=$result_title['new_tech_list'][0]->bid_ref?>
+							</div>
+						</div>
+						<div class="form-group row m-b-15">
+							<label class="col-form-label col-md-3" for="Po_no">Start Date <span style="color: red"></span></label>
+							<div class="col-md-9">
+								<?=$result_title['new_tech_list'][0]->date_start?>
+							</div>
+						</div>
+						<div class="form-group row m-b-15">
+							<label class="col-form-label col-md-3" for="Bg_submission_date">Title </label>
+							<div class="col-md-9">
+								<?=$result_title['new_tech_list'][0]->title?>
+							</div>
+						</div>
+						<div class="form-group row m-b-15">
+							<label class="col-form-label col-md-3" for="Mfg_clear_date">Description <span style="color: red"></span></label>
+							<div class="col-md-9">
+								<?=$result_title['new_tech_list'][0]->description?>
+							</div>
+						</div>
 					</div>
-					<h4 class="panel-title">View Details of Technical Bid</h4>
+					<div class="col-md-6 col-lg-6">
+						<div class="form-group row m-b-15">
+							<label class="col-form-label col-md-3" for="Job_code"> Bid Id<span style="color: red"></span></label>
+							<div class="col-md-9">
+								<?=$result_title['new_tech_list'][0]->bid_id?>
+							</div>
+						</div>
+						<div class="form-group row m-b-15">
+							<label class="col-form-label col-md-3" for="Po_date"> End Date <span style="color: red"></span></label>
+							<div class="col-md-9">
+								<?=$result_title['new_tech_list'][0]->date_end?>
+							</div>
+						</div>
+						<div class="form-group row m-b-15">
+							<label class="col-form-label col-md-3" for="Advance_payment_date">Date of Query </label>
+							<div class="col-md-9">
+								<?=$result_title['new_tech_list'][0]->date_end?>
+							</div>
+						</div>
+						<div class="form-group row m-b-15">
+							<label class="col-form-label col-md-3" for="Advance_payment_date"> Type of Bid </label>
+							<div class="col-md-9">
+								<?=$result_title['new_tech_list'][0]->mode_bid?>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="panel-body">
-					<form  action="/action_page.php">
-	            
-							<div class="panel-body">
-					
-                    <form action="<?=base_url()?>bu-create-tracking-save" method="POST">					
-						
-						     
-						         	<div class="row">
-										<div class="col-md-6 col-lg-6">
-										 	<div class="form-group row m-b-15">
-												<label class="col-form-label col-md-3" for="Date_creation"> Bid Ref <span style="color: red"></span></label>
-												<div class="col-md-9">
-													<?=$result_title['new_tech_list'][0]->bid_ref?>
-													
-												</div>
-											</div>
-											<div class="form-group row m-b-15">
-												<label class="col-form-label col-md-3" for="Po_no">Start Date <span style="color: red"></span></label>
-												<div class="col-md-9">
-													<?=$result_title['new_tech_list'][0]->date_start?>
-													
-												</div>
-											</div>
-											<div class="form-group row m-b-15">
-												<label class="col-form-label col-md-3" for="Bg_submission_date">Title </label>
-												<div class="col-md-9"><?=$result_title['new_tech_list'][0]->title?>
-													
-												</div>
-											</div>
-	                                        
-	                                        <div class="form-group row m-b-15">
-												<label class="col-form-label col-md-3" for="Mfg_clear_date">Description <span style="color: red"></span></label>
-												<div class="col-md-9">
-													<?=$result_title['new_tech_list'][0]->description?>
-													
-												</div>
-											</div>
-										</div>
-										<div class="col-md-6 col-lg-6">
-											<div class="form-group row m-b-15">
-												<label class="col-form-label col-md-3" for="Job_code"> Bid Id<span style="color: red"></span></label>
-												<div class="col-md-9">
-													<?=$result_title['new_tech_list'][0]->bid_id?>
-													
-													
-												</div>
-											</div>
-											<div class="form-group row m-b-15">
-												<label class="col-form-label col-md-3" for="Po_date"> End Date <span style="color: red"></span></label>
-												<div class="col-md-9">
-													<?=$result_title['new_tech_list'][0]->date_end?>
-													
-												</div>
-											</div>
-											<div class="form-group row m-b-15">
-												<label class="col-form-label col-md-3" for="Advance_payment_date">Date of Query </label>
-												<div class="col-md-9">
-													<?=$result_title['new_tech_list'][0]->date_end?>
-													
-												</div>
-											</div>
-											<div class="form-group row m-b-15">
-												<label class="col-form-label col-md-3" for="Advance_payment_date"> Type of Bid </label>
-												<div class="col-md-9">
-													<?=$result_title['new_tech_list'][0]->mode_bid?>
-													
-												</div>
-											</div>
-										 
-										</div>
-									</div>
-						        </div>
-						      </div>
-						    </div>
-						    <div class="card">
-						      <div class="card-header text-center">
-						        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-						       	Part I
-						      </a>
-						      </div>
-						      <div id="collapseTwo" class="collapse" data-parent="#accordion">
-						        <div class="card-body">
-						        	<h4 class="text-center" style="color: lightblue">Part I</h4>
-						        	<hr>
-						        	<div class="panel-body">
+				<br />
+				<div class="row">
+					<div class="col-md-12 col-lg-12">
+						<h5 class="text-center">Material Information</h5>
+						<hr style="height: 3px;background: #0257ab;margin-top: 1.5rem; margin-bottom: 1.5rem"/>
+						<table class="table table-bordered" cellpadding="10" cellspacing="1" width="100%">
+							<thead>
+								<tr>
+									<th>Vehicle Type</th>
+									<th>Capacity</th>
+									<th>Details</th>
+									<th>No</th>
+									<th>From Location</th>
+									<th>To Location</th>
+									<th>Purpose</th>
 
-						              <div class="table-responsive-sm">
-								       <table id="example" class="display" style="width:100%">
-									    <thead>
-										 <tr>
-											 <th>Slno .</th>
-											 <th>File Name</th>
-											 <th>File Details</th>
-											 
-										 </tr>
-								        </thead>
-								 <tbody>
+								</tr>
+							</thead>
+							<tbody>
+							<?php
+								if($result_vechile['no_vechile']==1){
+									foreach ($result_vechile['item_vechile_list'] as $key_value_vechile) {
+										$code=$vehicle_slno_id_single=$key_value_vechile->vehicle_slno_id;
+										$from_location_slno_single=$key_value_vechile->from_location_slno;
+										$to_location_slno_single=$key_value_vechile->to_location_slno;
+										$purpose_info_single=($key_value_vechile->purpose_info);
+										$no_vehcile_single=$key_value_vechile->no_vehcile;
+										$slno_mr_logistic=$key_value_vechile->slno_mr_logistic;
+										$get_location_from=$this->design_user->get_design_master_loaction_list($from_location_slno_single); // from location information will come out
 
-								 </tbody>
-							
-							</table>
-							
-						</div>
-					</div>	
-
-
-
-						        </div>
-						      </div>
-						    </div>
-						    <div class="card">
-						      <div class="card-header text-center ">
-						        <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-						         Part II
-						        </a>
-						      </div>
-						      <div id="collapseThree" class="collapse" data-parent="#accordion">
-						        <div class="card-body">
-						          	<h4 class="text-center" style="color: lightblue">Part II</h4>
-						        	<hr>
-						        	
-                             <div class="panel-body">
-
-						              <div class="table-responsive-sm">
-								       <table id="example" class="display" style="width:100%">
-									    <thead>
-										 <tr>
-											 <th>Slno .</th>
-											 <th>Item Name</th>
-											 <th>Technical Parameter</th>
-											 
-										 </tr>
-								        </thead>
-								 <tbody>
-
-								 </tbody>
-							
-							</table>
-							
-						</div>
-					</div>	
-										
-									</div>
-
-
-
-
-						        	
-						        </div>
-						      </div>
-						    </div>
-						    
-						</div>				
-					
-				  	<div class="form-group row pull-right">
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-sm btn-primary m-r-5" name="send_button" value="save">Query</button>
-                           	 <button type="submit" class="btn btn-sm btn-info m-r-5" name="send_button" value="send">Submitted Technical</button>
-                            <a  href="<?=base_url()?>user-design-home" class="btn btn-sm btn-danger">Back</a> 
-                        </div>
-                    </div>
-				</form>
-					
+										$get_location_to=$this->design_user->get_design_master_loaction_list($to_location_slno_single); // to location information will come out
+										$query_item_details=$this->design_user->get_design_master_vehcile_list($code);
+							?>
+										<tr>
+											<td><?=$query_item_details['item_vehcile'][0]->vehicle_type?></td>
+											<td><?=$query_item_details['item_vehcile'][0]->vehicle_capacity?></td>
+											<td><?=$no_vehcile_single?></td>
+											<td><?=$query_item_details['item_vehcile'][0]->vehicle_desc?></td>
+											<td><?=$get_location_from['item_location'][0]->location_name?></td>
+											<td><?=$get_location_to['item_location'][0]->location_name?></td>
+											<td><?=$purpose_info_single?></td>
+										</tr>
+							<?php
+									}
+								}
+							?>
+							</tbody>
+						</table>
 				</div>
 			</div>
-			<!-- end panel -->
-		</div>
-		<!-- end #content -->
-			<!-- end panel -->
-		</div>
-		<!-- end #content -->
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<h5 class="text-center">Attach File Information</h5>
+					<hr style="height: 3px;background: #0257ab;margin-top: 1.5rem; margin-bottom: 1.5rem"/>
+					<table class="table table-bordered" cellpadding="10" cellspacing="1" width="100%">
+						<thead>
+								<tr>
+										<th><strong>File Name</strong></th>
+										<th><strong>Click View</strong></th>
+
+								</tr>
+						</thead>
+						<tbody>
+								<?php foreach($result_file['files_list'] as $key_files){ ?>
+										<tr>
+												<td><strong><?=$key_files->file_name_actucal?></strong></td>
+												<td><strong><a target="_blank" href="<?=base_url()?>upload_files/design_upload/<?=$key_files->attach_name?>">Click View</a> </strong></td>
+
+										</tr>
+
+
+								<?php }?>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="form-group row pull-right">
+                <div class="col-md-12">
+                    <a href="<?=base_url()?>user-vendor-query-panel/<?=$value?>" class="btn btn-sm btn-warning m-r-5"><i class="fa fa-question-circle" aria-hidden="true"></i>  Query </a>
+                    <a  href="<?=base_url()?>user-vendor-home" class="btn btn-sm btn-default">Back</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

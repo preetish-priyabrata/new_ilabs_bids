@@ -46,7 +46,7 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 			</div>
 			<?php
 		}
-		print_r($result_title);
+
 		?>
 		<!-- begin panel -->
 		<div class="panel panel-inverse">
@@ -170,29 +170,35 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 				<div class="col-md-12 col-lg-12">
 					<h5 class="text-center">Attach File Information</h5>
 					<hr style="height: 3px;background: #0257ab;margin-top: 1.5rem; margin-bottom: 1.5rem"/>
-				<table class="table table-bordered" cellpadding="10" cellspacing="1" width="100%">
-					<thead>
-							<tr>
-									<th><strong>File Name</strong></th>
-									<th><strong>Click View</strong></th>
+					<table class="table table-bordered" cellpadding="10" cellspacing="1" width="100%">
+						<thead>
+								<tr>
+										<th><strong>File Name</strong></th>
+										<th><strong>Click View</strong></th>
 
-							</tr>
-					</thead>
-					<tbody>
-							<?php foreach($result_file['files_list'] as $key_files){ ?>
-									<tr>
-											<td><strong><?=$key_files->file_name_actucal?></strong></td>
-											<td><strong><a target="_blank" href="<?=base_url()?>upload_files/design_upload/<?=$key_files->attach_name?>">Click View</a> </strong></td>
+								</tr>
+						</thead>
+						<tbody>
+								<?php foreach($result_file['files_list'] as $key_files){ ?>
+										<tr>
+												<td><strong><?=$key_files->file_name_actucal?></strong></td>
+												<td><strong><a target="_blank" href="<?=base_url()?>upload_files/design_upload/<?=$key_files->attach_name?>">Click View</a> </strong></td>
 
-									</tr>
-
-
-							<?php }?>
-
-					</tbody>
-				</table>
+										</tr>
+								<?php }?>
+						</tbody>
+					</table>
+				</div>
 			</div>
+			<div class="form-group row pull-right">
+                <div class="col-md-12">
+                    <a href="<?=base_url()?>user-vendor-query-panel/<?=$value?>" class="btn btn-sm btn-warning m-r-5"><i class="fa fa-question-circle" aria-hidden="true"></i>  Query </a>
+                    <a  href="<?=base_url()?>user-vendor-home" class="btn btn-sm btn-default">Back</a> 
+                </div>
+            </div>
 		</div>
-		<!-- end panel -->
+
 	</div>
-	<!-- end #content -->
+<!-- end panel -->	
+</div>
+<!-- end #content -->
