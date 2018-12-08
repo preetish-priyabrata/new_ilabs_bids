@@ -47,7 +47,7 @@ $result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id
 			</div>
 			<?php
 		}
-		
+
 		?>
 		<!-- begin panel -->
 		<div class="panel panel-inverse">
@@ -192,11 +192,13 @@ $result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id
 				</div>
 			</div>
 			<div class="form-group row pull-right">
-                <div class="col-md-12">
-                    <a href="<?=base_url()?>user-vendor-query-panel/<?=$value?>" class="btn btn-sm btn-warning m-r-5"><i class="fa fa-question-circle" aria-hidden="true"></i>  Query </a>
-                    <a  href="<?=base_url()?>user-vendor-home" class="btn btn-sm btn-default">Back</a> 
-                </div>
-            </div>
+          <div class="col-md-12">
+			  <a href="<?=base_url()?>user-vendor-bid-submission/<?=$value?>" class="btn btn-sm btn-success m-r-5"><i class="fas fa-envelope-open-text"></i>   Click To Submit Bid </a>
+              <a href="<?=base_url()?>user-vendor-query-panel/<?=$value?>" class="btn btn-sm btn-warning m-r-5"><i class="fa fa-question-circle" aria-hidden="true"></i>  Query </a>
+              <a  href="<?=base_url()?>user-vendor-home" class="btn btn-sm btn-default">Back</a>
+          </div>
+      </div>
+
         </div>
     </div>
 </div>

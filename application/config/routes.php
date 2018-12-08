@@ -407,6 +407,8 @@ $route['user-vendor-new-technical']='vendoruser/vendor_new_technical';
 $route['user-vendor-query-panel/(:any)']='vendoruser/vendor_query_panel/$1';
 $route['user-vendor-bid-view-technical-details/(:any)/(:any)']='vendoruser/vendor_new_tech_view_details/$1/$2';
 
+$route['user-vendor-bid-submission']='vendoruser/vendor_bid_technical_submission';
+
 $route['vendor-bid-query-tech']='vendoruser/vendor_bid_query_tech';
 // this two pages will be removed
 $route['vendor-page']='vendoruser/vendor_page';
