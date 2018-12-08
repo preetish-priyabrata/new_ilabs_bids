@@ -5,11 +5,11 @@ class Login extends CI_Controller {
 	public function __construct(){
                 parent::__construct();
                 // Loading my model which will use
-                $this->load->model('user_model', 'user');  
+                $this->load->model('user_model', 'user');
                 // imedate database link
-                $this->load->database();    
-                
-                //Load session library 
+                $this->load->database();
+
+                //Load session library
         	 $this->load->library('session');
         	 $this->load->library('user_agent');
 
@@ -27,17 +27,17 @@ class Login extends CI_Controller {
 	        	$user_password=md5($this->input->post('user_password'));
 	        	$data = array('email_id'=>$login_id,'Status'=>'1');
 	        	$table='master_admin';
-	        	
+
 				$result = $this->user->check_present($table,$data);
 				if($result==1){
 					$data_password = array('email_id'=>$login_id,'password_hash'=>$user_password,'Status'=>'1');
 					$result_password = $this->user->check_present($table,$data_password);
-					
+
 					if($result_password==1){
 						 $query = $this->db->get_where($table, $data);
 						 if ($query->num_rows() == 1) {
-						 	$data_db=$query->result(); // here fetch information 
-						 	$row = $data_db[0]; 
+						 	$data_db=$query->result(); // here fetch information
+						 	$row = $data_db[0];
 						 	$role_id=$row->role_id;
 
 						 	$date=date('Y-m-d');
@@ -46,11 +46,11 @@ class Login extends CI_Controller {
 							$data_brower['browserVersion'] = $this->agent->version();
 							$data_brower['platform'] = $this->agent->platform();
 							$data_brower['full_user_agent_string'] = $_SERVER['HTTP_USER_AGENT'];
-							$ip = $this->input->ip_address();			
-							session_regenerate_id();			
+							$ip = $this->input->ip_address();
+							session_regenerate_id();
 							$session_id=(session_id());
 							$date_nrowser_json=json_encode($data_brower);
-							
+
 						 	switch ($role_id) {
 						 		case '1': // admin user
 						 				$newdata = array('Username'=>$row->Username,'email_id'=>$row->email_id,'role_id'=>$row->role_id,'logged_in' => TRUE,'session_id'=>$session_id);
@@ -65,13 +65,13 @@ class Login extends CI_Controller {
 							 				redirect('user-admin');
 							 				exit();
 							 			}else{
-							 				// Set flash data 
+							 				// Set flash data
 											$this->session->set_flashdata('error_msg', 'Unable find user Please Try Again');
-											// After that you need to used redirect function instead of load view such as 
+											// After that you need to used redirect function instead of load view such as
 											redirect("home");
 							 			}
 						 			break;
-						 		case '6': // bu user 
+						 		case '6': // bu user
 						 				$newdata = array('Username'=>$row->Username,'bu_email_id'=>$row->email_id,'role_id'=>$row->role_id,'logged_in' => TRUE,'session_id'=>$session_id);
 						 				$user_data = array('user_id'=>$row->email_id, 'username'=>$row->Username, 'user_role'=>$row->role_id, 'browser_detail'=>$date_nrowser_json, 'ip'=>$ip, 'entry_date'=>$date, 'entry_time'=>$time, 'status'=>'1', 'session_id'=>$session_id);
 						 				$user_hstory_table="master_session_history";
@@ -84,13 +84,13 @@ class Login extends CI_Controller {
 							 				redirect('user-bu-home');
 							 				exit();
 							 			}else{
-							 				// Set flash data 
+							 				// Set flash data
 											$this->session->set_flashdata('error_msg', 'Unable find user Please Try Again');
-											// After that you need to used redirect function instead of load view such as 
+											// After that you need to used redirect function instead of load view such as
 											redirect("home");
 							 			}
 						 			break;
-						 		case '2':  //design user 
+						 		case '2':  //design user
 						 			// echo "string";
 						 			// exit;
 						 				$newdata = array('Username'=>$row->Username,'design_email_id'=>$row->email_id,'role_id'=>$row->role_id,'logged_in' => TRUE,'session_id'=>$session_id);
@@ -105,13 +105,13 @@ class Login extends CI_Controller {
 							 				redirect('user-design-home');
 							 				exit();
 							 			}else{
-							 				// Set flash data 
+							 				// Set flash data
 											$this->session->set_flashdata('error_msg', 'Unable find user Please Try Again');
-											// After that you need to used redirect function instead of load view such as 
+											// After that you need to used redirect function instead of load view such as
 											redirect("home");
 							 			}
 						 			break;
-						 		case '8':  //Approver user 
+						 		case '8':  //Approver user
 						 			// echo "string";
 						 			// exit;
 						 				$newdata = array('Username'=>$row->Username,'approver_email_id'=>$row->email_id,'role_id'=>$row->role_id,'logged_in' => TRUE,'session_id'=>$session_id);
@@ -126,13 +126,13 @@ class Login extends CI_Controller {
 							 				redirect('user-approver-home');
 							 				exit();
 							 			}else{
-							 				// Set flash data 
+							 				// Set flash data
 											$this->session->set_flashdata('error_msg', 'Unable find user Please Try Again');
-											// After that you need to used redirect function instead of load view such as 
+											// After that you need to used redirect function instead of load view such as
 											redirect("home");
 							 			}
 						 			break;
-						 		case '4':  //procurement user 
+						 		case '4':  //procurement user
 						 			// echo "string";
 						 			// exit;
 						 				$newdata = array('Username'=>$row->Username,'procurement_email_id'=>$row->email_id,'role_id'=>$row->role_id,'logged_in' => TRUE,'session_id'=>$session_id);
@@ -147,13 +147,13 @@ class Login extends CI_Controller {
 							 				redirect('user-procurement-home');
 							 				exit();
 							 			}else{
-							 				// Set flash data 
+							 				// Set flash data
 											$this->session->set_flashdata('error_msg', 'Unable find user Please Try Again');
-											// After that you need to used redirect function instead of load view such as 
+											// After that you need to used redirect function instead of load view such as
 											redirect("home");
 							 			}
 						 			break;
-						 		case '7':  //buyer user 
+						 		case '7':  //buyer user
 						 			// echo "string";
 						 			// exit;
 						 				$newdata = array('Username'=>$row->Username,'buy_email_id'=>$row->email_id,'role_id'=>$row->role_id,'logged_in' => TRUE,'session_id'=>$session_id);
@@ -168,16 +168,16 @@ class Login extends CI_Controller {
 							 				redirect('user-buyer-home');
 							 				exit();
 							 			}else{
-							 				// Set flash data 
+							 				// Set flash data
 											$this->session->set_flashdata('error_msg', 'Unable find user Please Try Again');
-											// After that you need to used redirect function instead of load view such as 
+											// After that you need to used redirect function instead of load view such as
 											redirect("home");
 							 			}
 						 			break;
-						 		case '9':  //Technical user 
+						 		case '9':  //Technical user
 						 			// echo "string";
 						 			// exit;
-						 				$newdata = array('Username'=>$row->Username,'technical_email_id'=>$row->email_id,'role_id'=>$row->role_id,'logged_in' => TRUE,'session_id'=>$session_id);
+						 				$newdata = array('Username'=>$row->Username,'tech_slno'=>$row->slno,'technical_email_id'=>$row->email_id,'role_id'=>$row->role_id,'logged_in' => TRUE,'session_id'=>$session_id);
 						 				$user_data = array('user_id'=>$row->email_id, 'username'=>$row->Username, 'user_role'=>$row->role_id, 'browser_detail'=>$date_nrowser_json, 'ip'=>$ip, 'entry_date'=>$date, 'entry_time'=>$time, 'status'=>'1', 'session_id'=>$session_id);
 						 				$user_hstory_table="master_session_history";
 						 				$result_history = $this->user->common_insert($user_hstory_table,$user_data);
@@ -189,9 +189,9 @@ class Login extends CI_Controller {
 							 				redirect('user-technical-evalutor-home');
 							 				exit();
 							 			}else{
-							 				// Set flash data 
+							 				// Set flash data
 											$this->session->set_flashdata('error_msg', 'Unable find user Please Try Again');
-											// After that you need to used redirect function instead of load view such as 
+											// After that you need to used redirect function instead of load view such as
 											redirect("home");
 							 			}
 						 			break;
@@ -199,34 +199,34 @@ class Login extends CI_Controller {
 						 			# code...
 						 			break;
 						 	}
-						 	
-						 	
+
+
 						 }else{
-						 	// Set flash data 
+						 	// Set flash data
 							$this->session->set_flashdata('error_msg', 'Unable find user Please Try Again');
-							// After that you need to used redirect function instead of load view such as 
+							// After that you need to used redirect function instead of load view such as
 							redirect("home");
 						 }
-						
+
 
 					}else{
-						// Set flash data 
+						// Set flash data
 						$this->session->set_flashdata('error_msg', 'Unable find user Please Try Again');
-						// After that you need to used redirect function instead of load view such as 
+						// After that you need to used redirect function instead of load view such as
 						redirect("home");
 					}
 				}else{
-					// Set flash data 
+					// Set flash data
 						$this->session->set_flashdata('error_msg', 'Invalid User Please Try Again');
-					// After that you need to used redirect function instead of load view such as 
+					// After that you need to used redirect function instead of load view such as
 						redirect("home");
 				}
 			}else{
-				// Set flash data 
+				// Set flash data
 					$this->session->set_flashdata('error_msg', 'Sone filed left blank');
-					// After that you need to used redirect function instead of load view such as 
+					// After that you need to used redirect function instead of load view such as
 					redirect("home");
-			}       	
+			}
         }
 
         public function user_dashboard(){

@@ -11,6 +11,7 @@ class Technicalevalutor extends CI_Controller {
             $this->load->model('procurement_model', 'procurement_user');
             $this->load->model('buyer_model','buyer_user');
             $this->load->model('vendor_model','vendor_db_users');
+            $this->load->model('technicalevalutor_model','tech_eva_db');
             // imedate database link
             $this->load->database();
 
@@ -31,6 +32,19 @@ class Technicalevalutor extends CI_Controller {
             $this->load->view('tech_evalutor_user/user_dashboard');
             $this->load->view('template/template_footer',$data);
     }
+
+    public function technical_evaluator_bid_new_list($value=''){
+      $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
+          $data=array('title' =>"New Bid List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
+
+            $this->load->view('template/template_header',$data);
+            $this->load->view('tech_evalutor_user/template/template_top_head');
+            $this->load->view('tech_evalutor_user/template/template_side_bar',$data);
+            $this->load->view('tech_evalutor_user/technical_bid_new/tech_evaluator_technical_bid_new_lists',$data);
+            $this->load->view('template/template_footer',$data);
+    }
+
+
 
 
 

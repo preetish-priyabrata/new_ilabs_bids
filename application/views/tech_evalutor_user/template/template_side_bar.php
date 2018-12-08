@@ -36,16 +36,16 @@
 						    <span>Material Requisition</span>
 					    </a>
 						<ul class="sub-menu">
-						    <li class="<?php if($sub_menu==1){ echo 'active'; }?>"><a href="<?=base_url()?>procurement-new-mr-receive" >Receive Material Requisition </a></li>
+						    <li class="<?php if($sub_menu==1){ echo 'active'; }?>"><a href="<?=base_url()?>user-technical-evaluator-bid-new-list" >Technical Bid New </a></li>
 						    <li class="<?php if($sub_menu==2){ echo 'active'; }?>"><a href="<?=base_url()?>procurement-new-mr-conform" >History Of Buyer Assignment</a></li>
-						   
+
 						</ul>
 					</li>
-					
-					
-					
-					
-					
+
+
+
+
+
 			        <!-- begin sidebar minify button -->
 					<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
 			        <!-- end sidebar minify button -->
