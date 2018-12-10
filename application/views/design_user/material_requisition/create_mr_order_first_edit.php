@@ -69,7 +69,7 @@ if($value2!=$value){
 					<div class="alert alert-secondary">
                         		<span style="color: red"> *</span> All mandory fields shall be duly filled up 
                         	</div>
-					<form action="<?=base_url()?>design-add-new-mr-save-formII" id="upload_form" method="POST" enctype=multipart/form-data>
+					<form action="<?=base_url()?>design-add-new-mr-save-formII" id="upload_form" method="POST" enctype="multipart/form-data">
 						<div class="row">
 							<div class="col-md-6 col-lg-6">
 								<div class="form-group row m-b-15">

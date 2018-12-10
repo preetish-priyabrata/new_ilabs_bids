@@ -9,6 +9,13 @@ class Buyer_model extends CI_Model {
     	if(!empty($email)){
     		$this->db->where('Buyer_id',$email);
     	}
+      if(!empty($type)){
+        $this->db->where('status_bid',$type);
+      }
+      if(!empty($slno)){
+        $this->db->where('Slno_bid',$slno);
+      }
+
     	$query_buyer=$this->db->get('master_buyer_MR');
     	if($query_buyer->num_rows() == 0){
 	        $data_send = array('no_received' =>2 );

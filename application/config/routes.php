@@ -414,6 +414,10 @@ $route['vendor-bid-query-tech']='vendoruser/vendor_bid_query_tech';
 $route['vendor-page']='vendoruser/vendor_page';
 $route['vendor-page-final']='vendoruser/vendor_page_final';
 $route['user-vendor-bid-submission/(:any)']='vendoruser/vendor_tech_bid_submission/$1';
+//  this is inter transfer of token for redirect
+$route['user-vendor-tech-bid-submission-tokens/(:any)/(:any)/(:any)']='vendoruser/vendor_tech_bid_submission_tokens/$1/$2/$3';
+$route['vendor-file-upload-data']='vendoruser/vendor_file_upload_data';
+
 // vendor_logout
 // vendor_logout_bypass
 $route['vendor-logout']='vendoruser/vendor_logout';

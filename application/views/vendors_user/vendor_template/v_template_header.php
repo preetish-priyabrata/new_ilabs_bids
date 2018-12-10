@@ -18,6 +18,8 @@
 	<link href="<?=base_url()?>file_css_admin/assets/css/default/style.min.css" rel="stylesheet" />
 	<link href="<?=base_url()?>file_css_admin/assets/css/default/style-responsive.min.css" rel="stylesheet" />
 	<link href="<?=base_url()?>file_css_admin/assets/css/default/theme/default.css" rel="stylesheet" id="theme" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script> -->
 	<!-- ================== END BASE CSS STYLE ================== -->
 	
 	<!-- ================== BEGIN BASE JS ================== -->

@@ -48,6 +48,18 @@ class Technicalevalutor extends CI_Controller {
 
 
 
+ 
+
+
+
+
+
+
+
+
+
+
+
 
 
 

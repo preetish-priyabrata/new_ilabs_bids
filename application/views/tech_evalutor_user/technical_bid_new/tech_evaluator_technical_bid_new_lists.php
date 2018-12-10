@@ -4,9 +4,13 @@ if(empty($technical_email_id)){
 
 	redirect('tech-evalutor-logout-by-pass');
 }
-$type='';
-$result_drafted=$this->buyer_user->buyer_mr_receive_list($technical_email_id,$type,'');
+$tech_slno=$this->session->userdata('tech_slno');
+$list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_lists($tech_slno);
+// $data=array'technical_email_id'=>$technical_email_id,'status_active' =>1;
+// $query=$this->db->get_where('master_bid_technicalevaluation',$data);
 ?>
+
+
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
 
@@ -19,7 +23,7 @@ $result_drafted=$this->buyer_user->buyer_mr_receive_list($technical_email_id,$ty
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="<?=base_url()?>user-buyer-home">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Technical Bid New</a></li>
-				<li class="breadcrumb-item active">View Technical Bid List</li>
+				<li class="breadcrumb-item active">List of Technical Bid New List</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
@@ -34,7 +38,7 @@ $result_drafted=$this->buyer_user->buyer_mr_receive_list($technical_email_id,$ty
 			</div>
 			<?php
 			}
-			 // print_r($this->session->userdata());
+			
 			 ?>
 			 <div class="panel panel-inverse">
 				<div class="panel-heading">
@@ -58,137 +62,26 @@ $result_drafted=$this->buyer_user->buyer_mr_receive_list($technical_email_id,$ty
 					                <th>Start Date</th>
 
 					              	<th>End Date</th>
+
 					              	<th>Status</th>
 					                <th>Action</th>
 					            </tr>
 					        </thead>
 					        <tbody>
 					        	<?php
-					        		if($result_drafted['no_received']==1){
+					        		if($list_success_bid['no_bid']==1){
 					        		$x=0;
-					        		// print_r($result_drafted);
-					        		// Array ( [no_received] => 1 [received_list] => Array ( [0] => stdClass Object ( [Slno_buyer] => 1 [Mr_id] => 2018-11-05-pUgws [Slno_mr_id] => 3 [Job_code] => 679034 [Slno_procurement_id] => 3 [Buyer_id] => buy1@ilab.com [Status] => 1 [Technical_type] => 1 [Edit_id] => 1 [Technical_process_status] => 0 [Commercial_process_status] => 0 [Date_technical_status] => [Date_commercial__status] => [Mode_tender] => 0 [date_receive] => 2018-11-06 12:43:56 [procurement_id] => pro@ilab.com ) [1] => stdClass Object ( [Slno_buyer] => 2 [Mr_id] => 2018-11-05-Qts0z [Slno_mr_id] => 1 [Job_code] => 0770 [Slno_procurement_id] => 1 [Buyer_id] => buy1@ilab.com [Status] => 1 [Technical_type] => 2 [Edit_id] => 1 [Technical_process_status] => 0 [Commercial_process_status] => 0 [Date_technical_status] => [Date_commercial__status] => [Mode_tender] => 0 [date_receive] => 2018-11-06 14:43:07 [procurement_id] => pro@ilab.com ) ) )
-					        		foreach ($result_drafted['received_list'] as $value_list) {
-					        				$slnos=$value_list->Slno_mr_id;
-					        				 $Slno_procurement_id=$value_list->Slno_procurement_id;
-					        				$Technical_type=$value_list->Technical_type;
-					        				$Technical_process_status=$value_list->Technical_process_status;
-					        				$Commercial_process_status=$value_list->Commercial_process_status;
-					        				$Slno_buyer=$value_list->Slno_buyer;
-					        			$result_drafted_pr=$this->procurement_user->procurement_mr_receive_list('','1',$slnos);
-					        			// print_r($result_drafted_pr);
-					        				$Approver_id=$result_drafted_pr['received_list'][0]->Approver_id;
-					        				$buyer_name=$result_drafted_pr['received_list'][0]->buyer_name;
-					        				$Forward_date=$result_drafted_pr['received_list'][0]->Forward_date;
-					        				$Date_approver=$result_drafted_pr['received_list'][0]->Date_approver;
-					        			$get_information=$this->procurement_user->procurement_mr_receive_single($slnos);
+					        		// Array ( [no_bid] => 1 [bid_ids_list] => Array ( [0] => stdClass Object ( [slno_bid_tech_id] => 1 [bid_slno] => 3 [buyer_slno] => 1 [Technical_id_person] => 19 [master_bid_id] => 1 [status_bid] => 1 [view_status] => 0 [Slno_bid] => 1 [bid_date_entry] => 2018-12-03 [bid_ref] => REF 2018 [bid_id] => REF 2018 [category] => 3 [mode_bid] => Closed Bid [technical_bid_type] => 1 [mr_slno] => 3 [mr_no] => 2018-11-05-pUgws [job_code] => 679034 [edit_id] => 1 [material_category_name] => logistics [ logistics ] [bid_title] => SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [bid_description] => INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [data_entry] => 2018-12-03 14:55:44 [bid_creator_id] => buy1@ilab.com [date_publish] => 2018-12-06 [date_closing] => 2018-12-30 ) [1] => stdClass Object ( [slno_bid_tech_id] => 2 [bid_slno] => 8 [buyer_slno] => 5 [Technical_id_person] => 19 [master_bid_id] => 2 [status_bid] => 1 [view_status] => 0 [Slno_bid] => 2 [bid_date_entry] => 2018-12-05 [bid_ref] => ref /2018 f [bid_id] => myt [category] => 2 [mode_bid] => Rank Order Bid [technical_bid_type] => 1 [mr_slno] => 8 [mr_no] => 2018-11-06-EDNHT [job_code] => 189067 [edit_id] => 1 [material_category_name] => make to order items [ moi ] [bid_title] => What is the best online site for practicing aptitude [bid_description] => Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow [data_entry] => 2018-12-05 19:16:03 [bid_creator_id] => buy1@ilab.com [date_publish] => 2018-05-02 [date_closing] => 2018-12-29 ) ) ) 
+					        		foreach ($list_success_bid['bid_ids_list'] as $bid_key_id) {
+					        				$master_bid_id=$bid_key_id->master_bid_id;
+					        				
 					        			$x++;
-					        			// print_r($get_information);
-					        			$last_id=$get_information['received_list_single'][0]->slno_mr;
-
-					        			$Status=$get_information['received_list_single'][0]->status;
-					        			switch ($get_information['received_list_single'][0]->materilal_category_id_slno) {
-											case '1':
-						                		if($Status==1){
-						                            $view=($last_id.'/'.'1/'.$last_id.'/'.$Slno_buyer);
-						                        }else{
-						                        	$view="#";
-						                        }
-						                        break;
-						                    case '2':
-						                        if($Status==1){
-						                            $view=($last_id.'/'.'2/'.$last_id.'/'.$Slno_buyer);
-						                        }else{
-						                            $view="#";
-						                        }
-			                                    break;
-						                    case '3':
-						                        if($Status==1){
-						                            $view=($last_id.'/'.'3/'.$last_id.'/'.$Slno_buyer);
-						                        }else{
-						                            $view="#";
-						                        }
-			                                    break;
-			                                default:
-			                                    $this->session->set_flashdata('error_message', ' Something went wrong ');
-			                                    $view=('user-procurement-home');
-			                                    break;
-									 	}
-					        		?>
+					        			
+					        			?>
 					        		<tr>
-						        		<td><?=$x?></td>
-						                <td><?=$get_information['received_list_single'][0]->job_code_id?></td>
-						                <td><?=$get_information['received_list_single'][0]->mr_no?></td>
-						                <td><?=$get_information['received_list_single'][0]->material_category_name?></td>
-						                <td><?=$get_information['received_list_single'][0]->date_creation?></td>
-						                 <td><?=$get_information['received_list_single'][0]->date_submition?></td>
-						                <td>
-						                	<?php
-						                		$creators_id=$get_information['received_list_single'][0]->creators_id;
-						                		$get_creator=$this->approver_user->approver_get_creator_mr($creators_id);
-						                		echo $Username=$get_creator['list_user'][0]->Username
-						                	?>
-						                </td>
-						                  <td><?=$Date_approver?></td>
-						                <td>
-						                	<?php
-
-						                		$get_creators=$this->approver_user->approver_get_creator_mr($Approver_id);
-						                		echo $Username=$get_creators['list_user'][0]->Username
-						                	?>
-						                </td>
-						                  <td><?=$Forward_date?></td>
-						                <td>
-						                	<?php
-
-						                		echo $buyer_name
-						                	?>
-						                </td>
-						                <td><?php
-						                	$value_process =$Technical_type.$Technical_process_status.$Commercial_process_status;
-						                	switch ($value_process) {
-						                		case '111': // no action
-						                			echo "Technical & Commercial Completed";
-						                			 $href_id="--";
-						                			break;
-						                		case '100':
-						                			echo "Technical Not Initiated";
-						                			 $href_id='<a href="'.base_url().'buyer-technical-commercial-assign/005100/'.$view.'" class="btn btn-purple btn-sm">View & Send Technical </a>';
-						                			break;
-						                		case '110':
-						                			echo "Technical Completed Commercial Not Initiated";
-						                			 $href_id='<a href="'.base_url().'buyer-technical-commercial-assign/005110/'.$view.'" class="btn btn-purple btn-sm">View & Send Commercial </a>';
-						                			break;
-						                		case '200':
-						                			echo "Commercial Not Initiated";
-						                			 $href_id='<a href="'.base_url().'buyer-technical-commercial-assign/005200/'.$view.'" class="btn btn-purple btn-sm">View & Send Commercial Only </a>';
-						                			break;
-						                		case '201': // no action
-						                			echo "Commercial Completed";
-						                			 $href_id='--';
-						                			break;
-						                		case '120': // no action
-						                			echo "Technical Processing";
-						                			 $href_id='--';
-						                			break;
-						                		case '112': // no action
-						                			echo "Commercial Processing";
-						                			 $href_id='--';
-						                			break;
-						                		case '202': // no action
-						                			echo "Commercial Processing";
-						                			 $href_id='--';
-						                			break;
-						                		default:
-
-						                			echo "Processing";
-						                		 	$href_id='--';
-						                			break;
-						                	}
-						                ?></td>
-	                                   <td><?=$href_id?></td>
-	                                   <!-- <td></td> -->
-
+					        			<td><?=$x?></td>
+					        			<td><?=$bid_key_id->bid_ref?></td>
+					        			<td><?=$bid_key_id->bid_id?></td>
 						            </tr>
 
 					        		<?php
