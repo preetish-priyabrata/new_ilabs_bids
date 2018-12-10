@@ -5,7 +5,7 @@ if(empty($Vendor_email_id)){
 	redirect('vendor-logout-pass');
 }
 $value=$value;
-$token=$token;
+$key_values_slno=$token;
 $master_bid_id=$master_bid_id;
 $result_title=$this->vendor_db_users->vendor_new_query_tech_title($value,$Vendor_email_id);
 if($result_title['no_new_tech']!=1){
@@ -61,17 +61,17 @@ if($result_title['no_new_tech']!=1){
           <div class="alert alert-secondary">
             <span style="color: red"> *</span> All mandory fields shall be duly filled up
         	</div>
-					<form action="#" method="POST" >
+					<form action="<?=base_url()?>vendor-tech-file-new-bid-submission" method="POST" >
 						<div class="row">
 							<div class="col-md-6 col-lg-6">
 							 	<div class="form-group row m-b-15">
 									<label class="col-form-label col-md-3" for="activity_name">File Name <span style="color: red">*</span></label>
 									<div class="col-md-9">
 										<input type="hidden" name="value_slno" id="value_slno" value="<?=$value?>">
-										<input type="hidden" name="token" id="token" value="<?=$token?>">
+										<input type="hidden" name="key_values_slno" id="key_values_slno" value="<?=$key_values_slno?>">
 										<input type="hidden" name="master_bid_id" id="master_bid_id" value="<?=$master_bid_id?>">
-
-										<input class="form-control m-b-5" placeholder="Enter File name" name="file_name" id="file_name" type="text" required="">
+										<input type="hidden" name="Vendor_email_id" id="Vendor_email_id" value="<?=$Vendor_email_id?>">
+										<input class="form-control m-b-5" placeholder="Enter File name" name="file_name" id="file_name" type="text" >
 										<small class="f-s-12 text-grey-darker">Here enter File name</small>
 									</div>
 								</div>
@@ -92,7 +92,9 @@ if($result_title['no_new_tech']!=1){
 							</div>
 						</div>
             <div class="row">
+            	<div class="col-md-12">
             	<div id="cart-item-files"></div>
+            </div>
             </div>
 						<div class="form-group row pull-right">
                 <div class="col-md-12">
@@ -108,18 +110,17 @@ if($result_title['no_new_tech']!=1){
 			<!-- end panel -->
 		</div>
 		<!-- end #content -->
-<script type="text/javascript">
+		<script type="text/javascript">
 	function file_uploaded(){
 		var value_slno =$('#value_slno').val();
-		var token=$('#token').val();
+		var value_keys_id=$('#key_values_slno').val();
 		var master_bid_id=$('#master_bid_id').val();
 		var actions_file='files_info_vendors';
-  //   	var Mr_no = $('#Mr_no').val();
-		// var slno_Mr_no = $('#slno_Mr_no').val();
-		queryString_id = 'actions_file='+actions_file+'&master_bid_id='+master_bid_id+'&token='+token+'&value_slno='+value_slno;
-
+		var Vendor_email_id=$('#Vendor_email_id').val();
+		queryString_id = 'actions_file='+actions_file+'&master_bid_id='+master_bid_id+'&value_slno='+value_slno+'&Vendor_email_id='+Vendor_email_id+'&value_keys='+value_keys_id;		
 		jQuery.ajax({
 			url: "<?php echo base_url(); ?>vendor-file-upload-data",
+			
 			data:queryString_id,
 			type: "POST",
 			success:function(data){
@@ -128,18 +129,19 @@ if($result_title['no_new_tech']!=1){
 		});
 
 	}
-	function file_delete(id) {
-		var actions_file='files_info_delete';
-  //   	var Mr_no = $('#Mr_no').val();
-		// var slno_Mr_no = $('#slno_Mr_no').val();
+		function file_delete(id) {
+		var file_slno=id;
 		var value_slno =$('#value_slno').val();
-		var token=$('#token').val();
+		var value_keys_id=$('#key_values_slno').val();
 		var master_bid_id=$('#master_bid_id').val();
-		queryString_id = 'actions_file='+actions_file+'&master_bid_id='+master_bid_id+'&token='+token;
-		// queryString_id = 'actions_file='+actions_file+'&Mr_no='+ Mr_no+'&slno_Mr_no='+slno_Mr_no+'&file_id='+id;
+		var Vendor_email_id=$('#Vendor_email_id').val();     
+		var actions_file='files_info_delete';
+  //   	
+		queryString_id = 'actions_file='+actions_file+'&master_bid_id='+master_bid_id+'&value_slno='+value_slno+'&Vendor_email_id='+Vendor_email_id+'&file_id='+id+'&value_keys='+value_keys_id;	
 
 		jQuery.ajax({
 			url: "<?php echo base_url(); ?>vendor-file-upload-data",
+			// enctype: 'multipart/form-data',
 			data:queryString_id,
 			type: "POST",
 			success:function(data){
@@ -154,15 +156,16 @@ if($result_title['no_new_tech']!=1){
 		});
 		// body...
 	}
-	   $(document).ready(function (e) {
+   $(document).ready(function (e) {
    		file_uploaded();
    		$('#sub').on('click', function () {
    			alert('hello');
    			var value_slno =$('#value_slno').val();
-			var token=$('#token').val();
+			var value_keys_id=$('#key_values_slno').val();
 			var master_bid_id=$('#master_bid_id').val();
         	var actions_file='files_uploaded_details';
         	var file_name=$('#file_name').val();
+        	var Vendor_email_id=$('#Vendor_email_id').val();
    //      	var Mr_no = $('#Mr_no').val();
 			// var slno_Mr_no = $('#slno_Mr_no').val();
             var file_data = $('#new_file').prop('files')[0];
@@ -170,10 +173,11 @@ if($result_title['no_new_tech']!=1){
                 var form_data = new FormData();
                 form_data.append('file', file_data);
                 form_data.append('master_bid_id', master_bid_id);
-          		form_data.append('token', token);
+          		form_data.append('value_keys', value_keys_id);
           		form_data.append('value_slno', value_slno);
           		form_data.append('file_name', file_name);
           		form_data.append('actions_file', actions_file);
+          		form_data.append('Vendor_email_id',Vendor_email_id);
 
                 $.ajax({
                     url: '<?php echo base_url(); ?>vendor-file-upload-data', // point to server-side controller method
@@ -193,11 +197,9 @@ if($result_title['no_new_tech']!=1){
                     	}else{
                     		alert('Some thing went worng Please check internet connection ');
                     	}
-                        // $('#msg').html(response); // display success response from the server
+                        
                     }
-                    // error: function (response) {
-                    //     $('#msg').html(response); // display error response from the server
-                    // }
+                    
                 });
             }else{
             	alert('Please Attachment Some file click on upload');
@@ -205,4 +207,5 @@ if($result_title['no_new_tech']!=1){
 
         });
    	});
+  
 </script>

@@ -417,6 +417,7 @@ $route['user-vendor-bid-submission/(:any)']='vendoruser/vendor_tech_bid_submissi
 //  this is inter transfer of token for redirect
 $route['user-vendor-tech-bid-submission-tokens/(:any)/(:any)/(:any)']='vendoruser/vendor_tech_bid_submission_tokens/$1/$2/$3';
 $route['vendor-file-upload-data']='vendoruser/vendor_file_upload_data';
+$route['vendor-tech-file-new-bid-submission']='vendoruser/vendor_tech_file_new_bid_submission';
 
 // vendor_logout
 // vendor_logout_bypass

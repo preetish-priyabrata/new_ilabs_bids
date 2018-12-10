@@ -47,6 +47,20 @@ class Vendor_model extends CI_Model {
 				return $data_return;
 			}
 		}
+		public function get_vendors_tech_bid_file_list($data){		
+			
+			$query=$this->db->get_where('master_vendor_file_token',$data);
+    		if($query->num_rows()==0){
+				$data_return = array('no_file_vendor' =>2 );
+				return $data_return;
+			}else{
+				$result_data_new_tech=$query->result();
+				$data_return = array('no_file_vendor' => 1,'file_vendors_list'=>$result_data_new_tech );
+				return $data_return;
+			}
+
+		}
+		
 
 
 }

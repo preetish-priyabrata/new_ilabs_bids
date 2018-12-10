@@ -16,6 +16,8 @@ $mr_slno=$result_title['new_tech_list'][0]->mr_slno;
 $mr_no=$result_title['new_tech_list'][0]->mr_no;
 $query_item_details_list=$this->design_user->get_design_master_mr_items_material_single($edit_id,$mr_no,$mr_slno); /// item Details
  $result_file=$this->design_user->get_design_mr_file_list($mr_slno,$mr_no); // file information
+	$date_file_sub = array('bid_id_vendor' => $value );
+ $get_no_file=$this->db->get_where('master_vendor_tech_token_bid',$date_file_sub);
 ?>
 <!-- begin #content -->
 	<div id="content" class="content">
@@ -182,7 +184,42 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 								<?php foreach($result_file['files_list'] as $key_files){ ?>
 										<tr>
 												<td><strong><?=$key_files->file_name_actucal?></strong></td>
-												<td><strong><a target="_blank" href="<?=base_url()?>upload_files/design_upload/<?=$key_files->attach_name?>">Click View</a> </strong></td>
+												<td><strong><a target="_blank" href="<?=base_url().?>upload_files/design_upload/<?=$key_files->attach_name?>">Click View</a> </strong></td>
+
+										</tr>
+								<?php }?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<h5 class="text-center">Submission Created</h5>
+					<hr style="height: 3px;background: #0257ab;margin-top: 1.5rem; margin-bottom: 1.5rem"/>
+					<table class="table table-bordered" cellpadding="10" cellspacing="1" width="100%">
+						<thead>
+								<tr>
+										<th><strong>Date  Creation</strong></th>
+										<th><strong>Status</strong></th>
+										<th><strong>Click View</strong></th>
+
+								</tr>
+						</thead>
+						<tbody>
+								<?php foreach($get_no_file->result() as $submission){ ?>
+										<tr>
+												<td><strong><?=$submission->date_creation?></strong></td>
+												<td><strong><?php $submitted_status=$submission->submitted_status;
+													if($submitted_status==0){
+														echo  "<p style='color: orange'>Drafted</p>"; 
+													}if($submitted_status==1){
+														echo  "<p style='color: Greem'>Submitted</p>"; 
+													}
+													if($submitted_status==5){
+														echo  "<p style='color: blue'>Archived</p>"; 
+													}
+												?></strong></td>
+												<td><strong><a target="_blank" href="<?=base_url().'user-vendor-tech-bid-submission-tokens/'.$value.'/'.$submission->token_no .'/'.$submission->master_bid_id ?>">Click View</a> </strong></td>
 
 										</tr>
 								<?php }?>
@@ -192,7 +229,7 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 			</div>
 			<div class="form-group row pull-right">
           <div class="col-md-12">
-							  <a href="<?=base_url()?>user-vendor-query-panel/<?=$value?>" class="btn btn-sm btn-success m-r-5"><i class="fas fa-envelope-open-text"></i>   Click To Bid Submit </a>
+							 <a href="<?=base_url()?>user-vendor-bid-submission/<?=$value?>" class="btn btn-sm btn-success m-r-5"><i class="fas fa-envelope-open-text"></i>   Click To Submit Bid </a>
               <a href="<?=base_url()?>user-vendor-query-panel/<?=$value?>" class="btn btn-sm btn-warning m-r-5"><i class="fa fa-question-circle" aria-hidden="true"></i>  Query </a>
               <a  href="<?=base_url()?>user-vendor-home" class="btn btn-sm btn-default">Back</a>
           </div>

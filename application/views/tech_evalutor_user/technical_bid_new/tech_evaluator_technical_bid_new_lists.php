@@ -82,14 +82,25 @@ $list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_lists($tech_sl
 					        			<td><?=$x?></td>
 					        			<td><?=$bid_key_id->bid_ref?></td>
 					        			<td><?=$bid_key_id->bid_id?></td>
+					        			<td><?=$bid_key_id->bid_date_entry?></td>
+					        			<td><?=$bid_key_id->date_closing?></td>
+					        			<td><?php
+		                                    $status_bid=$bid_key_id->status_bid;
+		                                    if($status_bid==1){
+		                                    	echo "Active Bid";
+		                                    }else{
+		                                    	echo "Not Active Bid";
+		                                    }
+		                                 ?>
+		                                 	
+		                                </td>
+
+					        			
+                                      <td><a href="<?=base_url()?>user-procurement-home" class="btn btn-xs btn-success fa fa-angle-left"   role="button"> View</a></td>
+
 						            </tr>
-
-					        		<?php
-
-
-					        	}
-					        		}
-					        	?>
+						        <?php } }?>
+					        		
 					        </tbody>
 					    </table>
 					</div>
