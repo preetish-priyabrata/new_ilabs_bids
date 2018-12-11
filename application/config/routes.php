@@ -392,6 +392,7 @@ $route['bid-tech-entry']='buyeruser/buyer_bid_tech_entry';
 ##################################################################################################################################
 $route['user-technical-evalutor-home']='technicalevalutor/tech_evalutor_home';
 $route['user-technical-evaluator-bid-new-list']='technicalevalutor/technical_evaluator_bid_new_list';
+$route['user-technical-evaluator-view-details-technical-bid-new']='technicalevalutor/technical_evaluator_view_details_technical_bid_new';
 $route['tech-evalutor-logout-by-pass']='technicalevalutor/tech_evalutor_logout_bypass';
 $route['tech-evalutor-logout']='technicalevalutor/tech_evalutor_logout';
 ######################################################################################################################################
@@ -405,7 +406,7 @@ $route['vendor/login-process']='vendoruser/vendor_login_process';
 $route['user-vendor-home']='vendoruser/vendor_dashboard';
 $route['user-vendor-new-technical']='vendoruser/vendor_new_technical';
 $route['user-vendor-query-panel/(:any)']='vendoruser/vendor_query_panel/$1';
-$route['user-vendor-bid-view-technical-details/(:any)/(:any)']='vendoruser/vendor_new_tech_view_details/$1/$2';
+$route['user-vendor-bid-view-technical-details/(:any)/(:any)/(:any)']='vendoruser/vendor_new_tech_view_details/$1/$2/$3';
 
 $route['user-vendor-bid-submission']='vendoruser/vendor_bid_technical_submission';
 

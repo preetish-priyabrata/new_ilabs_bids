@@ -38,7 +38,7 @@ $list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_lists($tech_sl
 			</div>
 			<?php
 			}
-			
+
 			 ?>
 			 <div class="panel panel-inverse">
 				<div class="panel-heading">
@@ -71,12 +71,12 @@ $list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_lists($tech_sl
 					        	<?php
 					        		if($list_success_bid['no_bid']==1){
 					        		$x=0;
-					        		// Array ( [no_bid] => 1 [bid_ids_list] => Array ( [0] => stdClass Object ( [slno_bid_tech_id] => 1 [bid_slno] => 3 [buyer_slno] => 1 [Technical_id_person] => 19 [master_bid_id] => 1 [status_bid] => 1 [view_status] => 0 [Slno_bid] => 1 [bid_date_entry] => 2018-12-03 [bid_ref] => REF 2018 [bid_id] => REF 2018 [category] => 3 [mode_bid] => Closed Bid [technical_bid_type] => 1 [mr_slno] => 3 [mr_no] => 2018-11-05-pUgws [job_code] => 679034 [edit_id] => 1 [material_category_name] => logistics [ logistics ] [bid_title] => SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [bid_description] => INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [data_entry] => 2018-12-03 14:55:44 [bid_creator_id] => buy1@ilab.com [date_publish] => 2018-12-06 [date_closing] => 2018-12-30 ) [1] => stdClass Object ( [slno_bid_tech_id] => 2 [bid_slno] => 8 [buyer_slno] => 5 [Technical_id_person] => 19 [master_bid_id] => 2 [status_bid] => 1 [view_status] => 0 [Slno_bid] => 2 [bid_date_entry] => 2018-12-05 [bid_ref] => ref /2018 f [bid_id] => myt [category] => 2 [mode_bid] => Rank Order Bid [technical_bid_type] => 1 [mr_slno] => 8 [mr_no] => 2018-11-06-EDNHT [job_code] => 189067 [edit_id] => 1 [material_category_name] => make to order items [ moi ] [bid_title] => What is the best online site for practicing aptitude [bid_description] => Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow [data_entry] => 2018-12-05 19:16:03 [bid_creator_id] => buy1@ilab.com [date_publish] => 2018-05-02 [date_closing] => 2018-12-29 ) ) ) 
+					        		// Array ( [no_bid] => 1 [bid_ids_list] => Array ( [0] => stdClass Object ( [slno_bid_tech_id] => 1 [bid_slno] => 3 [buyer_slno] => 1 [Technical_id_person] => 19 [master_bid_id] => 1 [status_bid] => 1 [view_status] => 0 [Slno_bid] => 1 [bid_date_entry] => 2018-12-03 [bid_ref] => REF 2018 [bid_id] => REF 2018 [category] => 3 [mode_bid] => Closed Bid [technical_bid_type] => 1 [mr_slno] => 3 [mr_no] => 2018-11-05-pUgws [job_code] => 679034 [edit_id] => 1 [material_category_name] => logistics [ logistics ] [bid_title] => SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [bid_description] => INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [data_entry] => 2018-12-03 14:55:44 [bid_creator_id] => buy1@ilab.com [date_publish] => 2018-12-06 [date_closing] => 2018-12-30 ) [1] => stdClass Object ( [slno_bid_tech_id] => 2 [bid_slno] => 8 [buyer_slno] => 5 [Technical_id_person] => 19 [master_bid_id] => 2 [status_bid] => 1 [view_status] => 0 [Slno_bid] => 2 [bid_date_entry] => 2018-12-05 [bid_ref] => ref /2018 f [bid_id] => myt [category] => 2 [mode_bid] => Rank Order Bid [technical_bid_type] => 1 [mr_slno] => 8 [mr_no] => 2018-11-06-EDNHT [job_code] => 189067 [edit_id] => 1 [material_category_name] => make to order items [ moi ] [bid_title] => What is the best online site for practicing aptitude [bid_description] => Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow [data_entry] => 2018-12-05 19:16:03 [bid_creator_id] => buy1@ilab.com [date_publish] => 2018-05-02 [date_closing] => 2018-12-29 ) ) )
 					        		foreach ($list_success_bid['bid_ids_list'] as $bid_key_id) {
 					        				$master_bid_id=$bid_key_id->master_bid_id;
-					        				
+
 					        			$x++;
-					        			
+
 					        			?>
 					        		<tr>
 					        			<td><?=$x?></td>
@@ -92,21 +92,24 @@ $list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_lists($tech_sl
 		                                    	echo "Not Active Bid";
 		                                    }
 		                                 ?>
-		                                 	
+
 		                                </td>
 
-					        			
-                                      <td><a href="<?=base_url()?>user-procurement-home" class="btn btn-xs btn-success fa fa-angle-left"   role="button"> View</a></td>
+
+                                      <td><a href="<?=base_url()?>" class="btn btn-sm btn-info" >View</a></td>
+
+
+
 
 						            </tr>
 						        <?php } }?>
-					        		
+
 					        </tbody>
 					    </table>
 					</div>
 					<br>
 					<br>
-					<a href="<?=base_url()?>user-procurement-home" class="btn btn-xs btn-success fa fa-angle-left"   role="button"><i class=""></i> Back</a>
+					<a href="<?=base_url()?>user-technical-evalutor-home" class="btn btn-xs btn-success fa fa-angle-left"   role="button"><i class=""></i> Back</a>
 				</div>
 			</div>
 

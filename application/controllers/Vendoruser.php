@@ -133,11 +133,12 @@ class Vendoruser extends CI_Controller {
 
 
     }
-    public function vendor_new_tech_view_details($value='',$value1=''){
-      $data_update=array('status_view'=>6);
-      $data_id=array('slno_vendor'=>$value);
-
-      $query=$this->db->update('master_bid_vendor',$data_update,$data_id);
+    public function vendor_new_tech_view_details($value='',$value1='',$value2=''){
+      if($value2==5){
+        $data_update=array('status_view'=>6);
+        $data_id=array('slno_vendor'=>$value);
+        $query=$this->db->update('master_bid_vendor',$data_update,$data_id);
+      }
         switch ($value1) {
           case '1':
             $page="'vendors_user/New_Technical/view_details_technical_bid'";
@@ -218,14 +219,14 @@ class Vendoruser extends CI_Controller {
            $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
     }
     public function vendor_file_upload_data($value=''){
-      
-      
+
+
       $actions_file=$this->input->post('actions_file');
       $master_bid_id=$this->input->post('master_bid_id');
       $token=$this->input->post('value_keys');
       $value_slno=$this->input->post('value_slno');
       $Vendor_email_id=$this->input->post('Vendor_email_id');
-// Array ( [master_bid_id] => 1 [token] => ELXxTyY4 [value_slno] => 2 [file_name] => test [actions_file] => files_uploaded_details [Vendor_email_id] => ven121@gmail.com ) 
+// Array ( [master_bid_id] => 1 [token] => ELXxTyY4 [value_slno] => 2 [file_name] => test [actions_file] => files_uploaded_details [Vendor_email_id] => ven121@gmail.com )
       switch ($actions_file) {
         case 'files_uploaded_details':
           $file_names=$this->input->post('file_name');
@@ -245,11 +246,11 @@ class Vendoruser extends CI_Controller {
                             if(move_uploaded_file($_FILES["file"]["tmp_name"], 'upload_files/vendor_file_tech/' . $file_stored_name)){
                                 $data_array = array('token_id'=>$token, 'master_bid_id'=>$master_bid_id, 'vendor_id'=>$Vendor_email_id, 'file_name'=>$file_names, 'file_attach'=>$file_stored_name, 'status'=>1, 'date_entry'=>$date, 'time_entry'=>$time_entry, 'bid_user_slno'=>$value_slno);
                                 $query_files=$this->db->insert('master_vendor_file_token',$data_array);
-                                echo '1' ;  
+                                echo '1' ;
                             }
-                        }                
-                    }            
-                } 
+                        }
+                    }
+                }
                 break;
         case 'files_info_vendors':
               $data_array_check = array('token_id'=>$token, 'master_bid_id'=>$master_bid_id, 'vendor_id'=>$Vendor_email_id,  'bid_user_slno'=>$value_slno );
@@ -262,7 +263,7 @@ class Vendoruser extends CI_Controller {
                         <thead>
                             <tr>
                                 <th><strong>File Name</strong></th>
-                                <th><strong>Click View</strong></th>                                
+                                <th><strong>Click View</strong></th>
                                 <th><strong>Action</strong></th>
                             </tr>
                         </thead>
@@ -270,9 +271,9 @@ class Vendoruser extends CI_Controller {
                             <?php foreach($result_file['file_vendors_list'] as $key_files){ ?>
                                 <tr>
                                     <td><strong><?=$key_files->file_name?></strong></td>
-                                    <td><strong><a target="_blank" href="<?=base_url()?>upload_files/vendor_file_tech/<?=$key_files->file_attach?>">Click View</a> </strong></td>                                
+                                    <td><strong><a target="_blank" href="<?=base_url()?>upload_files/vendor_file_tech/<?=$key_files->file_attach?>">Click View</a> </strong></td>
                                     <td><strong><span onclick="file_delete(<?=$key_files->slno_tech_file?>)" class="btn btn-sm btn-danger">Delete File</span></strong></td>
-                                </tr> 
+                                </tr>
 
 
                             <?php }?>
@@ -304,7 +305,7 @@ class Vendoruser extends CI_Controller {
                      // echo 'deleted successfully';
                 }else {
                      echo '2';
-                }                
+                }
 
                 break;
         default:
@@ -321,15 +322,17 @@ class Vendoruser extends CI_Controller {
       $data_array_check = array('token_id'=>$token, 'master_bid_id'=>$master_bid_id, 'vendor_id'=>$Vendor_email_id,  'bid_user_slno'=>$value_slno );
                 $result_file=$this->vendor_db_users->get_vendors_tech_bid_file_list($data_array_check);
                 if($result_file['no_file_vendor']==2){
-                   $this->session->set_flashdata('error_message', 'No File is been Attached to Current bid submission please attach files');     
+                   $this->session->set_flashdata('error_message', 'No File is been Attached to Current bid submission please attach files');
                   redirect('user-vendor-tech-bid-submission-tokens/'.$value_slno.'/'.$token .'/'.$master_bid_id );
-                }else if($result_file['no_file_vendor']==1){ 
+                }else if($result_file['no_file_vendor']==1){
                   $data_values = array('bid_id_vendor' =>$value_slno , 'master_bid_id'=>$master_bid_id,'vendor_id'=>$Vendor_email_id,'submitted_status'=>1);
                   $check_file_submitted=$this->db->get_where('master_vendor_tech_token_bid',$data_values);
                   if($check_file_submitted->num_rows()==0){
-                    $data_values ['token_no']= $token;
-                    $data_update = array('submitted_status' => 1);
-                    $update_query=$this->db->update('master_vendor_tech_token_bid',$data_update,$data_values);
+                    $data_valuea ['token_no']= $token;
+                    $data_updates = array('submitted_status' => 1);
+                    $update_query=$this->db->update('master_vendor_tech_token_bid',$data_updates,$data_valuea);
+                    // echo $this->db->last_query();
+                    // exit();
                     if($update_query){
                       $data_values_vendor = array('slno_vendor' => $value_slno);
                       $vendor_sub = array('submission_status' => 1,'status_view'=>7);
@@ -337,7 +340,7 @@ class Vendoruser extends CI_Controller {
                       $this->session->set_flashdata('success_message', 'successfully Bid is submitted');
                       redirect('user-vendor-home');
                     }else{
-                         $this->session->set_flashdata('error_message', 'Some thing Went wrong');     
+                         $this->session->set_flashdata('error_message', 'Some thing Went wrong');
                           redirect('user-vendor-tech-bid-submission-tokens/'.$value_slno.'/'.$token .'/'.$master_bid_id );
                     }
                   }else{
@@ -350,7 +353,7 @@ class Vendoruser extends CI_Controller {
                     $data_valuea ['token_no']= $token;
                     $data_updates = array('submitted_status' => 1);
                     $update_query=$this->db->update('master_vendor_tech_token_bid',$data_updates,$data_valuea);
-                    // echo $this->db->last_query(); 
+                    // echo $this->db->last_query();
                     // exit();
                     if($update_query){
                       $data_values_vendor = array('slno_vendor' => $value_slno);
@@ -359,19 +362,19 @@ class Vendoruser extends CI_Controller {
                       $this->session->set_flashdata('success_message', 'successfully Bid is submitted');
                       redirect('user-vendor-home');
                     }else{
-                         $this->session->set_flashdata('error_message', 'Some thing Went wrong');     
+                         $this->session->set_flashdata('error_message', 'Some thing Went wrong');
                           redirect('user-vendor-tech-bid-submission-tokens/'.$value_slno.'/'.$token .'/'.$master_bid_id );
                     }
 
-                   
-                     
+
+
                   }
 
                 }else{
-                    $this->session->set_flashdata('error_message', 'No File is been Attached to Current bid submission please attach files');     
+                    $this->session->set_flashdata('error_message', 'No File is been Attached to Current bid submission please attach files');
                   redirect('user-vendor-tech-bid-submission-tokens/'.$value_slno.'/'.$token .'/'.$master_bid_id );
                 }
-      // Array ( [value_slno] => 2 [key_values_slno] => Jlj41WUg [master_bid_id] => 1 [Vendor_email_id] => ven121@gmail.com [file_name] => [new_file] => ) 
+      // Array ( [value_slno] => 2 [key_values_slno] => Jlj41WUg [master_bid_id] => 1 [Vendor_email_id] => ven121@gmail.com [file_name] => [new_file] => )
       # code...
     }
 

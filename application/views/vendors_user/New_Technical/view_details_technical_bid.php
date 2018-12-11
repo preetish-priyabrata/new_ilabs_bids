@@ -184,7 +184,7 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 								<?php foreach($result_file['files_list'] as $key_files){ ?>
 										<tr>
 												<td><strong><?=$key_files->file_name_actucal?></strong></td>
-												<td><strong><a target="_blank" href="<?=base_url().?>upload_files/design_upload/<?=$key_files->attach_name?>">Click View</a> </strong></td>
+												<td><strong><a target="_blank" href="<?=base_url()?>upload_files/design_upload/<?=$key_files->attach_name?>">Click View</a> </strong></td>
 
 										</tr>
 								<?php }?>
@@ -206,23 +206,38 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 								</tr>
 						</thead>
 						<tbody>
-								<?php foreach($get_no_file->result() as $submission){ ?>
+
+								<?php
+								if($get_no_file->num_rows()!=0){
+								foreach($get_no_file->result() as $submission){ ?>
 										<tr>
 												<td><strong><?=$submission->date_creation?></strong></td>
 												<td><strong><?php $submitted_status=$submission->submitted_status;
 													if($submitted_status==0){
-														echo  "<p style='color: orange'>Drafted</p>"; 
+														echo  "<p style='color: orange'>Drafted</p>";
 													}if($submitted_status==1){
-														echo  "<p style='color: Greem'>Submitted</p>"; 
+														echo  "<p style='color: green'>Submitted</p>";
 													}
 													if($submitted_status==5){
-														echo  "<p style='color: blue'>Archived</p>"; 
+														echo  "<p style='color: blue'>Archived</p>";
 													}
 												?></strong></td>
-												<td><strong><a target="_blank" href="<?=base_url().'user-vendor-tech-bid-submission-tokens/'.$value.'/'.$submission->token_no .'/'.$submission->master_bid_id ?>">Click View</a> </strong></td>
+												<td><strong><?php if($submitted_status==1){ echo "---"; }else{?> <a target="_blank" href="<?=base_url().'user-vendor-tech-bid-submission-tokens/'.$value.'/'.$submission->token_no .'/'.$submission->master_bid_id ?>">Click View</a><?php }?> </strong></td>
 
 										</tr>
-								<?php }?>
+								<?php }
+							}else{
+								?>
+								<tr>
+									<td colspan="3" class="text-center">
+										<b  style="color:red">No Data Avaliable</b>
+									</td>
+
+								</tr>
+								<?php
+							}
+
+								?>
 						</tbody>
 					</table>
 				</div>
