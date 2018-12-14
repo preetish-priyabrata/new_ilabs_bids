@@ -96,7 +96,7 @@ $list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_lists($tech_sl
 		                                </td>
 
 
-                                      <td><a href="<?=base_url()?>" class="btn btn-sm btn-info" >View</a></td>
+                                      <td><a href="<?=base_url()?>user-technical-evaluator-view-details-technical-bid-new/<?=$bid_key_id->Slno_bid?>" class="btn btn-sm btn-info" >View</a></td>
 
 
 

@@ -369,6 +369,7 @@ $route['user-buyer-home']='buyeruser/home';
 $route['buyer-mr-received']='buyeruser/buyer_mr_received';
 $route['buyer-technical-commercial-assign/(:any)/(:any)/(:any)/(:any)/(:any)']='buyeruser/buyer_technical_commercial_assign/$1/$2/$3/$4/$5';
 $route['get-buyer-bid-check']='buyeruser/buyer_get_buyer_bid_Check';
+// $route['get-buyer-bid-check']='buyeruser/buyer_get_buyer_bid_Check';
 
 $route['buyer-drafted-bid']='buyeruser/buyer_drafted_bid';
 $route['buyer-bid-edit/(:any)/(:any)']='buyeruser/buyer_bid_edit/$1/$2';
@@ -384,6 +385,9 @@ $route['buyer-query-respond-technical']='buyeruser/buyer_query_respond_technical
 $route['buyer-file-upload-data']='buyeruser/buyer_file_upload_data';
 $route['bid-tech-entry']='buyeruser/buyer_bid_tech_entry';
 
+// commerical Bid In buoer
+$route['bid-commerical-entry']='buyeruser/bid_commerical_entry';
+
 
 #################################################################################################################################
 #
@@ -392,7 +396,7 @@ $route['bid-tech-entry']='buyeruser/buyer_bid_tech_entry';
 ##################################################################################################################################
 $route['user-technical-evalutor-home']='technicalevalutor/tech_evalutor_home';
 $route['user-technical-evaluator-bid-new-list']='technicalevalutor/technical_evaluator_bid_new_list';
-$route['user-technical-evaluator-view-details-technical-bid-new']='technicalevalutor/technical_evaluator_view_details_technical_bid_new';
+$route['user-technical-evaluator-view-details-technical-bid-new/(:any)']='technicalevalutor/technical_evaluator_view_details_technical_bid_new/$1';
 $route['tech-evalutor-logout-by-pass']='technicalevalutor/tech_evalutor_logout_bypass';
 $route['tech-evalutor-logout']='technicalevalutor/tech_evalutor_logout';
 ######################################################################################################################################

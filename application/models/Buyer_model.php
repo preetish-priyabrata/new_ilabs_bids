@@ -44,6 +44,20 @@ class Buyer_model extends CI_Model {
         exit;
       }
     }
+    public function get_buyer_mr_file_list_commerical($value,$value1){
+        $data_array_mr_files = array('bid_buyer_slno' =>$value1,'bid_slno'=>$value);
+        $query_mr_files =$this->db->get_where('master_bid_file_commerical',$data_array_mr_files);
+        if($query_mr_files->num_rows() == 0){
+          $data_send = array('no_files' =>2 );
+          return $data_send;
+          exit;
+        }else{
+          $results=$query_mr_files->result();
+          $data_send = array('no_files' =>1, 'files_list'=>$results);
+          return $data_send;
+          exit;
+        }
+    }
     public function get_user_generic_list($value='',$value1='',$value2='',$role_id='',$slno='',$email_id=''){
       $value_mix=$value.$value1.$value2;
       switch ($value_mix) {
