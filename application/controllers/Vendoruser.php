@@ -119,6 +119,18 @@ class Vendoruser extends CI_Controller {
             $this->load->view('vendors_user/New_Technical/New_bid',$data);
             $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
     }
+     public function vendor_new_commerical($value=''){
+
+        $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
+            $data=array('title' =>"Vendor Dashboard",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
+            $this->load->view('vendors_user/vendor_template/v_template_header',$data);
+            $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
+            $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
+
+            $this->load->view('vendors_user/new_commerical/new_commerical_bid',$data);
+            $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
+    }
+
     public function vendor_query_panel($value=''){
 
      $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
@@ -133,7 +145,55 @@ class Vendoruser extends CI_Controller {
 
 
     }
+    public function vendor_query_panel_commerical($value=''){
+
+     $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
+            $data=array('title' =>"Vendor Dashboard",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value);
+            $this->load->view('vendors_user/vendor_template/v_template_header',$data);
+            $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
+            $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
+
+            $this->load->view('vendors_user/new_commerical/Query_panel_commerical',$data);
+            $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
+
+
+
+    }
+
     public function vendor_new_tech_view_details($value='',$value1='',$value2=''){
+      if($value2==5){
+        $data_update=array('status_view'=>6);
+        $data_id=array('slno_vendor'=>$value);
+        $query=$this->db->update('master_bid_vendor',$data_update,$data_id);
+      }
+        switch ($value1) {
+          case '1':
+            $page="'vendors_user/New_Technical/view_details_technical_bid'";
+            break;
+          case '2':
+              $page='vendors_user/New_Technical/view_details_technical_bid';
+              break;
+          case '3':
+              $page='vendors_user/New_Technical/view_details_technical_bid_logistic' ;
+                break;
+          default:
+            // code...
+            break;
+        }
+     $scripts='';
+            $data=array('title' =>"Vendor Dashboard",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1);
+
+            $this->load->view('vendors_user/vendor_template/v_template_header',$data);
+            $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
+            $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
+
+            $this->load->view($page,$data);
+            $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
+
+
+
+    }
+     public function vendor_new_tech_view_details_commerical($value='',$value1='',$value2=''){
       if($value2==5){
         $data_update=array('status_view'=>6);
         $data_id=array('slno_vendor'=>$value);
@@ -182,9 +242,34 @@ class Vendoruser extends CI_Controller {
       if($query_bid_store){
           $this->session->set_flashdata('success_message', 'successfully Query is Stored');
         redirect('user-vendor-query-panel/'.$query_slno);
+
       }else{
         $this->session->set_flashdata('error_message', 'Unable store Query for bid');
       	redirect('user-vendor-home');
+      }
+    }
+
+
+    public function vendor_bid_query_commerical($value=''){
+      $Vendor_email_id=$this->session->userdata('Vendor_email_id');
+      if(empty($Vendor_email_id)){
+
+        redirect('vendor-logout-pass');
+      }
+
+      $query_slno=$this->input->post('query_slno');
+      $bid_id=$this->input->post('bid_id');
+      $query_details=$this->input->post('query_details');
+      $date=date('Y-m-d');
+      $data_query_bid = array('bid_slno'=>$bid_id, 'Vendor_id'=>$Vendor_email_id, 'query_details'=>$query_details, 'date_query'=>$date);
+      $query_bid_store=$this->db->insert('master_bid_query_commerical',$data_query_bid);
+      if($query_bid_store){
+          $this->session->set_flashdata('success_message', 'successfully Query is Stored');
+        redirect('user-vendor-commerical-query-panel/'.$query_slno);
+        
+      }else{
+        $this->session->set_flashdata('error_message', 'Unable store Query for bid');
+        redirect('user-vendor-home');
       }
     }
     public function vendor_tech_bid_submission($value=''){

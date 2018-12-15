@@ -87,7 +87,7 @@ $list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_lists($tech_sl
 					        			<td><?php
 		                                    $status_bid=$bid_key_id->status_bid;
 		                                    if($status_bid==1){
-		                                    	echo "Active Bid";
+		                                    	echo "<p style='color:green'> Active Bid</p>";
 		                                    }else{
 		                                    	echo "Not Active Bid";
 		                                    }
@@ -96,7 +96,7 @@ $list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_lists($tech_sl
 		                                </td>
 
 
-                                      <td><a href="<?=base_url()?>user-technical-evaluator-view-details-technical-bid-new/<?=$bid_key_id->Slno_bid?>" class="btn btn-sm btn-info" >View</a></td>
+                                      <td><a href="<?=base_url()?>user-technical-evaluator-view-details-technical-bid-new/<?=$bid_key_id->Slno_bid?>/<?=$bid_key_id->category?>" class="btn btn-sm btn-info" >View</a></td>
 
 
 

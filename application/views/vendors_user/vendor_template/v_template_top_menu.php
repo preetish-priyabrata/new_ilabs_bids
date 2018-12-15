@@ -10,6 +10,15 @@
 						<span>Technical Bid<span class="label label-theme m-l-5">NEW</span></span>
 					</a>
 				</li>
+				<li>
+					<a href="<?=base_url()?>user-vendor-new-commerical">
+						<div class="icon-img">
+							<img src="<?=base_url()?>file_css_admin/assets/img/logo/logo-bs4.png" alt="" />
+						</div>
+						<span>Commerical Bid<span class="label label-theme m-l-5">NEW</span></span>
+					</a>
+				</li>
+				
 				<li class="menu-control menu-control-left">
 					<a href="javascript:;" data-click="prev-menu"><i class="fa fa-angle-left"></i></a>
 				</li>

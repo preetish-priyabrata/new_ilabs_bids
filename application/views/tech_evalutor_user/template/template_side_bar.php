@@ -20,7 +20,7 @@
 					<li>
 						<ul class="nav nav-profile">
                             <li><a href="javascript:;"><i class="fa fa-key"></i> Change Password</a></li>
-                            <li><a href="<?=base_url()?>procurement-logout"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+                            <li><a href="<?=base_url()?>tech-evalutor-logout"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
                             <!-- <li><a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a></li> -->
                         </ul>
 					</li>
@@ -33,10 +33,10 @@
 						<a href="javascript:;">
 					        <b class="caret"></b>
 						    <i class="fas fa-atlas"></i>
-						    <span>Material Requisition</span>
+						    <span>Bid Information </span>
 					    </a>
 						<ul class="sub-menu">
-						    <li class="<?php if($sub_menu==1){ echo 'active'; }?>"><a href="<?=base_url()?>user-technical-evaluator-bid-new-list" >Technical Bid New </a></li>
+						    <li class="<?php if($sub_menu==1){ echo 'active'; }?>"><a href="<?=base_url()?>user-technical-evaluator-bid-new-list" >Technical Bid Active Bid  </a></li>
 						    <li class="<?php if($sub_menu==2){ echo 'active'; }?>"><a href="<?=base_url()?>procurement-new-mr-conform" >History Of Buyer Assignment</a></li>
 
 						</ul>

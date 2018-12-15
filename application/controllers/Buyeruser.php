@@ -547,7 +547,7 @@ class Buyeruser extends CI_Controller {
                 $buyer_id = array('Slno_buyer' =>$value4 );
                 $data_update_mr_buyer= array('Commercial_process_status'=>2, 'Date_commercial__status'=>date('Y-m-d'), 'Mode_tender'=>$bid_method);
                  $query_buyer_id_master=$this->db->update('master_buyer_MR',$data_update_mr_buyer,$buyer_id);
-                $this->session->set_flashdata('success_message', 'successfully Bid is created is not send to technical approver or Vendor ');
+                $this->session->set_flashdata('success_message', 'successfully Bid is created is not send to Commerical approver or Vendor ');
                              // After that you need to used r
                 redirect('user-buyer-home');
             }else{

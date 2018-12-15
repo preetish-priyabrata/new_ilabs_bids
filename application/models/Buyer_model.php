@@ -131,6 +131,7 @@ class Buyer_model extends CI_Model {
      * @return [data_send[bid_list]] [List Of array of table which will contain Bid is been send or saved]
      */
     public function drafted_bid_information($value='',$value1='',$value2=''){ // HeRE VALUE ->  , VALUE1->status
+      
       $data_id = array('status_bid'=>$value1,'bid_creator_id'=>$value);
       if(!empty($value2)){
         $data_id= array('Slno_bid' => $value2,'status_bid'=>$value1,'bid_creator_id'=>$value);
@@ -190,7 +191,7 @@ class Buyer_model extends CI_Model {
       }
     }
 		public function drafted_bid_vendor_information_details($value='',$value1=''){
-			$data_array_vend = array('master_bid_id ' => $value, 'status'=>$value1);
+			$data_array_vend = array('master_bid_id' => $value, 'status'=>$value1);
 			$this->db->select('vendor_id');
 			$query = $this->db->get_where('master_bid_vendor',$data_array_vend);
 			if($query->num_rows() == 0){

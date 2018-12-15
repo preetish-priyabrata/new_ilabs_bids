@@ -1,10 +1,11 @@
+<?php 
 $Vendor_email_id=$this->session->userdata('Vendor_email_id');
 if(empty($Vendor_email_id)){
 
 	redirect('vendor-logout-pass');
 }
 $value=$value;
-$result_title=$this->vendor_db_users->vendor_new_query_tech_title($value,$Vendor_email_id);
+$result_title=$this->vendor_db_users->vendor_new_query_tech_title_commerical($value,$Vendor_email_id);
 if($result_title['no_new_tech']!=1){
 	$this->session->set_flashdata('error_message', 'Unable find Bid');
 	redirect('user-vendor-home');
@@ -56,7 +57,7 @@ if($result_title['no_new_tech']!=1){
 					<h4 class="panel-title">Query Panel</h4>
 				</div>
 				<div class="panel-body">
-						<form  action="<?=base_url()?>vendor-bid-query-tech" method="post">
+						<form  action="<?=base_url()?>vendor-bid-query-commerical" method="post">
 	            <div class="row">
 								<div class="col-md-12 col-lg-12">
 
@@ -87,7 +88,7 @@ if($result_title['no_new_tech']!=1){
 				</div>
 				<!-- Query Block End  -->
 				<?php
-				 	$result_query=$this->vendor_db_users->vendor_new_query_list_view($master_bid_id,$Vendor_email_id);
+				 	$result_query=$this->vendor_db_users->vendor_new_query_list_view_commerical($master_bid_id,$Vendor_email_id);
 					// print_r($result_query);
 				?>
 				<!-- Query table WILL SHOW  -->

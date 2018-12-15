@@ -43,16 +43,40 @@ class Technicalevalutor extends CI_Controller {
             $this->load->view('tech_evalutor_user/technical_bid_new/tech_evaluator_technical_bid_new_lists',$data);
             $this->load->view('template/template_footer',$data);
     }
-
-    public function technical_evaluator_view_details_technical_bid_new($value=''){
+    /**
+     * [technical_evaluator_view_details_technical_bid_new description]
+     * @param  string $value [Slno_bid it contain bid master id which will leaD OTHER WORK]
+     * @return [type]        [description]
+     */
+    public function technical_evaluator_view_details_technical_bid_new($value='',$value1=''){
       $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
-          $data=array('title' =>"New Bid List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value);
+          $data=array('title' =>"Detail Information Of bid",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1);
+            $this->load->view('template/template_header',$data);
+            $this->load->view('tech_evalutor_user/template/template_top_head');
+            $this->load->view('tech_evalutor_user/template/template_side_bar',$data);
+            if($value1==3){
+                 $this->load->view('tech_evalutor_user/technical_bid_new/view_details_technical_bid_new_logistic',$data);
+            }else if(($value1==2) || ($value1==1)){
+                $this->load->view('tech_evalutor_user/technical_bid_new/view_details_technical_bid_new',$data);
+                 
+            }else{
+                $this->session->set_flashdata('error_message',  'Some thing went worng Try Again!!!!');
+                redirect('user-technical-evalutor-home');
+            }
+           
+            $this->load->view('template/template_footer',$data);
+    }
+    public function technical_evalutor_get_approved_reject($value='',$value1='',$value2=''){
+        $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
+          $data=array('title' =>"New Bid List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
 
             $this->load->view('template/template_header',$data);
             $this->load->view('tech_evalutor_user/template/template_top_head');
             $this->load->view('tech_evalutor_user/template/template_side_bar',$data);
-            $this->load->view('tech_evalutor_user/technical_bid_new/view_details_technical_bid_new',$data);
+            $this->load->view('tech_evalutor_user/technical_bid_new/tech_evaluator_technical_bid_new_lists',$data);
             $this->load->view('template/template_footer',$data);
+
+        # code...
     }
 
 
