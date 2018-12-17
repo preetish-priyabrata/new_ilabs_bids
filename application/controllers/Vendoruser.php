@@ -154,12 +154,19 @@ class Vendoruser extends CI_Controller {
             $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
 
             $this->load->view('vendors_user/new_commerical/Query_panel_commerical',$data);
+
             $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
 
 
 
     }
-
+    /**
+     * [vendor_new_tech_view_details description]
+     * @param  string $value  [slno_vendor]
+     * @param  string $value1 [category]
+     * @param  string $value2 [status_view]
+     * @return [type]         [description]
+     */
     public function vendor_new_tech_view_details($value='',$value1='',$value2=''){
       if($value2==5){
         $data_update=array('status_view'=>6);
@@ -186,46 +193,59 @@ class Vendoruser extends CI_Controller {
             $this->load->view('vendors_user/vendor_template/v_template_header',$data);
             $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
             $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
-
             $this->load->view($page,$data);
             $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
 
 
 
-    }
-     public function vendor_new_tech_view_details_commerical($value='',$value1='',$value2=''){
+    }  
+     /**
+      * [vendor_bid_view_commerical_details description]
+      * @param  string $value  [slno_vendor]
+      * @param  string $value1 [category]
+      * @param  string $value2 [status_view]
+      * @return [type]         [description]
+      */
+     public function vendor_bid_view_commerical_details($value='',$value1='',$value2=''){
       if($value2==5){
         $data_update=array('status_view'=>6);
         $data_id=array('slno_vendor'=>$value);
-        $query=$this->db->update('master_bid_vendor',$data_update,$data_id);
+        $query=$this->db->update('master_bid_vendor_commerical',$data_update,$data_id);
       }
         switch ($value1) {
           case '1':
-            $page="'vendors_user/New_Technical/view_details_technical_bid'";
+            $page="vendors_user/new_commerical/view_details_commerical";
             break;
           case '2':
-              $page='vendors_user/New_Technical/view_details_technical_bid';
+              $page='vendors_user/new_commerical/view_details_commerical';
               break;
           case '3':
-              $page='vendors_user/New_Technical/view_details_technical_bid_logistic' ;
+              $page='vendors_user/new_commerical/view_details_commerical_logistic' ;
                 break;
           default:
             // code...
             break;
         }
      $scripts='';
-            $data=array('title' =>"Vendor Dashboard",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1);
+            $data=array('title' =>"Vendor Dashboard",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1,'value2'=>$value2);
 
             $this->load->view('vendors_user/vendor_template/v_template_header',$data);
             $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
-            $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
-
-            $this->load->view($page,$data);
+            $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);            
+            $this->load->view($page,$data);           
             $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
 
 
 
-    }
+    }  
+
+
+   
+
+
+
+
+
     public function vendor_bid_query_tech($value=''){
       $Vendor_email_id=$this->session->userdata('Vendor_email_id');
       if(empty($Vendor_email_id)){

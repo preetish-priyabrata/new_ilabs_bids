@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 14, 2018 at 04:04 PM
+-- Generation Time: Dec 17, 2018 at 04:20 PM
 -- Server version: 5.7.24-0ubuntu0.18.04.1
 -- PHP Version: 7.2.10-0ubuntu0.18.04.1
 
@@ -439,6 +439,33 @@ INSERT INTO `Ilab_master_bid_query` (`Slno_query`, `bid_slno`, `Vendor_id`, `que
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Ilab_master_bid_query_commerical`
+--
+
+CREATE TABLE `Ilab_master_bid_query_commerical` (
+  `Slno_query` int(11) NOT NULL,
+  `bid_slno` int(11) NOT NULL,
+  `Vendor_id` varchar(255) NOT NULL,
+  `query_details` text,
+  `response_detail` text,
+  `responser_id` varchar(255) DEFAULT NULL,
+  `date_query` date NOT NULL,
+  `date_respond` date DEFAULT NULL,
+  `status_responds` int(11) NOT NULL DEFAULT '0' COMMENT '0-not responded 1-responded'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Ilab_master_bid_query_commerical`
+--
+
+INSERT INTO `Ilab_master_bid_query_commerical` (`Slno_query`, `bid_slno`, `Vendor_id`, `query_details`, `response_detail`, `responser_id`, `date_query`, `date_respond`, `status_responds`) VALUES
+(1, 1, 'ven121@gmail.com', 'test', NULL, NULL, '2018-12-14', NULL, 0),
+(2, 1, 'ven121@gmail.com', 'tyuyiyiyijljlo ', NULL, NULL, '2018-12-14', NULL, 0),
+(3, 1, 'ven121@gmail.com', 'plese check this ', NULL, NULL, '2018-12-14', NULL, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Ilab_master_bid_technicalevaluation`
 --
 
@@ -473,7 +500,7 @@ CREATE TABLE `Ilab_master_bid_vendor` (
   `vendor_id` varchar(255) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '0',
   `approval_status` varchar(255) DEFAULT NULL,
-  `submission_status` varchar(255) DEFAULT NULL,
+  `submission_status` varchar(255) DEFAULT '0',
   `submission_count` varchar(255) NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
@@ -481,7 +508,7 @@ CREATE TABLE `Ilab_master_bid_vendor` (
   `date_end` varchar(255) NOT NULL,
   `query_end_date` varchar(255) NOT NULL,
   `master_bid_id` int(11) NOT NULL,
-  `view_status` int(11) NOT NULL DEFAULT '0',
+  `view_status_approve` int(11) NOT NULL DEFAULT '0',
   `bid_ref` varchar(255) NOT NULL,
   `bid_id` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
@@ -495,26 +522,27 @@ CREATE TABLE `Ilab_master_bid_vendor` (
   `date_entry` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status_active` int(11) NOT NULL DEFAULT '0' COMMENT '0-bid is not active 1-bid is active 2-bid is close',
-  `status_view` int(11) NOT NULL DEFAULT '5' COMMENT '5-not viewed 6-viewed 7-submitted'
+  `status_view` int(11) NOT NULL DEFAULT '5' COMMENT '5-not viewed 6-viewed 7-submitted 8-> resubmission',
+  `comment` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Ilab_master_bid_vendor`
 --
 
-INSERT INTO `Ilab_master_bid_vendor` (`slno_vendor`, `bid_slno`, `buyer_slno`, `vendor_id`, `status`, `approval_status`, `submission_status`, `submission_count`, `title`, `description`, `date_start`, `date_end`, `query_end_date`, `master_bid_id`, `view_status`, `bid_ref`, `bid_id`, `category`, `mode_bid`, `technical_bid_type`, `mr_slno`, `mr_no`, `job_code`, `edit_id`, `material_category_name`, `date_entry`, `date_update`, `status_active`, `status_view`) VALUES
-(1, 3, 1, 'ven111@gmail.com', 1, '', '', '0', 'SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', 'INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', '2018-12-04', '2018-12-15', '2018-12-06', 1, 0, 'REF 2018', 'REF 2018', '3', 'Closed Bid', '1', 3, '2018-11-05-pUgws', '679034', 1, 'logistics [ logistics ]', '2018-12-03 09:25:44', '2018-12-10 15:48:10', 1, 5),
-(2, 3, 1, 'ven121@gmail.com', 1, '0', '1', '1', 'SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', 'INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', '2018-12-04', '2018-12-15', '2018-12-06', 1, 0, 'REF 2018', 'REF 2018', '3', 'Closed Bid', '1', 3, '2018-11-05-pUgws', '679034', 1, 'logistics [ logistics ]', '2018-12-03 09:25:44', '2018-12-11 07:04:56', 1, 7),
-(3, 3, 1, 'ven221@gmail.com', 1, '', '', '0', 'SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', 'INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', '2018-12-04', '2018-12-15', '2018-12-06', 1, 0, 'REF 2018', 'REF 2018', '3', 'Closed Bid', '1', 3, '2018-11-05-pUgws', '679034', 1, 'logistics [ logistics ]', '2018-12-03 09:25:44', '2018-12-11 06:49:01', 1, 7),
-(4, 3, 1, 'ven310@yahoo.com', 1, '', '', '0', 'SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', 'INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', '2018-12-04', '2018-12-15', '2018-12-06', 1, 0, 'REF 2018', 'REF 2018', '3', 'Closed Bid', '1', 3, '2018-11-05-pUgws', '679034', 1, 'logistics [ logistics ]', '2018-12-03 09:25:44', '2018-12-10 15:48:10', 1, 5),
-(5, 3, 1, 'ven97@gmail.com', 1, '', '', '0', 'SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', 'INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', '2018-12-04', '2018-12-15', '2018-12-06', 1, 0, 'REF 2018', 'REF 2018', '3', 'Closed Bid', '1', 3, '2018-11-05-pUgws', '679034', 1, 'logistics [ logistics ]', '2018-12-03 09:25:44', '2018-12-10 15:48:10', 1, 5),
-(6, 3, 1, 'ven979@yahoo.com', 1, '', '', '0', 'SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', 'INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', '2018-12-04', '2018-12-15', '2018-12-06', 1, 0, 'REF 2018', 'REF 2018', '3', 'Closed Bid', '1', 3, '2018-11-05-pUgws', '679034', 1, 'logistics [ logistics ]', '2018-12-03 09:25:44', '2018-12-10 15:48:10', 1, 5),
-(7, 8, 5, 'vender@ilab.com', 1, NULL, NULL, '0', 'What is the best online site for practicing aptitude ', 'Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow', '2018-12-02', '2018-12-29', '2018-12-14', 2, 0, 'ref /2018 f', 'myt', '2', 'Rank Order Bid', '1', 8, '2018-11-06-EDNHT', '189067', 1, 'make to order items [ moi ]', '2018-12-05 13:46:04', '2018-12-06 06:22:09', 1, 5),
-(8, 8, 5, 'ven121@gmail.com', 1, NULL, '1', '0', 'What is the best online site for practicing aptitude ', 'Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow', '2018-12-02', '2018-12-29', '2018-12-14', 2, 0, 'ref /2018 f', 'myt', '2', 'Rank Order Bid', '1', 8, '2018-11-06-EDNHT', '189067', 1, 'make to order items [ moi ]', '2018-12-05 13:46:04', '2018-12-11 06:49:31', 1, 7),
-(9, 8, 5, 'ven221@gmail.com', 1, NULL, NULL, '0', 'What is the best online site for practicing aptitude ', 'Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow', '2018-12-02', '2018-12-29', '2018-12-14', 2, 0, 'ref /2018 f', 'myt', '2', 'Rank Order Bid', '1', 8, '2018-11-06-EDNHT', '189067', 1, 'make to order items [ moi ]', '2018-12-05 13:46:04', '2018-12-06 06:22:09', 1, 5),
-(10, 8, 5, 'ven331@gmail.com', 1, NULL, NULL, '0', 'What is the best online site for practicing aptitude ', 'Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow', '2018-12-02', '2018-12-29', '2018-12-14', 2, 0, 'ref /2018 f', 'myt', '2', 'Rank Order Bid', '1', 8, '2018-11-06-EDNHT', '189067', 1, 'make to order items [ moi ]', '2018-12-05 13:46:04', '2018-12-06 06:22:09', 1, 5),
-(11, 8, 5, 'ven979@yahoo.com', 1, NULL, NULL, '0', 'What is the best online site for practicing aptitude ', 'Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow', '2018-12-02', '2018-12-29', '2018-12-14', 2, 0, 'ref /2018 f', 'myt', '2', 'Rank Order Bid', '1', 8, '2018-11-06-EDNHT', '189067', 1, 'make to order items [ moi ]', '2018-12-05 13:46:04', '2018-12-06 06:22:09', 1, 5),
-(12, 8, 5, 'ven66@gmail.com', 1, NULL, NULL, '0', 'What is the best online site for practicing aptitude ', 'Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow', '2018-12-02', '2018-12-29', '2018-12-14', 2, 0, 'ref /2018 f', 'myt', '2', 'Rank Order Bid', '1', 8, '2018-11-06-EDNHT', '189067', 1, 'make to order items [ moi ]', '2018-12-05 13:46:04', '2018-12-06 06:22:09', 1, 5);
+INSERT INTO `Ilab_master_bid_vendor` (`slno_vendor`, `bid_slno`, `buyer_slno`, `vendor_id`, `status`, `approval_status`, `submission_status`, `submission_count`, `title`, `description`, `date_start`, `date_end`, `query_end_date`, `master_bid_id`, `view_status_approve`, `bid_ref`, `bid_id`, `category`, `mode_bid`, `technical_bid_type`, `mr_slno`, `mr_no`, `job_code`, `edit_id`, `material_category_name`, `date_entry`, `date_update`, `status_active`, `status_view`, `comment`) VALUES
+(1, 3, 1, 'ven111@gmail.com', 1, '', '', '0', 'SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', 'INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', '2018-12-04', '2018-12-15', '2018-12-06', 1, 0, 'REF 2018', 'REF 2018', '3', 'Closed Bid', '1', 3, '2018-11-05-pUgws', '679034', 1, 'logistics [ logistics ]', '2018-12-03 09:25:44', '2018-12-10 15:48:10', 1, 5, NULL),
+(2, 3, 1, 'ven121@gmail.com', 1, '1', '1', '1', 'SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', 'INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', '2018-12-04', '2018-12-15', '2018-12-06', 1, 1, 'REF 2018', 'REF 2018', '3', 'Closed Bid', '1', 3, '2018-11-05-pUgws', '679034', 1, 'logistics [ logistics ]', '2018-12-03 09:25:44', '2018-12-17 08:50:48', 1, 7, ''),
+(3, 3, 1, 'ven221@gmail.com', 1, '', '', '0', 'SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', 'INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', '2018-12-04', '2018-12-15', '2018-12-06', 1, 0, 'REF 2018', 'REF 2018', '3', 'Closed Bid', '1', 3, '2018-11-05-pUgws', '679034', 1, 'logistics [ logistics ]', '2018-12-03 09:25:44', '2018-12-14 11:56:07', 1, 6, NULL),
+(4, 3, 1, 'ven310@yahoo.com', 1, '', '', '0', 'SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', 'INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', '2018-12-04', '2018-12-15', '2018-12-06', 1, 0, 'REF 2018', 'REF 2018', '3', 'Closed Bid', '1', 3, '2018-11-05-pUgws', '679034', 1, 'logistics [ logistics ]', '2018-12-03 09:25:44', '2018-12-10 15:48:10', 1, 5, NULL),
+(5, 3, 1, 'ven97@gmail.com', 1, '', '', '0', 'SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', 'INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', '2018-12-04', '2018-12-15', '2018-12-06', 1, 0, 'REF 2018', 'REF 2018', '3', 'Closed Bid', '1', 3, '2018-11-05-pUgws', '679034', 1, 'logistics [ logistics ]', '2018-12-03 09:25:44', '2018-12-10 15:48:10', 1, 5, NULL),
+(6, 3, 1, 'ven979@yahoo.com', 1, '', '', '0', 'SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', 'INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI', '2018-12-04', '2018-12-15', '2018-12-06', 1, 0, 'REF 2018', 'REF 2018', '3', 'Closed Bid', '1', 3, '2018-11-05-pUgws', '679034', 1, 'logistics [ logistics ]', '2018-12-03 09:25:44', '2018-12-10 15:48:10', 1, 5, NULL),
+(7, 8, 5, 'vender@ilab.com', 1, NULL, NULL, '0', 'What is the best online site for practicing aptitude ', 'Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow', '2018-12-02', '2018-12-29', '2018-12-14', 2, 0, 'ref /2018 f', 'myt', '2', 'Rank Order Bid', '1', 8, '2018-11-06-EDNHT', '189067', 1, 'make to order items [ moi ]', '2018-12-05 13:46:04', '2018-12-06 06:22:09', 1, 5, NULL),
+(8, 8, 5, 'ven121@gmail.com', 1, NULL, '0', '0', 'What is the best online site for practicing aptitude ', 'Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow', '2018-12-02', '2018-12-29', '2018-12-14', 2, 0, 'ref /2018 f', 'myt', '2', 'Rank Order Bid', '1', 8, '2018-11-06-EDNHT', '189067', 1, 'make to order items [ moi ]', '2018-12-05 13:46:04', '2018-12-17 08:59:28', 1, 8, 'Please attach new all data send again'),
+(9, 8, 5, 'ven221@gmail.com', 1, NULL, NULL, '0', 'What is the best online site for practicing aptitude ', 'Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow', '2018-12-02', '2018-12-29', '2018-12-14', 2, 0, 'ref /2018 f', 'myt', '2', 'Rank Order Bid', '1', 8, '2018-11-06-EDNHT', '189067', 1, 'make to order items [ moi ]', '2018-12-05 13:46:04', '2018-12-06 06:22:09', 1, 5, NULL),
+(10, 8, 5, 'ven331@gmail.com', 1, NULL, NULL, '0', 'What is the best online site for practicing aptitude ', 'Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow', '2018-12-02', '2018-12-29', '2018-12-14', 2, 0, 'ref /2018 f', 'myt', '2', 'Rank Order Bid', '1', 8, '2018-11-06-EDNHT', '189067', 1, 'make to order items [ moi ]', '2018-12-05 13:46:04', '2018-12-06 06:22:09', 1, 5, NULL),
+(11, 8, 5, 'ven979@yahoo.com', 1, NULL, NULL, '0', 'What is the best online site for practicing aptitude ', 'Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow', '2018-12-02', '2018-12-29', '2018-12-14', 2, 0, 'ref /2018 f', 'myt', '2', 'Rank Order Bid', '1', 8, '2018-11-06-EDNHT', '189067', 1, 'make to order items [ moi ]', '2018-12-05 13:46:04', '2018-12-06 06:22:09', 1, 5, NULL),
+(12, 8, 5, 'ven66@gmail.com', 1, NULL, NULL, '0', 'What is the best online site for practicing aptitude ', 'Comprehensive 29-part course includes ML concepts, algorithms, hands-on projects and industry workflow', '2018-12-02', '2018-12-29', '2018-12-14', 2, 0, 'ref /2018 f', 'myt', '2', 'Rank Order Bid', '1', 8, '2018-11-06-EDNHT', '189067', 1, 'make to order items [ moi ]', '2018-12-05 13:46:04', '2018-12-06 06:22:09', 1, 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -561,7 +589,7 @@ CREATE TABLE `Ilab_master_bid_vendor_commerical` (
 INSERT INTO `Ilab_master_bid_vendor_commerical` (`slno_vendor`, `bid_slno`, `buyer_slno`, `vendor_id`, `status`, `approval_status`, `submission_status`, `submission_count`, `title`, `description`, `date_start`, `date_end`, `query_end_date`, `master_bid_id`, `view_status`, `bid_ref`, `bid_id`, `category`, `mode_bid`, `technical_bid_type`, `mr_slno`, `mr_no`, `job_code`, `edit_id`, `material_category_name`, `date_entry`, `date_update`, `status_active`, `status_view`) VALUES
 (1, 1, 2, 'vender@ilab.com', 4, NULL, NULL, '0', 'test bid summary', 'How much insurance do you need? The objective of an insurance cover is to provide adequate financial support to your family, in case you are no more or are unable to earn because of a disability or illness.', '2018-12-15', '2018-12-31', '2018-12-19', 1, 0, 'test001ee', 'ee', '1', 'Simple Bid', '2', 1, '2018-11-05-Qts0z', '0770', 1, 'standard catalogued item [ sci tech ]', '2018-12-14 09:56:35', '2018-12-14 09:56:35', 0, 5),
 (2, 1, 2, 'ven111@gmail.com', 4, NULL, NULL, '0', 'test bid summary', 'How much insurance do you need? The objective of an insurance cover is to provide adequate financial support to your family, in case you are no more or are unable to earn because of a disability or illness.', '2018-12-15', '2018-12-31', '2018-12-19', 1, 0, 'test001ee', 'ee', '1', 'Simple Bid', '2', 1, '2018-11-05-Qts0z', '0770', 1, 'standard catalogued item [ sci tech ]', '2018-12-14 09:56:35', '2018-12-14 09:56:35', 0, 5),
-(3, 1, 2, 'ven121@gmail.com', 4, NULL, NULL, '0', 'test bid summary', 'How much insurance do you need? The objective of an insurance cover is to provide adequate financial support to your family, in case you are no more or are unable to earn because of a disability or illness.', '2018-12-15', '2018-12-31', '2018-12-19', 1, 0, 'test001ee', 'ee', '1', 'Simple Bid', '2', 1, '2018-11-05-Qts0z', '0770', 1, 'standard catalogued item [ sci tech ]', '2018-12-14 09:56:35', '2018-12-14 09:56:35', 0, 5),
+(3, 1, 2, 'ven121@gmail.com', 4, NULL, NULL, '0', 'test bid summary', 'How much insurance do you need? The objective of an insurance cover is to provide adequate financial support to your family, in case you are no more or are unable to earn because of a disability or illness.', '2018-12-15', '2018-12-31', '2018-12-19', 1, 0, 'test001ee', 'ee', '1', 'Simple Bid', '2', 1, '2018-11-05-Qts0z', '0770', 1, 'standard catalogued item [ sci tech ]', '2018-12-14 09:56:35', '2018-12-17 10:18:08', 1, 6),
 (4, 1, 2, 'ven310@yahoo.com', 4, NULL, NULL, '0', 'test bid summary', 'How much insurance do you need? The objective of an insurance cover is to provide adequate financial support to your family, in case you are no more or are unable to earn because of a disability or illness.', '2018-12-15', '2018-12-31', '2018-12-19', 1, 0, 'test001ee', 'ee', '1', 'Simple Bid', '2', 1, '2018-11-05-Qts0z', '0770', 1, 'standard catalogued item [ sci tech ]', '2018-12-14 09:56:35', '2018-12-14 09:56:35', 0, 5),
 (5, 1, 2, 'ven1011@yahoo.com', 4, NULL, NULL, '0', 'test bid summary', 'How much insurance do you need? The objective of an insurance cover is to provide adequate financial support to your family, in case you are no more or are unable to earn because of a disability or illness.', '2018-12-15', '2018-12-31', '2018-12-19', 1, 0, 'test001ee', 'ee', '1', 'Simple Bid', '2', 1, '2018-11-05-Qts0z', '0770', 1, 'standard catalogued item [ sci tech ]', '2018-12-14 09:56:35', '2018-12-14 09:56:35', 0, 5),
 (6, 1, 2, 'ven97@gmail.com', 4, NULL, NULL, '0', 'test bid summary', 'How much insurance do you need? The objective of an insurance cover is to provide adequate financial support to your family, in case you are no more or are unable to earn because of a disability or illness.', '2018-12-15', '2018-12-31', '2018-12-19', 1, 0, 'test001ee', 'ee', '1', 'Simple Bid', '2', 1, '2018-11-05-Qts0z', '0770', 1, 'standard catalogued item [ sci tech ]', '2018-12-14 09:56:35', '2018-12-14 09:56:35', 0, 5),
@@ -853,7 +881,13 @@ INSERT INTO `Ilab_master_mr_approver_order` (`Slno_approver`, `Mr_id`, `Slno_mr_
 (12, '2018-12-14-KWgN3', 13, '0770', 'siprah@gmail.com', 'pro@ilab.com', '2018-12-14', 1, 1, '2018-12-14', '1', '1', 'abc2@gmail.com', 'buyer'),
 (13, '2018-12-14-THb9P', 14, '0770', 'siprah@gmail.com', 'pro2@ilab.com', '2018-12-14', 1, 1, '2018-12-14', '1', '1', 'gcg2@gmail.com', 'user464'),
 (14, '2018-12-14-ZlvpW', 19, '0770', 'siprah@gmail.com', 'pro2@ilab.com', '2018-12-14', 1, 1, '2018-12-14', '2', '1', 'abc2@gmail.com', 'buyer'),
-(15, '2018-12-14-DvqNS', 20, '0770', 'siprah@gmail.com', 'pro2@ilab.com', '2018-12-14', 1, 1, '2018-12-14', '1', '1', 'abc2@gmail.com', 'buyer');
+(15, '2018-12-14-DvqNS', 20, '0770', 'siprah@gmail.com', 'pro2@ilab.com', '2018-12-14', 1, 1, '2018-12-14', '1', '1', 'abc2@gmail.com', 'buyer'),
+(16, '2018-11-06-wS2aT', 5, '23456', 'siprah@gmail.com', 'pro@ilab.com', '2018-12-14', 1, 2, '0000-00-00', '3', '2', NULL, NULL),
+(17, '2018-12-14-cEvFd', 27, '0770', 'siprah@gmail.com', 'pro@ilab.com', '2018-12-14', 1, 2, '0000-00-00', '2', '2', NULL, NULL),
+(18, '2018-12-14-WSc7Q', 32, '0770', 'siprah@gmail.com', 'pro@ilab.com', '2018-12-14', 1, 2, '0000-00-00', '1', '1', NULL, NULL),
+(19, '2018-12-14-SW62x', 34, '0770', 'siprah@gmail.com', 'pro@ilab.com', '2018-12-14', 1, 2, '0000-00-00', '1', '1', NULL, NULL),
+(20, '2018-12-14-ROs2j', 36, '0770', 'siprah@gmail.com', 'pro@ilab.com', '2018-12-14', 1, 2, '0000-00-00', '2', '1', NULL, NULL),
+(21, '2018-12-14-9x3aj', 42, '0770', 'siprah@gmail.com', 'pro@ilab.com', '2018-12-14', 1, 2, '0000-00-00', '3', '1', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -942,7 +976,32 @@ INSERT INTO `Ilab_master_mr_file_upload` (`slno_file`, `mr_no_id`, `slno_mr_id`,
 (66, '2018-12-14-zpEh4', 29, '2018-12-14-Screenshot_2018-07-26 Bootstrap Example.png', 'Screenshot_2018-07-26 Bootstrap Example.png', '2018-12-14 08:27:55'),
 (67, '2018-12-14-diEVD', 30, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 08:28:48'),
 (68, '2018-12-14-W7LTQ', 24, '2018-12-14-Screenshot_2018-07-17 Top NGO in India to Support Child Rights Underprivileged Children- CRY.png', 'Screenshot_2018-07-17 Top NGO in India to Support Child Rights Underprivileged Children- CRY.png', '2018-12-14 09:02:17'),
-(69, '2018-11-06-wS2aT', 5, '2018-12-14-Screenshot_2018-07-25 Bootstrap Example.png', 'Screenshot_2018-07-25 Bootstrap Example.png', '2018-12-14 09:02:43');
+(69, '2018-11-06-wS2aT', 5, '2018-12-14-Screenshot_2018-07-25 Bootstrap Example.png', 'Screenshot_2018-07-25 Bootstrap Example.png', '2018-12-14 09:02:43'),
+(70, '2018-12-14-XL8iq', 31, '2018-12-14-Screenshot_2018-07-26 Bootstrap Example.png', 'Screenshot_2018-07-26 Bootstrap Example.png', '2018-12-14 11:05:35'),
+(71, '2018-12-14-XL8iq', 31, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:05:45'),
+(72, '2018-12-14-WSc7Q', 32, '2018-12-14-Screenshot_2018-07-27 Bootstrap Example.png', 'Screenshot_2018-07-27 Bootstrap Example.png', '2018-12-14 11:07:04'),
+(73, '2018-12-14-WSc7Q', 32, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:07:15'),
+(74, '2018-12-14-pvqYj', 33, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:08:19'),
+(75, '2018-12-14-pvqYj', 33, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:08:38'),
+(76, '2018-12-14-SW62x', 34, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:09:27'),
+(77, '2018-12-14-SW62x', 34, '2018-12-14-Screenshot_2018-07-26 Bootstrap Example.png', 'Screenshot_2018-07-26 Bootstrap Example.png', '2018-12-14 11:09:34'),
+(78, '2018-12-14-0A1Up', 35, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:10:24'),
+(79, '2018-12-14-0A1Up', 35, '2018-12-14-Screenshot_2018-07-25 Bootstrap Example.png', 'Screenshot_2018-07-25 Bootstrap Example.png', '2018-12-14 11:10:32'),
+(80, '2018-12-14-ROs2j', 36, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:11:57'),
+(81, '2018-12-14-ROs2j', 36, '2018-12-14-Screenshot_2018-07-26 Bootstrap Example.png', 'Screenshot_2018-07-26 Bootstrap Example.png', '2018-12-14 11:12:05'),
+(82, '2018-12-14-bJ7Wx', 37, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:13:18'),
+(83, '2018-12-14-bJ7Wx', 37, '2018-12-14-Screenshot_2018-07-26 Bootstrap Example.png', 'Screenshot_2018-07-26 Bootstrap Example.png', '2018-12-14 11:13:26'),
+(84, '2018-12-14-sepoa', 38, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:14:02'),
+(85, '2018-12-14-sepoa', 38, '2018-12-14-Screenshot_2018-07-26 Bootstrap Example.png', 'Screenshot_2018-07-26 Bootstrap Example.png', '2018-12-14 11:14:09'),
+(86, '2018-12-14-WpEvF', 39, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:15:27'),
+(87, '2018-12-14-WpEvF', 39, '2018-12-14-Screenshot_2018-07-25 Bootstrap Example.png', 'Screenshot_2018-07-25 Bootstrap Example.png', '2018-12-14 11:15:35'),
+(88, '2018-12-14-ta9XQ', 40, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:16:18'),
+(89, '2018-12-14-ta9XQ', 40, '2018-12-14-Screenshot_2018-07-25 Bootstrap Example.png', 'Screenshot_2018-07-25 Bootstrap Example.png', '2018-12-14 11:16:26'),
+(90, '2018-12-14-ta9XQ', 40, '2018-12-14-Screenshot_2018-07-27 Bootstrap Example.png', 'Screenshot_2018-07-27 Bootstrap Example.png', '2018-12-14 11:16:39'),
+(91, '2018-12-14-9JOuy', 41, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:26:42'),
+(92, '2018-12-14-9JOuy', 41, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:27:00'),
+(93, '2018-12-14-9x3aj', 42, '2018-12-14-Screenshot_2018-07-18 EZ-Robot Inc .jpg', 'Screenshot_2018-07-18 EZ-Robot Inc .jpg', '2018-12-14 11:28:02'),
+(94, '2018-12-14-9x3aj', 42, '2018-12-14-Screenshot_2018-07-26 Bootstrap Example.png', 'Screenshot_2018-07-26 Bootstrap Example.png', '2018-12-14 11:28:17');
 
 -- --------------------------------------------------------
 
@@ -1002,7 +1061,7 @@ INSERT INTO `Ilab_master_mr_job_details` (`slno_mr`, `mr_no`, `approver_id_slno`
 (2, '2018-11-05-zjLgq', 18, 'siprah@gmail.com', 'Approver5', 2, '23456', 2, 'make to order items', 1, 1, 0, 0, 1, '2018-11-05', '18:21:44', '2018-11-05 12:56:42', '2018-11-05', '18:22:27', '2018-11-27', 'sam@ilab.com', 1, '2018-11-05'),
 (3, '2018-11-05-pUgws', 18, 'siprah@gmail.com', 'Approver5', 3, '679034', 3, 'logistics', 1, 1, 0, 0, 1, '2018-11-05', '18:22:54', '2018-11-05 12:56:55', '2018-11-05', '18:24:38', '2018-11-29', 'sam@ilab.com', 1, '2018-11-05'),
 (4, '2018-11-06-5bciu', 18, 'siprah@gmail.com', 'Approver5', 5, '567432', 3, 'logistics', 1, 1, 0, 0, 1, '2018-11-06', '14:38:10', '2018-11-06 09:30:51', '2018-11-06', '14:40:28', '2018-11-27', 'sam@ilab.com', 1, '2018-11-06'),
-(5, '2018-11-06-wS2aT', 18, 'siprah@gmail.com', 'Approver5', 2, '23456', 3, 'logistics', 1, 1, 0, 0, 2, '2018-11-06', '14:42:12', '2018-12-14 09:03:01', '2018-12-14', '14:33:01', '2018-11-19', 'sam@ilab.com', 0, NULL),
+(5, '2018-11-06-wS2aT', 18, 'siprah@gmail.com', 'Approver5', 2, '23456', 3, 'logistics', 1, 1, 0, 0, 2, '2018-11-06', '14:42:12', '2018-12-14 11:40:34', '2018-12-14', '14:33:01', '2018-11-19', 'sam@ilab.com', 1, '2018-12-14'),
 (6, '2018-11-06-OfkqH', 18, 'siprah@gmail.com', 'Approver5', 3, '679034', 3, 'logistics', 1, 1, 0, 0, 1, '2018-11-06', '14:46:42', '2018-11-06 09:29:50', '2018-11-06', '14:48:04', '2018-11-28', 'sam@ilab.com', 1, '2018-11-06'),
 (7, '2018-11-06-VHfBc', 18, 'siprah@gmail.com', 'Approver5', 5, '567432', 2, 'make to order items', 1, 1, 0, 0, 1, '2018-11-06', '14:48:29', '2018-11-06 09:29:20', '2018-11-06', '14:49:15', '2018-11-29', 'sam@ilab.com', 1, '2018-11-06'),
 (8, '2018-11-06-EDNHT', 18, 'siprah@gmail.com', 'Approver5', 6, '189067', 2, 'make to order items', 1, 1, 0, 0, 1, '2018-11-06', '14:50:11', '2018-11-06 09:28:43', '2018-11-06', '14:50:46', '2018-11-26', 'sam@ilab.com', 1, '2018-11-06'),
@@ -1024,10 +1083,22 @@ INSERT INTO `Ilab_master_mr_job_details` (`slno_mr`, `mr_no`, `approver_id_slno`
 (24, '2018-12-14-W7LTQ', 25, 'vch33@yahoo.com', 'user901', 1, '0770', 2, 'make to order items', 2, 1, 0, 0, 2, '2018-12-14', '13:49:06', '2018-12-14 09:02:22', '2018-12-14', '14:32:22', '2018-12-27', 'design2@ilab.com', 0, NULL),
 (25, '2018-12-14-aiAWV', 31, 'ats101@gmail.com', 'user932', 1, '0770', 3, 'logistics', 2, 1, 0, 0, 2, '2018-12-14', '13:50:03', '2018-12-14 08:59:25', '2018-12-14', '14:29:25', '2018-12-27', 'design2@ilab.com', 0, NULL),
 (26, '2018-12-14-MlHRJ', 33, 'tts5@gmaill.com', 'user780', 1, '0770', 3, 'logistics', 2, 1, 0, 0, 2, '2018-12-14', '13:51:39', '2018-12-14 08:59:56', '2018-12-14', '14:29:56', '2018-12-31', 'design2@ilab.com', 0, NULL),
-(27, '2018-12-14-cEvFd', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 2, 'make to order items', 2, 1, 0, 0, 2, '2018-12-14', '13:53:38', '2018-12-14 09:00:11', '2018-12-14', '14:30:11', '2018-12-31', 'design2@ilab.com', 0, NULL),
+(27, '2018-12-14-cEvFd', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 2, 'make to order items', 2, 1, 0, 0, 2, '2018-12-14', '13:53:38', '2018-12-14 11:41:00', '2018-12-14', '14:30:11', '2018-12-31', 'design2@ilab.com', 1, '2018-12-14'),
 (28, '2018-12-14-VNCxF', 25, 'vch33@yahoo.com', 'user901', 1, '0770', 2, 'make to order items', 2, 1, 0, 0, 1, '2018-12-14', '13:54:50', '2018-12-14 08:25:15', '2018-12-14', '13:55:15', '2018-12-27', 'design2@ilab.com', 0, NULL),
 (29, '2018-12-14-zpEh4', 31, 'ats101@gmail.com', 'user932', 1, '0770', 3, 'logistics', 1, 1, 0, 0, 1, '2018-12-14', '13:55:32', '2018-12-14 08:28:26', '2018-12-14', '13:58:26', '2018-12-28', 'design2@ilab.com', 0, NULL),
-(30, '2018-12-14-diEVD', 33, 'tts5@gmaill.com', 'user780', 1, '0770', 3, 'logistics', 2, 1, 0, 0, 1, '2018-12-14', '13:58:41', '2018-12-14 08:31:02', '2018-12-14', '14:01:02', '2018-12-27', 'design2@ilab.com', 0, NULL);
+(30, '2018-12-14-diEVD', 33, 'tts5@gmaill.com', 'user780', 1, '0770', 3, 'logistics', 2, 1, 0, 0, 1, '2018-12-14', '13:58:41', '2018-12-14 08:31:02', '2018-12-14', '14:01:02', '2018-12-27', 'design2@ilab.com', 0, NULL),
+(31, '2018-12-14-XL8iq', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 1, 'standard catalogued item', 2, 1, 0, 0, 1, '2018-12-14', '16:34:48', '2018-12-14 11:06:22', '2018-12-14', '16:36:22', '2018-12-28', 'design2@ilab.com', 0, NULL),
+(32, '2018-12-14-WSc7Q', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 1, 'standard catalogued item', 2, 1, 0, 0, 1, '2018-12-14', '16:36:54', '2018-12-14 11:41:31', '2018-12-14', '16:37:40', '2018-12-11', 'design2@ilab.com', 1, '2018-12-14'),
+(33, '2018-12-14-pvqYj', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 1, 'standard catalogued item', 2, 1, 0, 0, 1, '2018-12-14', '16:38:12', '2018-12-14 11:08:54', '2018-12-14', '16:38:54', '2018-12-03', 'design2@ilab.com', 0, NULL),
+(34, '2018-12-14-SW62x', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 1, 'standard catalogued item', 2, 1, 0, 0, 1, '2018-12-14', '16:39:19', '2018-12-14 11:42:11', '2018-12-14', '16:39:49', '2018-12-05', 'design2@ilab.com', 1, '2018-12-14'),
+(35, '2018-12-14-0A1Up', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 1, 'standard catalogued item', 2, 1, 0, 0, 1, '2018-12-14', '16:40:15', '2018-12-14 11:10:57', '2018-12-14', '16:40:57', '2018-12-04', 'design2@ilab.com', 0, NULL),
+(36, '2018-12-14-ROs2j', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 2, 'make to order items', 2, 1, 0, 0, 1, '2018-12-14', '16:41:50', '2018-12-14 11:42:38', '2018-12-14', '16:42:22', '2018-12-01', 'design2@ilab.com', 1, '2018-12-14'),
+(37, '2018-12-14-bJ7Wx', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 2, 'make to order items', 2, 1, 0, 0, 1, '2018-12-14', '16:43:12', '2018-12-14 11:13:39', '2018-12-14', '16:43:39', '2018-12-12', 'design2@ilab.com', 0, NULL),
+(38, '2018-12-14-sepoa', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 2, 'make to order items', 2, 1, 0, 0, 1, '2018-12-14', '16:43:56', '2018-12-14 11:14:23', '2018-12-14', '16:44:23', '2018-12-07', 'design2@ilab.com', 0, NULL),
+(39, '2018-12-14-WpEvF', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 2, 'make to order items', 2, 1, 0, 0, 1, '2018-12-14', '16:45:19', '2018-12-14 11:15:50', '2018-12-14', '16:45:50', '2018-12-18', 'design2@ilab.com', 0, NULL),
+(40, '2018-12-14-ta9XQ', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 2, 'make to order items', 2, 1, 0, 0, 1, '2018-12-14', '16:46:11', '2018-12-14 11:16:55', '2018-12-14', '16:46:55', '2018-12-17', 'design2@ilab.com', 0, NULL),
+(41, '2018-12-14-9JOuy', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 3, 'logistics', 2, 1, 0, 0, 1, '2018-12-14', '16:56:11', '2018-12-14 11:27:35', '2018-12-14', '16:57:35', '2018-12-12', 'design2@ilab.com', 0, NULL),
+(42, '2018-12-14-9x3aj', 18, 'siprah@gmail.com', 'Approver5', 1, '0770', 3, 'logistics', 2, 1, 0, 0, 1, '2018-12-14', '16:57:53', '2018-12-14 11:47:30', '2018-12-14', '16:59:09', '2018-12-17', 'design2@ilab.com', 1, '2018-12-14');
 
 -- --------------------------------------------------------
 
@@ -1065,7 +1136,9 @@ INSERT INTO `Ilab_master_mr_location` (`slno_loca_mr`, `mr_id_location`, `mr_sln
 (13, '2018-12-14-aiAWV', 25, 1, 3, 2, '2018-12-14 08:59:25'),
 (14, '2018-12-14-MlHRJ', 26, 1, 3, 2, '2018-12-14 08:59:56'),
 (15, '2018-12-14-vtbnh', 22, 2, 5, 2, '2018-12-14 09:01:21'),
-(16, '2018-11-06-wS2aT', 5, 3, 5, 2, '2018-12-14 09:03:01');
+(16, '2018-11-06-wS2aT', 5, 3, 5, 2, '2018-12-14 09:03:01'),
+(17, '2018-12-14-9JOuy', 41, 1, 5, 1, '2018-12-14 11:27:35'),
+(18, '2018-12-14-9x3aj', 42, 2, 5, 1, '2018-12-14 11:29:09');
 
 -- --------------------------------------------------------
 
@@ -1163,7 +1236,43 @@ INSERT INTO `Ilab_master_mr_material_item` (`slno_item_mr`, `mr_no_item`, `slno_
 (67, '2018-12-14-KwuDz', 18, 8, 'material item 19', '1', 'nos', 'mat0018', 2, '2018-12-14 09:01:08', NULL, NULL, NULL),
 (68, '2018-12-14-W7LTQ', 24, 5, 'Progressing cavity pump.', '1', 'Capacity', 'Mat003', 2, '2018-12-14 09:02:22', NULL, NULL, NULL),
 (69, '2018-12-14-W7LTQ', 24, 3, 'Pump', '1', 'Horse Power', 'Mat001', 2, '2018-12-14 09:02:22', NULL, NULL, NULL),
-(70, '2018-12-14-W7LTQ', 24, 4, 'Rotary lobe pump', '1', 'Max Pump volume', 'Mat002', 2, '2018-12-14 09:02:22', NULL, NULL, NULL);
+(70, '2018-12-14-W7LTQ', 24, 4, 'Rotary lobe pump', '1', 'Max Pump volume', 'Mat002', 2, '2018-12-14 09:02:22', NULL, NULL, NULL),
+(71, '2018-12-14-XL8iq', 31, 2, 'material item 1', '1', 'nos', 'mat001', 1, '2018-12-14 11:06:22', NULL, NULL, NULL),
+(72, '2018-12-14-XL8iq', 31, 7, 'material item 17', '1', 'nos', 'mat0087', 1, '2018-12-14 11:06:22', NULL, NULL, NULL),
+(73, '2018-12-14-XL8iq', 31, 9, 'material item 22', '1', 'nos', 'mat00910', 1, '2018-12-14 11:06:22', NULL, NULL, NULL),
+(74, '2018-12-14-XL8iq', 31, 8, 'material item 19', '1', 'nos', 'mat0018', 1, '2018-12-14 11:06:22', NULL, NULL, NULL),
+(75, '2018-12-14-WSc7Q', 32, 7, 'material item 17', '1', 'nos', 'mat0087', 1, '2018-12-14 11:07:40', NULL, NULL, NULL),
+(76, '2018-12-14-WSc7Q', 32, 8, 'material item 19', '1', 'nos', 'mat0018', 1, '2018-12-14 11:07:40', NULL, NULL, NULL),
+(77, '2018-12-14-WSc7Q', 32, 9, 'material item 22', '1', 'nos', 'mat00910', 1, '2018-12-14 11:07:40', NULL, NULL, NULL),
+(78, '2018-12-14-WSc7Q', 32, 6, 'material10', '1', '21', '10', 1, '2018-12-14 11:07:40', NULL, NULL, NULL),
+(79, '2018-12-14-pvqYj', 33, 2, 'material item 1', '1', 'nos', 'mat001', 1, '2018-12-14 11:08:54', NULL, NULL, NULL),
+(80, '2018-12-14-pvqYj', 33, 7, 'material item 17', '1', 'nos', 'mat0087', 1, '2018-12-14 11:08:54', NULL, NULL, NULL),
+(81, '2018-12-14-pvqYj', 33, 9, 'material item 22', '1', 'nos', 'mat00910', 1, '2018-12-14 11:08:54', NULL, NULL, NULL),
+(82, '2018-12-14-pvqYj', 33, 8, 'material item 19', '1', 'nos', 'mat0018', 1, '2018-12-14 11:08:54', NULL, NULL, NULL),
+(83, '2018-12-14-SW62x', 34, 7, 'material item 17', '1', 'nos', 'mat0087', 1, '2018-12-14 11:09:48', NULL, NULL, NULL),
+(84, '2018-12-14-SW62x', 34, 2, 'material item 1', '1', 'nos', 'mat001', 1, '2018-12-14 11:09:49', NULL, NULL, NULL),
+(85, '2018-12-14-SW62x', 34, 9, 'material item 22', '1', 'nos', 'mat00910', 1, '2018-12-14 11:09:49', NULL, NULL, NULL),
+(86, '2018-12-14-SW62x', 34, 8, 'material item 19', '1', 'nos', 'mat0018', 1, '2018-12-14 11:09:49', NULL, NULL, NULL),
+(87, '2018-12-14-0A1Up', 35, 2, 'material item 1', '1', 'nos', 'mat001', 1, '2018-12-14 11:10:56', NULL, NULL, NULL),
+(88, '2018-12-14-0A1Up', 35, 7, 'material item 17', '1', 'nos', 'mat0087', 1, '2018-12-14 11:10:57', NULL, NULL, NULL),
+(89, '2018-12-14-0A1Up', 35, 8, 'material item 19', '1', 'nos', 'mat0018', 1, '2018-12-14 11:10:57', NULL, NULL, NULL),
+(90, '2018-12-14-0A1Up', 35, 9, 'material item 22', '1', 'nos', 'mat00910', 1, '2018-12-14 11:10:57', NULL, NULL, NULL),
+(91, '2018-12-14-0A1Up', 35, 6, 'material10', '1', '21', '10', 1, '2018-12-14 11:10:57', NULL, NULL, NULL),
+(92, '2018-12-14-ROs2j', 36, 5, 'Progressing cavity pump.', '1', 'Capacity', 'Mat003', 1, '2018-12-14 11:12:22', NULL, NULL, NULL),
+(93, '2018-12-14-ROs2j', 36, 3, 'Pump', '1', 'Horse Power', 'Mat001', 1, '2018-12-14 11:12:22', NULL, NULL, NULL),
+(94, '2018-12-14-ROs2j', 36, 4, 'Rotary lobe pump', '1', 'Max Pump volume', 'Mat002', 1, '2018-12-14 11:12:22', NULL, NULL, NULL),
+(95, '2018-12-14-bJ7Wx', 37, 5, 'Progressing cavity pump.', '1', 'Capacity', 'Mat003', 1, '2018-12-14 11:13:38', NULL, NULL, NULL),
+(96, '2018-12-14-bJ7Wx', 37, 3, 'Pump', '1', 'Horse Power', 'Mat001', 1, '2018-12-14 11:13:39', NULL, NULL, NULL),
+(97, '2018-12-14-bJ7Wx', 37, 4, 'Rotary lobe pump', '1', 'Max Pump volume', 'Mat002', 1, '2018-12-14 11:13:39', NULL, NULL, NULL),
+(98, '2018-12-14-sepoa', 38, 5, 'Progressing cavity pump.', '1', 'Capacity', 'Mat003', 1, '2018-12-14 11:14:23', NULL, NULL, NULL),
+(99, '2018-12-14-sepoa', 38, 3, 'Pump', '1', 'Horse Power', 'Mat001', 1, '2018-12-14 11:14:23', NULL, NULL, NULL),
+(100, '2018-12-14-sepoa', 38, 4, 'Rotary lobe pump', '1', 'Max Pump volume', 'Mat002', 1, '2018-12-14 11:14:23', NULL, NULL, NULL),
+(101, '2018-12-14-WpEvF', 39, 5, 'Progressing cavity pump.', '1', 'Capacity', 'Mat003', 1, '2018-12-14 11:15:50', NULL, NULL, NULL),
+(102, '2018-12-14-WpEvF', 39, 3, 'Pump', '1', 'Horse Power', 'Mat001', 1, '2018-12-14 11:15:50', NULL, NULL, NULL),
+(103, '2018-12-14-WpEvF', 39, 4, 'Rotary lobe pump', '1', 'Max Pump volume', 'Mat002', 1, '2018-12-14 11:15:50', NULL, NULL, NULL),
+(104, '2018-12-14-ta9XQ', 40, 5, 'Progressing cavity pump.', '1', 'Capacity', 'Mat003', 1, '2018-12-14 11:16:55', NULL, NULL, NULL),
+(105, '2018-12-14-ta9XQ', 40, 3, 'Pump', '1', 'Horse Power', 'Mat001', 1, '2018-12-14 11:16:55', NULL, NULL, NULL),
+(106, '2018-12-14-ta9XQ', 40, 4, 'Rotary lobe pump', '1', 'Max Pump volume', 'Mat002', 1, '2018-12-14 11:16:55', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1257,7 +1366,49 @@ INSERT INTO `Ilab_master_mr_technical_parameter_info` (`slno_para`, `mr_no_tech`
 (67, '2018-12-14-KwuDz', 18, 8, 'ABCD 3333', 'This clearly shows that we are not working directly with the source array - otherwise the loop would continue forever, since we are constantly pushing items onto the array during the loop. But just to be sure this is the case:', 67, 2, '2018-12-14 09:01:08'),
 (68, '2018-12-14-W7LTQ', 24, 0, 'No Parameter Found', 'No details Found', 68, 2, '2018-12-14 09:02:22'),
 (69, '2018-12-14-W7LTQ', 24, 3, 'tec10', 'xxx', 69, 2, '2018-12-14 09:02:22'),
-(70, '2018-12-14-W7LTQ', 24, 1, '316Ls', '316L stainless steel head and casing', 70, 2, '2018-12-14 09:02:22');
+(70, '2018-12-14-W7LTQ', 24, 1, '316Ls', '316L stainless steel head and casing', 70, 2, '2018-12-14 09:02:22'),
+(71, '2018-12-14-XL8iq', 31, 0, 'No Parameter Found', 'No details Found', 71, 1, '2018-12-14 11:06:22'),
+(72, '2018-12-14-XL8iq', 31, 6, 'technical 1', 'et me prefix this by saying that I know what foreach is, does and how to use it. This question concerns how it works under the bonnet, and I don\'t want any answers along the lines of \"this is how you loop an array with foreach\".', 72, 1, '2018-12-14 11:06:22'),
+(73, '2018-12-14-XL8iq', 31, 0, 'No Parameter Found', 'No details Found', 73, 1, '2018-12-14 11:06:22'),
+(74, '2018-12-14-XL8iq', 31, 8, 'ABCD 3333', 'This clearly shows that we are not working directly with the source array - otherwise the loop would continue forever, since we are constantly pushing items onto the array during the loop. But just to be sure this is the case:', 74, 1, '2018-12-14 11:06:22'),
+(75, '2018-12-14-WSc7Q', 32, 6, 'technical 1', 'et me prefix this by saying that I know what foreach is, does and how to use it. This question concerns how it works under the bonnet, and I don\'t want any answers along the lines of \"this is how you loop an array with foreach\".', 75, 1, '2018-12-14 11:07:40'),
+(76, '2018-12-14-WSc7Q', 32, 7, 'technical 1667', 'For a long time I assumed that foreach worked with the array itself. Then I found many references to the fact that it works with a copy of the array, and I have since assumed this to be the end of the story. But I recently got i', 75, 1, '2018-12-14 11:07:40'),
+(77, '2018-12-14-WSc7Q', 32, 8, 'ABCD 3333', 'This clearly shows that we are not working directly with the source array - otherwise the loop would continue forever, since we are constantly pushing items onto the array during the loop. But just to be sure this is the case:', 76, 1, '2018-12-14 11:07:40'),
+(78, '2018-12-14-WSc7Q', 32, 0, 'No Parameter Found', 'No details Found', 77, 1, '2018-12-14 11:07:40'),
+(79, '2018-12-14-WSc7Q', 32, 2, 'tec10', 'xxx', 78, 1, '2018-12-14 11:07:40'),
+(80, '2018-12-14-WSc7Q', 32, 5, 'BNTRY', 'bnmiyutre', 78, 1, '2018-12-14 11:07:40'),
+(81, '2018-12-14-pvqYj', 33, 0, 'No Parameter Found', 'No details Found', 79, 1, '2018-12-14 11:08:54'),
+(82, '2018-12-14-pvqYj', 33, 7, 'technical 1667', 'For a long time I assumed that foreach worked with the array itself. Then I found many references to the fact that it works with a copy of the array, and I have since assumed this to be the end of the story. But I recently got i', 80, 1, '2018-12-14 11:08:54'),
+(83, '2018-12-14-pvqYj', 33, 0, 'No Parameter Found', 'No details Found', 81, 1, '2018-12-14 11:08:54'),
+(84, '2018-12-14-pvqYj', 33, 8, 'ABCD 3333', 'This clearly shows that we are not working directly with the source array - otherwise the loop would continue forever, since we are constantly pushing items onto the array during the loop. But just to be sure this is the case:', 82, 1, '2018-12-14 11:08:54'),
+(85, '2018-12-14-SW62x', 34, 6, 'technical 1', 'et me prefix this by saying that I know what foreach is, does and how to use it. This question concerns how it works under the bonnet, and I don\'t want any answers along the lines of \"this is how you loop an array with foreach\".', 83, 1, '2018-12-14 11:09:49'),
+(86, '2018-12-14-SW62x', 34, 7, 'technical 1667', 'For a long time I assumed that foreach worked with the array itself. Then I found many references to the fact that it works with a copy of the array, and I have since assumed this to be the end of the story. But I recently got i', 83, 1, '2018-12-14 11:09:49'),
+(87, '2018-12-14-SW62x', 34, 0, 'No Parameter Found', 'No details Found', 84, 1, '2018-12-14 11:09:49'),
+(88, '2018-12-14-SW62x', 34, 0, 'No Parameter Found', 'No details Found', 85, 1, '2018-12-14 11:09:49'),
+(89, '2018-12-14-SW62x', 34, 8, 'ABCD 3333', 'This clearly shows that we are not working directly with the source array - otherwise the loop would continue forever, since we are constantly pushing items onto the array during the loop. But just to be sure this is the case:', 86, 1, '2018-12-14 11:09:49'),
+(90, '2018-12-14-0A1Up', 35, 0, 'No Parameter Found', 'No details Found', 87, 1, '2018-12-14 11:10:56'),
+(91, '2018-12-14-0A1Up', 35, 6, 'technical 1', 'et me prefix this by saying that I know what foreach is, does and how to use it. This question concerns how it works under the bonnet, and I don\'t want any answers along the lines of \"this is how you loop an array with foreach\".', 88, 1, '2018-12-14 11:10:57'),
+(92, '2018-12-14-0A1Up', 35, 7, 'technical 1667', 'For a long time I assumed that foreach worked with the array itself. Then I found many references to the fact that it works with a copy of the array, and I have since assumed this to be the end of the story. But I recently got i', 88, 1, '2018-12-14 11:10:57'),
+(93, '2018-12-14-0A1Up', 35, 8, 'ABCD 3333', 'This clearly shows that we are not working directly with the source array - otherwise the loop would continue forever, since we are constantly pushing items onto the array during the loop. But just to be sure this is the case:', 89, 1, '2018-12-14 11:10:57'),
+(94, '2018-12-14-0A1Up', 35, 0, 'No Parameter Found', 'No details Found', 90, 1, '2018-12-14 11:10:57'),
+(95, '2018-12-14-0A1Up', 35, 2, 'tec10', 'xxx', 91, 1, '2018-12-14 11:10:57'),
+(96, '2018-12-14-0A1Up', 35, 4, '67tyu', 'cvbnmxrt', 91, 1, '2018-12-14 11:10:57'),
+(97, '2018-12-14-0A1Up', 35, 5, 'BNTRY', 'bnmiyutre', 91, 1, '2018-12-14 11:10:57'),
+(98, '2018-12-14-ROs2j', 36, 0, 'No Parameter Found', 'No details Found', 92, 1, '2018-12-14 11:12:22'),
+(99, '2018-12-14-ROs2j', 36, 3, 'tec10', 'xxx', 93, 1, '2018-12-14 11:12:22'),
+(100, '2018-12-14-ROs2j', 36, 1, '316Ls', '316L stainless steel head and casing', 94, 1, '2018-12-14 11:12:22'),
+(101, '2018-12-14-bJ7Wx', 37, 0, 'No Parameter Found', 'No details Found', 95, 1, '2018-12-14 11:13:38'),
+(102, '2018-12-14-bJ7Wx', 37, 3, 'tec10', 'xxx', 96, 1, '2018-12-14 11:13:39'),
+(103, '2018-12-14-bJ7Wx', 37, 1, '316Ls', '316L stainless steel head and casing', 97, 1, '2018-12-14 11:13:39'),
+(104, '2018-12-14-sepoa', 38, 0, 'No Parameter Found', 'No details Found', 98, 1, '2018-12-14 11:14:23'),
+(105, '2018-12-14-sepoa', 38, 3, 'tec10', 'xxx', 99, 1, '2018-12-14 11:14:23'),
+(106, '2018-12-14-sepoa', 38, 1, '316Ls', '316L stainless steel head and casing', 100, 1, '2018-12-14 11:14:23'),
+(107, '2018-12-14-WpEvF', 39, 0, 'No Parameter Found', 'No details Found', 101, 1, '2018-12-14 11:15:50'),
+(108, '2018-12-14-WpEvF', 39, 3, 'tec10', 'xxx', 102, 1, '2018-12-14 11:15:50'),
+(109, '2018-12-14-WpEvF', 39, 1, '316Ls', '316L stainless steel head and casing', 103, 1, '2018-12-14 11:15:50'),
+(110, '2018-12-14-ta9XQ', 40, 0, 'No Parameter Found', 'No details Found', 104, 1, '2018-12-14 11:16:55'),
+(111, '2018-12-14-ta9XQ', 40, 3, 'tec10', 'xxx', 105, 1, '2018-12-14 11:16:55'),
+(112, '2018-12-14-ta9XQ', 40, 1, '316Ls', '316L stainless steel head and casing', 106, 1, '2018-12-14 11:16:55');
 
 -- --------------------------------------------------------
 
@@ -1357,7 +1508,13 @@ INSERT INTO `Ilab_master_mr_vehicle_mr_detail` (`slno_mr_logistic`, `mr_no_vehic
 (65, '2018-11-06-wS2aT', 5, 4, 'vehicle12', '60000ponds', 'bhu', 2, 'irc', 4, ' official', '2018-12-14 09:03:01', 2, NULL, NULL, '10', NULL),
 (66, '2018-11-06-wS2aT', 5, 5, 'vehicle12', '8000ponds', 'sailahree vihar', 3, 'nayapali', 5, ' test', '2018-12-14 09:03:01', 2, NULL, NULL, '5', NULL),
 (67, '2018-11-06-wS2aT', 5, 3, 'vehicle12', '60000ponds', 'bhu', 2, 'sailahree vihar', 3, ' test', '2018-12-14 09:03:01', 2, NULL, NULL, '7', NULL),
-(68, '2018-11-06-wS2aT', 5, 6, 'vehicle10', '5ponds', 'bhu', 2, 'irc', 4, ' official', '2018-12-14 09:03:01', 2, NULL, NULL, '5', NULL);
+(68, '2018-11-06-wS2aT', 5, 6, 'vehicle10', '5ponds', 'bhu', 2, 'irc', 4, ' official', '2018-12-14 09:03:01', 2, NULL, NULL, '5', NULL),
+(69, '2018-12-14-9JOuy', 41, 1, '504ponds', '5ponds', 'bhu1', 1, 'sailahree vihar', 3, ' ofc', '2018-12-14 11:27:34', 1, NULL, 'design2@ilab.com', '1', NULL),
+(70, '2018-12-14-9JOuy', 41, 2, 'vehicle10', '8000ponds', 'bhu', 2, 'irc', 4, ' work', '2018-12-14 11:27:34', 1, NULL, 'design2@ilab.com', '1', NULL),
+(71, '2018-12-14-9x3aj', 42, 1, '504ponds', '5ponds', 'bhu1', 1, 'sailahree vihar', 3, ' ofc', '2018-12-14 11:29:08', 1, NULL, 'design2@ilab.com', '1', NULL),
+(72, '2018-12-14-9x3aj', 42, 2, 'vehicle10', '8000ponds', 'bhu', 2, 'irc', 4, ' work', '2018-12-14 11:29:08', 1, NULL, 'design2@ilab.com', '1', NULL),
+(73, '2018-12-14-9x3aj', 42, 3, 'vehicle12', '60000ponds', 'bhu', 2, 'sailahree vihar', 3, ' ofc', '2018-12-14 11:29:08', 1, NULL, 'design2@ilab.com', '1', NULL),
+(74, '2018-12-14-9x3aj', 42, 4, 'vehicle12', '60000ponds', 'irc', 4, 'bhu', 2, ' work', '2018-12-14 11:29:08', 1, NULL, 'design2@ilab.com', '1', NULL);
 
 -- --------------------------------------------------------
 
@@ -1437,7 +1594,13 @@ INSERT INTO `Ilab_master_procurement_MR` (`Slno_procurement`, `Mr_id`, `Slno_MR_
 (13, '2018-12-14-THb9P', 14, '0770', 18, 'pro2@ilab.com', 'procurement user 2', 'user464', 'gcg2@gmail.com', '2018-12-14', 1, 1, '1', 1, 2, '2018-12-14'),
 (14, '2018-12-14-ZlvpW', 19, '0770', 18, 'pro2@ilab.com', 'procurement user 2', 'buyer', 'abc2@gmail.com', '2018-12-14', 1, 1, '2', 1, 2, '2018-12-14'),
 (15, '2018-12-14-DvqNS', 20, '0770', 18, 'pro2@ilab.com', 'procurement user 2', 'buyer', 'abc2@gmail.com', '2018-12-14', 1, 1, '1', 1, 2, '2018-12-14'),
-(16, '2018-12-14-DvqNS', 20, '0770', 18, 'pro2@ilab.com', 'procurement user 2', 'buyer', 'abc2@gmail.com', '2018-12-14', 1, 1, '1', 1, 2, '2018-12-14');
+(16, '2018-12-14-DvqNS', 20, '0770', 18, 'pro2@ilab.com', 'procurement user 2', 'buyer', 'abc2@gmail.com', '2018-12-14', 1, 1, '1', 1, 2, '2018-12-14'),
+(17, '2018-11-06-wS2aT', 5, '23456', 18, 'pro@ilab.com', 'procurement user 1', NULL, NULL, '2018-12-14', 1, 2, '3', 2, 1, NULL),
+(18, '2018-12-14-cEvFd', 27, '0770', 18, 'pro@ilab.com', 'procurement user 1', NULL, NULL, '2018-12-14', 1, 2, '2', 2, 2, NULL),
+(19, '2018-12-14-WSc7Q', 32, '0770', 18, 'pro@ilab.com', 'procurement user 1', NULL, NULL, '2018-12-14', 1, 2, '1', 1, 2, NULL),
+(20, '2018-12-14-SW62x', 34, '0770', 18, 'pro@ilab.com', 'procurement user 1', NULL, NULL, '2018-12-14', 1, 2, '1', 1, 2, NULL),
+(21, '2018-12-14-ROs2j', 36, '0770', 18, 'pro@ilab.com', 'procurement user 1', NULL, NULL, '2018-12-14', 1, 2, '2', 1, 2, NULL),
+(22, '2018-12-14-9x3aj', 42, '0770', 18, 'pro@ilab.com', 'procurement user 1', NULL, NULL, '2018-12-14', 1, 2, '3', 1, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -2014,7 +2177,26 @@ INSERT INTO `Ilab_master_session_history` (`slno_history`, `user_id`, `username`
 (512, 'buy1@ilab.com', 'buyer 1', 7, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '14:46:25', 1, NULL, NULL, 'gj3nsjpjs041got655jsvpskp9t1edj7'),
 (513, 'abc2@gmail.com', 'buyer', 7, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-14', '14:47:42', 2, '14:49:22', '2018-12-14', 'r6qmchtt8cca6i2dcbvjn8uet0b3hnsg'),
 (514, 'gcg2@gmail.com', 'user464', 7, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-14', '14:49:34', 1, NULL, NULL, 'hmvgccee4clbmeiv8mfg91gotrndnqfr'),
-(515, 'buy1@ilab.com', 'buyer 1', 7, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-14', '15:14:01', 1, NULL, NULL, 'ktsueu5u7abd96eoo2kg7efaie6q1hn6');
+(515, 'buy1@ilab.com', 'buyer 1', 7, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-14', '15:14:01', 1, NULL, NULL, 'ktsueu5u7abd96eoo2kg7efaie6q1hn6'),
+(516, 'design2@ilab.com', 'design user 2', 2, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '16:10:21', 2, '16:11:17', '2018-12-14', '4jc070oip4gvemo90r63mn50gje05mnf'),
+(517, 'design2@ilab.com', 'design user 2', 2, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '16:34:08', 1, NULL, NULL, 'sgdfm3fsvrbmdlhj33hggg6hgvg9r1ki'),
+(518, 'design2@ilab.com', 'design user 2', 2, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '16:54:40', 1, NULL, NULL, 'sipo5jmhpeohmvgpeqs4i40tnqkj3dfh'),
+(519, 'buy1@ilab.com', 'buyer 1', 7, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '17:01:07', 1, NULL, NULL, 'knv6p61hmgobt9h2dul0hcnb782nmfpt'),
+(520, 'buy1@ilab.com', 'buyer 1', 7, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '17:02:41', 1, NULL, NULL, 'jfavr15lpmuu79g3jj54kci3f9eqpgk8'),
+(521, 'buy1@ilab.com', 'buyer 1', 7, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '17:03:54', 1, NULL, NULL, 'r45mbp3dnl8tr5tc5ab6tr9cjq256gbp'),
+(522, 'buy1@ilab.com', 'buyer 1', 7, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '17:05:04', 1, NULL, NULL, '9ptklgs5qgt55sa576hfk06olr8r045f'),
+(523, 'buy1@ilab.com', 'buyer 1', 7, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '17:05:45', 2, '17:07:58', '2018-12-14', '96ijicd2j1epd2hgfhkeaa7ptekb4cnh'),
+(524, 'pro@ilab.com', 'procurement user 1', 4, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '17:08:29', 2, '17:09:01', '2018-12-14', '3hiu30jtfktg863ag3t7rok3tchcge14'),
+(525, 'siprah@gmail.com', 'Approver5', 8, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '17:09:45', 1, NULL, NULL, '32edtjf77v0iclollp107e18edld6fqs'),
+(526, 'abc@ilab.com', 'Technical User', 9, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '17:20:53', 1, NULL, NULL, 'mlfh3cjqeq52gfbv88qq5b92te8rppta'),
+(527, 'abc@ilab.com', 'Technical User', 9, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '17:23:09', 2, '17:23:54', '2018-12-14', 'v3hsp62c57cu0upjcmv5vf6f3smkhjgl'),
+(528, 'abc@ilab.com', 'Technical User', 9, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-15', '13:06:23', 1, NULL, NULL, '7400vht5q9cj7ta35rgrshgr8mat72js'),
+(529, 'abc@ilab.com', 'Technical User', 9, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-15', '15:48:19', 1, NULL, NULL, 'h1thob5tq6llnpd5ldu452730muv4oe6'),
+(530, 'abc@ilab.com', 'Technical User', 9, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-17', '11:17:07', 1, NULL, NULL, '0d19elbnjct0b43lpfn5k1pa2k935c18'),
+(531, 'buy1@ilab.com', 'buyer 1', 7, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-17', '12:08:59', 1, NULL, NULL, '7918h2cc1g1vupmkg0itd1c4b74p9je8'),
+(532, 'buy2@ilab.com', 'buyer 2', 7, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-17', '12:09:51', 2, '12:10:19', '2018-12-17', '2c5nkfvqn9njnu6r1npmpaa0te1ps9fl'),
+(533, 'abc2@gmail.com', 'buyer', 7, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-17', '12:10:59', 2, '12:11:47', '2018-12-17', '49vbgesds7espamcp5jbf52bb9h3gblq'),
+(534, 'abc@ilab.com', 'Technical User', 9, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-17', '14:30:49', 2, '14:31:48', '2018-12-17', 'bbvgijgebgebr6m7rcgas0csp917ub3p');
 
 -- --------------------------------------------------------
 
@@ -2084,7 +2266,14 @@ INSERT INTO `Ilab_master_session_history_vendors` (`slno_history`, `user_id`, `u
 (40, 'ven121@gmail.com', 'INFOLEX METAMORF ', 4, '{\"browser\":\"Firefox\",\"browserVersion\":\"63.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:63.0) Gecko\\/20100101 Firefox\\/63.0\"}', '192.168.0.4', '2018-12-10', '20:13:49', 1, NULL, NULL, 'v76vsopdfkvo4rdm5e1lbqpl90tkifv6'),
 (41, 'ven121@gmail.com', 'INFOLEX METAMORF ', 4, '{\"browser\":\"Firefox\",\"browserVersion\":\"63.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:63.0) Gecko\\/20100101 Firefox\\/63.0\"}', '192.168.0.4', '2018-12-11', '12:06:56', 1, NULL, NULL, 'od36muf3sdjsj8bt8fc0upfjdmaja9jl'),
 (42, 'ven121@gmail.com', 'INFOLEX METAMORF ', 4, '{\"browser\":\"Firefox\",\"browserVersion\":\"63.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:63.0) Gecko\\/20100101 Firefox\\/63.0\"}', '192.168.0.4', '2018-12-11', '13:19:55', 1, NULL, NULL, 'gpe3rfblmovm671mm7n71jb9j8b3g5b6'),
-(43, 'ven121@gmail.com', 'INFOLEX METAMORF ', 4, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-13', '20:16:45', 2, '20:19:41', '2018-12-13', 'u668rljgv87q06iht56dee8ipfrm0etn');
+(43, 'ven121@gmail.com', 'INFOLEX METAMORF ', 4, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-13', '20:16:45', 2, '20:19:41', '2018-12-13', 'u668rljgv87q06iht56dee8ipfrm0etn'),
+(44, 'ven121@gmail.com', 'INFOLEX METAMORF ', 4, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '16:11:45', 1, NULL, NULL, 'kiarvcoaafcdorfcf3fn2ivbqhter2ed'),
+(45, 'ven121@gmail.com', 'INFOLEX METAMORF ', 4, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '17:25:26', 1, NULL, NULL, 'loi2q9in3e1r3q0khcupo4uesonf9fa5'),
+(46, 'ven121@gmail.com', 'INFOLEX METAMORF ', 4, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '18:28:23', 1, NULL, NULL, 'docg2l7hvjmi7g859umekpsgdveulqi3'),
+(47, 'ven121@gmail.com', 'INFOLEX METAMORF ', 4, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-14', '19:17:18', 1, NULL, NULL, 'ga5f635pl07nhhonkt2fu888om9gu5hg'),
+(48, 'ven121@gmail.com', 'INFOLEX METAMORF ', 4, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-15', '17:28:55', 1, NULL, NULL, 'pv5aj2igpclk9klplbq5r79rhs2t0ffn'),
+(49, 'ven121@gmail.com', 'INFOLEX METAMORF ', 4, '{\"browser\":\"Chrome\",\"browserVersion\":\"68.0.3440.106\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/68.0.3440.106 Safari\\/537.36\"}', '192.168.0.5', '2018-12-17', '10:59:20', 1, NULL, NULL, 'skin0g1li54ifd14quid5q38dum86fij'),
+(50, 'ven121@gmail.com', 'INFOLEX METAMORF ', 4, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2018-12-17', '15:12:58', 1, NULL, NULL, 'g8o5od8d8o2nr5e5evqsn01gurkphr0n');
 
 -- --------------------------------------------------------
 
@@ -2117,6 +2306,32 @@ INSERT INTO `Ilab_master_technical_detail` (`Slno_technical`, `technical_name`, 
 (6, 'technical 1', 'et me prefix this by saying that I know what foreach is, does and how to use it. This question concerns how it works under the bonnet, and I don\'t want any answers along the lines of \"this is how you loop an array with foreach\".', 'techid00155', '1', 7, 1, '2018-10-15', '17:42:53'),
 (7, 'technical 1667', 'For a long time I assumed that foreach worked with the array itself. Then I found many references to the fact that it works with a copy of the array, and I have since assumed this to be the end of the story. But I recently got i', 'techid001sssd', '1', 7, 1, '2018-10-15', '17:43:28'),
 (8, 'ABCD 3333', 'This clearly shows that we are not working directly with the source array - otherwise the loop would continue forever, since we are constantly pushing items onto the array during the loop. But just to be sure this is the case:', 'techid0013343434', '1', 8, 1, '2018-10-15', '17:44:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Ilab_master_tech_bid_comment`
+--
+
+CREATE TABLE `Ilab_master_tech_bid_comment` (
+  `Slno` int(11) NOT NULL,
+  `master_bid` varchar(255) NOT NULL,
+  `vendor_bid_id` varchar(255) NOT NULL,
+  `comment` text,
+  `status` varchar(255) NOT NULL COMMENT 'p-positive n-negative',
+  `active_status` int(11) NOT NULL DEFAULT '0',
+  `token_no` varchar(255) NOT NULL,
+  `token_id` varchar(255) NOT NULL COMMENT 'Serial id to tokken',
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Ilab_master_tech_bid_comment`
+--
+
+INSERT INTO `Ilab_master_tech_bid_comment` (`Slno`, `master_bid`, `vendor_bid_id`, `comment`, `status`, `active_status`, `token_no`, `token_id`, `date`) VALUES
+(1, '1', '2', '', 'P', 1, 'RCjVxtKL', '7', '2018-12-17 08:53:15'),
+(2, '2', '8', 'Please attach new all data send again', 'N', 3, 'OSA8BuvU', '8', '2018-12-17 08:59:28');
 
 -- --------------------------------------------------------
 
@@ -2335,25 +2550,27 @@ CREATE TABLE `Ilab_master_vendor_tech_token_bid` (
   `vendor_id` varchar(255) NOT NULL,
   `submitted_status` int(11) NOT NULL DEFAULT '0' COMMENT '0-for not submitted 1-submitted 5-update submission',
   `date_creation` date NOT NULL,
-  `date_updation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date_updation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `comment` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Ilab_master_vendor_tech_token_bid`
 --
 
-INSERT INTO `Ilab_master_vendor_tech_token_bid` (`Slno_token`, `token_no`, `bid_id_vendor`, `master_bid_id`, `vendor_id`, `submitted_status`, `date_creation`, `date_updation`) VALUES
-(1, 'Jlj41WUg', '2', 1, 'ven121@gmail.com', 5, '2018-12-10', '2018-12-11 07:04:56'),
-(2, 'Rz4Lmqfs', '2', 1, 'ven121@gmail.com', 0, '2018-12-10', '2018-12-10 09:40:53'),
-(3, 'SpiqoYnZ', '2', 1, 'ven121@gmail.com', 0, '2018-12-10', '2018-12-10 09:44:50'),
-(4, 'dBuoZ7UO', '2', 1, 'ven121@gmail.com', 5, '2018-12-10', '2018-12-13 14:48:17'),
-(5, 'ELXxTyY4', '2', 1, 'ven121@gmail.com', 5, '2018-12-10', '2018-12-11 07:50:47'),
-(6, 'mVkxIK2M', '2', 1, 'ven121@gmail.com', 0, '2018-12-10', '2018-12-10 14:11:31'),
-(7, 'RCjVxtKL', '2', 1, 'ven121@gmail.com', 5, '2018-12-10', '2018-12-10 16:06:59'),
-(8, 'OSA8BuvU', '8', 2, 'ven121@gmail.com', 1, '2018-12-11', '2018-12-11 07:09:02'),
-(9, 'n8YIS24X', '2', 1, 'ven121@gmail.com', 0, '2018-12-11', '2018-12-11 07:52:00'),
-(10, 'XOIBGf05', '2', 1, 'ven121@gmail.com', 0, '2018-12-11', '2018-12-11 07:52:21'),
-(11, 'kuED2S5c', '2', 1, 'ven121@gmail.com', 1, '2018-12-13', '2018-12-13 14:48:17');
+INSERT INTO `Ilab_master_vendor_tech_token_bid` (`Slno_token`, `token_no`, `bid_id_vendor`, `master_bid_id`, `vendor_id`, `submitted_status`, `date_creation`, `date_updation`, `comment`) VALUES
+(1, 'Jlj41WUg', '2', 1, 'ven121@gmail.com', 5, '2018-12-10', '2018-12-11 07:04:56', NULL),
+(2, 'Rz4Lmqfs', '2', 1, 'ven121@gmail.com', 0, '2018-12-10', '2018-12-10 09:40:53', NULL),
+(3, 'SpiqoYnZ', '2', 1, 'ven121@gmail.com', 0, '2018-12-10', '2018-12-10 09:44:50', NULL),
+(4, 'dBuoZ7UO', '2', 1, 'ven121@gmail.com', 5, '2018-12-10', '2018-12-13 14:48:17', NULL),
+(5, 'ELXxTyY4', '2', 1, 'ven121@gmail.com', 5, '2018-12-10', '2018-12-11 07:50:47', NULL),
+(6, 'mVkxIK2M', '2', 1, 'ven121@gmail.com', 0, '2018-12-10', '2018-12-10 14:11:31', NULL),
+(7, 'RCjVxtKL', '2', 1, 'ven121@gmail.com', 1, '2018-12-10', '2018-12-17 08:51:21', '0'),
+(8, 'OSA8BuvU', '8', 2, 'ven121@gmail.com', 1, '2018-12-11', '2018-12-17 10:01:06', 'check '),
+(9, 'n8YIS24X', '2', 1, 'ven121@gmail.com', 0, '2018-12-11', '2018-12-11 07:52:00', NULL),
+(10, 'XOIBGf05', '2', 1, 'ven121@gmail.com', 0, '2018-12-11', '2018-12-11 07:52:21', NULL),
+(11, 'kuED2S5c', '2', 1, 'ven121@gmail.com', 5, '2018-12-13', '2018-12-17 06:48:50', NULL),
+(12, 'dLaBUbMP', '8', 2, 'ven121@gmail.com', 0, '2018-12-17', '2018-12-17 10:01:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -2692,6 +2909,12 @@ ALTER TABLE `Ilab_master_bid_query`
   ADD PRIMARY KEY (`Slno_query`);
 
 --
+-- Indexes for table `Ilab_master_bid_query_commerical`
+--
+ALTER TABLE `Ilab_master_bid_query_commerical`
+  ADD PRIMARY KEY (`Slno_query`);
+
+--
 -- Indexes for table `Ilab_master_bid_technicalevaluation`
 --
 ALTER TABLE `Ilab_master_bid_technicalevaluation`
@@ -2882,6 +3105,12 @@ ALTER TABLE `Ilab_master_technical_detail`
   ADD KEY `material_slno` (`material_slno`);
 
 --
+-- Indexes for table `Ilab_master_tech_bid_comment`
+--
+ALTER TABLE `Ilab_master_tech_bid_comment`
+  ADD PRIMARY KEY (`Slno`);
+
+--
 -- Indexes for table `Ilab_master_tracking_tools`
 --
 ALTER TABLE `Ilab_master_tracking_tools`
@@ -2976,12 +3205,12 @@ ALTER TABLE `Ilab_master_bid`
 -- AUTO_INCREMENT for table `Ilab_master_bid_commerical`
 --
 ALTER TABLE `Ilab_master_bid_commerical`
-  MODIFY `Slno_bid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Slno_bid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `Ilab_master_bid_commericalevaluation`
 --
 ALTER TABLE `Ilab_master_bid_commericalevaluation`
-  MODIFY `slno_bid_tech_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `slno_bid_tech_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `Ilab_master_bid_date_details`
 --
@@ -2991,7 +3220,7 @@ ALTER TABLE `Ilab_master_bid_date_details`
 -- AUTO_INCREMENT for table `Ilab_master_bid_date_details_commerical`
 --
 ALTER TABLE `Ilab_master_bid_date_details_commerical`
-  MODIFY `Slno_bid_date` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Slno_bid_date` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `Ilab_master_bid_details`
 --
@@ -3001,7 +3230,7 @@ ALTER TABLE `Ilab_master_bid_details`
 -- AUTO_INCREMENT for table `Ilab_master_bid_details_commerical`
 --
 ALTER TABLE `Ilab_master_bid_details_commerical`
-  MODIFY `slno_bid_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `slno_bid_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `Ilab_master_bid_file_commerical`
 --
@@ -3017,6 +3246,11 @@ ALTER TABLE `Ilab_master_bid_file_technical`
 --
 ALTER TABLE `Ilab_master_bid_query`
   MODIFY `Slno_query` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `Ilab_master_bid_query_commerical`
+--
+ALTER TABLE `Ilab_master_bid_query_commerical`
+  MODIFY `Slno_query` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `Ilab_master_bid_technicalevaluation`
 --
@@ -3041,7 +3275,7 @@ ALTER TABLE `Ilab_master_bid_vendor_file_details`
 -- AUTO_INCREMENT for table `Ilab_master_buyer_material_details`
 --
 ALTER TABLE `Ilab_master_buyer_material_details`
-  MODIFY `slno_mat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `slno_mat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `Ilab_master_buyer_MR`
 --
@@ -3076,12 +3310,12 @@ ALTER TABLE `Ilab_master_loaction_details`
 -- AUTO_INCREMENT for table `Ilab_master_mr_approver_order`
 --
 ALTER TABLE `Ilab_master_mr_approver_order`
-  MODIFY `Slno_approver` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Slno_approver` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `Ilab_master_mr_file_upload`
 --
 ALTER TABLE `Ilab_master_mr_file_upload`
-  MODIFY `slno_file` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `slno_file` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 --
 -- AUTO_INCREMENT for table `Ilab_master_mr_job_comments`
 --
@@ -3091,27 +3325,27 @@ ALTER TABLE `Ilab_master_mr_job_comments`
 -- AUTO_INCREMENT for table `Ilab_master_mr_job_details`
 --
 ALTER TABLE `Ilab_master_mr_job_details`
-  MODIFY `slno_mr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `slno_mr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `Ilab_master_mr_location`
 --
 ALTER TABLE `Ilab_master_mr_location`
-  MODIFY `slno_loca_mr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `slno_loca_mr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `Ilab_master_mr_material_item`
 --
 ALTER TABLE `Ilab_master_mr_material_item`
-  MODIFY `slno_item_mr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `slno_item_mr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 --
 -- AUTO_INCREMENT for table `Ilab_master_mr_technical_parameter_info`
 --
 ALTER TABLE `Ilab_master_mr_technical_parameter_info`
-  MODIFY `slno_para` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `slno_para` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 --
 -- AUTO_INCREMENT for table `Ilab_master_mr_vehicle_mr_detail`
 --
 ALTER TABLE `Ilab_master_mr_vehicle_mr_detail`
-  MODIFY `slno_mr_logistic` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `slno_mr_logistic` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 --
 -- AUTO_INCREMENT for table `Ilab_master_new_order_book`
 --
@@ -3121,7 +3355,7 @@ ALTER TABLE `Ilab_master_new_order_book`
 -- AUTO_INCREMENT for table `Ilab_master_procurement_MR`
 --
 ALTER TABLE `Ilab_master_procurement_MR`
-  MODIFY `Slno_procurement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Slno_procurement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `Ilab_master_project`
 --
@@ -3131,17 +3365,22 @@ ALTER TABLE `Ilab_master_project`
 -- AUTO_INCREMENT for table `Ilab_master_session_history`
 --
 ALTER TABLE `Ilab_master_session_history`
-  MODIFY `slno_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=516;
+  MODIFY `slno_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=535;
 --
 -- AUTO_INCREMENT for table `Ilab_master_session_history_vendors`
 --
 ALTER TABLE `Ilab_master_session_history_vendors`
-  MODIFY `slno_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `slno_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT for table `Ilab_master_technical_detail`
 --
 ALTER TABLE `Ilab_master_technical_detail`
   MODIFY `Slno_technical` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `Ilab_master_tech_bid_comment`
+--
+ALTER TABLE `Ilab_master_tech_bid_comment`
+  MODIFY `Slno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `Ilab_master_tracking_tools`
 --
@@ -3176,7 +3415,7 @@ ALTER TABLE `Ilab_master_vendor_file_token`
 -- AUTO_INCREMENT for table `Ilab_master_vendor_tech_token_bid`
 --
 ALTER TABLE `Ilab_master_vendor_tech_token_bid`
-  MODIFY `Slno_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Slno_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `Ilab_pms_log_entries`
 --

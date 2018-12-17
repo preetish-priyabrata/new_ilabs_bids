@@ -475,17 +475,10 @@ $mr_slno=$bid_list->mr_slno;
 																								if($key_vendors->approval_status==1){
 																									echo "<b style='color : green'>Approved</b>";
 																								}else{
-																										echo "<b style='color : red'>Resubmission Of Bid</b>";
+																										echo "<b style='color : red'>Not Approved d</b>";
 																								}
 																							}else{
-																								if(($key_vendors->status_view==6)){
-																									echo "<b style='color : lightgreen'>Bid Is View Not Submited</b>"; 
-																								}else if(($key_vendors->status_view==8)){
-																									echo "<b style='color : lightgreen'>Resubmission of Bid</b>";
-																								}else{
-																									echo "<b style='color : lightgreen'>Approve Is Pending</b>";
-																								}
-																								
+																								echo "<b style='color : lightgreen'>Approve Is Pending</b>";
 																							}
 																						}else{
 																							echo "<b style='color : orange'>Tender Is Not Submited</b>";
@@ -494,7 +487,6 @@ $mr_slno=$bid_list->mr_slno;
 																				</td>
 																				<td>
 																					<?php 
-																					
 																						if(!empty($key_vendors->status_view) && ($key_vendors->status_view==7)){
 																							
 																								if(!empty($key_vendors->submission_status) && ($key_vendors->submission_status==1)){
@@ -503,10 +495,8 @@ $mr_slno=$bid_list->mr_slno;
 																										echo "<b style='color : red'>Not Submited </b>";
 																								}
 																							
-																						}else if(($key_vendors->status_view==6)){
+																						}else if(!empty($key_vendors->status_view) && ($key_vendors->status_view==6)){
 																							echo "<b style='color : lightgreen'>Bid Is View Not Submited</b>"; 
-																						}else if(($key_vendors->status_view==8)){
-																							echo "<b style='color : lightgreen'>Resubmission of Bid</b>";
 																						}else{
 																							echo "<b style='color : orange'>Not Viewed </b>";
 																						}

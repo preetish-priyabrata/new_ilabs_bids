@@ -14,6 +14,7 @@ if($result_title['no_new_tech']!=1){
 $edit_id=$result_title['new_tech_list'][0]->edit_id;
 $mr_slno=$result_title['new_tech_list'][0]->mr_slno;
 $mr_no=$result_title['new_tech_list'][0]->mr_no;
+$approval_status=$result_title['new_tech_list'][0]->approval_status;
 $query_item_details_list=$this->design_user->get_design_master_mr_items_material_single($edit_id,$mr_no,$mr_slno); /// item Details
  $result_file=$this->design_user->get_design_mr_file_list($mr_slno,$mr_no); // file information
 	$date_file_sub = array('bid_id_vendor' => $value );
@@ -192,7 +193,7 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 					</table>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row">				
 				<div class="col-md-12 col-lg-12">
 					<h5 class="text-center">Submission Created</h5>
 					<hr style="height: 3px;background: #0257ab;margin-top: 1.5rem; margin-bottom: 1.5rem"/>
@@ -201,57 +202,68 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 								<tr>
 										<th><strong>Date  Creation</strong></th>
 										<th><strong>Status</strong></th>
+										<th><strong>comment</strong></th>										
 										<th><strong>Click View</strong></th>
 
 								</tr>
 						</thead>
 						<tbody>
-
-								<?php
-								if($get_no_file->num_rows()!=0){
-								foreach($get_no_file->result() as $submission){ ?>
+								<?php foreach($get_no_file->result() as $submission){ ?>
 										<tr>
 												<td><strong><?=$submission->date_creation?></strong></td>
 												<td><strong><?php $submitted_status=$submission->submitted_status;
 													if($submitted_status==0){
-														echo  "<p style='color: orange'>Drafted</p>";
+														echo  "<p style='color: orange'>Drafted</p>"; 
 													}if($submitted_status==1){
-														echo  "<p style='color: green'>Submitted</p>";
+														echo  "<p style='color: green'>Submitted</p>"; 
 													}
 													if($submitted_status==5){
-														echo  "<p style='color: blue'>Archived</p>";
+														echo  "<p style='color: blue'>Archived</p>"; 
 													}
 												?></strong></td>
-												<td><strong><?php if($submitted_status==1){ echo "---"; }else{?> <a target="_blank" href="<?=base_url().'user-vendor-tech-bid-submission-tokens/'.$value.'/'.$submission->token_no .'/'.$submission->master_bid_id ?>">Click View</a><?php }?> </strong></td>
+												<td><?php 
+													if(!empty($submission->comment)){
+														echo $submission->comment;
+													}else{
+														echo "--";
+													}
+												?></td>
+												<td>
+													<strong>
+														<?php 
+														if($approval_status==1){
+																if($submitted_status==1){  echo "<b style='color:green'>Approved<?b>"; 
+															}else{
+																echo "<b>--</b>";
+															}
+														
+														}else{
+															if($submitted_status==1){  echo "---"; }else{?> <a target="_blank" href="<?=base_url().'user-vendor-tech-bid-submission-tokens/'.$value.'/'.$submission->token_no .'/'.$submission->master_bid_id ?>">Click View</a><?php }
+														}
+														?>
+												 	</strong>
+												</td>
 
 										</tr>
-								<?php }
-							}else{
-								?>
-								<tr>
-									<td colspan="3" class="text-center">
-										<b  style="color:red">No Data Avaliable</b>
-									</td>
-
-								</tr>
-								<?php
-							}
-
-								?>
+								<?php }?>
 						</tbody>
 					</table>
 				</div>
 			</div>
 			<div class="form-group row pull-right">
           <div class="col-md-12">
-							 <a href="<?=base_url()?>user-vendor-bid-submission/<?=$value?>" class="btn btn-sm btn-success m-r-5"><i class="fas fa-envelope-open-text"></i>   Click To Submit Bid </a>
+          	<?php if($approval_status==1){
+          		echo "<p style='color:green'><strong> BId Is been Approved </strong></p>";
+          	 }else{
+				?>
+				 <a href="<?=base_url()?>user-vendor-bid-submission/<?=$value?>" class="btn btn-sm btn-success m-r-5"><i class="fas fa-envelope-open-text"></i>   Click To Submit Bid </a>
+			<?php }
+				?>
               <a href="<?=base_url()?>user-vendor-query-panel/<?=$value?>" class="btn btn-sm btn-warning m-r-5"><i class="fa fa-question-circle" aria-hidden="true"></i>  Query </a>
               <a  href="<?=base_url()?>user-vendor-home" class="btn btn-sm btn-default">Back</a>
           </div>
       </div>
-		</div>
 
-	</div>
-<!-- end panel -->
+        </div>
+    </div>
 </div>
-<!-- end #content -->

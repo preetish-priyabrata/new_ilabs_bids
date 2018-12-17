@@ -88,13 +88,16 @@ $result_new_bid=$this->vendor_db_users->vendor_new_technical_bid_list($Vendor_em
 																			$status_view=$key_technical->status_view;
 																			switch ($status_view) {
 																				case '5':
-																					echo "<b style='color:orange;'>Not Viewed</b>";
+																					echo "<b style='color:Red;'>Not Viewed</b>";
 																					break;
 																				case '6':
 																							echo "<b style='color:blue;'>Viewed</b>";
 																						break;
-																			  case '7':
+																			  	case '7':
 																							echo "<b style='color:green;'>Submitted</b>";
+																						break;
+																				case '8':
+																							echo "<b style='color:orange;'>Resubmission Of Bid</b>";
 																						break;
 
 																				default:

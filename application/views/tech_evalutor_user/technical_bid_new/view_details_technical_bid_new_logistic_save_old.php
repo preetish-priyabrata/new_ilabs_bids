@@ -86,7 +86,7 @@ $mr_slno=$bid_list->mr_slno;
 			</div>
 			<?php 
 			}
-			 // print_r($result_vendor_list);
+			 print_r($result_vendor_list);
 			 // Array ( [no_bid] => 1 [bid_ids_list] => Array ( [0] => stdClass Object ( [slno_bid_tech_id] => 1 [bid_slno] => 3 [buyer_slno] => 1 [Technical_id_person] => 19 [master_bid_id] => 1 [status_bid] => 1 [view_status] => 0 [Slno_bid] => 1 [bid_date_entry] => 2018-12-03 [bid_ref] => REF 2018 [bid_id] => REF 2018 [category] => 3 [mode_bid] => Closed Bid [technical_bid_type] => 1 [mr_slno] => 3 [mr_no] => 2018-11-05-pUgws [job_code] => 679034 [edit_id] => 1 [material_category_name] => logistics [ logistics ] [bid_title] => SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [bid_description] => INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [data_entry] => 2018-12-03 14:55:44 [bid_creator_id] => buy1@ilab.com [date_publish] => 2018-12-06 [date_closing] => 2018-12-30 ) ) ) 
 			 // 
 			 // Array ( [no_bid] => 1 [bid_ids_list] => Array ( [0] => stdClass Object ( [slno_bid_tech_id] => 1 [bid_slno] => 3 [buyer_slno] => 1 [Technical_id_person] => 19 [master_bid_id] => 1 [status_bid] => 1 [view_status] => 0 [Slno_bid] => 1 [bid_date_entry] => 2018-12-03 [bid_ref] => REF 2018 [bid_id] => REF 2018 [category] => 3 [mode_bid] => Closed Bid [technical_bid_type] => 1 [mr_slno] => 3 [mr_no] => 2018-11-05-pUgws [job_code] => 679034 [edit_id] => 1 [material_category_name] => logistics [ logistics ] [bid_title] => SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [bid_description] => INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [data_entry] => 2018-12-03 14:55:44 [bid_creator_id] => buy1@ilab.com [date_publish] => 2018-12-06 [date_closing] => 2018-12-30 [Slno_bid_date] => 1 [bid_start_date] => 2018-12-04 [bid_closed_date] => 2018-12-15 [bid_query_closed_date] => 2018-12-06 [status] => 1 [bid_detail_description] => What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. ) ) ) 
@@ -427,12 +427,12 @@ $mr_slno=$bid_list->mr_slno;
 						<div class="card">
 							<div class="card-header text-center">
 							  	<a class="collapsed card-link" data-toggle="collapse" href="#collapseFive">
-							   		 Vendor Section
+							   		Technical Evaluator / Vendor Selection
 							   	</a>
 							</div>
 							<div id="collapseFive" class="collapse" data-parent="#accordion">
 							   	<div class="card-body">
-							   		<h5 class="text-left"> Vendor Section</h5>
+							   		<h5 class="text-left">Technical Evaluator / Vendor Selection</h5>
 									<hr style="background: lightblue">
 									<!-- row Start -->
 									<div class="row">
@@ -470,66 +470,15 @@ $mr_slno=$bid_list->mr_slno;
 																				</td>
 																				<td>
 																					<?php 
-																						if(!empty($key_vendors->submission_status) && ($key_vendors->submission_status==1)){
-																							if(!empty($key_vendors->approval_status) && ($key_vendors->approval_status==1)){
-																								if($key_vendors->approval_status==1){
-																									echo "<b style='color : green'>Approved</b>";
-																								}else{
-																										echo "<b style='color : red'>Resubmission Of Bid</b>";
-																								}
-																							}else{
-																								if(($key_vendors->status_view==6)){
-																									echo "<b style='color : lightgreen'>Bid Is View Not Submited</b>"; 
-																								}else if(($key_vendors->status_view==8)){
-																									echo "<b style='color : lightgreen'>Resubmission of Bid</b>";
-																								}else{
-																									echo "<b style='color : lightgreen'>Approve Is Pending</b>";
-																								}
-																								
-																							}
+																					if(!empty($key_vendors->approval_status) && ($key_vendors->approval_status==1)){
+																						if($key_vendors->approval_status==1){
+																							echo "<b style='color : green'>Approve d</b>";
 																						}else{
-																							echo "<b style='color : orange'>Tender Is Not Submited</b>";
+																								echo "<b style='color : green'>NOt Approved d</b>";
 																						}
-																					?>
-																				</td>
-																				<td>
-																					<?php 
-																					
-																						if(!empty($key_vendors->status_view) && ($key_vendors->status_view==7)){
-																							
-																								if(!empty($key_vendors->submission_status) && ($key_vendors->submission_status==1)){
-																									echo "<b style='color : green'>Submited</b>";
-																								}else{
-																										echo "<b style='color : red'>Not Submited </b>";
-																								}
-																							
-																						}else if(($key_vendors->status_view==6)){
-																							echo "<b style='color : lightgreen'>Bid Is View Not Submited</b>"; 
-																						}else if(($key_vendors->status_view==8)){
-																							echo "<b style='color : lightgreen'>Resubmission of Bid</b>";
-																						}else{
-																							echo "<b style='color : orange'>Not Viewed </b>";
-																						}
-																					?>
-																				</td>
-																				<td>
-																					<?php 
-																						if(!empty($key_vendors->submission_status) && ($key_vendors->submission_status==1)){
-																							if(!empty($key_vendors->approval_status) && ($key_vendors->approval_status==1)){
-																								if($key_vendors->approval_status==1){
-																									echo "<b style='color : green'>----</b>";
-																								}else{
-																										echo "<b style='color : red'>----</b>";
-																								}
-																							}else{
-																								?>
-																								<a href="<?=base_url()?>technical-evalutor-get-approved-reject/<?=$key_vendors->slno_vendor?>/<?=$key_vendors->master_bid_id?>/<?=$value1?>"> Click View </a>
-																								<?php
-																							}
-																						}else{
-																							echo "<b style='color : orange'>Please Wait</b>";
-																						}
-																					?>
+																					}else{
+																						echo "<b style='color : red'>Approve Is Pending</b>";
+																					}?>
 																				</td>
 																			</tr>
 															<?php		}													

@@ -397,6 +397,7 @@ $route['user-technical-evalutor-home']='technicalevalutor/tech_evalutor_home';
 $route['user-technical-evaluator-bid-new-list']='technicalevalutor/technical_evaluator_bid_new_list';
 $route['user-technical-evaluator-view-details-technical-bid-new/(:any)/(:any)']='technicalevalutor/technical_evaluator_view_details_technical_bid_new/$1/$2';
 $route['technical-evalutor-get-approved-reject/(:any)/(:any)/(:any)']='technicalevalutor/technical_evalutor_get_approved_reject/$1/$2/$3';
+$route['technical-evalutor-get-approved-reject-save']='technicalevalutor/technical_evalutor_get_approved_reject_save';
 $route['tech-evalutor-logout-by-pass']='technicalevalutor/tech_evalutor_logout_bypass';
 $route['tech-evalutor-logout']='technicalevalutor/tech_evalutor_logout';
 ######################################################################################################################################
@@ -429,7 +430,7 @@ $route['vendor-tech-file-new-bid-submission']='vendoruser/vendor_tech_file_new_b
 $route['user-vendor-new-commerical']='vendoruser/vendor_new_commerical';
 $route['user-vendor-commerical-query-panel/(:any)']='vendoruser/vendor_query_panel_commerical/$1';
 $route['vendor-bid-query-commerical']='vendoruser/vendor_bid_query_commerical';
-$route['user-vendor-bid-view-commerical-details/(:any)/(:any)/(:any)']='vendoruser/commerical_new_tech_view_details/$1/$2/$3';
+$route['user-vendor-bid-view-commerical-details/(:any)/(:any)/(:any)']='vendoruser/vendor_bid_view_commerical_details/$1/$2/$3';
 // vendor_logout
 // vendor_logout_bypass
 $route['vendor-logout']='vendoruser/vendor_logout';

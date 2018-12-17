@@ -66,17 +66,90 @@ class Technicalevalutor extends CI_Controller {
            
             $this->load->view('template/template_footer',$data);
     }
+    /**
+     * [technical_evalutor_get_approved_reject description]
+     * @param  string $value  [slno_vendor]
+     * @param  string $value1 [master_bid_id / serial no]
+     * @param  string $value2 [category ]
+     * @return [type]         [description]
+     */
     public function technical_evalutor_get_approved_reject($value='',$value1='',$value2=''){
         $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
-          $data=array('title' =>"New Bid List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
+          $data=array('title' =>"New Bid List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1,'value2'=>$value2 );
 
             $this->load->view('template/template_header',$data);
             $this->load->view('tech_evalutor_user/template/template_top_head');
             $this->load->view('tech_evalutor_user/template/template_side_bar',$data);
-            $this->load->view('tech_evalutor_user/technical_bid_new/tech_evaluator_technical_bid_new_lists',$data);
+            $this->load->view('tech_evalutor_user/tech_approve_reject_bid_vendor/approve_reject_bid',$data);
             $this->load->view('template/template_footer',$data);
 
         # code...
+    }
+    public function technical_evalutor_get_approved_reject_save($value=''){
+     
+        $value=$this->input->post('value');  // venderor serial id request
+        $value1=$this->input->post('value1'); // bid serial no
+        $value2=$this->input->post('value2'); // category
+        $Slno_token=$this->input->post('Slno_token'); // tooken no 
+        $token_no=$this->input->post('token_no'); // token id
+        $vendor_id=$this->input->post('vendor_id'); // vendor emaiol id
+        $comment=$this->input->post('comment'); //comment
+        $data_id = array('slno_vendor' => $value );
+        if(($this->input->post('switcher_checkbox_1'))){ /// if approved
+            $array_resubission = array('approval_status' => 1, 'comment'=>$comment,'view_status_approve'=>1);
+            $query_upade=$this->db->update('master_bid_vendor',$array_resubission,$data_id);
+            if($query_upade){
+                $data_token_comment = array('comment' => $comment);
+                $update_id = array('Slno_token' => $Slno_token);
+                $updae_token_tab=$this->db->update('master_vendor_tech_token_bid',$data_token_comment,$update_id);
+                if($updae_token_tab){
+                    $data_inserted = array('master_bid'=>$value1, 'vendor_bid_id'=>$value, 'comment'=>$comment, 'status'=>'P', 'active_status'=>1, 'token_no'=>$token_no, 'token_id'=>$Slno_token);
+                    $data_inserted=$this->db->insert('master_tech_bid_comment',$data_inserted);
+                    if($data_inserted){
+                         $this->session->set_flashdata('success_message',  'Sucessfully Approval Of Technical bid ');
+                        redirect('user-technical-evaluator-view-details-technical-bid-new/'.$value1.'/'.$value2);
+                    }else{
+                         $this->session->set_flashdata('error_message',  'Some thing went worng Try Again!!!!!!');
+                        redirect('user-technical-evaluator-view-details-technical-bid-new/'.$value1.'/'.$value2);
+                    }
+                }else{
+                    $this->session->set_flashdata('error_message',  'Some thing went worng Try Again!!!!!');
+                    redirect('user-technical-evaluator-view-details-technical-bid-new/'.$value1.'/'.$value2); 
+                }
+            }else{
+                $this->session->set_flashdata('error_message',  'Some thing went worng Try Again!!!!');
+                redirect('user-technical-evaluator-view-details-technical-bid-new/'.$value1.'/'.$value1); 
+            }
+        }else{ // if resubmission
+          // `````token_no`
+            $array_resubission = array('submission_status'=>'0','comment'=>$comment,'status_view'=>'8');
+            $query_upade=$this->db->update('master_bid_vendor',$array_resubission,$data_id);
+
+            if($query_upade){
+                $data_token_comment = array('comment' => $comment);
+                $update_id = array('Slno_token' => $Slno_token);
+                $updae_token_tab=$this->db->update('master_vendor_tech_token_bid',$data_token_comment,$update_id);
+                if($updae_token_tab){
+                    $data_inserted = array('master_bid'=>$value1, 'vendor_bid_id'=>$value, 'comment'=>$comment, 'status'=>'N', 'active_status'=>3, 'token_no'=>$token_no, 'token_id'=>$Slno_token);
+                    $data_inserted=$this->db->insert('master_tech_bid_comment',$data_inserted);
+                    if($data_inserted){
+                         $this->session->set_flashdata('success_message',  'Sucessfully Resubmission Request for bid to vendor is been send ');
+                        redirect('user-technical-evaluator-view-details-technical-bid-new/'.$value1.'/'.$value2);
+                    }else{
+                         $this->session->set_flashdata('error_message',  'Some thing went worng Try Again!!!');
+                        redirect('user-technical-evaluator-view-details-technical-bid-new/'.$value1.'/'.$value2);
+                    }
+                }else{
+                   $this->session->set_flashdata('error_message',  'Some thing went worng Try Again!!');
+                    redirect('user-technical-evaluator-view-details-technical-bid-new/'.$value1.'/'.$value2);  
+                }
+            }else{
+                $this->session->set_flashdata('error_message',  'Some thing went worng Try Again!');
+                redirect('user-technical-evaluator-view-details-technical-bid-new/'.$value1.'/'.$value2); 
+            }
+        }
+        
+        // 
     }
 
 

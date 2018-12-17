@@ -86,5 +86,29 @@ class Technicalevalutor_model extends CI_Model{
       }
       # code...
     }
+    public function technical_evalutor_get_vendor_files($value='',$value1=''){
+      $submitted_status=1;
+      $this->db->select('*');
+    $this->db->from('master_vendor_tech_token_bid');
+      $this->db->join('master_vendor_file_token', ' (master_vendor_file_token.token_id = master_vendor_tech_token_bid.token_no  AND master_vendor_file_token.master_bid_id='.$value.' AND master_vendor_tech_token_bid.submitted_status=1 ) ', 'right outer' );
+                // $this->db->join('city', 'city.user_id = users.id','left');
+       $this->db->where('master_vendor_tech_token_bid.bid_id_vendor', $value1); 
+        $this->db->where('master_vendor_tech_token_bid.master_bid_id', $value);        
+      // $this->db->where('master_vendor_tech_token_bid.submitted_status', $submitted_status); 
+      $this->db->where('master_vendor_file_token.bid_user_slno', $value1); 
+      $query = $this->db->get();  
+      // echo $str = $this->db->last_query();    
+      if($query->num_rows() == 0){
+        $data_send = array('no_bid_vendors' =>2 );
+        return $data_send;
+        exit;
+      }else{
+        $results=$query->result();
+        $data_send = array('no_bid_vendors' =>1, 'bid_vendors_list_file'=>$results);
+        return $data_send;
+        exit;
+      }
+      # code...
+    }
 }
  
