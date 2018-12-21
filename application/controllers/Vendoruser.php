@@ -227,7 +227,7 @@ class Vendoruser extends CI_Controller {
             break;
         }
      $scripts='';
-            $data=array('title' =>"Vendor Dashboard",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1,'value2'=>$value2);
+            $data=array('title' =>"Vendor commerical Detail",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1,'value2'=>$value2);
 
             $this->load->view('vendors_user/vendor_template/v_template_header',$data);
             $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
@@ -237,7 +237,94 @@ class Vendoruser extends CI_Controller {
 
 
 
-    }  
+    }
+    /**
+     * [vendor_bid_submission_commerical description]
+     * @param  string $value  [vendor serial id regestra for apply]
+     * @param  string $value1 [category]
+     * @param  string $value2 [status ]
+     * @param  string $value3 [type of bid close or open]
+     * @return [type]         [description]
+     */
+    public function vendor_bid_submission_commerical($value='',$value1='',$value2='',$value3=''){
+          $scripts='';
+            $data=array('title' =>"Vendor commerical Detail",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1,'value2'=>$value2 ,'value3'=>$value3);
+        $data_check=array('slno_vendor'=>$value);
+        $query=$this->db->get_where('master_bid_vendor_commerical',$data_check);
+        //  echo $this->db->last_query();
+        // exit();
+        if($query->num_rows()==1){
+          $result=$query->result();
+          // print_r($query->result());
+          $status_active=$result[0]->status_active;
+          $status_view=$result[0]->status_view;
+          if($status_active==1){
+            $date_end=$result[0]->date_end;
+            $new_date_end=$date_end.' 19:00:00';       
+            if(new DateTime() >= new DateTime($new_date_end)){
+              if($status_view==8){
+                switch ($value1) {
+                  case '1':
+                    $page="vendors_user/new_commerical/submission_commerical_page1";
+                    break;
+                  case '2':
+                    $page="vendors_user/new_commerical/submission_commerical_page1";                
+                    break;
+                 case '3':
+                    $page="vendors_user/new_commerical/submission_commerical_page2";     
+                   break;
+                 default:
+                   # code...
+                   break;
+               }
+              }else{
+                $this->session->set_flashdata('error_message', 'Bid Is been Expired');
+                // After that you need to used redirect function instead of load view such as
+                redirect("user-vendor-home");
+              }
+             }else{
+               if($status_view==7){
+                  $this->session->set_flashdata('error_message', 'This id Is already send by you');
+                    // After that you need to used redirect function instead of load view such as
+                   redirect("user-vendor-home");
+               }else{
+                  switch ($value1) {
+                    case '1':
+                        $page="vendors_user/new_commerical/submission_commerical_page1";
+                      break;
+                    case '2':
+                        $page="vendors_user/new_commerical/submission_commerical_page1";              
+                      break;
+                   case '3':
+                      $page="vendors_user/new_commerical/submission_commerical_page2";     
+                     break;
+                   default:
+                     # code...
+                     break;
+                 }
+               }              
+            }
+          }else if ($status_active==2) {
+             $this->session->set_flashdata('error_message', 'Bid Is been Closed For Now');
+                // After that you need to used redirect function instead of load view such as
+            redirect("user-vendor-home");
+          }else{
+            $this->session->set_flashdata('error_message', 'No Active Bid Now For You');
+                // After that you need to used redirect function instead of load view such as
+            redirect("user-vendor-home");
+          }
+        }else{
+          $this->session->set_flashdata('error_message', 'There Is No Such Bid Is Present');
+                // After that you need to used redirect function instead of load view such as
+            redirect("user-vendor-home");
+        }
+
+        $this->load->view('vendors_user/vendor_template/v_template_header',$data);
+        $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
+        $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);            
+        $this->load->view($page,$data);           
+        $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
+    }
 
 
    
@@ -306,13 +393,7 @@ class Vendoruser extends CI_Controller {
       $query_insert_token_id=$this->db->insert('master_vendor_tech_token_bid',$data_token_insert);
       redirect('user-vendor-tech-bid-submission-tokens/'.$value.'/'.$token.'/'.$master_bid_id);
     }
-    /**
-     * [vendor_tech_bid_submission_token description]
-     * @param  [type] $value  [bidder is]
-     * @param  [type] $value1 [token id]
-     * @param  [type] $value2 [master bid id slno]
-     * @return [type]         [description]
-     */
+   
 
     public function vendor_tech_bid_submission_tokens($value='',$value1='',$value2=''){
       $scripts='';

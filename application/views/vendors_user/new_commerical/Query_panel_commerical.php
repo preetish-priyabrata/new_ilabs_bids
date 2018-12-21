@@ -61,7 +61,8 @@ if($result_title['no_new_tech']!=1){
 	            <div class="row">
 								<div class="col-md-12 col-lg-12">
 
-									<h4 class="panel-title ">Title Bid  : <h5><?=$result_title['new_tech_list'][0]->title?></h5></h4>
+									<h4 class="panel-title ">Title Bid  : <h5><?=$result_title['new_tech_list'][0]->title?>	</h5></h4>
+									
 									<hr style="height: 2px; background:  green">
 								</div>
 							</div>
@@ -76,7 +77,8 @@ if($result_title['no_new_tech']!=1){
 								</div>
 						 		<div class="col-lg-9">
 									<input type="hidden" name='query_slno' value="<?=$value?>">
-									<input type="hidden" name="bid_id" value="<?=$master_bid_id=$result_title['new_tech_list'][0]->master_bid_id?>">
+									<input type="hidden" name="bid_id" value="<?=$master_bid_id=$result_title['new_tech_list'][0]->master_bid_id?>"	>
+
 									<textarea class="form-control" rows="3" name="query_details" ></textarea>
 								</div>
 								<div class="col-lg-1">
@@ -87,10 +89,12 @@ if($result_title['no_new_tech']!=1){
 					</div>
 				</div>
 				<!-- Query Block End  -->
-				<?php
+				
+					<?php
 				 	$result_query=$this->vendor_db_users->vendor_new_query_list_view_commerical($master_bid_id,$Vendor_email_id);
 					// print_r($result_query);
 				?>
+				
 				<!-- Query table WILL SHOW  -->
 				<div class="panel panel-inverse">
 					<div class="panel-heading">
@@ -115,7 +119,7 @@ if($result_title['no_new_tech']!=1){
 										 </tr>
 								 </thead>
 								 <tbody>
-									 <?php
+									<?php 
 									 $x=0;
 									 		if($result_query['no_new_tech_query']==1){
 												foreach ($result_query['new_tech_query_list'] as $key_query) {
@@ -141,7 +145,7 @@ if($result_title['no_new_tech']!=1){
 												}
 
 											}
-									  ?>
+									  ?> 
 
 								 </tbody>
 

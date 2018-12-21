@@ -122,6 +122,7 @@ class Buyer_model extends CI_Model {
       }
       # code...
     }
+
     /**
      * [drafted_bid_information genal save send list of bid of technical bill send to vendor or technical information will hold]
      * @param  string $value  [EMAIL ID]
@@ -148,6 +149,32 @@ class Buyer_model extends CI_Model {
         exit;
       }
     }
+    /**
+     * [drafted_bid_information_commerical description]
+     * @param  string $value  [EMAIL ID]
+     * @param  string $value1 [status]
+     * @return [type]         [data_send]
+     * @return [data_send[no_bid]] [1->have list of data 2-> not having list of data]
+     * @return [data_send[bid_list]] [List Of array of table which will contain Bid is been send or saved]
+     */
+    public function drafted_bid_information_commerical($value='',$value1='',$value2=''){ // HeRE VALUE ->  , VALUE1->status
+      
+      $data_id = array('status_bid'=>$value1,'bid_creator_id'=>$value);
+      if(!empty($value2)){
+        $data_id= array('Slno_bid' => $value2,'status_bid'=>$value1,'bid_creator_id'=>$value);
+      }
+      $query_mr_files =$this->db->get_where('master_bid_commerical',$data_id);
+      if($query_mr_files->num_rows() == 0){
+        $data_send = array('no_bid' =>2 );
+        return $data_send;
+        exit;
+      }else{
+        $results=$query_mr_files->result();
+        $data_send = array('no_bid' =>1, 'bid_list'=>$results);
+        return $data_send;
+        exit;
+      }
+    }
 		/**
 		 * [drafted_bid_information_DATE Here Date infromation section will be shown]
 		 * @param  string $value  [description]
@@ -157,6 +184,20 @@ class Buyer_model extends CI_Model {
     public function drafted_bid_information_DATE($value='',$value1){
       $data_id = array('status'=>$value1,'master_bid_id'=>$value);
       $query_mr_files =$this->db->get_where('master_bid_date_details',$data_id);
+      if($query_mr_files->num_rows() == 0){
+        $data_send = array('no_bid_date' =>2 );
+        return $data_send;
+        exit;
+      }else{
+        $results=$query_mr_files->result();
+        $data_send = array('no_bid_date' =>1, 'bid_date_list'=>$results);
+        return $data_send;
+        exit;
+      }
+    }
+    public function drafted_bid_information_DATE_commerical($value='',$value1){
+      $data_id = array('status'=>$value1,'master_bid_id'=>$value);
+      $query_mr_files =$this->db->get_where('master_bid_date_details_commerical',$data_id);
       if($query_mr_files->num_rows() == 0){
         $data_send = array('no_bid_date' =>2 );
         return $data_send;
@@ -190,6 +231,29 @@ class Buyer_model extends CI_Model {
         exit;
       }
     }
+    /**
+     * [drafted_bid_information_details_commerical description]
+      * @param  string $value  [master_bid_id =>Serial No of master_bid table]
+     * @param  [type] $value1 [it is not required now]
+     * @return [data_send ->1]         [no_bid_details value is empty or 0 will send  value is 2 remaind no data is send]
+     * @return [data_send ->2]         [no_bid_details value is not empty or not 0  will send  value is 1 remaind data is send]
+     *
+     */
+    
+    public function drafted_bid_information_details_commerical($value='',$value1){
+      $data_id = array('master_bid_id'=>$value);
+      $query_mr_files =$this->db->get_where('master_bid_details_commerical',$data_id);
+      if($query_mr_files->num_rows() == 0){
+        $data_send = array('no_bid_details' =>2 );
+        return $data_send;
+        exit;
+      }else{
+        $results=$query_mr_files->result();
+        $data_send = array('no_bid_details' =>1, 'bid_details_list'=>$results);
+        return $data_send;
+        exit;
+      }
+    }
 		public function drafted_bid_vendor_information_details($value='',$value1=''){
 			$data_array_vend = array('master_bid_id' => $value, 'status'=>$value1);
 			$this->db->select('vendor_id');
@@ -205,6 +269,27 @@ class Buyer_model extends CI_Model {
         exit;
       }
 		}
+    /**
+     * [drafted_bid_vendor_information_details description]
+     * @param  string $value  [description]
+     * @param  string $value1 [description]
+     * @return [type]         [description]
+     */
+    public function drafted_bid_vendor_information_details_commerical($value='',$value1=''){
+      $data_array_vend = array('master_bid_id' => $value, 'status'=>$value1);
+      $this->db->select('vendor_id');
+      $query = $this->db->get_where('master_bid_vendor_commerical',$data_array_vend);
+      if($query->num_rows() == 0){
+        $data_send = array('no_bid_vendors' =>2 );
+        return $data_send;
+        exit;
+      }else{
+        $results=$query->result();
+        $data_send = array('no_bid_vendors' =>1, 'bid_vendors_list'=>$results);
+        return $data_send;
+        exit;
+      }
+    }
 		/**
 		 * [buyer_queries_new_bid this section belong for buyer queries for technical bid]
 		 * @param  string $value  [bid serial no which need to identify bid which we need]
@@ -227,6 +312,24 @@ class Buyer_model extends CI_Model {
 
     // code...
 		}
+}
+
+public function query_panel_buyer_commerical($value='',$value1=''){
+      $data_array_query = array('bid_slno' => $value, 'status_responds'=>$value1);
+
+      $query = $this->db->get_where('master_bid_query',$data_array_query);
+      if($query->num_rows() == 0){
+        $data_send = array('no_bid_query' =>2 );
+        return $data_send;
+        exit;
+      }else{
+        $results=$query->result();
+        $data_send = array('no_bid_query' =>1, 'bid_query_list'=>$results);
+        return $data_send;
+        exit;
+
+    // code...
+    }
 }
 
 

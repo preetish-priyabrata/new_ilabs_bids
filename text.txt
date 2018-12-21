@@ -1,3 +1,5 @@
 $this->db->error();
 
 how we check error
+
+https://www.youtube.com/watch?v=e0c5KOxxyGc

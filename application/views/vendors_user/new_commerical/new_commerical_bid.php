@@ -78,6 +78,21 @@ $result_new_bid=$this->vendor_db_users->vendor_new_technical_bid_list_commerical
 
 													foreach ($result_new_bid['new_tech_list'] as  $key_technical) {
 
+													$mode_bid=$key_technical->mode_bid;
+													switch ($mode_bid) {
+														case 'Simple Bid':
+															$page="user-vendor-bid-view-commerical-details";
+															break;
+														case 'Closed Bid':
+															$page="user-vendor-bid-view-commerical-details";
+															break;
+														case 'Rank Order Bid':
+															$page="user-vendor-bid-view-commerical-details";
+															break;
+														default:
+															# code...
+															break;
+													}
 														$x++;
   									?>
 													  <tr>
@@ -112,7 +127,7 @@ $result_new_bid=$this->vendor_db_users->vendor_new_technical_bid_list_commerical
 													     	<td><?php echo $key_technical->mode_bid;?></td>
 													     	<td><?php echo $key_technical->date_start;?></td>
 													     	<td><?php echo $key_technical->date_end;?></td>
-																<td><a href="<?=base_url()?>user-vendor-bid-view-commerical-details/<?=$key_technical->slno_vendor?>/<?=$key_technical->category?>/<?=$status_view?>" class="btn btn-sm btn-success">View</a></td>
+																<td><a href="<?=base_url().$page?>/<?=$key_technical->slno_vendor?>/<?=$key_technical->category?>/<?=$status_view?>" class="btn btn-sm btn-success">View</a></td>
 																<td><a href="<?=base_url()?>user-vendor-commerical-query-panel/<?=$key_technical->slno_vendor?>" class="btn btn-sm btn-warning">Query</a></td>
 													  </tr>
   												<?php }

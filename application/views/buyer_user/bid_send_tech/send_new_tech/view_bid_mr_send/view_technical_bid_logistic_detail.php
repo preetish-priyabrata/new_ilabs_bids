@@ -256,7 +256,7 @@ if($result_drafted['no_bid']!=1){
 												<div class="form-group row m-b-15">
 													<label class="col-form-label col-md-3" for="bid_method">Mode Of Selection</label>
 													<div class="col-md-9">
-												  		<select disabled class="form-control-plaintext" id="bid_method"  name="bid_method">
+												  		<select disabled class="form-control-plaintext" id="bid_method"  name="bid_method" required="">
 												    		<option value="">--Please Select Mod Of Selection--</option>
 												    		<option value="Closed Bid" <?php if($bid_list->mode_bid=="Closed Bid"){ echo "selected"; }?>>Closed Bid </option>
 												    		<option value="Rank Order Bid" <?php if($bid_list->mode_bid=="Rank Order Bid"){ echo "selected"; }?>>Rank Order Bid </option>

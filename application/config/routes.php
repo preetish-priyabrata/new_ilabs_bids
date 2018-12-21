@@ -374,7 +374,7 @@ $route['get-buyer-bid-check']='buyeruser/buyer_get_buyer_bid_Check';
 $route['buyer-drafted-bid']='buyeruser/buyer_drafted_bid';
 $route['buyer-bid-edit/(:any)/(:any)']='buyeruser/buyer_bid_edit/$1/$2';
 $route['buyer-bid-sent/(:any)/(:any)']='buyeruser/buyer_bid_sent/$1/$2';
-$route['user-buyer-conform-send/(:any)']='buyeruser/buyer_bid_conform_send/$1';
+$route['user-buyer-conform-send/(:any)/(:any)']='buyeruser/buyer_bid_conform_send/$1/$2';
 
 // Bid Technical Send
 $route['buyer-send-bid-tech']='buyeruser/buyer_send_bid_tech';
@@ -385,8 +385,16 @@ $route['buyer-query-respond-technical']='buyeruser/buyer_query_respond_technical
 $route['buyer-file-upload-data']='buyeruser/buyer_file_upload_data';
 $route['bid-tech-entry']='buyeruser/buyer_bid_tech_entry';
 
+
+
 // commerical Bid In buoer
 $route['bid-commerical-entry']='buyeruser/bid_commerical_entry';
+$route['buyer-drafted-bid-commerical']='buyeruser/user_buyer_bid_drafted_commerical';
+$route['buyer-bid-commerical-sent/(:any)/(:any)']='buyeruser/buyer_bid_sent_commerical/$1/$2';
+$route['buyer-send-bid-commerical']='buyeruser/buyer_send_bid_commerical';
+$route['buyer-bid-send-commerical-view/(:any)/(:any)']='buyeruser/buyer_bid_send_commerical_view/$1/$2';
+$route['bid-commerical-entry-logistic']='buyeruser/buyer_bid_commerical_entry_logistic';
+$route['query-panel-buyer-commerical']='buyeruser/query_panel_buyer_commerical';
 
 #################################################################################################################################
 #
@@ -431,6 +439,7 @@ $route['user-vendor-new-commerical']='vendoruser/vendor_new_commerical';
 $route['user-vendor-commerical-query-panel/(:any)']='vendoruser/vendor_query_panel_commerical/$1';
 $route['vendor-bid-query-commerical']='vendoruser/vendor_bid_query_commerical';
 $route['user-vendor-bid-view-commerical-details/(:any)/(:any)/(:any)']='vendoruser/vendor_bid_view_commerical_details/$1/$2/$3';
+$route['user-vendor-bid-submission-commerical/(:any)/(:any)/(:any)/(:any)']='vendoruser/vendor_bid_submission_commerical/$1/$2/$3/$4';
 // vendor_logout
 // vendor_logout_bypass
 $route['vendor-logout']='vendoruser/vendor_logout';

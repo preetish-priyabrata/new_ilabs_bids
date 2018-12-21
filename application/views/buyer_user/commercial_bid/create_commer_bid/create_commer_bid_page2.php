@@ -82,7 +82,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 			<div class="alert alert-secondary">
                 <span style="color: red"> *</span> All mandory fields shall be duly filled up 
             </div>
-			<form action="<?=base_url()?>bid-tech-entry" method="POST"  id="bid_tech" name="bid_tech" class="bid_tech">
+			<form action="<?=base_url()?>bid-commerical-entry-logistic" method="POST"  id="bid_tech" name="bid_tech" class="bid_tech">
 				
 				<input class="form-control m-b-5"  name="slno_Mr_no" id="slno_Mr_no" type="hidden" value="<?=$value1?>" required="" readonly>
 				<input class="form-control m-b-5"  name="value4" id="value4" type="hidden" value="<?=$value4?>" required="" readonly>
@@ -236,7 +236,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 												<div class="form-group row m-b-15">
 													<label class="col-form-label col-md-3" for="bid_method">Mode Of Selection <span style="color: red">*</span></label>
 													<div class="col-md-9">
-												  		<select class="form-control" id="bid_method"  name="bid_method">
+												  		<select class="form-control" id="bid_method"  name="bid_method" required="">
 												    		<option value="">--Please Select Mod Of Selection--</option>
 												    		<option value="Closed Bid">Closed Bid </option>
 												    		<option value="Rank Order Bid">Rank Order Bid </option>
@@ -356,8 +356,9 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 														<tr>
 															<th>Vehicle Type</th>
 															<th>Capacity</th>
-															<th>Details</th>                                        
+															                                     
 															<th>No</th>
+															<th>Details</th>   
 															<th>From Location</th>
 															<th>To Location</th>
 															<th>Purpose</th>
@@ -390,16 +391,17 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 																	<td><?=$get_location_from['item_location'][0]->location_name?></td>
 																	<td><?=$get_location_to['item_location'][0]->location_name?></td>
 																	<td><?=$purpose_info_single?></td>	 
-																	<td><input type="hidden" name="">
-													<input type="hidden" name="vehicle_type[]" value="<?=$query_item_details['item_vehcile'][0]->vehicle_type?>">
-													<input type="hidden" name="vehicle_capacity[]" value="<?=$query_item_details['item_vehcile'][0]->vehicle_capacity?>">
-													<input type="hidden" name="no_vehcile_single[]" value="<?=$no_vehcile_single?>">
-													<input type="hidden" name="vehicle_desc[]" value="<?=$query_item_details['item_vehcile'][0]->vehicle_desc?>">
-													<input type="hidden" name="location_name_from[]" value="<?=$get_location_from['item_location'][0]->location_name?>">
-													<input type="hidden" name="location_name_to[]" value="<?=$get_location_from['item_location'][0]->location_name?>">
-													<input type="hidden" name="purpose_info_single[]" value="<?=$purpose_info_single?>">
-													
-													<input type="text" name="Ace_value[]" required=""></td>                                     
+																	<td><input type="hidden" name="slno_mr_logistic[]" alue="<?=$key_value_vechile->slno_mr_logistic?>">
+
+																	<input type="hidden" name="vehicle_type[]" value="<?=$query_item_details['item_vehcile'][0]->vehicle_type?>">
+																	<input type="hidden" name="vehicle_capacity[]" value="<?=$query_item_details['item_vehcile'][0]->vehicle_capacity?>">
+																	<input type="hidden" name="no_vehcile_single[]" value="<?=$no_vehcile_single?>">
+																	<input type="hidden" name="vehicle_desc[]" value="<?=$query_item_details['item_vehcile'][0]->vehicle_desc?>">
+																	<input type="hidden" name="location_name_from[]" value="<?=$get_location_from['item_location'][0]->location_name?>">
+																	<input type="hidden" name="location_name_to[]" value="<?=$get_location_from['item_location'][0]->location_name?>">
+																	<input type="hidden" name="purpose_info_single[]" value="<?=$purpose_info_single?>">
+																	
+																	<input type="text" name="Ace_value[]" required=""></td>                                     
 																</tr>
 													<?php
 															}

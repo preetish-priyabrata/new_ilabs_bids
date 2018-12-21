@@ -49,7 +49,7 @@ class Buyeruser extends CI_Controller {
     * @param  string $value2 [description]=> Material type form
     * @param  string $value3 [description]=>mr Id Serial no which is increment automatic
     * @param  string $value4 [description]=>buyer table  serial id which will update status
-
+    005200/47/2/47/5
     */
    public function buyer_technical_commercial_assign($value='',$value1='',$value2='',$value3='',$value4=''){
 
@@ -73,7 +73,8 @@ class Buyeruser extends CI_Controller {
         case '005110-2': // here first technical  is been complted but commercial is pendin send to buyer to set information is about Commerical
             # code...
             break;
-        case '005200-2': // here first technical  is been complted but commercial is pendin send to buyer to set information is about Commerical
+        case '005200-2': // bid moi commerical
+             $file_path="buyer_user/commercial_bid/create_commer_bid/create_commer_bid_page1";
             # code...
             break;
         // Logistics
@@ -84,8 +85,8 @@ class Buyeruser extends CI_Controller {
         case '005110-3': // here first technical  is been complted but commercial is pendin send to buyer to set information is about Commerical
             # code...
             break;
-        case '005200-3': // here first technical  is been complted but commercial is pendin send to buyer to set information is about Commerical
-
+        case '005200-3': // here logistic paramater
+            $file_path="buyer_user/commercial_bid/create_commer_bid/create_commer_bid_page2";
             break;
         default:
             // $this->session->set_flashdata('error_msg', 'Some thing Went wrong');
@@ -540,8 +541,7 @@ class Buyeruser extends CI_Controller {
                 $bid_technical = array('bid_slno'=>$slno_Mr_no, 'buyer_slno'=>$value4, 'Technical_id_person'=>$Technical_ev, 'master_bid_id'=>$insert_id);
                 $query_technical_master=$this->db->insert('master_bid_commericalevaluation',$bid_technical);
                 foreach ($vendor_array as $key_vendor) {
-                    $vendor_infom = array('bid_slno'=>$slno_Mr_no, 'buyer_slno'=>$value4, 'vendor_id'=>$key_vendor, 'status'=>4, 'title'=>$bid_title, 'description'=>$bid_work_description, 'date_start'=>$date_start_bid, 'date_end'=>$date_closed_bid,
-                        'query_end_date'=>$date_clearfication_bid, 'master_bid_id'=>$insert_id,'bid_ref'=>$bid_ref_no, 'bid_id'=>$bid_Id, 'category'=>$materials_id, 'mode_bid'=>$bid_method, 'technical_bid_type'=>$tech_evalution, 'mr_slno'=>$slno_Mr_no, 'mr_no'=>$mr_no, 'job_code'=>$job_code_id, 'edit_id'=>$edit_id, 'material_category_name'=>$category_name );
+                    $vendor_infom = array('bid_slno'=>$slno_Mr_no, 'buyer_slno'=>$value4, 'vendor_id'=>$key_vendor, 'status'=>4, 'title'=>$bid_title, 'description'=>$bid_work_description, 'date_start'=>$date_start_bid, 'date_end'=>$date_closed_bid,'query_end_date'=>$date_clearfication_bid, 'master_bid_id'=>$insert_id,'bid_ref'=>$bid_ref_no, 'bid_id'=>$bid_Id, 'category'=>$materials_id, 'mode_bid'=>$bid_method, 'technical_bid_type'=>$tech_evalution, 'mr_slno'=>$slno_Mr_no, 'mr_no'=>$mr_no, 'job_code'=>$job_code_id, 'edit_id'=>$edit_id, 'material_category_name'=>$category_name );
                     $query_vendor_inform_master=$this->db->insert('master_bid_vendor_commerical',$vendor_infom);
                 }
                 $buyer_id = array('Slno_buyer' =>$value4 );
@@ -559,6 +559,108 @@ class Buyeruser extends CI_Controller {
                 redirect('user-buyer-home');
         }        
     
+    }
+
+    public function buyer_bid_commerical_entry_logistic($value=''){
+       $slno_Mr_no=$this->input->post('slno_Mr_no');  // mr_information id
+        $value4=$this->input->post('value4'); // buyer panel id
+        $edit_id=$this->input->post('edit_id'); // mateial information
+        $status_mr=$this->input->post('status_mr');
+        $resubmit_count=$this->input->post('resubmit_count');
+        $job_code_id=$this->input->post('job_code_id'); // job code of mr
+        $materials_id=$this->input->post('materials_id'); // material id
+        $tech_evalution=$this->input->post('tech_evalution');
+        $mr_no=$this->input->post('mr_no'); //mr id no come from mr tABLE
+        $category_name=$this->input->post('category_name'); // name of category
+        $date_required=$this->input->post('date_required'); // when this mr is need
+        $date_create=$this->input->post('date_create'); // when bid is created
+        $bid_ref_no=$this->input->post('bid_ref_no'); // bid ref nao
+        $bid_method=$this->input->post('bid_method'); // method of biding
+        $date_publish=$this->input->post('date_publish'); // publishing date
+        $bid_Id=$this->input->post('bid_Id');             // bid serial id
+        $date_closing=$this->input->post('date_closing'); //bid colsed date
+        $bid_title=$this->input->post('bid_title'); // bid title
+        $bid_period_work=$this->input->post('bid_period_work'); // bid period work
+        $bid_work_description=$this->input->post('bid_work_description'); //bid work description
+        $bid_location_work=$this->input->post('bid_location_work'); //bid location work
+        $date_start_bid=$this->input->post('date_start_bid');  // bid start date
+        $date_clearfication_bid=$this->input->post('date_clearfication_bid'); // bid doubt clearfication date
+        $date_closed_bid=$this->input->post('date_closed_bid'); // bid closed date
+        $bid_detail_description=$this->input->post('bid_detail_description'); // detail information of description
+        $job_files=$this->input->post('job_files');
+        $Technical_ev=$this->input->post('Technical_ev');  // here is the technical evalutor  serial no only
+        $vendor_array=$this->input->post('vendor_array'); // array of vendors with email ids
+        $email_id=$this->session->userdata('buy_email_id');
+
+        $vehicle_type=$this->input->post('vehicle_type');
+        $vehicle_capacity=$this->input->post('vehicle_capacity');
+        $no_vehcile_single=$this->input->post('no_vehcile_single');
+        $vehicle_desc=$this->input->post('vehicle_desc');
+        $location_name_from=$this->input->post('location_name_from');
+        $location_name_to=$this->input->post('location_name_to');
+        $purpose_info_single=$this->input->post('purpose_info_single');
+        $Ace_value=$this->input->post('Ace_value');
+        $slno_mr_logistic=$this->input->post('slno_mr_logistic');
+        // $item_name=$this->input->post('item_name');
+        // $slno_item_mr=$this->input->post('slno_item_mr');
+        // $item_id=$this->input->post('item_id');
+        // $item_uom=$this->input->post('item_uom');
+        // $material_quantity=$this->input->post('material_quantity');
+        // $tech_name=$this->input->post('tech_name');
+        // $unit_price=$this->input->post('unit_price');
+        // print_r($this->input->post()); 
+
+        if(!empty($vendor_array)){
+            $data_bid_master = array('buyer_slno'=>$value4, 'bid_date_entry'=>$date_create, 'bid_ref'=>$bid_ref_no, 'bid_id'=>$bid_Id, 'category'=>$materials_id, 'mode_bid'=>$bid_method, 'technical_bid_type'=>$tech_evalution, 'status_bid'=>'4', 'mr_slno'=>$slno_Mr_no, 'mr_no'=>$mr_no, 'job_code'=>$job_code_id, 'edit_id'=>$edit_id,'material_category_name'=>$category_name,'bid_title'=>$bid_title,'bid_description'=>$bid_work_description,'bid_creator_id'=>$email_id,'date_publish'=>$date_publish,'date_closing'=>$date_closing);
+
+            $query_bid_master=$this->db->insert('master_bid_commerical',$data_bid_master);
+            echo $insert_id = $this->db->insert_id();
+            if($query_bid_master){
+
+                foreach ($vehicle_type as $key_id => $value_id) {
+                    $vehicle_type_single=$vehicle_type[$key_id];
+                    $vehicle_capacity_single=$vehicle_capacity[$key_id];
+                    $no_vehcile_single_single=$no_vehcile_single[$key_id];
+                    $vehicle_desc_single=$vehicle_desc[$key_id];
+                    $location_name_from_single=$location_name_from[$key_id];
+                    $location_name_to_single=$location_name_to[$key_id];
+                    $purpose_info_single_single=$purpose_info_single[$key_id];
+                    $Ace_value_single=$Ace_value[$key_id];
+                    $slno_mr_logistic_single=$slno_mr_logistic[$key_id];
+
+                    $data_vendor_comm = array('master_bid_id_com'=>$insert_id, 'vehicle_mr_slno'=>$slno_mr_logistic_single, 'vehicle_name'=>$vehicle_type_single, 'vehicle_capacity'=>$vehicle_capacity_single, 'vehicle_details'=>$vehicle_desc_single, 'vehicle_nos'=>$no_vehcile_single_single, 'from_location'=>$location_name_from_single, 'to_location'=>$location_name_to_single, 'purpose'=>$purpose_info_single_single, 'Ace_value'=>$Ace_value_single);
+                    $query=$this->db->insert('master_logistic_vehicle_commerical',$data_vendor_comm);
+                }
+
+                
+                $data_title = array('bid_slno'=>$slno_Mr_no, 'buyer_slno'=>$value4, 'Title_bid'=>$bid_title, 'work_detail_bid'=>$bid_work_description, 'period_work_detail'=>$bid_period_work, 'location_detail'=>$bid_location_work, 'master_bid_id'=>$insert_id);
+
+                $query_title_master=$this->db->insert('master_bid_details_commerical',$data_title);
+
+                $data_bid_date = array('bid_slno'=>$slno_Mr_no, 'buyer_slno'=>$value4, 'bid_start_date'=>$date_start_bid, 'bid_closed_date'=>$date_closed_bid, 'bid_query_closed_date'=>$date_clearfication_bid, 'status'=>'4', 'master_bid_id'=>$insert_id,'bid_detail_description'=>$bid_detail_description);
+                $query_bid_date_master=$this->db->insert('master_bid_date_details_commerical',$data_bid_date);
+
+                $bid_technical = array('bid_slno'=>$slno_Mr_no, 'buyer_slno'=>$value4, 'Technical_id_person'=>$Technical_ev, 'master_bid_id'=>$insert_id);
+                $query_technical_master=$this->db->insert('master_bid_commericalevaluation',$bid_technical);
+                foreach ($vendor_array as $key_vendor) {
+                    $vendor_infom = array('bid_slno'=>$slno_Mr_no, 'buyer_slno'=>$value4, 'vendor_id'=>$key_vendor, 'status'=>4, 'title'=>$bid_title, 'description'=>$bid_work_description, 'date_start'=>$date_start_bid, 'date_end'=>$date_closed_bid,
+                        'query_end_date'=>$date_clearfication_bid, 'master_bid_id'=>$insert_id,'bid_ref'=>$bid_ref_no, 'bid_id'=>$bid_Id, 'category'=>$materials_id, 'mode_bid'=>$bid_method, 'technical_bid_type'=>$tech_evalution, 'mr_slno'=>$slno_Mr_no, 'mr_no'=>$mr_no, 'job_code'=>$job_code_id, 'edit_id'=>$edit_id, 'material_category_name'=>$category_name );
+                    $query_vendor_inform_master=$this->db->insert('master_bid_vendor_commerical',$vendor_infom);
+                }
+                $buyer_id = array('Slno_buyer' =>$value4 );
+                $data_update_mr_buyer= array('Commercial_process_status'=>2, 'Date_commercial__status'=>date('Y-m-d'), 'Mode_tender'=>$bid_method);
+                 $query_buyer_id_master=$this->db->update('master_buyer_MR',$data_update_mr_buyer,$buyer_id);
+                $this->session->set_flashdata('success_message', 'successfully Bid is created is not send to Commerical approver or Vendor ');
+                             // After that you need to used r
+                redirect('user-buyer-home');
+            }else{
+                $this->session->set_flashdata('error_message',  'Some thing went worng Try Again!!!!');
+                redirect('user-buyer-home');
+            }
+        }else{
+             $this->session->set_flashdata('error_message',  'No vendor is Selleted');
+                redirect('user-buyer-home');
+        }  
     }
     public function buyer_drafted_bid($value=''){
         $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
@@ -600,34 +702,105 @@ class Buyeruser extends CI_Controller {
             $this->load->view('template/template_footer',$data);
         # code...
     }
-    public function buyer_bid_conform_send($value=''){
-      $master_bid_up = array('status_bid' =>1);
-      $master_bid_date_up = array('status' =>1);
-      $master_bid_vendor_up = array('status' =>1,'status_active'=>1);
+    /**
+     * [buyer_bid_sent_commerical description]
+     * @param  string $value  [Slno_bid]
+     * @param  string $value1 [category]
+     * @return [type]         [description]
+     */
+    public function buyer_bid_sent_commerical($value='',$value1=''){
+        switch ($value1) {
+            case '1':
+                $file_path="buyer_user/commercial_bid/drafted_commerical_bid/save_new_commerical/view_bid_mr_send/view_new_commerical_bid";
+                # code...
+                break;
+            case '2':
+                $file_path="buyer_user/commercial_bid/drafted_commerical_bid/save_new_commerical/view_bid_mr_send/view_new_commerical_bid";
+                # code...
+                break;
+            case '3':
+                $file_path="buyer_user/commercial_bid/drafted_commerical_bid/save_new_commerical/view_bid_mr_send/view_new_commerical_bid_logistic";
+                # code...
+                break;
 
-      $id_master_bid = array('Slno_bid' => $value );
-      $id_master_bid_common = array('master_bid_id' => $value );
+            default:
+                # code...
+                break;
+        }
+        $scripts='<script src="'.base_url().'file_css_admin/own_js_date_picker.js"></script>';
+            $data=array('title' =>"Buyer List Of Detail View of commerical",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'' ,'value'=>$value,'value1'=>$value1);
+            $this->load->view('template/template_header',$data);
+            $this->load->view('buyer_user/template/template_top_head');
+            $this->load->view('buyer_user/template/template_side_bar',$data);
+            $this->load->view("$file_path",$data);
+            $this->load->view('template/template_footer',$data);
+        # code...
+    }
+    /**
+     * [buyer_bid_conform_send description]
+     * @param  string $value  [bid id serial]
+     * @param  string $value1 [1->technical bid 2->commerical bid]
+     * @return [type]         [description]
+     */
+    public function buyer_bid_conform_send($value='',$value1=''){
+        if($value1==1){
+              $master_bid_up = array('status_bid' =>1);
+              $master_bid_date_up = array('status' =>1);
+              $master_bid_vendor_up = array('status' =>1,'status_active'=>1);
 
-      $query_bid_master=$this->db->update('master_bid',$master_bid_up,$$id_master_bid);// master bid update
-      if($query_bid_master){
-          $query_bid_master_date=$this->db->update('master_bid_date_details',$master_bid_date_up,$id_master_bid_common); // master bid date update status
-          if($query_bid_master_date){
-              $query_bid_master_vendor=$this->db->update('master_bid_vendor',$master_bid_vendor_up,$id_master_bid_common); // master bid vendor update stastus
-              if($query_bid_master_vendor){
-                $this->session->set_flashdata('success_message', 'Successfull Bid is send to vendor and Techinical community');
-                redirect('user-buyer-home');
+              $id_master_bid = array('Slno_bid' => $value );
+              $id_master_bid_common = array('master_bid_id' => $value );
+
+              $query_bid_master=$this->db->update('master_bid',$master_bid_up,$$id_master_bid);// master bid update
+              if($query_bid_master){
+                  $query_bid_master_date=$this->db->update('master_bid_date_details',$master_bid_date_up,$id_master_bid_common); // master bid date update status
+                  if($query_bid_master_date){
+                      $query_bid_master_vendor=$this->db->update('master_bid_vendor',$master_bid_vendor_up,$id_master_bid_common); // master bid vendor update stastus
+                      if($query_bid_master_vendor){
+                        $this->session->set_flashdata('success_message', 'Successfull Bid is send to vendor and Techinical community');
+                        redirect('user-buyer-home');
+                      }else{
+                        $this->session->set_flashdata('error_msg', 'Some Error occured Try Again !!!!!!!');
+                        redirect('user-buyer-home');
+                      }
+                  }else{
+                    $this->session->set_flashdata('error_msg', 'Some Error occured Try Again !!!!!');
+                    redirect('user-buyer-home');
+                  }
               }else{
-                $this->session->set_flashdata('error_msg', 'Some Error occured Try Again !!!');
+                $this->session->set_flashdata('error_msg', 'Some Error occured Try Again !!!!');
                 redirect('user-buyer-home');
               }
+          }elseif ($value1==2) {
+            $master_bid_up = array('status_bid' =>1);
+            $master_bid_date_up = array('status' =>1);
+            $master_bid_vendor_up = array('status' =>1,'status_active'=>1);
+            $id_master_bid = array('Slno_bid' => $value );
+            $id_master_bid_common = array('master_bid_id' => $value );
+            $query_bid_master=$this->db->update('master_bid_commerical',$master_bid_up,$$id_master_bid);// master bid update
+            if($query_bid_master){
+                $query_bid_master_date=$this->db->update('master_bid_date_details_commerical',$master_bid_date_up,$id_master_bid_common); // master bid date update status
+                if($query_bid_master_date){
+                    $query_bid_master_vendor=$this->db->update('master_bid_vendor_commerical',$master_bid_vendor_up,$id_master_bid_common); // master bid vendor update stastus
+                    if($query_bid_master_vendor){
+                        $this->session->set_flashdata('success_message', 'Successfull Bid is send to vendor and Commerical community');
+                        redirect('user-buyer-home');
+                    }else{
+                        $this->session->set_flashdata('error_msg', 'Some Error occured Try Again !!!');
+                        redirect('user-buyer-home');
+                    }
+                }else{
+                    $this->session->set_flashdata('error_msg', 'Some Error occured Try Again !!');
+                    redirect('user-buyer-home');
+                }
+            }else{
+                $this->session->set_flashdata('error_msg', 'Some Error occured Try Again !');
+                redirect('user-buyer-home');
+            }
           }else{
-            $this->session->set_flashdata('error_msg', 'Some Error occured Try Again !!');
+            $this->session->set_flashdata('error_msg', 'Some Error occured Try Again ');
             redirect('user-buyer-home');
           }
-      }else{
-        $this->session->set_flashdata('error_msg', 'Some Error occured Try Again !');
-        redirect('user-buyer-home');
-      }
     }
     public function buyer_send_bid_tech($value=''){
       $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
@@ -636,6 +809,21 @@ class Buyeruser extends CI_Controller {
           $this->load->view('buyer_user/template/template_top_head');
           $this->load->view('buyer_user/template/template_side_bar',$data);
           $this->load->view('buyer_user/bid_send_tech/bid_send_success_tech');
+          $this->load->view('template/template_footer',$data);
+      // code...
+    }
+    /**
+     * [buyer_send_bid_commerical here commerical list of bid which is send to vendor and commerical cummounity]
+     * @param  string $value [description]
+     * @return [type]        [description]
+     */
+    public function buyer_send_bid_commerical($value=''){
+      $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
+          $data=array('title' =>"Buyer List Of Bid Successfull send Commerical List",'script_js'=>$scripts,'menu_status'=>'3','sub_menu'=>'4','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
+          $this->load->view('template/template_header',$data);
+          $this->load->view('buyer_user/template/template_top_head');
+          $this->load->view('buyer_user/template/template_side_bar',$data);
+          $this->load->view('buyer_user/commercial_bid/send_commerical_bid/bid_send_success_commerical');
           $this->load->view('template/template_footer',$data);
       // code...
     }
@@ -682,12 +870,79 @@ class Buyeruser extends CI_Controller {
           $this->load->view('template/template_footer',$data);
       # code...
     }
+    public function buyer_bid_send_commerical_view($value='',$value1=''){
+        switch ($value1) {
+            case '1':
+                  $file_path="buyer_user/commercial_bid/send_commerical_bid/send_new_commerical/view_bid_mr_send/View_commerical_bid_detail";
+                  # code...
+                  break;
+            case '2':
+                  $file_path="buyer_user/commercial_bid/send_commerical_bid/send_new_commerical/view_bid_mr_send/View_commerical_bid_detail";
+                  # code...
+                  break;
+            case '3':
+                  $file_path="buyer_user/commercial_bid/send_commerical_bid/send_new_commerical/view_bid_mr_send/view_commerical_bid_logistic_detail";
+                  # code...
+                  break;
+
+            default:
+                  # code...
+                  break;
+          }
+          $scripts='<script src="'.base_url().'file_css_admin/own_js_date_picker.js"></script>';
+              $data=array('title' =>"Detail Bid Information",'script_js'=>$scripts,'menu_status'=>'3','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'' ,'value'=>$value,'value1'=>$value1);
+              $this->load->view('template/template_header',$data);
+              $this->load->view('buyer_user/template/template_top_head');
+              $this->load->view('buyer_user/template/template_side_bar',$data);
+              $this->load->view("$file_path",$data);
+              $this->load->view('template/template_footer',$data);
+    }
+    /**
+     * [user_buyer_bid_drafted_commerical here only drafted list of commerical information is been stored]
+     * @return [type] [description]
+     */
+    public function user_buyer_bid_drafted_commerical(){
+        $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
+          $data=array('title' =>"Drafted Information About Coomerical list",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'5','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'' );
+          $this->load->view('template/template_header',$data);
+          $this->load->view('buyer_user/template/template_top_head');
+          $this->load->view('buyer_user/template/template_side_bar',$data);
+          $this->load->view('buyer_user/commercial_bid/drafted_commerical_bid/list_bid_commerical',$data);
+          $this->load->view('template/template_footer',$data);
+    }
 
     public function buyer_query_respond_technical($value='')    {
       $email_id=$this->session->userdata('buy_email_id');
       if(empty($email_id)){
 
       	redirect('buy-logout-by-pass');
+      }
+     // print_r($this->input->post());  // )
+
+     $Slno_query=$this->input->post('Slno_query'); // query id
+     $category_id=$this->input->post('category_id'); // material id
+     $value=$this->input->post('value'); // bid id
+     $respond_name=$this->input->post('respond_name'); // respond to query hich was send by vendor
+     $date=date('Y-m-d'); // when it is been upadte
+     $data_update = array('response_detail'=>$respond_name, 'responser_id'=>$email_id, 'date_respond'=>$date, 'status_responds'=>1); // data which will update to data of query
+     $data_id=array('Slno_query'=>$Slno_query); // serial id which need to update
+     $query=$this->db->update('master_bid_query',$data_update,$data_id); // here update is been done
+     if($query){ // checking query executed successfully or not
+       $this->session->set_flashdata('success_message', 'Query has reponded successfully'); // here is message is been toasted
+       redirect('buyer-bid-query-tech/'.$value.'/'.$category_id); // here is redirection
+     }else {
+       $this->session->set_flashdata('error_msg', 'Some Error occured Try Again !');
+       redirect('user-buyer-home');
+     }
+
+
+
+    }
+    public function query_panel_buyer_commerical($value='')    {
+      $email_id=$this->session->userdata('buy_email_id');
+      if(empty($email_id)){
+
+        redirect('buy-logout-by-pass');
       }
      // print_r($this->input->post());  // )
 

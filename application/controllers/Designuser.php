@@ -289,8 +289,9 @@ class Designuser extends CI_Controller {
                                     <tr>
                                        <th>Vehicle Type</th>
                                         <th>Capacity</th>
-                                        <th>Details</th>                                        
+                                                                             
                                         <th>No</th>
+                                         <th>Details</th>  
                                         <th>From Location</th>
                                         <th>To Location</th>
                                         <th>Purpose</th>
@@ -365,8 +366,9 @@ class Designuser extends CI_Controller {
                                 <tr>
                                    <th>Vehicle Type</th>
                                     <th>Capacity</th>
-                                    <th>Details</th>                                        
+                                                                           
                                     <th>No</th>
+                                     <th>Details</th>  
                                     <th>From Location</th>
                                     <th>To Location</th>
                                     <th>Purpose</th>
@@ -441,8 +443,9 @@ class Designuser extends CI_Controller {
                                     <tr>
                                        <th>Vehicle Type</th>
                                         <th>Capacity</th>
-                                        <th>Details</th>                                        
+                                                                             
                                         <th>No</th>
+                                        <th>Details</th>   
                                         <th>From Location</th>
                                         <th>To Location</th>
                                         <th>Purpose</th>
@@ -519,8 +522,9 @@ class Designuser extends CI_Controller {
                                 <tr>
                                    <th>Vehicle Type</th>
                                     <th>Capacity</th>
-                                    <th>Details</th>                                        
+                                                                         
                                     <th>No</th>
+                                    <th>Details</th>   
                                     <th>From Location</th>
                                     <th>To Location</th>
                                     <th>Purpose</th>
@@ -837,8 +841,9 @@ class Designuser extends CI_Controller {
                                     <tr>
                                        <th>Vehicle Type</th>
                                         <th>Capacity</th>
-                                        <th>Details</th>                                        
+                                                                               
                                         <th>No</th>
+                                        <th>Details</th> 
                                         <th>From Location</th>
                                         <th>To Location</th>
                                         <th>Purpose</th>
@@ -1027,8 +1032,9 @@ class Designuser extends CI_Controller {
                                     <tr>
                                        <th>Vehicle Type</th>
                                         <th>Capacity</th>
-                                        <th>Details</th>                                        
+                                                                               
                                         <th>No</th>
+                                        <th>Details</th> 
                                         <th>From Location</th>
                                         <th>To Location</th>
                                         <th>Purpose</th>
@@ -1115,8 +1121,9 @@ class Designuser extends CI_Controller {
                                     <tr>
                                        <th>Vehicle Type</th>
                                         <th>Capacity</th>
-                                        <th>Details</th>                                        
+                                                                         
                                         <th>No</th>
+                                          <th>Details</th>     
                                         <th>From Location</th>
                                         <th>To Location</th>
                                         <th>Purpose</th>

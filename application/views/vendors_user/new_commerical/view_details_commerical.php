@@ -15,11 +15,34 @@ if($result_title['no_new_tech']!=1){
 $edit_id=$result_title['new_tech_list'][0]->edit_id;
 $mr_slno=$result_title['new_tech_list'][0]->mr_slno;
 $mr_no=$result_title['new_tech_list'][0]->mr_no;
-$result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id,$mr_no,$mr_slno);
+// $result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id,$mr_no,$mr_slno);
+$query_item_details_list=$this->design_user->get_design_master_mr_items_material_single($edit_id,$mr_no,$mr_slno); /// item 
 
  $result_file=$this->design_user->get_design_mr_file_list($mr_slno,$mr_no); // file information
  	$date_file_sub = array('bid_id_vendor' => $value );
+
  $get_no_file=$this->db->get_where('master_vendor_tech_token_bid',$date_file_sub);
+
+
+	$mode_bid=$result_title['new_tech_list'][0]->mode_bid;
+	switch ($mode_bid) {
+		case 'Simple Bid':
+		$case_bid=1;
+		$page="user-vendor-bid-submission-commerical/";
+		# code...
+		break;
+	case 'Closed Bid':
+		$case_bid=2;
+
+		$page="user-vendor-bid-submission-commerical/";
+		break;
+	case 'Rank Order Bid':
+
+		break;
+	default:
+		# code...
+		break;
+	}
 ?>
 <!-- begin #content -->
 	<div id="content" class="content">
@@ -80,13 +103,13 @@ $result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id
 						<div class="form-group row m-b-15">
 							<label class="col-form-label col-md-3" for="Bg_submission_date">Title </label>
 							<div class="col-md-9">
-								
+							<?=$result_title['new_tech_list'][0]->title?>	
 							</div>
 						</div>
 						<div class="form-group row m-b-15">
 							<label class="col-form-label col-md-3" for="Mfg_clear_date">Description <span style="color: red"></span></label>
 							<div class="col-md-9">
-								
+							<?=$result_title['new_tech_list'][0]->description?>	
 							</div>
 						</div>
 					</div>
@@ -94,25 +117,25 @@ $result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id
 						<div class="form-group row m-b-15">
 							<label class="col-form-label col-md-3" for="Job_code"> Bid Id<span style="color: red"></span></label>
 							<div class="col-md-9">
-								
+							<?=$result_title['new_tech_list'][0]->bid_id?>	
 							</div>
 						</div>
 						<div class="form-group row m-b-15">
 							<label class="col-form-label col-md-3" for="Po_date"> End Date <span style="color: red"></span></label>
 							<div class="col-md-9">
-								
+							<?=$result_title['new_tech_list'][0]->date_end?>	
 							</div>
 						</div>
 						<div class="form-group row m-b-15">
 							<label class="col-form-label col-md-3" for="Advance_payment_date">Date of Query </label>
 							<div class="col-md-9">
-								
+							<?=$result_title['new_tech_list'][0]->date_end?>	
 							</div>
 						</div>
 						<div class="form-group row m-b-15">
 							<label class="col-form-label col-md-3" for="Advance_payment_date"> Type of Bid </label>
 							<div class="col-md-9">
-								
+								<?=$result_title['new_tech_list'][0]->mode_bid?>
 							</div>
 						</div>
 					</div>
@@ -125,44 +148,62 @@ $result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id
 						<table class="table table-bordered" cellpadding="10" cellspacing="1" width="100%">
 							<thead>
 								<tr>
-									<th>Vehicle Type</th>
-									<th>Capacity</th>
-									<th>Details</th>
-									<th>No</th>
-									<th>From Location</th>
-									<th>To Location</th>
-									<th>Purpose</th>
+									<tr>
+					                                        <th><strong>Name</strong></th>
+					                                        <th><strong>Id</strong></th>
+					                                        <th><strong>Quantity</strong></th>
+					                                        <th><strong>UOM</strong></th>
+					                                        <th><strong>Technical Parameter</strong></th>
 
+					                                    </tr>
 								</tr>
 							</thead>
 							<tbody>
-							<?php
-								if($result_vechile['no_vechile']==1){
-									foreach ($result_vechile['item_vechile_list'] as $key_value_vechile) {
-										$code=$vehicle_slno_id_single=$key_value_vechile->vehicle_slno_id;
-										$from_location_slno_single=$key_value_vechile->from_location_slno;
-										$to_location_slno_single=$key_value_vechile->to_location_slno;
-										$purpose_info_single=($key_value_vechile->purpose_info);
-										$no_vehcile_single=$key_value_vechile->no_vehcile;
-										$slno_mr_logistic=$key_value_vechile->slno_mr_logistic;
-										$get_location_from=$this->design_user->get_design_master_loaction_list($from_location_slno_single); // from location information will come out
+								<?php
+					                                	// echo "<pre>";
+					                                		if($query_item_details_list['no_item']==1){
+					                                			$item_list=$query_item_details_list['item_list'];
+					                                			// print_r($item_list);
+					                                			// $this->procurement_user->procurement_mr_item_tech_single();
+					                                				foreach ($item_list as $key_item => $value_item) {
+					                                					$slno_item_mr=$value_item->slno_item_mr;
+					                                					$get_technical=$this->procurement_user->procurement_mr_item_tech_single($slno_item_mr);
+																		$code=$value_item->material_item_id;
+																		 $material_quantity=$value_item->material_quantity;
+																		$query_item_details=$this->design_user->get_design_master_items_material_single($code);
+																		// print_r($get_technical);
 
-										$get_location_to=$this->design_user->get_design_master_loaction_list($to_location_slno_single); // to location information will come out
-										$query_item_details=$this->design_user->get_design_master_vehcile_list($code);
-							?>
-										<tr>
-											<td><?=$query_item_details['item_vehcile'][0]->vehicle_type?></td>
-											<td><?=$query_item_details['item_vehcile'][0]->vehicle_capacity?></td>
-											<td><?=$no_vehcile_single?></td>
-											<td><?=$query_item_details['item_vehcile'][0]->vehicle_desc?></td>
-											<td><?=$get_location_from['item_location'][0]->location_name?></td>
-											<td><?=$get_location_to['item_location'][0]->location_name?></td>
-											<td><?=$purpose_info_single?></td>
-										</tr>
-							<?php
-									}
-								}
-							?>
+																		// $get_technical=$this->procurement_user->procurement_mr_item_tech_single;
+
+					                                			?>
+					                                			<tr>
+					                                				<td><?=$query_item_details['materials_list'][0]->item_name?></td>
+					                                				<td><?=$query_item_details['materials_list'][0]->item_id?></td>
+					                                				<td><?=$material_quantity?></td>
+							                                      	<td><?=$query_item_details['materials_list'][0]->item_uom?></td>
+							                                       	<td>
+							                                       		<?php
+
+							                                       		if($get_technical['no_received']==1){
+							                                       			$procuremenr_list_single=$get_technical['procuremenr_list_single'];
+							                                       			foreach ($procuremenr_list_single as $key_value_technical) {
+							                                       				echo $key_value_technical->tech_name."<br>";
+							                                       				# code...
+							                                       			}
+							                                       		}else{
+							                                       			echo " No Parameter is been Selected";
+							                                       		}
+							                                       		?>
+
+							                                       	</td>
+
+
+					                                			</tr>
+					                                			<?php
+
+					                                		}
+					                                		}?>
+
 							</tbody>
 						</table>
 				</div>
@@ -231,8 +272,8 @@ $result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id
 			</div>
 			<div class="form-group row pull-right">
           <div class="col-md-12">
-			  <a href="<?=base_url()?>user-vendor-bid-submission/<?=$value?>" class="btn btn-sm btn-success m-r-5"><i class="fas fa-envelope-open-text"></i>   Click To Submit Bid </a>
-              <a href="<?=base_url()?>user-vendor-query-panel/<?=$value?>" class="btn btn-sm btn-warning m-r-5"><i class="fa fa-question-circle" aria-hidden="true"></i>  Query </a>
+			  <a href="<?=base_url()?><?=$page.$value.'/'.$value1.'/'.$value2.'/'.$case_bid?>" class="btn btn-sm btn-success m-r-5"><i class="fas fa-envelope-open-text"></i>   Click To Submit Bid </a>
+              <a href="<?=base_url()?>user-vendor-commerical-query-panel//<?=$value?>" class="btn btn-sm btn-warning m-r-5"><i class="fa fa-question-circle" aria-hidden="true"></i>  Query </a>
               <a  href="<?=base_url()?>user-vendor-home" class="btn btn-sm btn-default">Back</a>
           </div>
       </div>

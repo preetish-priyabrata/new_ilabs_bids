@@ -47,6 +47,18 @@ class Vendor_model extends CI_Model {
 				return $data_return;
 			}
 		}
+		public function vendor_new_query_list_view_coomerocal($value='',$value2){
+			$data=array('bid_slno'=>$value,'Vendor_id'=>$value2);
+			$query=$this->db->get_where('master_bid_query_commerical',$data);
+    	if($query->num_rows()==0){
+				$data_return = array('no_new_tech_query' =>2 );
+				return $data_return;
+			}else{
+				$result_data_new_tech=$query->result();
+				$data_return = array('no_new_tech_query' => 1,'new_tech_query_list'=>$result_data_new_tech );
+				return $data_return;
+			}
+		}
 		public function get_vendors_tech_bid_file_list($data){		
 			
 			$query=$this->db->get_where('master_vendor_file_token',$data);
@@ -106,6 +118,19 @@ public function vendor_new_query_list_view_commerical($value='',$value2){
 		}
 
 public function vendor_new_tech_view_details_commerical($value='',$value2){
+			$data=array('bid_slno'=>$value,'Vendor_id'=>$value2);
+			$query=$this->db->get_where('master_bid_query_commerical',$data);
+    	if($query->num_rows()==0){
+				$data_return = array('no_new_tech_query' =>2 );
+				return $data_return;
+			}else{
+				$result_data_new_tech=$query->result();
+				$data_return = array('no_new_tech_query' => 1,'new_tech_query_list'=>$result_data_new_tech );
+				return $data_return;
+			}
+		}
+
+public function vendor_bid_submission_commerical($value='',$value2){
 			$data=array('bid_slno'=>$value,'Vendor_id'=>$value2);
 			$query=$this->db->get_where('master_bid_query_commerical',$data);
     	if($query->num_rows()==0){

@@ -652,7 +652,7 @@ if($result_drafted['no_bid']!=1){
 									</div>
 									<div class="form-group row pull-right">
                     <div class="col-md-12">
-											  <a  href="<?=base_url()?>user-buyer-conform-send/<?=$value?>" class="btn btn-sm btn-success"  onclick="return confirm('Are you sure you want to Sent this Bid?');"> Do You Want send ?</a>
+											  <a  href="<?=base_url()?>user-buyer-conform-send/<?=$value?>/1" class="btn btn-sm btn-success"  onclick="return confirm('Are you sure you want to Sent this Bid?');"> Do You Want send ?</a>
 												<a  href="<?=base_url()?>user-buyer-home" class="btn btn-sm btn-danger"> Dont Want send ?</a>
 
                     	<!-- <input type="submit" id="spl" class="btn btn-sm btn-primary m-r-5" name="for" value="Save"> -->

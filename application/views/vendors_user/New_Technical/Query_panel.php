@@ -1,4 +1,4 @@
-$Vendor_email_id=$this->session->userdata('Vendor_email_id');
+<?php $Vendor_email_id=$this->session->userdata('Vendor_email_id');
 if(empty($Vendor_email_id)){
 
 	redirect('vendor-logout-pass');

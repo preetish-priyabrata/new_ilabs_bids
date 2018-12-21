@@ -221,7 +221,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 												<div class="form-group row m-b-15">
 													<label class="col-form-label col-md-3" for="bid_method">Mode Of Selection <span style="color: red">*</span></label>
 													<div class="col-md-9">
-												  		<select class="form-control" id="bid_method"  name="bid_method">
+												  		<select class="form-control" id="bid_method"  name="bid_method" required="">
 												    		<option value="">--Please Select Mod Of Selection--</option>
 												    		<option value="Closed Bid" <?php if($bid_list->mode_bid=="Closed Bid"){ echo "selected"; }?>>Closed Bid </option>
 												    		<option value="Rank Order Bid" <?php if($bid_list->mode_bid=="Rank Order Bid"){ echo "selected"; }?>>Rank Order Bid </option>

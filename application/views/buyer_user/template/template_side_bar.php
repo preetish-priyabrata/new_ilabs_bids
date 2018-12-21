@@ -50,6 +50,7 @@
 						<ul class="sub-menu">
 
 						    <li class="<?php if($sub_menu==2){ echo 'active'; }?>"><a href="<?=base_url()?>buyer-drafted-bid" >Save Bid Information of Technical</a></li>
+						     <li class="<?php if($sub_menu==5){ echo 'active'; }?>"><a href="<?=base_url()?>buyer-drafted-bid-commerical" >Save Bid Information of Commerical</a></li>
 
 						</ul>
 					</li>
@@ -62,7 +63,7 @@
 						<ul class="sub-menu">
 
 						    <li class="<?php if($sub_menu==3){ echo 'active'; }?>"><a href="<?=base_url()?>buyer-send-bid-tech" >Send Bid Information of Technical</a></li>
-						    <li class="<?php if($sub_menu==4){ echo 'active'; }?>"><a href="<?=base_url()?>bu-new-submited-tracking" >Submitted  Tracking Tool</a></li>
+						    <li class="<?php if($sub_menu==4){ echo 'active'; }?>"><a href="<?=base_url()?>buyer-send-bid-commerical" >Send Bid Information of Commerical</a></li>
 						    <!-- <li><a href="index_v2.html">Dashboard v2</a></li> -->
 						</ul>
 					</li>

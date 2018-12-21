@@ -203,7 +203,7 @@ $get_list_vendors=$this->buyer_user->get_buyer_vendors_list($value2);
 												<div class="form-group row m-b-15">
 													<label class="col-form-label col-md-3" for="bid_method">Mode Of Selection <span style="color: red">*</span></label>
 													<div class="col-md-9">
-												  		<select class="form-control" id="bid_method"  name="bid_method">
+												  		<select class="form-control" id="bid_method"  name="bid_method" required="">
 												    		<option value="">--Please Select Mod Of Selection--</option>
 												    		<option value="Closed Bid">Closed Bid </option>
 												    		<option value="Rank Order Bid">Rank Order Bid </option>
