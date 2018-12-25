@@ -31,7 +31,7 @@ $data_get_list_commerical = array('master_bid_id' =>$master_bid_id_com );
 	</ol>
 	<!-- end breadcrumb -->
 	<!-- begin page-header -->
-	<h1 class="page-header">Commercial Bid Submission<small></small></h1>
+	<h1 class="page-header">Commercial Bid Submission Sci<small></small></h1>
 	<!-- end page-header -->
 	<?php if(!empty($this->session->flashdata('success_message'))){?>
 		<div class="alert alert-success fade show">

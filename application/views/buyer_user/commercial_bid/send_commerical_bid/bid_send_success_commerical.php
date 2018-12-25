@@ -82,12 +82,15 @@ $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,
 					        	$x=0;
 					        		if($result_drafted['no_bid']==1){
 					        			foreach ($result_drafted['bid_list'] as $key_techniacl) {
-					        				$x++;
+					        				
 					        				$bid_ref=$key_techniacl->bid_ref;
 					        				$Slno_bid=$key_techniacl->Slno_bid;
 					        				$result_drafted_dates=$this->buyer_user->drafted_bid_information_DATE_commerical($Slno_bid,1);
 					        				// print_r($result_drafted_dates);
+					        				if($result_drafted_dates['no_bid_date']==1){
+					        					$x++;
 					        				 // Array ( [no_bid_date] => 1 [bid_date_list] => Array ( [0] => stdClass Object ( [Slno_bid_date] => 1 [bid_slno] => 3 [buyer_slno] => 1 [bid_start_date] => 2018-12-04 [bid_closed_date] => 2018-12-15 [bid_query_closed_date] => 2018-12-06 [status] => 4 [master_bid_id] => 1 ) ) )
+					        				
 					        				$category=$key_techniacl->category;
 					        				switch ($category) {
 					        					case '1':
@@ -120,6 +123,11 @@ $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,
 					        				</tr>
 
 					        				<?php
+					        				}else{
+					        					// $data_id = array('Slno_bid'=>$Slno_bid);
+					        					// $data_update = array('status_bid' => 4 );
+					        					// $this->db->update('master_bid_commerical',$data_update,$data_id);
+					        				}
 					        				# code...
 					        			}
 					        		}

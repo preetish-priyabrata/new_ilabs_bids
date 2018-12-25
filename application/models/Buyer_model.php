@@ -198,6 +198,7 @@ class Buyer_model extends CI_Model {
     public function drafted_bid_information_DATE_commerical($value='',$value1){
       $data_id = array('status'=>$value1,'master_bid_id'=>$value);
       $query_mr_files =$this->db->get_where('master_bid_date_details_commerical',$data_id);
+     
       if($query_mr_files->num_rows() == 0){
         $data_send = array('no_bid_date' =>2 );
         return $data_send;
@@ -276,7 +277,7 @@ class Buyer_model extends CI_Model {
      * @return [type]         [description]
      */
     public function drafted_bid_vendor_information_details_commerical($value='',$value1=''){
-      $data_array_vend = array('master_bid_id' => $value, 'status'=>$value1);
+      $data_array_vend = array('master_bid_id' => $value);
       $this->db->select('vendor_id');
       $query = $this->db->get_where('master_bid_vendor_commerical',$data_array_vend);
       if($query->num_rows() == 0){

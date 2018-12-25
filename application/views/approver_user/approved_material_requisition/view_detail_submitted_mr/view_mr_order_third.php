@@ -5,7 +5,7 @@ if(empty($email_id)){
 	redirect('approve-logout-by-pass');
 }
 
-$value=$value;
+echo $value=$value;
 $value1=$value1;
 $value2=$value2;
 if($value2!=$value){
@@ -71,6 +71,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 							<div class="col-md-9">
 								<?php
 									$get_mr_id=$this->design_user->get_design_mr_no_deatils($value);
+									// print_r($get_mr_id);
 									$mr_no=$get_mr_id['mr_details'][0]->mr_no;
 									$job_code_id=$get_mr_id['mr_details'][0]->job_code_id;
 									$materilal_category_id_slno=$get_mr_id['mr_details'][0]->materilal_category_id_slno;
@@ -80,6 +81,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 									$date_creation=$get_mr_id['mr_details'][0]->date_creation;
 									$edit_id=$get_mr_id['mr_details'][0]->edit_id;
 									$status_mr=$get_mr_id['mr_details'][0]->status;
+									
 									$query_mr_location_list=$this->design_user->get_design_master_mr_location_details($edit_id,$mr_no,$value);
 
 									$result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id,$mr_no,$value);
@@ -158,12 +160,16 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 						                
 						                	
 						                		$get_approved=$this->approver_user->get_approver_conform_mr_job_detail($value);
+						                		// print_r($get_approved);
 						                		if($get_approved['no_mr_deatils']==1){
+						                			
 						                			$user_procement=$get_approved['mr_details'][0]->Procurement_id;
-						                		
 						                			$get_Procurement_id=$this->approver_user->approver_get_creator_mr($user_procement);
+						                			// print_r($get_Procurement_id);
 
 						                			 $Usget_Procurement_id=$get_Procurement_id['list_user'][0]->Username;
+						                		}else{
+						                			$Usget_Procurement_id="";
 						                		}
 						                ?>
 						                 <input type="text" readonly class="form-control-plaintext" value="<?=$Usget_Procurement_id?>" 

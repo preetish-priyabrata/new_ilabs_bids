@@ -777,7 +777,7 @@ class Buyeruser extends CI_Controller {
             $master_bid_vendor_up = array('status' =>1,'status_active'=>1);
             $id_master_bid = array('Slno_bid' => $value );
             $id_master_bid_common = array('master_bid_id' => $value );
-            $query_bid_master=$this->db->update('master_bid_commerical',$master_bid_up,$$id_master_bid);// master bid update
+            $query_bid_master=$this->db->update('master_bid_commerical',$master_bid_up,$id_master_bid);// master bid update
             if($query_bid_master){
                 $query_bid_master_date=$this->db->update('master_bid_date_details_commerical',$master_bid_date_up,$id_master_bid_common); // master bid date update status
                 if($query_bid_master_date){

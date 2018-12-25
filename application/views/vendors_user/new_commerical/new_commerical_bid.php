@@ -66,6 +66,7 @@ $result_new_bid=$this->vendor_db_users->vendor_new_technical_bid_list_commerical
 					                <th>Type of Bid</th>
 					                <th>Bid Start date</th>
 					              	<th>Bid End date</th>
+					              	<th>Counter</th>
 					              	<th>Action</th>
 					              	<th>Query</th>
 
@@ -126,8 +127,12 @@ $result_new_bid=$this->vendor_db_users->vendor_new_technical_bid_list_commerical
 															  </td>
 													     	<td><?php echo $key_technical->mode_bid;?></td>
 													     	<td><?php echo $key_technical->date_start;?></td>
-													     	<td><?php echo $key_technical->date_end;?></td>
-																<td><a href="<?=base_url().$page?>/<?=$key_technical->slno_vendor?>/<?=$key_technical->category?>/<?=$status_view?>" class="btn btn-sm btn-success">View</a></td>
+													     	<td>
+													     		<?php $date=$key_technical->date_end." 16:18:00"?>
+													     		<?php echo $dates=$key_technical->date_end?>
+													     		<input type="hidden" name="date_end" id="date_end<?=$x?>" value="<?php echo ($date);?>"  readonly class="form-control-plaintext"></td>
+													     	<td><p id="demo<?=$x?>"></p></td>
+																<td><a id="viewer_id<?=$x?>" href="<?=base_url().$page?>/<?=$key_technical->slno_vendor?>/<?=$key_technical->category?>/<?=$status_view?>" class="btn btn-sm btn-success">View</a></td>
 																<td><a href="<?=base_url()?>user-vendor-commerical-query-panel/<?=$key_technical->slno_vendor?>" class="btn btn-sm btn-warning">Query</a></td>
 													  </tr>
   												<?php }
@@ -138,5 +143,59 @@ $result_new_bid=$this->vendor_db_users->vendor_new_technical_bid_list_commerical
   </table>
     </div>
   </div>
-<!-- </div> -->
-  </body>
+</div>
+</div>
+
+<script type="text/javascript">
+
+
+	
+
+// A $( document ).ready() block.
+$( document ).ready(function() {
+	for (var i=1;i<=<?=$x?>;i++) {
+		 var fiveMinutes =$('#date_end'+i).val(),
+	        display = document.querySelector('#demo'+i);
+	    startTimer(fiveMinutes, display,i);
+	    // alert(fiveMinutes);
+	}
+	
+
+});
+function startTimer(duration, display,id) {
+	var countDownDate =  new Date(duration).getTime();
+	// alert(duration);
+    // Update the count down every 1 second
+	var x = setInterval(function() {
+
+	  // Get todays date and time
+	  var now = new Date().getTime();
+
+	  // Find the distance between now and the count down date
+	  var distance = new Date(duration).getTime() - now;
+	  // alert(distance);
+	  // Time calculations for days, hours, minutes and seconds
+	  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	 	
+	  // Display the result in the element with id="demo"
+	  // document.getElementById("demo"+id).innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+	   display.textContent =days + " Days " + hours + " Hours " + minutes + " Min " + seconds + " Sec ";
+
+	  // If the count down is finished, write some text
+	  if (distance < 0) {
+	    clearInterval(x);
+	    document.getElementById("viewer_id"+id).style.display = "none"; 
+	    document.getElementById("viewer_id"+id).removeAttribute("href");
+	    // $("#viewer_id"+id)hide();
+	    document.getElementById("demo"+id).innerHTML = "EXPIRED";
+	    document.getElementById("demo"+id).style.color = "red"; 
+
+	  }
+	}, 1000);
+}
+	// Set the date we're counting down to
+
+</script>

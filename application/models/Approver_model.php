@@ -171,7 +171,7 @@ class Approver_model extends CI_Model {
     }
     public function get_approver_conform_mr_job_detail($value=''){
       if(!empty($value)){
-        $data_array_mr = array('Slno_mr_id' => $value ,'Forward_status'=>2);
+        $data_array_mr = array('Slno_mr_id' => $value );
         $query_mr=$this->db->get_where('master_mr_approver_order',$data_array_mr);
         if($query_mr->num_rows() == 0){
           $data_send = array('no_mr_deatils' =>2 );

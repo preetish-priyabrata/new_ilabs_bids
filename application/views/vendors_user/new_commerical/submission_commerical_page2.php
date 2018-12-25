@@ -61,6 +61,14 @@ $mode_bid=$result_title['new_tech_list'][0]->mode_bid;
 			<h4 class="panel-title">Panel Title here</h4>
 		</div>
 		<div class="panel-body">
+			<form action="<?=base_url()?>user-vendor-bid-submission-commerical-save" method="POST">
+				<input type="hidden" name="master_bid_id" value="<?=$master_bid_id_com?>">
+				<input type="hidden" name="vendor_bid_id" value="<?=$value?>">
+				<input type="hidden" name="vendor_id" value="<?=$Vendor_email_id?>">
+				<input type="hidden" name="mode_bid" value="<?=$mode_bid?>">
+				<input type="hidden" name="mode_bid_id" value="<?=$value3?>">
+				<input type="hidden" name="Category" value="<?=$value1?>">
+				<input type="hidden" name="bid_ref" value="<?=$result_title['new_tech_list'][0]->bid_ref?>	">
 			<div class="row">
 				<div class="col-md-6 col-lg-6">
 					<div class="form-group row m-b-15">
@@ -148,7 +156,7 @@ $mode_bid=$result_title['new_tech_list'][0]->mode_bid;
 										<td><input type="text" readonly class="form-control-plaintext" name="vehicle_nos[<?=$value_id_log->Slno_logic_comm?>]" id="qty<?=$x?>" value="<?=$value_id_log->vehicle_nos?>"></td>
 										<td><input type="text" readonly class="form-control-plaintext" name="from_location[<?=$value_id_log->Slno_logic_comm?>]" value="<?=$value_id_log->from_location?>"></td>
 										<td><input type="text" readonly class="form-control-plaintext" name="to_location[<?=$value_id_log->Slno_logic_comm?>]" value="<?=$value_id_log->to_location?>"></td>
-										<td> <input type="text" id="cost<?=$x?>" name="cost[<?=$value_id_log->Slno_logic_comm?>]" required /> </td>
+										<td> <input type="text" id="cost<?=$x?>" onkeyup="fix_cala(<?=$x?>)" name="cost[<?=$value_id_log->Slno_logic_comm?>]" required /> </td>
                     					<td> <input type="text" readonly class="form-control-plaintext" id="price<?=$x?>" name="price[<?=$value_id_log->Slno_logic_comm?>]"   value='0'/> </td>
 									</tr>
 									<?php 
@@ -161,7 +169,7 @@ $mode_bid=$result_title['new_tech_list'][0]->mode_bid;
 							</tr>
 							<tr>
 								<td colspan="7">Total Tax</td>
-								<td ><input type="text"  class="form-control" id="total_tax" name="total_tax"  value="0.00" /></td>
+								<td ><input type="text"  class="form-control" id="total_tax"   onkeyup="fix_cala('tAX')" name="total_tax"  value="0.00" /></td>
 							</tr>
 							<tr>
 								<td colspan="7">Total Landed Cost </td>
@@ -169,7 +177,7 @@ $mode_bid=$result_title['new_tech_list'][0]->mode_bid;
 							</tr>
 							<tr>
 								<td colspan="7">User Assumption Charges </td>
-								<td ><input type="text" readonly="readonly" class="form-control" id="user_assmption" name="user_assumption" value="0.00" /></td>
+								<td ><input type="text"  class="form-control" id="user_assmption" name="user_assumption" value="0.00" /></td>
 							</tr>
 							<tr>
 								<td colspan="7">Delivery Basis</td>
@@ -201,44 +209,57 @@ $mode_bid=$result_title['new_tech_list'][0]->mode_bid;
 							</tr>
 							<tr>
 								<td colspan="7">Remarks</td>
-								<td ><textarea input type="text" class="form-control" id="remarks" name="remarks" required="" /></textarea></td>
+								<td ><textarea class="form-control" id="remarks" name="remarks" required="" /></textarea></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>	
 			</div>
-			
-        				<input type="button" value="Total" onclick="totalIt()" />
-				
+		<div class="form-group row pull-right">
+                <div class="col-md-12">
+                	<input type="button" value="Total" id="to_cal" onclick="totalIt()" />
+                    <button type="submit" id="to_sub" class="btn btn-sm btn-primary m-r-5">Save</button>
+                    <a  href="user-admin-home" class="btn btn-sm btn-default">Cancel</a> 
+                </div>
+            </div>
+		</form>
 		</div>
 	</div>
 </div>
-
 <script type="text/javascript">
 	 function calc(idx) {
-		  var price = parseFloat(document.getElementById("cost"+idx).value)*
-		              parseFloat(document.getElementById("qty"+idx).value);
-		  //  alert(idx+":"+price);  
+	 		var cost=$("#cost"+idx).val();
+	 		// alert(idx+":"+cost);
+	 		var qntid=$("#qty"+idx).val();
+	 		// alert(idx+":"+qntid);
+		  var price = parseFloat(cost)*parseFloat(qntid);
+		   // alert(idx+":"+price);  
 		  document.getElementById("price"+idx).value= isNaN(price)?"0.00":price.toFixed(2);
 	   
 	}
 
 	function totalIt() {
-	  var qtys = document.getElementsByName("vehicle_nos[]");
-	  alert(<?=$x?>);
+	  
 	  var total=0;
 	  for (var i=1;i<=<?=$x?>;i++) {
 	    calc(i);  
 	    var price = parseFloat(document.getElementById("price"+i).value);
 	    total += isNaN(price)?0:price;
 	  }
+	  
 	  document.getElementById("total").value=isNaN(total)?"0.00":total.toFixed(2);   
 	   var sub_total=$('#total').val();    
 	   var total_tax=$('#total_tax').val();   
 	   var price_total = parseFloat(sub_total)+parseFloat(total_tax); 
-	   document.getElementById("total_landed").value=isNaN(price_total)?"0.00":price_total.toFixed(2);             
+	   document.getElementById("total_landed").value=isNaN(price_total)?"0.00":price_total.toFixed(2);
+	   	$('#to_sub').show();
+		$('#to_cal').hide();             
 	}   
+	function fix_cala(id){
+		$('#to_sub').hide();
+		$('#to_cal').show();
+	}
+	$(document).ready(function(){
+		$('#to_sub').hide();
+	});
 </script>
-
-
-			

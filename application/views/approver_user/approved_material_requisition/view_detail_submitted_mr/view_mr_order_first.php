@@ -81,7 +81,8 @@ if($value2!=$value){
 										$mr_no=$get_mr_id['mr_details'][0]->mr_no;
 										$job_code_id=$get_mr_id['mr_details'][0]->job_code_id;
 										$materilal_category_id_slno=$get_mr_id['mr_details'][0]->materilal_category_id_slno;
-										$approver_id=$get_mr_id['mr_details'][0]->approver_id;
+										// echo "string";
+										 $approver_id=$get_mr_id['mr_details'][0]->approver_id;
 										$techinal_evalution=$get_mr_id['mr_details'][0]->techinal_evalution;
 										$date_required=$get_mr_id['mr_details'][0]->date_required;
 										$date_creation=$get_mr_id['mr_details'][0]->date_creation;
