@@ -608,21 +608,6 @@ class Vendoruser extends CI_Controller {
             $cost=$this->input->post('cost');
             $price=$this->input->post('price');
 
-            foreach ($slno_mat as $key_id => $value_ids) {
-              $slno_mat_single=$slno_mat['$key_id'];
-              $item_name_single=$item_name['$key_id'];
-              $item_id_single=$item_id['$key_id'];
-              $item_qnt_single=$item_qnt['$key_id'];
-              $item_uom_single=$item_uom['$key_id'];
-              $cost_single=$cost['$key_id'];
-              $price_single=$price['$key_id'];
-
-              $item_data = array('Simple_id_slno'=>$last_bid_insert, 'Bid_master_id_com'=>$master_bid_id, 'Item_name'=>$item_name_single, 'Item_id'=>$item_id_single, 'Quantity'=>$item_qnt_single, 'Uom_unit'=>$item_uom_single, 'Unit_price'=>$cost_single, 'Total_unitprice'=>$price_single, 'Comm_item_slno'=>$slno_mat_single,  'bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id);
-              
-               $query_vendor_insert=$this->db->insert('master_simple_bid_item',$item_data);
-
-            }
-
 
              // `Slno_simple_misc`, `master_bid_id_com`, `simple_id_slno_misc`, `field_name`, `field_value`, `date_entry`, `Bid_slno`, `Vendor_id`
               // MISC INFORMATIO STORED ACCOIND TO BASIC INFORMATION
@@ -663,26 +648,6 @@ class Vendoruser extends CI_Controller {
             $cost=$this->input->post('cost');
             $price=$this->input->post('price');
 
-
-              // MISC INFORMATIO STORED ACCOIND TO BASIC INFORMATION
-              $misc_insert []= array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'delivery basis','field_value'=>$delivery_basis);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field name'=>'gaurantee warranty','field_value'=>$gaurantee_warranty);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'delivery schedule','field_value'=>$delivery_schedule);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'payment terms','field_value'=>$payment_terms);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'validity of offer','field_value'=>$validity_of_offer);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'security BG','field_value'=>$security_BG);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'liquidity damage','field_value'=>$liquidity_damage);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'remarks','field_value'=>$remarks);
-              // $query_vendor_insert=$this->db->insert('master_closed_bid_logistics',$vechile_insert);
-               $query_vendor_insert=$this->db->insert_batch('master_closed_bid_item_misc',$vechile_insert);
-               // TOTOAL PRICE ACCORDING TO BASIC INFORMATION
-               $total_query = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_total'=>$last_bid_insert, 'sub_total'=>$sub_total, 'total_tax'=>$total_tax, 'total_price'=>$total_landed, 'user_assumption_charge'=>$user_assumption,   'vendor_Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id );
-               $query_total_insert=$this->db->insert('master_closed_bid_item_total',$total_query);
-
-               $data_update = array('status_view'=>7,'submission_status'=>'1','submission_count'=>1);
-               $data_update_id = array('slno_vendor' => $vendor_bid_id );
-               $query_update_exe=$this->db->update('master_bid_vendor_commerical',$data_update,$data_update_id);
-
             break;
           case '12': // opne bid with moi
             
@@ -698,22 +663,6 @@ class Vendoruser extends CI_Controller {
             $item_uom=$this->input->post('item_uom');
             $cost=$this->input->post('cost');
             $price=$this->input->post('price');
-
-            foreach ($slno_mat as $key_id => $value_ids) {
-              $slno_mat_single=$slno_mat['$key_id'];
-              $item_name_single=$item_name['$key_id'];
-              $item_id_single=$item_id['$key_id'];
-              $item_qnt_single=$item_qnt['$key_id'];
-              $item_uom_single=$item_uom['$key_id'];
-              $cost_single=$cost['$key_id'];
-              $price_single=$price['$key_id'];
-
-              $item_data = array('Simple_id_slno'=>$last_bid_insert, 'Bid_master_id_com'=>$master_bid_id, 'Item_name'=>$item_name_single, 'Item_id'=>$item_id_single, 'Quantity'=>$item_qnt_single, 'Uom_unit'=>$item_uom_single, 'Unit_price'=>$cost_single, 'Total_unitprice'=>$price_single, 'Comm_item_slno'=>$slno_mat_single,  'bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id);
-              
-               $query_vendor_insert=$this->db->insert('master_simple_bid_item',$item_data);
-
-            }
-
 
              // `Slno_simple_misc`, `master_bid_id_com`, `simple_id_slno_misc`, `field_name`, `field_value`, `date_entry`, `Bid_slno`, `Vendor_id`
               // MISC INFORMATIO STORED ACCOIND TO BASIC INFORMATION
@@ -750,27 +699,6 @@ class Vendoruser extends CI_Controller {
             $item_uom=$this->input->post('item_uom');
             $cost=$this->input->post('cost');
             $price=$this->input->post('price');
-
-
-
-              // MISC INFORMATIO STORED ACCOIND TO BASIC INFORMATION
-              $misc_insert []= array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'delivery basis','field_value'=>$delivery_basis);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field name'=>'gaurantee warranty','field_value'=>$gaurantee_warranty);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'delivery schedule','field_value'=>$delivery_schedule);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'payment terms','field_value'=>$payment_terms);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'validity of offer','field_value'=>$validity_of_offer);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'security BG','field_value'=>$security_BG);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'liquidity damage','field_value'=>$liquidity_damage);
-              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'remarks','field_value'=>$remarks);
-              // $query_vendor_insert=$this->db->insert('master_closed_bid_logistics',$vechile_insert);
-               $query_vendor_insert=$this->db->insert_batch('master_closed_bid_item_misc',$vechile_insert);
-               // TOTOAL PRICE ACCORDING TO BASIC INFORMATION
-               $total_query = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_total'=>$last_bid_insert, 'sub_total'=>$sub_total, 'total_tax'=>$total_tax, 'total_price'=>$total_landed, 'user_assumption_charge'=>$user_assumption,   'vendor_Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id );
-               $query_total_insert=$this->db->insert('master_closed_bid_item_total',$total_query);
-
-               $data_update = array('status_view'=>7,'submission_status'=>'1','submission_count'=>1);
-               $data_update_id = array('slno_vendor' => $vendor_bid_id );
-               $query_update_exe=$this->db->update('master_bid_vendor_commerical',$data_update,$data_update_id);
 
             break;
           case '13': //open bid with logistic
@@ -826,9 +754,7 @@ class Vendoruser extends CI_Controller {
 
                $data_update = array('status_view'=>7,'submission_status'=>'1','submission_count'=>1);
                $data_update_id = array('slno_vendor' => $vendor_bid_id );   
-                $query_update_exe=$this->db->update('master_bid_vendor_commerical',$data_update,$data_update_id);   
-
-                  // from here 
+                $query_update_exe=$this->db->update('master_bid_vendor_commerical',$data_update,$data_update_id);     
 
             break;
           case '23': // closed bid with logistic
@@ -879,11 +805,7 @@ class Vendoruser extends CI_Controller {
 
                $data_update = array('status_view'=>7,'submission_status'=>'1','submission_count'=>1);
                $data_update_id = array('slno_vendor' => $vendor_bid_id );
-               $query_update_exe=$this->db->update('master_bid_vendor_commerical',$data_update,$data_update_id);
-
-               //  redirect form here
-               //  
-               //  
+                $query_update_exe=$this->db->update('master_bid_vendor_commerical',$data_update,$data_update_id);
             break;
           default:
             # code...
@@ -902,7 +824,259 @@ class Vendoruser extends CI_Controller {
 
     //Array ( [master_bid_id] => 4 [vendor_bid_id] => 20 [vendor_id] => ven121@gmail.com [mode_bid] => Simple Bid [mode_bid_id] => 1 [Category] => 2 [bid_ref] => qq  [slno_mat] => Array ( [1] => 1 [2] => 2 [3] => 3 ) [item_name] => Array ( [1] => Progressing cavity pump. [2] => Pump [3] => Rotary lobe pump ) [item_id] => Array ( [1] => Mat003 [2] => Mat001 [3] => Mat002 ) [item_qnt] => Array ( [1] => 10 [2] => 11 [3] => 15 ) [item_uom] => Array ( [1] => Capacity [2] => Horse Power [3] => Max Pump volume ) [cost] => Array ( [1] => 45645 [2] => 879 [3] => 65 ) [price] => Array ( [1] => 456450.00 [2] => 9669.00 [3] => 975.00 ) [sub_total] => 467094.00 [total_tax] => 654.897 [total_landed] => 467748.90 [user_assumption] => 0.00 [delivery_basis] => 5436 [gaurantee_warranty] => 867 [delivery_schedule] => 865 [payment_terms] => 897 [validity_of_offer] => 887 [security_BG] => 8656 [liquidity_damage] => 477 [remarks] => 4589 )
 
-  
+  public function vendor_bid_submission_commerical_save_s($value=''){
+      print_r($this->input->post());
+
+      $mode_bid_id=$this->input->post('mode_bid_id');
+      $Category=$this->input->post('Category');
+
+      $master_bid_id=$this->input->post('master_bid_id');
+      $vendor_bid_id=$this->input->post('vendor_bid_id');
+      $vendor_id=$this->input->post('vendor_id');
+      $mode_bid=$this->input->post('mode_bid');
+
+      $sub_total=$this->input->post('sub_total');
+      $total_tax=$this->input->post('total_tax');
+      $total_landed=$this->input->post('total_landed');
+      $user_assumption=$this->input->post('user_assumption');
+      
+      $delivery_basis=$this->input->post('delivery_basis');
+      $gaurantee_warranty=$this->input->post('gaurantee_warranty');
+      $delivery_schedule=$this->input->post('delivery_schedule');
+      $payment_terms=$this->input->post('payment_terms');
+      $validity_of_offer=$this->input->post('validity_of_offer');
+      $security_BG=$this->input->post('security_BG');
+      $liquidity_damage=$this->input->post('liquidity_damage');
+      $remarks=$this->input->post('remarks');
+     
+      $bid_ref=$this->input->post('bid_ref');
+      
+      $merage_id=$mode_bid_id.$Category; // 1->mode  2->category
+
+        switch ($merage_id) {
+          case '11': // open bid with sci
+
+             // basic information
+             $basic_insert = array('Bid_master_id_comm'=>$master_bid_id, 'Bid_ref_no'=>$bid_ref, 'Bid_vendor_id'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id, 'type_of_bid'=>$mode_bid, 'category_id'=>$Category, 'type_bid_id'=>$mode_bid_id);
+              $query_insert=$this->db->insert('master_simple_bid',$basic_insert);
+             $last_bid_insert=$this->db->last_query();
+
+            $slno_mat=$this->input->post('slno_mat');
+            $item_name=$this->input->post('item_name');
+            $item_id=$this->input->post('item_id');
+            $item_qnt=$this->input->post('item_qnt');
+            $item_uom=$this->input->post('item_uom');
+            $cost=$this->input->post('cost');
+            $price=$this->input->post('price');
+
+
+             // `Slno_simple_misc`, `master_bid_id_com`, `simple_id_slno_misc`, `field_name`, `field_value`, `date_entry`, `Bid_slno`, `Vendor_id`
+              // MISC INFORMATIO STORED ACCOIND TO BASIC INFORMATION
+              $misc_insert []= array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'delivery basis','field_value'=>$delivery_basis);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field name'=>'gaurantee warranty','field_value'=>$gaurantee_warranty);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'delivery schedule','field_value'=>$delivery_schedule);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'payment terms','field_value'=>$payment_terms);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'validity of offer','field_value'=>$validity_of_offer);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'security BG','field_value'=>$security_BG);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'liquidity damage','field_value'=>$liquidity_damage);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'remarks','field_value'=>$remarks);
+              // $query_vendor_insert=$this->db->insert('master_closed_bid_logistics',$vechile_insert);
+               $query_vendor_insert=$this->db->insert_batch('master_simple_bid_item_misc',$vechile_insert);
+
+               // `Slno_simple_item_total`, `master_bid_id_com`, `simple_id_slno_total`, `sub_total`, `total_tax`, `total_price`, `user_assumption_charge`, `date`, `current_rate`, `currency_name`, `Bid_slno`, `Vendor_id`
+               // TOTOAL PRICE ACCORDING TO BASIC INFORMATION
+               $total_query = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_total'=>$last_bid_insert, 'sub_total'=>$sub_total, 'total_tax'=>$total_tax, 'total_price'=>$total_landed, 'user_assumption_charge'=>$user_assumption,   'vendor_Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id );
+               $query_total_insert=$this->db->insert('master_simple_bid_item_total',$total_query);
+
+               $data_update = array('status_view'=>7,'submission_status'=>'1','submission_count'=>1);
+               $data_update_id = array('slno_vendor' => $vendor_bid_id );  
+                $query_update_exe=$this->db->update('master_bid_vendor_commerical',$data_update,$data_update_id);  
+            # code...
+            break;
+           case '21': //closed bid with sci
+
+            $basic_insert = array('Bid_master_id_comm'=>$master_bid_id, 'Bid_ref_no'=>$bid_ref, 'Bid_vendor_id'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id, 'type_of_bid'=>$mode_bid, 'category_id'=>$Category, 'type_bid_id'=>$mode_bid_id);
+            $query_insert=$this->db->insert('master_closed_bid',$basic_insert);
+            $last_bid_insert=$this->db->last_query();
+
+
+
+            $slno_mat=$this->input->post('slno_mat');
+            $item_name=$this->input->post('item_name');
+            $item_id=$this->input->post('item_id');
+            $item_qnt=$this->input->post('item_qnt');
+            $item_uom=$this->input->post('item_uom');
+            $cost=$this->input->post('cost');
+            $price=$this->input->post('price');
+
+            break;
+          case '12': // opne bid with moi
+            
+             // basic information
+             $basic_insert = array('Bid_master_id_comm'=>$master_bid_id, 'Bid_ref_no'=>$bid_ref, 'Bid_vendor_id'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id, 'type_of_bid'=>$mode_bid, 'category_id'=>$Category, 'type_bid_id'=>$mode_bid_id);
+              $query_insert=$this->db->insert('master_simple_bid',$basic_insert);
+             $last_bid_insert=$this->db->last_query();
+
+            $slno_mat=$this->input->post('slno_mat');
+            $item_name=$this->input->post('item_name');
+            $item_id=$this->input->post('item_id');
+            $item_qnt=$this->input->post('item_qnt');
+            $item_uom=$this->input->post('item_uom');
+            $cost=$this->input->post('cost');
+            $price=$this->input->post('price');
+
+             // `Slno_simple_misc`, `master_bid_id_com`, `simple_id_slno_misc`, `field_name`, `field_value`, `date_entry`, `Bid_slno`, `Vendor_id`
+              // MISC INFORMATIO STORED ACCOIND TO BASIC INFORMATION
+              $misc_insert []= array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'delivery basis','field_value'=>$delivery_basis);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field name'=>'gaurantee warranty','field_value'=>$gaurantee_warranty);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'delivery schedule','field_value'=>$delivery_schedule);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'payment terms','field_value'=>$payment_terms);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'validity of offer','field_value'=>$validity_of_offer);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'security BG','field_value'=>$security_BG);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'liquidity damage','field_value'=>$liquidity_damage);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'remarks','field_value'=>$remarks);
+              // $query_vendor_insert=$this->db->insert('master_closed_bid_logistics',$vechile_insert);
+               $query_vendor_insert=$this->db->insert_batch('master_simple_bid_item_misc',$vechile_insert);
+
+               // `Slno_simple_item_total`, `master_bid_id_com`, `simple_id_slno_total`, `sub_total`, `total_tax`, `total_price`, `user_assumption_charge`, `date`, `current_rate`, `currency_name`, `Bid_slno`, `Vendor_id`
+               // TOTOAL PRICE ACCORDING TO BASIC INFORMATION
+               $total_query = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_total'=>$last_bid_insert, 'sub_total'=>$sub_total, 'total_tax'=>$total_tax, 'total_price'=>$total_landed, 'user_assumption_charge'=>$user_assumption,   'vendor_Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id );
+               $query_total_insert=$this->db->insert('master_simple_bid_item_total',$total_query);
+
+               $data_update = array('status_view'=>7,'submission_status'=>'1','submission_count'=>1);
+               $data_update_id = array('slno_vendor' => $vendor_bid_id );  
+                $query_update_exe=$this->db->update('master_bid_vendor_commerical',$data_update,$data_update_id);  
+
+            break;
+          case '22': // closed bid with moi
+             $basic_insert = array('Bid_master_id_comm'=>$master_bid_id, 'Bid_ref_no'=>$bid_ref, 'Bid_vendor_id'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id, 'type_of_bid'=>$mode_bid, 'category_id'=>$Category, 'type_bid_id'=>$mode_bid_id);
+            $query_insert=$this->db->insert('master_closed_bid',$basic_insert);
+            $last_bid_insert=$this->db->last_query();
+
+            $slno_mat=$this->input->post('slno_mat');
+            $item_name=$this->input->post('item_name');
+            $item_id=$this->input->post('item_id');
+            $item_qnt=$this->input->post('item_qnt');
+            $item_uom=$this->input->post('item_uom');
+            $cost=$this->input->post('cost');
+            $price=$this->input->post('price');
+
+            break;
+          case '13': //open bid with logistic
+              
+            // 'Slno_simple', 'Bid_master_id_comm', 'Bid_ref_no', 'Bid_vendor_id', 'Vendor_id', 'date_entry', 'type_of_bid', 'category_id', 'type_bid_id'
+              // basic information
+             $basic_insert = array('Bid_master_id_comm'=>$master_bid_id, 'Bid_ref_no'=>$bid_ref, 'Bid_vendor_id'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id, 'type_of_bid'=>$mode_bid, 'category_id'=>$Category, 'type_bid_id'=>$mode_bid_id);
+              $query_insert=$this->db->insert('master_simple_bid',$basic_insert);
+             $last_bid_insert=$this->db->last_query();
+             // item information according to basic information
+              $Slno_logic_comm=$this->input->post('Slno_logic_comm');
+              $vehicle_name=$this->input->post('vehicle_name');
+              $vehicle_capacity=$this->input->post('vehicle_capacity');
+              $vehicle_details=$this->input->post('vehicle_details');
+              $vehicle_nos=$this->input->post('vehicle_nos');
+              $from_location=$this->input->post('from_location');
+              $to_location=$this->input->post('to_location');
+              $cost=$this->input->post('cost');
+              $price=$this->input->post('price');   
+              // `Slno_simple_item`, `simple_id_slno`, `bid_master_id_com`, `vehicle_type`, `capacity`, `detail`, `no`, `from_location`, `to_location`, `unit_price`, `total_unit_price`, `date_entry`, `comm_item_slno`, `mr_item_slno`, `vendor_bid_slno`, `Vendor_id`
+              foreach ($Slno_logic_comm as $key_id => $value_ids) {
+                $Slno_logic_comm_single=$Slno_logic_comm[$key_id];
+                $vehicle_name_single=$vehicle_name[$key_id];
+                $vehicle_capacity_single=$vehicle_capacity[$key_id];
+                $vehicle_details_single=$vehicle_details[$key_id];
+                $vehicle_nos_single=$vehicle_nos[$key_id];
+                $from_location_single=$from_location[$key_id];
+                $to_location_single=$to_location[$key_id];
+                $cost_single=$cost[$key_id];
+                $price_single=$price[$key_id];
+
+                $vechile_insert = array('simple_id_slno'=>$last_bid_insert, 'bid_master_id_com'=>$master_bid_id, 'vehicle_type'=>$vehicle_name_single, 'capacity'=>$vehicle_capacity_single, 'detail'=>$vehicle_details_single, 'no'=>$vehicle_nos_single, 'from_location'=>$from_location_single, 'to_location'=>$to_location_single, 'unit_price'=>$cost_single, 'total_unit_price'=>$price_single,  'comm_item_slno'=>$Slno_logic_comm_single,  'vendor_bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id);
+                  $query_vendor_insert=$this->db->insert('master_simple_bid_logistic',$vechile_insert);
+                # code...
+              }
+              // `Slno_simple_misc`, `master_bid_id_com`, `simple_id_slno_misc`, `field_name`, `field_value`, `date_entry`, `Bid_slno`, `Vendor_id`
+              // MISC INFORMATIO STORED ACCOIND TO BASIC INFORMATION
+              $misc_insert []= array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'delivery basis','field_value'=>$delivery_basis);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field name'=>'gaurantee warranty','field_value'=>$gaurantee_warranty);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'delivery schedule','field_value'=>$delivery_schedule);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'payment terms','field_value'=>$payment_terms);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'validity of offer','field_value'=>$validity_of_offer);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'security BG','field_value'=>$security_BG);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'liquidity damage','field_value'=>$liquidity_damage);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'remarks','field_value'=>$remarks);
+              // $query_vendor_insert=$this->db->insert('master_closed_bid_logistics',$vechile_insert);
+               $query_vendor_insert=$this->db->insert_batch('master_simple_bid_item_misc',$vechile_insert);
+
+               // `Slno_simple_item_total`, `master_bid_id_com`, `simple_id_slno_total`, `sub_total`, `total_tax`, `total_price`, `user_assumption_charge`, `date`, `current_rate`, `currency_name`, `Bid_slno`, `Vendor_id`
+               // TOTOAL PRICE ACCORDING TO BASIC INFORMATION
+               $total_query = array('master_bid_id_com'=>$master_bid_id, 'simple_id_slno_total'=>$last_bid_insert, 'sub_total'=>$sub_total, 'total_tax'=>$total_tax, 'total_price'=>$total_landed, 'user_assumption_charge'=>$user_assumption,   'vendor_Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id );
+               $query_total_insert=$this->db->insert('master_simple_bid_item_total',$total_query);
+
+               $data_update = array('status_view'=>7,'submission_status'=>'1','submission_count'=>1);
+               $data_update_id = array('slno_vendor' => $vendor_bid_id );   
+                $query_update_exe=$this->db->update('master_bid_vendor_commerical',$data_update,$data_update_id);     
+
+            break;
+          case '23': // closed bid with logistic
+            // basic information
+             $basic_insert = array('Bid_master_id_comm'=>$master_bid_id, 'Bid_ref_no'=>$bid_ref, 'Bid_vendor_id'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id, 'type_of_bid'=>$mode_bid, 'category_id'=>$Category, 'type_bid_id'=>$mode_bid_id);
+              $query_insert=$this->db->insert('master_closed_bid',$basic_insert);
+             $last_bid_insert=$this->db->last_query();
+             // item information according to basic information
+              $Slno_logic_comm=$this->input->post('Slno_logic_comm');
+              $vehicle_name=$this->input->post('vehicle_name');
+              $vehicle_capacity=$this->input->post('vehicle_capacity');
+              $vehicle_details=$this->input->post('vehicle_details');
+              $vehicle_nos=$this->input->post('vehicle_nos');
+              $from_location=$this->input->post('from_location');
+              $to_location=$this->input->post('to_location');
+              $cost=$this->input->post('cost');
+              $price=$this->input->post('price');   
+
+              foreach ($Slno_logic_comm as $key_id => $value_ids) {
+                $Slno_logic_comm_single=$Slno_logic_comm[$key_id];
+                $vehicle_name_single=$vehicle_name[$key_id];
+                $vehicle_capacity_single=$vehicle_capacity[$key_id];
+                $vehicle_details_single=$vehicle_details[$key_id];
+                $vehicle_nos_single=$vehicle_nos[$key_id];
+                $from_location_single=$from_location[$key_id];
+                $to_location_single=$to_location[$key_id];
+                $cost_single=$cost[$key_id];
+                $price_single=$price[$key_id];
+
+                $vechile_insert = array('closed_id_slno'=>$last_bid_insert, 'bid_master_id_com'=>$master_bid_id, 'vehicle_type'=>$vehicle_name_single, 'capacity'=>$vehicle_capacity_single, 'detail'=>$vehicle_details_single, 'no'=>$vehicle_nos_single, 'from_location'=>$from_location_single, 'to_location'=>$to_location_single, 'unit_price'=>$cost_single, 'total_unit_price'=>$price_single,  'comm_item_slno'=>$Slno_logic_comm_single,  'vendor_bid_slno'=>$vendor_bid_id, 'vendor_id'=>$vendor_id);
+                  $query_vendor_insert=$this->db->insert('master_closed_bid_logistics',$vechile_insert);
+                # code...
+              }
+              // MISC INFORMATIO STORED ACCOIND TO BASIC INFORMATION
+              $misc_insert []= array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'delivery basis','field_value'=>$delivery_basis);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field name'=>'gaurantee warranty','field_value'=>$gaurantee_warranty);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'delivery schedule','field_value'=>$delivery_schedule);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'payment terms','field_value'=>$payment_terms);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'validity of offer','field_value'=>$validity_of_offer);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'security BG','field_value'=>$security_BG);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'liquidity damage','field_value'=>$liquidity_damage);
+              $misc_insert[] = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_misc'=>$last_bid_insert, 'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id,'field_name'=>'remarks','field_value'=>$remarks);
+              // $query_vendor_insert=$this->db->insert('master_closed_bid_logistics',$vechile_insert);
+               $query_vendor_insert=$this->db->insert_batch('master_closed_bid_item_misc',$vechile_insert);
+               // TOTOAL PRICE ACCORDING TO BASIC INFORMATION
+               $total_query = array('master_bid_id_com'=>$master_bid_id, 'closed_id_slno_total'=>$last_bid_insert, 'sub_total'=>$sub_total, 'total_tax'=>$total_tax, 'total_price'=>$total_landed, 'user_assumption_charge'=>$user_assumption,   'vendor_Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id );
+               $query_total_insert=$this->db->insert('master_closed_bid_item_total',$total_query);
+
+               $data_update = array('status_view'=>7,'submission_status'=>'1','submission_count'=>1);
+               $data_update_id = array('slno_vendor' => $vendor_bid_id );
+                $query_update_exe=$this->db->update('master_bid_vendor_commerical',$data_update,$data_update_id);
+            break;
+          default:
+            # code...
+            break;
+        }
+
+      
+
+     
+    }
 
 
 
