@@ -5,15 +5,16 @@ class Approveruser extends CI_Controller {
     public function __construct(){
             parent::__construct();
             // Loading my model which will use
-            $this->load->model('user_model', 'user'); 
+            $this->load->model('user_model', 'user');
             $this->load->model('approver_model', 'approver_user');
             $this->load->model('design_model', 'design_user');
-             
+
             // imedate database link
-            $this->load->database();    
-            
-            //Load session library 
-         $this->load->library('session');
+            $this->load->database();
+
+            //Load session library
+
+          $this->load->library('session');
          $this->load->library('user_agent');
          $this->load->library('encryption');
          $this->load->library('form_validation');
@@ -36,7 +37,7 @@ class Approveruser extends CI_Controller {
     public function approver_new_mr_receive($value=''){
         $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
 
-        $data=array('title' =>"Material Requisition Receive list",'script_js'=>$scripts ,'menu_status'=>'1','sub_menu'=>'1','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');  
+        $data=array('title' =>"Material Requisition Receive list",'script_js'=>$scripts ,'menu_status'=>'1','sub_menu'=>'1','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
 
             $this->load->view('template/template_header',$data);
             $this->load->view('approver_user/template/template_top_head');
@@ -58,13 +59,13 @@ class Approveruser extends CI_Controller {
                     $title="View detail of logistics";
                     $view_page="view_mr_order_third";
                     break;
-                
+
                 default:
                     # code...
                     break;
             }
             $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
-            $data=array('title' =>$title,'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1,'value2'=>$value2);    
+            $data=array('title' =>$title,'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1,'value2'=>$value2);
 
             $this->load->view('template/template_header',$data);
             $this->load->view('approver_user/template/template_top_head');
@@ -93,11 +94,11 @@ class Approveruser extends CI_Controller {
                             if(move_uploaded_file($_FILES["file"]["tmp_name"], 'upload_files/design_upload/' . $file_stored_name)){
                                 $data_array = array('mr_no_id'=>$Mr_no, 'slno_mr_id'=>$slno_Mr_no, 'attach_name'=>$file_stored_name, 'file_name_actucal'=>$file_name);
                                 $query_files=$this->db->insert('master_mr_file_upload',$data_array);
-                                echo '1' ;  
+                                echo '1' ;
                             }
-                        }                
-                    }            
-                } 
+                        }
+                    }
+                }
                 break;
              case 'files_info':
                 $result_file=$this->design_user->get_design_mr_file_list($slno_Mr_no,$Mr_no);
@@ -109,7 +110,7 @@ class Approveruser extends CI_Controller {
                         <thead>
                             <tr>
                                 <th><strong>File Name</strong></th>
-                                <th><strong>Click View</strong></th>                                
+                                <th><strong>Click View</strong></th>
                                 <th><strong>Action</strong></th>
                             </tr>
                         </thead>
@@ -117,9 +118,9 @@ class Approveruser extends CI_Controller {
                             <?php foreach($result_file['files_list'] as $key_files){ ?>
                                 <tr>
                                     <td><strong><?=$key_files->file_name_actucal?></strong></td>
-                                    <td><strong><a target="_blank" href="<?=base_url()?>upload_files/design_upload/<?=$key_files->attach_name?>">Click View</a> </strong></td>                                
+                                    <td><strong><a target="_blank" href="<?=base_url()?>upload_files/design_upload/<?=$key_files->attach_name?>">Click View</a> </strong></td>
                                     <td><strong><span onclick="file_delete(<?=$key_files->slno_file?>)" class="btn btn-sm btn-danger">Delete File</span></strong></td>
-                                </tr> 
+                                </tr>
 
 
                             <?php }?>
@@ -152,7 +153,7 @@ class Approveruser extends CI_Controller {
                 }
                 else {
                      echo '2';
-                }                
+                }
 
                 break;
              case 'files_info_view':
@@ -165,17 +166,17 @@ class Approveruser extends CI_Controller {
                         <thead>
                             <tr>
                                 <th><strong>File Name</strong></th>
-                                <th><strong>Click View</strong></th>                                
-                               
+                                <th><strong>Click View</strong></th>
+
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach($result_file['files_list'] as $key_files){ ?>
                                 <tr>
                                     <td><strong><?=$key_files->file_name_actucal?></strong></td>
-                                    <td><strong><a target="_blank" href="<?=base_url()?>upload_files/design_upload/<?=$key_files->attach_name?>">Click View</a> </strong></td>                                
-                                   
-                                </tr> 
+                                    <td><strong><a target="_blank" href="<?=base_url()?>upload_files/design_upload/<?=$key_files->attach_name?>">Click View</a> </strong></td>
+
+                                </tr>
 
 
                             <?php }?>
@@ -188,11 +189,11 @@ class Approveruser extends CI_Controller {
             default:
                 # code...
                 break;
-        }        
-       
+        }
+
     }
     public function approve_item_required_session_ids(){
-         
+
         $actions_file=$this->input->post('actions_file');
         $Mr_no=$this->input->post('Mr_no');
         $slno_Mr_no=$this->input->post('slno_Mr_no');
@@ -201,7 +202,7 @@ class Approveruser extends CI_Controller {
             switch ($this->input->post('action')) {
                 case 'add':
                 $_SESSION["cart_item_tech"]= $_SESSION["cart_item"]= array();
-                           
+
                          $query_item_details_list=$this->design_user->get_design_master_mr_items_material_single($actions_file,$Mr_no,$slno_Mr_no);
                          // print_r($query_item_details_list);
                          if($query_item_details_list['no_item']==1){
@@ -224,7 +225,7 @@ class Approveruser extends CI_Controller {
                                 foreach ($query_item_details_list_tech['item_list_tech'] as $key_tech => $value_tech) {
                                     $code_tech=$value_tech->tech_slno_id;
                                     if($code_tech!=0){
-                               
+
                                         if(!empty($this->session->userdata('cart_item_tech'))) {
 
                                             $cart_item_tech_sess=$_SESSION["cart_item_tech"] = array_merge($this->session->userdata('cart_item_tech'),array('0' => $code_tech ));
@@ -252,7 +253,7 @@ class Approveruser extends CI_Controller {
                                         <th><strong>Quantity</strong></th>
                                         <th><strong>UOM</strong></th>
                                         <th><strong>Technical Parameter</strong></th>
-                                       
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -265,46 +266,46 @@ class Approveruser extends CI_Controller {
                                         <td><strong><input type="hidden" name="item_uom[<?=$id?>]" value="<?=$item['item_uom']?>"><?=$item['item_uom']?></strong></td>
                                         <td><?php $slno=$item['code'];
                                             $result_technical=$this->design_user->get_design_master_items_material_single_technical($slno);
-                                            
+
                                             if($result_technical['no_technical']==2){
                                                echo '<label class="checkbox-inline"><input type="checkbox" name="technical_mr['.$id.']['.$item['code'].'][]" value="a"  checked>No Technical is added To this material</label>';
                                             }else{
                                                 foreach ( $result_technical['technical_list'] as $value_technical) {
                                                     if(empty($cart_item_tech_sess)){
-                                                        
-                                                       
+
+
                                                             echo '<label class="checkbox-inline"><input disabled class="attribute" type="checkbox" id="technical_mr_'.$id.$value_technical->Slno_technical.'" name="technical_mr['.$id.']['.$item['code'].'][]" value="'.$value_technical->Slno_technical.'" onclick="get_value_check(this.id)" >'.$value_technical->technical_name.'</label>';
-                                                      
+
                                                     }else{
                                                          $pos = array_search($value_technical->Slno_technical, $cart_item_tech_sess);
                                                         // foreach ($cart_item_tech_sess as $value) {
                                                             if( $cart_item_tech_sess[$pos]==$value_technical->Slno_technical){
                                                                echo '<label class="checkbox-inline"><input disabled checked class="attribute" type="checkbox" id="technical_mr_'.$id.$value_technical->Slno_technical.'" name="technical_mr['.$id.']['.$item['code'].'][]" value="'.$value_technical->Slno_technical.'" onclick="get_value_check(this.id)" >'.$value_technical->technical_name.'</label>';
                                                            }
-                                                        
+
                                                     }
 
                                             }
                                         }
-                                           
+
                                         ?></td>
-                                       
+
                                     </tr>
-                                <?php 
+                                <?php
                                 $id++;
                             }
                                 ?>
-                                                   
-                                </tbody>  
+
+                                </tbody>
                             </table>
                             <?php
                         }
-                          
-                   
+
+
                     break;
-                case 'add_comment': 
+                case 'add_comment':
                          $_SESSION["cart_item_tech"]= $_SESSION["cart_item"]= array();
-                           
+
                          $query_item_details_list=$this->design_user->get_design_master_mr_items_material_single($actions_file,$Mr_no,$slno_Mr_no);
                          // print_r($query_item_details_list);
                          if($query_item_details_list['no_item']==1){
@@ -328,7 +329,7 @@ class Approveruser extends CI_Controller {
                                 foreach ($query_item_details_list_tech['item_list_tech'] as $key_tech => $value_tech) {
                                     $code_tech=$value_tech->tech_slno_id;
                                     if($code_tech!=0){
-                               
+
                                         if(!empty($this->session->userdata('cart_item_tech'))) {
 
                                             $cart_item_tech_sess=$_SESSION["cart_item_tech"] = array_merge($this->session->userdata('cart_item_tech'),array('0' => $code_tech ));
@@ -369,47 +370,47 @@ class Approveruser extends CI_Controller {
                                         <td><strong><input type="hidden" name="item_uom[<?=$id?>]" value="<?=$item['item_uom']?>"><?=$item['item_uom']?></strong></td>
                                         <td><?php $slno=$item['code'];
                                             $result_technical=$this->design_user->get_design_master_items_material_single_technical($slno);
-                                            
+
                                             if($result_technical['no_technical']==2){
                                                echo '<label class="checkbox-inline"><input type="checkbox" name="technical_mr['.$id.']['.$item['code'].'][]" value="a"  checked>No Technical is added To this material</label>';
                                             }else{
                                                 foreach ( $result_technical['technical_list'] as $value_technical) {
                                                     if(empty($cart_item_tech_sess)){
-                                                        
-                                                       
+
+
                                                             echo '<label class="checkbox-inline"><input disabled class="attribute" type="checkbox" id="technical_mr_'.$id.$value_technical->Slno_technical.'" name="technical_mr['.$id.']['.$item['code'].'][]" value="'.$value_technical->Slno_technical.'" onclick="get_value_check(this.id)" >'.$value_technical->technical_name.'</label>';
-                                                      
+
                                                     }else{
                                                          $pos = array_search($value_technical->Slno_technical, $cart_item_tech_sess);
                                                         // foreach ($cart_item_tech_sess as $value) {
                                                             if( $cart_item_tech_sess[$pos]==$value_technical->Slno_technical){
                                                                echo '<label class="checkbox-inline"><input disabled checked class="attribute" type="checkbox" id="technical_mr_'.$id.$value_technical->Slno_technical.'" name="technical_mr['.$id.']['.$item['code'].'][]" value="'.$value_technical->Slno_technical.'" onclick="get_value_check(this.id)" >'.$value_technical->technical_name.'</label>';
                                                            }
-                                                        
+
                                                     }
 
                                             }
                                         }
-                                           
+
                                         ?></td>
                                        <td><strong style="color: red"><?=$item['comment_details_item']?></strong></td>
                                     </tr>
-                                <?php 
+                                <?php
                                 $id++;
                             }
                                 ?>
-                                                   
-                                </tbody>  
+
+                                </tbody>
                             </table>
                             <?php
                         }
-                          
-                   
+
+
                     break;
                  case 'add_vechile':
                  // print_r($this->input->post());
-                 // Array ( [actions_file] => 1 [Mr_no] => 2018-10-20-4GOhM [slno_Mr_no] => 11 [action] => add_vechile ) 
-                 
+                 // Array ( [actions_file] => 1 [Mr_no] => 2018-10-20-4GOhM [slno_Mr_no] => 11 [action] => add_vechile )
+
                     $result_vechile=$this->design_user->get_design_master_mr_vechile_single($actions_file,$Mr_no,$slno_Mr_no);
                     // print_r($result_vechile);
                     if($result_vechile['no_vechile']==1){
@@ -429,10 +430,10 @@ class Approveruser extends CI_Controller {
                                     } else {
                                         $_SESSION["cart_item"] = $itemArray;
                                     }
-                           
+
                         }
 
-                        
+
 
                     }
                     if(!empty($_SESSION["cart_item"])){
@@ -449,7 +450,7 @@ class Approveruser extends CI_Controller {
                                     <tr>
                                        <th>Vehicle Type</th>
                                         <th>Capacity</th>
-                                        <th>Details</th>                                        
+                                        <th>Details</th>
                                         <th>No</th>
                                         <th>From Location</th>
                                         <th>To Location</th>
@@ -482,12 +483,12 @@ class Approveruser extends CI_Controller {
                                         <td><strong><input type="hidden" name="purpose[<?=$id?>]" value="<?=$item['purpose']?>"><?=$item['purpose']?></strong></td>
                                         <td><strong><a onClick="cartAction('remove',<?=$item['code']?>,'<?=$id?>')" class=" btn btnRemoveAction cart-action">Remove Item</a></strong></td>
                                     </tr>
-                                <?php 
+                                <?php
                                 $id++;
                             }
                                 ?>
-                                                   
-                                </tbody>  
+
+                                </tbody>
                             </table>
                             <?php
                         }
@@ -519,7 +520,7 @@ class Approveruser extends CI_Controller {
                                 foreach ($query_item_details_list_tech['item_list_tech'] as $key_tech => $value_tech) {
                                     $code_tech=$value_tech->tech_slno_id;
                                     if($code_tech!=0){
-                               
+
                                         if(!empty($this->session->userdata('cart_item_tech'))) {
 
                                             $cart_item_tech_sess=$_SESSION["cart_item_tech"] = array_merge($this->session->userdata('cart_item_tech'),array('0' => $code_tech ));
@@ -548,7 +549,7 @@ class Approveruser extends CI_Controller {
                                         <th><strong>UOM</strong></th>
                                         <th><strong>Technical Parameter</strong></th>
                                         <th><strong>Comments</strong></th>
-                                        
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -561,16 +562,16 @@ class Approveruser extends CI_Controller {
                                         <td><strong><input type="hidden" name="item_uom[<?=$id?>]" value="<?=$item['item_uom']?>"><?=$item['item_uom']?></strong></td>
                                         <td><?php $slno=$item['code'];
                                             $result_technical=$this->design_user->get_design_master_items_material_single_technical($slno);
-                                            
+
                                             if($result_technical['no_technical']==2){
                                                echo '<label class="checkbox-inline"><input disabled type="checkbox" name="technical_mr['.$id.']['.$item['code'].'][]" value="a"  checked>No Technical is added To this material</label>';
                                             }else{
                                                 foreach ( $result_technical['technical_list'] as $value_technical) {
                                                     if(empty($cart_item_tech_sess)){
-                                                        
-                                                       
+
+
                                                             echo '<label class="checkbox-inline"><input disabled class="attribute" type="checkbox" id="technical_mr_'.$id.$value_technical->Slno_technical.'" name="technical_mr['.$id.']['.$item['code'].'][]" value="'.$value_technical->Slno_technical.'" onclick="get_value_check(this.id)" >'.$value_technical->technical_name.'</label>';
-                                                      
+
                                                     }else{
                                                          $pos = array_search($value_technical->Slno_technical, $cart_item_tech_sess);
                                                         // foreach ($cart_item_tech_sess as $value) {
@@ -579,35 +580,35 @@ class Approveruser extends CI_Controller {
                                                            }else{
                                                                 echo '<label class="checkbox-inline"><input disabled class="attribute" type="checkbox" id="technical_mr_'.$id.$value_technical->Slno_technical.'" name="technical_mr['.$id.']['.$item['code'].'][]" value="'.$value_technical->Slno_technical.'" onclick="get_value_check(this.id)" >'.$value_technical->technical_name.'</label>';
                                                            }
-                                                        
+
                                                     }
 
                                             }
                                         }
-                                           
+
                                         ?></td>
                                         <td><textarea  name="comment[<?=$id?>]" class='text_areas' id='comment<?=$id?>'></textarea>
                                             <input type="hidden" name="slno_item_mr[<?=$id?>]" value="<?=$item['slno_item_mr']?>">
                                         </td>
-                                      
+
                                     </tr>
-                                <?php 
+                                <?php
                                 $id++;
                             }
                                 ?>
-                                                   
-                                </tbody>  
+
+                                </tbody>
                             </table>
                             <?php
                         }
-                          
-                   
+
+
                     break;
                  case 'add_vechile_view':
                  $_SESSION["cart_item"] = array();
                  // print_r($this->input->post());
-                 // Array ( [actions_file] => 1 [Mr_no] => 2018-10-20-4GOhM [slno_Mr_no] => 11 [action] => add_vechile ) 
-                 
+                 // Array ( [actions_file] => 1 [Mr_no] => 2018-10-20-4GOhM [slno_Mr_no] => 11 [action] => add_vechile )
+
                     $result_vechile=$this->design_user->get_design_master_mr_vechile_single($actions_file,$Mr_no,$slno_Mr_no);
                     // print_r($result_vechile);
                     if($result_vechile['no_vechile']==1){
@@ -628,10 +629,10 @@ class Approveruser extends CI_Controller {
                                     } else {
                                         $_SESSION["cart_item"] = $itemArray;
                                     }
-                           
+
                         }
 
-                        
+
 
                     }
                     if(!empty($_SESSION["cart_item"])){
@@ -648,7 +649,7 @@ class Approveruser extends CI_Controller {
                                     <tr>
                                        <th>Vehicle Type</th>
                                         <th>Capacity</th>
-                                        <th>Details</th>                                        
+                                        <th>Details</th>
                                         <th>No</th>
                                         <th>From Location</th>
                                         <th>To Location</th>
@@ -682,14 +683,14 @@ class Approveruser extends CI_Controller {
                                         <td><textarea  name="comment[<?=$id?>]" class='text_areas' id='comment<?=$id?>'></textarea>
                                             <input type="hidden" name="slno_mr_logistic[<?=$id?>]" value="<?=$item['slno_mr_logistic']?>">
                                         </td>
-                                      
+
                                     </tr>
-                                <?php 
+                                <?php
                                 $id++;
                             }
                                 ?>
-                                                   
-                                </tbody>  
+
+                                </tbody>
                             </table>
                             <?php
                         }
@@ -697,8 +698,8 @@ class Approveruser extends CI_Controller {
                 case 'add_vechile_view_approve': // only approved
                  $_SESSION["cart_item"] = array();
                  // print_r($this->input->post());
-                 // Array ( [actions_file] => 1 [Mr_no] => 2018-10-20-4GOhM [slno_Mr_no] => 11 [action] => add_vechile ) 
-                 
+                 // Array ( [actions_file] => 1 [Mr_no] => 2018-10-20-4GOhM [slno_Mr_no] => 11 [action] => add_vechile )
+
                     $result_vechile=$this->design_user->get_design_master_mr_vechile_single($actions_file,$Mr_no,$slno_Mr_no);
                     // print_r($result_vechile);
                     if($result_vechile['no_vechile']==1){
@@ -719,10 +720,10 @@ class Approveruser extends CI_Controller {
                                     } else {
                                         $_SESSION["cart_item"] = $itemArray;
                                     }
-                           
+
                         }
 
-                        
+
 
                     }
                     if(!empty($_SESSION["cart_item"])){
@@ -739,12 +740,12 @@ class Approveruser extends CI_Controller {
                                     <tr>
                                        <th>Vehicle Type</th>
                                         <th>Capacity</th>
-                                        <th>Details</th>                                        
+                                        <th>Details</th>
                                         <th>No</th>
                                         <th>From Location</th>
                                         <th>To Location</th>
                                         <th>Purpose</th>
-                                        
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -770,15 +771,15 @@ class Approveruser extends CI_Controller {
                                             </strong>
                                         </td>
                                         <td><strong><input type="hidden" name="purpose[<?=$id?>]" value="<?=$item['purpose']?>"><?=$item['purpose']?></strong></td>
-                                        
-                                      
+
+
                                     </tr>
-                                <?php 
+                                <?php
                                 $id++;
                             }
                                 ?>
-                                                   
-                                </tbody>  
+
+                                </tbody>
                             </table>
                             <?php
                         }
@@ -786,8 +787,8 @@ class Approveruser extends CI_Controller {
                 case 'add_vechile_view_comment': // only approved
                  $_SESSION["cart_item"] = array();
                  // print_r($this->input->post());
-                 // Array ( [actions_file] => 1 [Mr_no] => 2018-10-20-4GOhM [slno_Mr_no] => 11 [action] => add_vechile ) 
-                 
+                 // Array ( [actions_file] => 1 [Mr_no] => 2018-10-20-4GOhM [slno_Mr_no] => 11 [action] => add_vechile )
+
                     $result_vechile=$this->design_user->get_design_master_mr_vechile_single($actions_file,$Mr_no,$slno_Mr_no);
                     // print_r($result_vechile);
                     if($result_vechile['no_vechile']==1){
@@ -809,10 +810,10 @@ class Approveruser extends CI_Controller {
                                     } else {
                                         $_SESSION["cart_item"] = $itemArray;
                                     }
-                           
+
                         }
 
-                        
+
 
                     }
                     if(!empty($_SESSION["cart_item"])){
@@ -829,13 +830,13 @@ class Approveruser extends CI_Controller {
                                     <tr>
                                        <th>Vehicle Type</th>
                                         <th>Capacity</th>
-                                        <th>Details</th>                                        
+                                        <th>Details</th>
                                         <th>No</th>
                                         <th>From Location</th>
                                         <th>To Location</th>
                                         <th>Purpose</th>
                                         <th>Comment</th>
-                                        
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -862,14 +863,14 @@ class Approveruser extends CI_Controller {
                                         </td>
                                         <td><strong><input type="hidden" name="purpose[<?=$id?>]" value="<?=$item['purpose']?>"><?=$item['purpose']?></strong></td>
                                         <td><strong style="color: red"><?=$item['comment_details_vechile']?></strong></td>
-                                        
+
                                     </tr>
-                                <?php 
+                                <?php
                                 $id++;
                             }
                                 ?>
-                                                   
-                                </tbody>  
+
+                                </tbody>
                             </table>
                             <?php
                         }
@@ -880,7 +881,7 @@ class Approveruser extends CI_Controller {
                     break;
             }
         }
-       
+
         # code...
     }
     public function approver_add_new_mr_save_formII(){
@@ -900,7 +901,7 @@ class Approveruser extends CI_Controller {
             if($value1==$materials_id){
                 $mr_details=$result_mr['mr_details'][0];
                 $creators_id=$mr_details->creators_id;
-              
+
                 $Mr_id=$mr_details->mr_no;
                 $Slno_mr_id=$slno_Mr_no;
                 $Edit=$mr_details->edit_id;
@@ -930,7 +931,7 @@ class Approveruser extends CI_Controller {
                                 $id_array_mr=array('slno_mr' =>$slno_Mr_no); // mr slno which will able to update
                                 $data_mr = array('mr_forword_status' =>1 , 'mr_forword_date'=>$date); // mr data to be update
                                 $this->db->update('master_mr_job_details',$data_mr,$id_array_mr);
-                                
+
                                 $this->session->set_flashdata('success_message', ' Successfully Send To Procuremnet User ');
                                 redirect('user-approver-home');
                                 exit();
@@ -944,7 +945,7 @@ class Approveruser extends CI_Controller {
                             $comment=$this->input->post('comment');
                             $slno_item_mr=$this->input->post('slno_item_mr');
                             foreach ($comment as $key_comment => $value_comment) { // forloop start her about comment id
-                                
+
                                 if(!empty(trim($value_comment))){
                                    $slno_item_mr_single=$slno_item_mr[$key_comment];
                                    $comment_array = array('comment_details_item' =>$value_comment);
@@ -956,7 +957,7 @@ class Approveruser extends CI_Controller {
                             $mr_details=$result_mr['mr_details'][0];
                             $status=6;
                             $status_resubmit=1;
-                            $resubmit_count=$mr_details->resubmit_count+1; // it will help user to count  how many time this mr is be 
+                            $resubmit_count=$mr_details->resubmit_count+1; // it will help user to count  how many time this mr is be
                             $id_array_mr=array('slno_mr' =>$slno_Mr_no); // mr slno which will able to update
                             $data_mr = array('status' =>$status , 'status_resubmit'=>$status_resubmit,'resubmit_count'=>$resubmit_count); // mr data to be update
                             $this->db->update('master_mr_job_details',$data_mr,$id_array_mr);
@@ -1011,19 +1012,19 @@ class Approveruser extends CI_Controller {
                             $comment=$this->input->post('comment');
                             $slno_item_mr=$this->input->post('slno_item_mr');
                             foreach ($comment as $key_comment => $value_comment) {
-                                
+
                                 if(!empty(trim($value_comment))){
                                    $slno_item_mr_single=$slno_item_mr[$key_comment];
                                    $comment_array = array('comment_details_item' =>$value_comment);
                                    $id_array = array('slno_item_mr' =>$slno_item_mr_single);
                                     $this->db->update('master_mr_material_item',$comment_array,$id_array);
-                                 
+
                                }
                             }
                             $mr_details=$result_mr['mr_details'][0];
                             $status=6;
                             $status_resubmit=1;
-                            $resubmit_count=$mr_details->resubmit_count+1; // it will help user to count  how many time this mr is be 
+                            $resubmit_count=$mr_details->resubmit_count+1; // it will help user to count  how many time this mr is be
                             $id_array_mr=array('slno_mr' =>$slno_Mr_no); // mr slno which will able to update
                             $data_mr = array('status' =>$status , 'status_resubmit'=>$status_resubmit,'resubmit_count'=>$resubmit_count); // mr data to be update
                             $this->db->update('master_mr_job_details',$data_mr,$id_array_mr);
@@ -1040,10 +1041,10 @@ class Approveruser extends CI_Controller {
                                 exit();
                             }
 
-                            
+
                         }else{ //not go to anywhere it will redirect to dashboard
                            $this->session->set_flashdata('error_message', ' Something went wrong ');
-                            redirect('user-approver-home'); 
+                            redirect('user-approver-home');
                             exit();
                         }
                         break;
@@ -1079,19 +1080,19 @@ class Approveruser extends CI_Controller {
                             $comment=$this->input->post('comment');
                             $slno_mr_logistic=$this->input->post('slno_mr_logistic');
                             foreach ($comment as $key_comment => $value_comment) {
-                                
+
                                 if(!empty(trim($value_comment))){
                                    $slno_item_mr_single=$slno_mr_logistic[$key_comment];
                                    $comment_array = array('comment_details_vechile' =>$value_comment);
                                    $id_array = array('slno_mr_logistic' =>$slno_item_mr_single);
                                     $this->db->update('master_mr_vehicle_mr_detail',$comment_array,$id_array);
-                                 
+
                                }
                             }
                             $mr_details=$result_mr['mr_details'][0];
                             $status=6;
                             $status_resubmit=1;
-                            $resubmit_count=$mr_details->resubmit_count+1; // it will help user to count  how many time this mr is be 
+                            $resubmit_count=$mr_details->resubmit_count+1; // it will help user to count  how many time this mr is be
                             $id_array_mr=array('slno_mr' =>$slno_Mr_no); // mr slno which will able to update
                             $data_mr = array('status' =>$status , 'status_resubmit'=>$status_resubmit,'resubmit_count'=>$resubmit_count); // mr data to be update
                             $this->db->update('master_mr_job_details',$data_mr,$id_array_mr);
@@ -1108,18 +1109,18 @@ class Approveruser extends CI_Controller {
                                 exit();
                             }
 
-                            
+
                         }else{ //not go to anywhere it will redirect to dashboard
                            $this->session->set_flashdata('error_message', ' Something went wrong ');
                             redirect('user-approver-home');
-                            exit(); 
+                            exit();
                         }
                         break;
-                    
+
                     default:
                         $this->session->set_flashdata('error_message', ' Something went wrong ');
                         redirect('user-approver-home');
-                           
+
                         break;
                 }
             }else{
@@ -1129,12 +1130,12 @@ class Approveruser extends CI_Controller {
         }else{
             $this->session->set_flashdata('error_message', ' Something went wrong ');
             redirect('user-approver-home');
-        }       
+        }
     }
     public function approver_new_mr_conform($value=''){
          $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
 
-        $data=array('title' =>"Material Requisition Approved list",'script_js'=>$scripts ,'menu_status'=>'1','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');  
+        $data=array('title' =>"Material Requisition Approved list",'script_js'=>$scripts ,'menu_status'=>'1','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
 
             $this->load->view('template/template_header',$data);
             $this->load->view('approver_user/template/template_top_head');
@@ -1156,13 +1157,13 @@ class Approveruser extends CI_Controller {
                     $title="View Approved detail of logistics";
                     $view_page="view_mr_order_third";
                     break;
-                
+
                 default:
                     # code...
                     break;
             }
             $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
-            $data=array('title' =>$title,'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1,'value2'=>$value2);    
+            $data=array('title' =>$title,'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1,'value2'=>$value2);
 
             $this->load->view('template/template_header',$data);
             $this->load->view('approver_user/template/template_top_head');
@@ -1173,7 +1174,7 @@ class Approveruser extends CI_Controller {
     public function approver_resubmission_mr_order(){
         $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
 
-        $data=array('title' =>"Material Requisition Commented list",'script_js'=>$scripts ,'menu_status'=>'1','sub_menu'=>'3','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');  
+        $data=array('title' =>"Material Requisition Commented list",'script_js'=>$scripts ,'menu_status'=>'1','sub_menu'=>'3','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
 
             $this->load->view('template/template_header',$data);
             $this->load->view('approver_user/template/template_top_head');
@@ -1195,13 +1196,13 @@ class Approveruser extends CI_Controller {
                     $title="View Comment detail of logistics";
                     $view_page="view_mr_order_third";
                     break;
-                
+
                 default:
                     # code...
                     break;
             }
             $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
-            $data=array('title' =>$title,'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1,'value2'=>$value2);    
+            $data=array('title' =>$title,'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1,'value2'=>$value2);
 
             $this->load->view('template/template_header',$data);
             $this->load->view('approver_user/template/template_top_head');
@@ -1226,7 +1227,7 @@ class Approveruser extends CI_Controller {
                         $user_hstory_table="master_session_history";
                         $result_history = $this->user->common_update($user_hstory_table,$user_data,$id);
                         session_destroy();
-                        session_start();                        
+                        session_start();
                         $this->session->set_flashdata('success_message', 'Signout from Approver User panel');
                         redirect('home');
 
@@ -1235,19 +1236,19 @@ class Approveruser extends CI_Controller {
                         $user_data = array('logout_date'=>$date, 'logout_time'=>$time, 'status'=>'2');
                         $id=array('session_id'=>$session_id);
                         $user_hstory_table="master_session_history";
-                        $result_history = $this->user->common_update($user_hstory_table,$user_data,$id); 
+                        $result_history = $this->user->common_update($user_hstory_table,$user_data,$id);
                         session_destroy();
-                        session_start();                        
+                        session_start();
                         $this->session->set_flashdata('success_message', 'Sign-out from Approver User Panel');
-                        redirect('home');     
+                        redirect('home');
                 }
 
     }
 
      public function approver_logout_bypass(){
         $this->session->set_flashdata('error_msg', 'Invalid entry to Approver User panel');
-        redirect('home');     
-                
+        redirect('home');
+
     }
 
 }
