@@ -56,13 +56,7 @@ $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,
 					<h4 class="panel-title">Save Bid Information</h4>
 				</div>
 				<div class="panel-body">
-					<div class="table-responsive">
-						<?php
-
-						// print_r($result_drafted);
-						// Array ( [no_bid] => 1 [bid_list] => Array ( [0] => stdClass Object ( [Slno_bid] => 1 [buyer_slno] => 1 [bid_date_entry] => 2018-12-03 [bid_ref] => REF 2018 [bid_id] => REF 2018 [category] => 3 [mode_bid] => Closed Bid [technical_bid_type] => 1 [status_bid] => 4 [mr_slno] => 3 [mr_no] => 2018-11-05-pUgws [job_code] => 679034 [edit_id] => 1 [material_category_name] => logistics [ logistics ] [bid_title] => SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [bid_description] => INVITATION OF BIDS FOR SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [data_entry] => 2018-12-03 14:55:44 [bid_creator_id] => buy1@ilab.com ) ) )
-
-						?>
+					<div class="table-responsive">						
 						<table id="example_buyer" class="display" style="width:100%">
 					        <thead>
 					            <tr>
@@ -91,7 +85,7 @@ $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,
 					        					$x++;
 					        					 // Array ( [no_bid_date] => 1 [bid_date_list] => Array ( [0] => stdClass Object ( [Slno_bid_date] => 1 [bid_slno] => 3 [buyer_slno] => 1 [bid_start_date] => 2018-12-04 [bid_closed_date] => 2018-12-15 [bid_query_closed_date] => 2018-12-06 [status] => 4 [master_bid_id] => 1 ) ) )
 						        				$mode_bid=$key_techniacl->mode_bid;
-						        				if($mode_bid!='Rank Order Bid'){
+						        				if($mode_bid=='Rank Order Bid'){
 							        				$category=$key_techniacl->category;
 
 							        				switch ($category) {
@@ -121,7 +115,8 @@ $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,
 							        					<td><?=$result_drafted_dates['bid_date_list'][0]->bid_query_closed_date?></td>
 							        					<td><?=$key_techniacl->mode_bid?></td>
 							        					<td><b style='color: green'> Send</b></td>
-							        					<td><a href="<?=$edit?>" class="btn-info btn-sm "><i class="fa fa-tv"></i> View</a> || <a href="<?=$send?>" class="btn-warning btn-sm"><i class="fa fa-question-circle" aria-hidden="true"></i> Query</a></td>
+							        					<td><a href="<?=$edit?>" class="btn-info btn-sm "><i class="fa fa-tv"></i> View</a> || <a href="<?=$send?>" class="btn-warning btn-sm"><i class="fa fa-question-circle" aria-hidden="true"></i> Query</a> <br>
+							        					<br> <a href="#" class="btn-success btn-sm"> <i class="fa fa-paper-plane"></i> Sent invitation</a></td>
 							        				</tr>
 
 							        				<?php

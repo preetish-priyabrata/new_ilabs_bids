@@ -256,7 +256,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 												<div class="form-group row m-b-15">
 													<label class="col-form-label col-md-3" for="date_publish">Bid Publish Date <span style="color: red">*</span></label>
 													<div class="col-md-9">
-														<input class="form-control m-b-5 datepickers" placeholder="Enter Activity name" name="date_publish" id="date_publish" type="text" required="" >
+														<input class="form-control m-b-5 datepickers" placeholder="Enter publish date" name="date_publish" id="date_publish" type="text" required="" >
 														<small class="f-s-12 text-grey-darker">Please Select Bid Publish Date</small>
 													</div>
 												</div>

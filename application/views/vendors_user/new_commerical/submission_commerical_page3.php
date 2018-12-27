@@ -50,7 +50,7 @@ $data_get_list_commerical = array('master_bid_id' =>$master_bid_id_com );
 		</div>
 		<?php
 	}
-
+                                                       
 	?>
 	<!-- begin panel -->
 	<div class="panel panel-inverse">

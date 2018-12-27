@@ -4,9 +4,9 @@ if(empty($Vendor_email_id)){
 
 	redirect('vendor-logout-pass');
 }
-$value=$value;
-$value1=$value1;
-$value2=$value2;
+$value=$value;  //slno_vendor
+$value1=$value1; //category
+$value2=$value2; //status_view
 $result_title=$this->vendor_db_users->vendor_new_query_tech_title_commerical($value,$Vendor_email_id);
 if($result_title['no_new_tech']!=1){
 	$this->session->set_flashdata('error_message', 'Unable find Bid');
@@ -29,14 +29,26 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 		case 'Simple Bid':
 		$case_bid=1;
 		$page="user-vendor-bid-submission-commerical/";
+
+		$date_file_sub = array('Bid_vendor_id' => $value );
+ 		$get_no_file=$this->db->get_where('master_simple_bid',$date_file_sub);
 		# code...
 		break;
 	case 'Closed Bid':
 		$case_bid=2;
 
 		$page="user-vendor-bid-submission-commerical/";
+
+		$date_file_sub = array('Bid_vendor_id' => $value );
+ 		$get_no_file=$this->db->get_where('master_closed_bid',$date_file_sub);
 		break;
 	case 'Rank Order Bid':
+		$case_bid=3;
+		
+		$date_file_sub = array('Bid_vendor_id' => $value );
+ 		$get_no_file=$this->db->get_where('master_rankorder_bid',$date_file_sub);
+
+		$page="user-vendor-bid-submission-commerical/";
 
 		break;
 	default:
@@ -242,28 +254,28 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 					<table class="table table-bordered" cellpadding="10" cellspacing="1" width="100%">
 						<thead>
 								<tr>
-										<th><strong>Date Creation</strong></th>
-										<th><strong>Status</strong></th>
+										<th><strong>Date Creation</strong></th>										
 										<th><strong>Click View</strong></th>
+										<th><strong>Comment</strong></th>
 
 								</tr>
 						</thead>
 						<tbody>
-								<?php foreach($get_no_file->result() as $submission){ ?>
+								<?php foreach($get_no_file->result() as $submission){
+									// print_r($submission);
+									 // stdClass Object ( [Slno_simple] => 1 [Bid_master_id_comm] => 4 [Bid_ref_no] => qq [Bid_vendor_id] => 20 [Vendor_id] => ven121@gmail.com [date_entry] => 2018-12-26 18:44:07 [type_of_bid] => Simple Bid [category_id] => 2 [type_bid_id] => 1 [comment] => [comment_by] => [comment_date] => [resubmission] => 0 ) 
+								 ?>
 										<tr>
-												<td><strong><?=$submission->date_creation?></strong></td>
-												<td><strong><?php $submitted_status=$submission->submitted_status;
-													if($submitted_status==0){
-														echo  "<p style='color: orange'>Drafted</p>"; 
-													}if($submitted_status==1){
-														echo  "<p style='color: green'>Submitted</p>"; 
-													}
-													if($submitted_status==5){
-														echo  "<p style='color: blue'>Archived</p>"; 
-													}
-												?></strong></td>
-												<td><strong><?php if($submitted_status==1){ echo "---"; }else{?> <a target="_blank" href="<?=base_url().'user-vendor-tech-bid-submission-tokens/'.$value.'/'.$submission->token_no .'/'.$submission->master_bid_id ?>">Click View</a><?php }?> </strong></td>
-
+												<td><strong><?=$submission->date_entry?></strong></td>
+												
+												<td><strong><a target="_blank" href="#">Click View</a></strong></td>
+												<td><?php 
+													if(!empty($submission->comment)){
+														echo "<b style='color:red'>".$submission->comment."";
+													}else{
+														echo "<b>---</b>";
+													}?>
+													</td>
 										</tr>
 								<?php }?>
 						</tbody>
@@ -272,7 +284,11 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 			</div>
 			<div class="form-group row pull-right">
           <div class="col-md-12">
+          	<?php 
+          	if($value2!=7){ ?>
+
 			  <a href="<?=base_url()?><?=$page.$value.'/'.$value1.'/'.$value2.'/'.$case_bid?>" class="btn btn-sm btn-success m-r-5"><i class="fas fa-envelope-open-text"></i>   Click To Submit Bid </a>
+			<?php }?>
               <a href="<?=base_url()?>user-vendor-commerical-query-panel//<?=$value?>" class="btn btn-sm btn-warning m-r-5"><i class="fa fa-question-circle" aria-hidden="true"></i>  Query </a>
               <a  href="<?=base_url()?>user-vendor-home" class="btn btn-sm btn-default">Back</a>
           </div>

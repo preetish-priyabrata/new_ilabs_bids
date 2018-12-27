@@ -3,3 +3,9 @@ $this->db->error();
 how we check error
 
 https://www.youtube.com/watch?v=e0c5KOxxyGc
+
+https://www.youtube.com/watch?v=F33XEWB0O7g
+
+https://www.youtube.com/watch?v=ZclZoNqKvjA
+
+https://www.youtube.com/watch?v=EtI3ATaBGkk

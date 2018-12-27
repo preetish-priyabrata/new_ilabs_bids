@@ -110,7 +110,10 @@ $result_new_bid=$this->vendor_db_users->vendor_new_technical_bid_list_commerical
 																							echo "<b style='color:blue;'>Viewed</b>";
 																						break;
 																			  case '7':
-																							echo "<b style='color:green;'>Submitted</b>";
+																							echo "<b style='color:green;'>Submited</b>";
+																						break;
+																				 case '8':
+																							echo "<b style='color:green;'>Resubmited</b>";
 																						break;
 
 																				default:

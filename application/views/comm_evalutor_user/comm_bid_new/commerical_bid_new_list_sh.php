@@ -1,11 +1,11 @@
 <?php
-$technical_email_id=$this->session->userdata('technical_email_id');
-if(empty($technical_email_id)){
+$commerical_email_id=$this->session->userdata('commerical_email_id');
+if(empty($commerical_email_id)){
 
 	redirect('comm-evalutor-logout-by-pass');
 }
-$tech_slno=$this->session->userdata('tech_slno');
-$list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_lists($tech_slno);
+$comm_slno=$this->session->userdata('tech_slno');
+$list_success_bid=$this->tech_eva_db->commerical_evaluator_bid_new_list($comm_slno);
 // $data=array'technical_email_id'=>$technical_email_id,'status_active' =>1;
 // $query=$this->db->get_where('master_bid_technicalevaluation',$data);
 ?>
@@ -22,12 +22,12 @@ $list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_lists($tech_sl
 			<!-- begin breadcrumb -->
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="<?=base_url()?>user-buyer-home">Home</a></li>
-				<li class="breadcrumb-item"><a href="javascript:;">Technical Bid New</a></li>
-				<li class="breadcrumb-item active">List of Technical Bid New List</li>
+				<li class="breadcrumb-item"><a href="javascript:;">Commerical Bid New</a></li>
+				<li class="breadcrumb-item active">List of Commerical Bid New List</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">List of Technical Bid New</h1>
+			<h1 class="page-header">List of Commerical Bid New</h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -49,7 +49,7 @@ $list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_lists($tech_sl
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 					</div>
 
-					<h4 class="panel-title">Technical Bid New List</h4>
+					<h4 class="panel-title">Commerical Bid New List</h4>
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
@@ -109,7 +109,7 @@ $list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_lists($tech_sl
 					</div>
 					<br>
 					<br>
-					<a href="<?=base_url()?>user-technical-evalutor-home" class="btn btn-xs btn-success fa fa-angle-left"   role="button"><i class=""></i> Back</a>
+					<a href="<?=base_url()?>user-commerical-evalutor-home" class="btn btn-xs btn-success fa fa-angle-left"   role="button"><i class=""></i> Back</a>
 				</div>
 			</div>
 

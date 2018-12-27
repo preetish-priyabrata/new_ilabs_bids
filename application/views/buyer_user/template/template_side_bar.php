@@ -63,7 +63,8 @@
 						<ul class="sub-menu">
 
 						    <li class="<?php if($sub_menu==3){ echo 'active'; }?>"><a href="<?=base_url()?>buyer-send-bid-tech" >Send Bid Information of Technical</a></li>
-						    <li class="<?php if($sub_menu==4){ echo 'active'; }?>"><a href="<?=base_url()?>buyer-send-bid-commerical" >Send Bid Information of Commerical</a></li>
+						    <li class="<?php if($sub_menu==4){ echo 'active'; }?>"><a href="<?=base_url()?>buyer-send-bid-commerical" >Send Bid Information of Commerical Simple / Closed</a></li>
+						     <li class="<?php if($sub_menu==6){ echo 'active'; }?>"><a href="<?=base_url()?>buyer-send-bid-commerical-rank-order" >Send Bid Information of Commerical Rank order</a></li>
 						    <!-- <li><a href="index_v2.html">Dashboard v2</a></li> -->
 						</ul>
 					</li>
