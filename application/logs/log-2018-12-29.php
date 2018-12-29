@@ -2138,3 +2138,434 @@ INFO - 2018-12-29 13:09:27 --> File loaded: /var/www/html/lnt_bid/application/vi
 INFO - 2018-12-29 13:09:27 --> File loaded: /var/www/html/lnt_bid/application/views/template/template_footer.php
 INFO - 2018-12-29 13:09:27 --> Final output sent to browser
 DEBUG - 2018-12-29 13:09:27 --> Total execution time: 0.0234
+INFO - 2018-12-29 13:12:48 --> Config Class Initialized
+INFO - 2018-12-29 13:12:48 --> Hooks Class Initialized
+DEBUG - 2018-12-29 13:12:48 --> UTF-8 Support Enabled
+INFO - 2018-12-29 13:12:48 --> Utf8 Class Initialized
+INFO - 2018-12-29 13:12:48 --> URI Class Initialized
+INFO - 2018-12-29 13:12:48 --> Router Class Initialized
+INFO - 2018-12-29 13:12:48 --> Output Class Initialized
+INFO - 2018-12-29 13:12:48 --> Security Class Initialized
+DEBUG - 2018-12-29 13:12:48 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-12-29 13:12:48 --> Input Class Initialized
+INFO - 2018-12-29 13:12:48 --> Language Class Initialized
+INFO - 2018-12-29 13:12:48 --> Loader Class Initialized
+INFO - 2018-12-29 13:12:48 --> Helper loaded: url_helper
+INFO - 2018-12-29 13:12:48 --> Helper loaded: file_helper
+INFO - 2018-12-29 13:12:48 --> Encrypt Class Initialized
+DEBUG - 2018-12-29 13:12:48 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-12-29 13:12:48 --> Session: Class initialized using 'files' driver.
+INFO - 2018-12-29 13:12:48 --> User Agent Class Initialized
+INFO - 2018-12-29 13:12:48 --> Controller Class Initialized
+INFO - 2018-12-29 13:12:48 --> Database Driver Class Initialized
+INFO - 2018-12-29 13:12:48 --> Model "User_model" initialized
+INFO - 2018-12-29 13:12:48 --> Model "Approver_model" initialized
+INFO - 2018-12-29 13:12:48 --> Model "Design_model" initialized
+INFO - 2018-12-29 13:12:48 --> Model "Procurement_model" initialized
+INFO - 2018-12-29 13:12:48 --> Model "Buyer_model" initialized
+INFO - 2018-12-29 13:12:48 --> Model "Vendor_model" initialized
+INFO - 2018-12-29 13:12:48 --> Model "Technicalevalutor_model" initialized
+INFO - 2018-12-29 13:12:48 --> Model "Commericalevaluator_model" initialized
+DEBUG - 2018-12-29 13:12:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2018-12-29 13:12:48 --> User_agent class already loaded. Second attempt ignored.
+DEBUG - 2018-12-29 13:12:48 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2018-12-29 13:12:48 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2018-12-29 13:12:48 --> Encryption Class Initialized
+INFO - 2018-12-29 13:12:48 --> Helper loaded: form_helper
+INFO - 2018-12-29 13:12:48 --> Form Validation Class Initialized
+INFO - 2018-12-29 13:12:48 --> File loaded: /var/www/html/lnt_bid/application/views/template/template_header.php
+INFO - 2018-12-29 13:12:48 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/template/template_top_head.php
+INFO - 2018-12-29 13:12:48 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/template/template_side_bar.php
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined variable: result_drafted /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 17
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'mr_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 19
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'buyer_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 20
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: bid_date_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 24
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: bid_details_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 27
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: bid_vendors_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 30
+ERROR - 2018-12-29 13:12:48 --> Severity: Warning --> Invalid argument supplied for foreach() /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 30
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 34
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'mr_no' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 34
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 35
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'job_code_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 35
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 36
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'materilal_category_id_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 36
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 37
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'approver_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 37
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 38
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'commerical_evalution' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 38
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 39
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'date_required' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 39
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 40
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'date_creation' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 40
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 41
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'edit_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 41
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 42
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'status' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 42
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 43
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'resubmit_count' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 43
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'bid_ref_no' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 141
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 151
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 152
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 153
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'date_publish' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 169
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'bid_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 177
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'date_closing' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 186
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'bid_title' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 220
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'period_work_detail' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 228
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'work_detail_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 243
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'location_detail' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 251
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'bid_start_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 350
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'bid_query_closed_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 358
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'bid_closed_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 371
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Trying to get property 'bid_detail_description' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 379
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined index: files_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 419
+ERROR - 2018-12-29 13:12:48 --> Severity: Warning --> Invalid argument supplied for foreach() /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 419
+ERROR - 2018-12-29 13:12:48 --> Severity: Notice --> Undefined variable: result_vendor_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 468
+INFO - 2018-12-29 13:12:48 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php
+INFO - 2018-12-29 13:12:48 --> File loaded: /var/www/html/lnt_bid/application/views/template/template_footer.php
+INFO - 2018-12-29 13:12:48 --> Final output sent to browser
+DEBUG - 2018-12-29 13:12:48 --> Total execution time: 0.1209
+INFO - 2018-12-29 13:14:16 --> Config Class Initialized
+INFO - 2018-12-29 13:14:16 --> Hooks Class Initialized
+DEBUG - 2018-12-29 13:14:16 --> UTF-8 Support Enabled
+INFO - 2018-12-29 13:14:16 --> Utf8 Class Initialized
+INFO - 2018-12-29 13:14:16 --> URI Class Initialized
+INFO - 2018-12-29 13:14:16 --> Router Class Initialized
+INFO - 2018-12-29 13:14:16 --> Output Class Initialized
+INFO - 2018-12-29 13:14:16 --> Security Class Initialized
+DEBUG - 2018-12-29 13:14:16 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-12-29 13:14:16 --> Input Class Initialized
+INFO - 2018-12-29 13:14:16 --> Language Class Initialized
+INFO - 2018-12-29 13:14:16 --> Loader Class Initialized
+INFO - 2018-12-29 13:14:16 --> Helper loaded: url_helper
+INFO - 2018-12-29 13:14:16 --> Helper loaded: file_helper
+INFO - 2018-12-29 13:14:16 --> Encrypt Class Initialized
+DEBUG - 2018-12-29 13:14:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-12-29 13:14:16 --> Session: Class initialized using 'files' driver.
+INFO - 2018-12-29 13:14:16 --> User Agent Class Initialized
+INFO - 2018-12-29 13:14:16 --> Controller Class Initialized
+INFO - 2018-12-29 13:14:16 --> Database Driver Class Initialized
+INFO - 2018-12-29 13:14:16 --> Model "User_model" initialized
+INFO - 2018-12-29 13:14:16 --> Model "Approver_model" initialized
+INFO - 2018-12-29 13:14:16 --> Model "Design_model" initialized
+INFO - 2018-12-29 13:14:16 --> Model "Procurement_model" initialized
+INFO - 2018-12-29 13:14:16 --> Model "Buyer_model" initialized
+INFO - 2018-12-29 13:14:16 --> Model "Vendor_model" initialized
+INFO - 2018-12-29 13:14:16 --> Model "Technicalevalutor_model" initialized
+INFO - 2018-12-29 13:14:16 --> Model "Commericalevaluator_model" initialized
+DEBUG - 2018-12-29 13:14:16 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2018-12-29 13:14:16 --> User_agent class already loaded. Second attempt ignored.
+DEBUG - 2018-12-29 13:14:16 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2018-12-29 13:14:16 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2018-12-29 13:14:16 --> Encryption Class Initialized
+INFO - 2018-12-29 13:14:16 --> Helper loaded: form_helper
+INFO - 2018-12-29 13:14:16 --> Form Validation Class Initialized
+INFO - 2018-12-29 13:14:16 --> File loaded: /var/www/html/lnt_bid/application/views/template/template_header.php
+INFO - 2018-12-29 13:14:16 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/template/template_top_head.php
+INFO - 2018-12-29 13:14:16 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/template/template_side_bar.php
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined variable: result_drafted /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 17
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'mr_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 19
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'buyer_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 20
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: bid_date_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 24
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: bid_details_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 27
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: bid_vendors_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 30
+ERROR - 2018-12-29 13:14:16 --> Severity: Warning --> Invalid argument supplied for foreach() /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 30
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 34
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'mr_no' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 34
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 35
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'job_code_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 35
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 36
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'materilal_category_id_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 36
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 37
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'approver_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 37
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 38
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'commerical_evalution' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 38
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 39
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'date_required' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 39
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 40
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'date_creation' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 40
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 41
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'edit_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 41
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 42
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'status' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 42
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 43
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'resubmit_count' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 43
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'bid_ref_no' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 141
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 151
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 152
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 153
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'date_publish' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 169
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'date_closing' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 186
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'bid_title' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 220
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'period_work_detail' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 228
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'work_detail_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 243
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'location_detail' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 251
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'bid_start_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 350
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'bid_query_closed_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 358
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'bid_closed_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 371
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Trying to get property 'bid_detail_description' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 379
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined index: files_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 419
+ERROR - 2018-12-29 13:14:16 --> Severity: Warning --> Invalid argument supplied for foreach() /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 419
+ERROR - 2018-12-29 13:14:16 --> Severity: Notice --> Undefined variable: result_vendor_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 468
+INFO - 2018-12-29 13:14:16 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php
+INFO - 2018-12-29 13:14:16 --> File loaded: /var/www/html/lnt_bid/application/views/template/template_footer.php
+INFO - 2018-12-29 13:14:16 --> Final output sent to browser
+DEBUG - 2018-12-29 13:14:16 --> Total execution time: 0.0524
+INFO - 2018-12-29 13:14:36 --> Config Class Initialized
+INFO - 2018-12-29 13:14:36 --> Hooks Class Initialized
+DEBUG - 2018-12-29 13:14:36 --> UTF-8 Support Enabled
+INFO - 2018-12-29 13:14:36 --> Utf8 Class Initialized
+INFO - 2018-12-29 13:14:36 --> URI Class Initialized
+INFO - 2018-12-29 13:14:36 --> Router Class Initialized
+INFO - 2018-12-29 13:14:36 --> Output Class Initialized
+INFO - 2018-12-29 13:14:36 --> Security Class Initialized
+DEBUG - 2018-12-29 13:14:36 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-12-29 13:14:36 --> Input Class Initialized
+INFO - 2018-12-29 13:14:36 --> Language Class Initialized
+INFO - 2018-12-29 13:14:36 --> Loader Class Initialized
+INFO - 2018-12-29 13:14:36 --> Helper loaded: url_helper
+INFO - 2018-12-29 13:14:36 --> Helper loaded: file_helper
+INFO - 2018-12-29 13:14:36 --> Encrypt Class Initialized
+DEBUG - 2018-12-29 13:14:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-12-29 13:14:36 --> Session: Class initialized using 'files' driver.
+INFO - 2018-12-29 13:14:36 --> User Agent Class Initialized
+INFO - 2018-12-29 13:14:36 --> Controller Class Initialized
+INFO - 2018-12-29 13:14:36 --> Database Driver Class Initialized
+INFO - 2018-12-29 13:14:36 --> Model "User_model" initialized
+INFO - 2018-12-29 13:14:36 --> Model "Approver_model" initialized
+INFO - 2018-12-29 13:14:36 --> Model "Design_model" initialized
+INFO - 2018-12-29 13:14:36 --> Model "Procurement_model" initialized
+INFO - 2018-12-29 13:14:36 --> Model "Buyer_model" initialized
+INFO - 2018-12-29 13:14:36 --> Model "Vendor_model" initialized
+INFO - 2018-12-29 13:14:36 --> Model "Technicalevalutor_model" initialized
+INFO - 2018-12-29 13:14:36 --> Model "Commericalevaluator_model" initialized
+DEBUG - 2018-12-29 13:14:36 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2018-12-29 13:14:36 --> User_agent class already loaded. Second attempt ignored.
+DEBUG - 2018-12-29 13:14:36 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2018-12-29 13:14:36 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2018-12-29 13:14:36 --> Encryption Class Initialized
+INFO - 2018-12-29 13:14:36 --> Helper loaded: form_helper
+INFO - 2018-12-29 13:14:36 --> Form Validation Class Initialized
+INFO - 2018-12-29 13:14:36 --> File loaded: /var/www/html/lnt_bid/application/views/template/template_header.php
+INFO - 2018-12-29 13:14:36 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/template/template_top_head.php
+INFO - 2018-12-29 13:14:36 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/template/template_side_bar.php
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined variable: result_drafted /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 17
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'mr_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 19
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'buyer_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 20
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: bid_date_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 24
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: bid_details_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 27
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: bid_vendors_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 30
+ERROR - 2018-12-29 13:14:36 --> Severity: Warning --> Invalid argument supplied for foreach() /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 30
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 34
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'mr_no' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 34
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 35
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'job_code_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 35
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 36
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'materilal_category_id_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 36
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 37
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'approver_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 37
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 38
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'commerical_evalution' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 38
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 39
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'date_required' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 39
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 40
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'date_creation' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 40
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 41
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'edit_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 41
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 42
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'status' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 42
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 43
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'resubmit_count' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 43
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'bid_ref_no' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 141
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 151
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 152
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 153
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'date_publish' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 169
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'date_closing' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 186
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'bid_title' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 220
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'period_work_detail' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 228
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'work_detail_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 243
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'location_detail' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 251
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'bid_start_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 350
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'bid_query_closed_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 358
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'bid_closed_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 371
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Trying to get property 'bid_detail_description' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 379
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined index: files_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 419
+ERROR - 2018-12-29 13:14:36 --> Severity: Warning --> Invalid argument supplied for foreach() /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 419
+ERROR - 2018-12-29 13:14:36 --> Severity: Notice --> Undefined variable: result_vendor_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 468
+INFO - 2018-12-29 13:14:36 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php
+INFO - 2018-12-29 13:14:36 --> File loaded: /var/www/html/lnt_bid/application/views/template/template_footer.php
+INFO - 2018-12-29 13:14:36 --> Final output sent to browser
+DEBUG - 2018-12-29 13:14:36 --> Total execution time: 0.0209
+INFO - 2018-12-29 13:14:58 --> Config Class Initialized
+INFO - 2018-12-29 13:14:58 --> Hooks Class Initialized
+DEBUG - 2018-12-29 13:14:58 --> UTF-8 Support Enabled
+INFO - 2018-12-29 13:14:58 --> Utf8 Class Initialized
+INFO - 2018-12-29 13:14:58 --> URI Class Initialized
+INFO - 2018-12-29 13:14:58 --> Router Class Initialized
+INFO - 2018-12-29 13:14:58 --> Output Class Initialized
+INFO - 2018-12-29 13:14:58 --> Security Class Initialized
+DEBUG - 2018-12-29 13:14:58 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-12-29 13:14:58 --> Input Class Initialized
+INFO - 2018-12-29 13:14:58 --> Language Class Initialized
+INFO - 2018-12-29 13:14:58 --> Loader Class Initialized
+INFO - 2018-12-29 13:14:58 --> Helper loaded: url_helper
+INFO - 2018-12-29 13:14:58 --> Helper loaded: file_helper
+INFO - 2018-12-29 13:14:58 --> Encrypt Class Initialized
+DEBUG - 2018-12-29 13:14:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-12-29 13:14:58 --> Session: Class initialized using 'files' driver.
+INFO - 2018-12-29 13:14:58 --> User Agent Class Initialized
+INFO - 2018-12-29 13:14:58 --> Controller Class Initialized
+INFO - 2018-12-29 13:14:58 --> Database Driver Class Initialized
+INFO - 2018-12-29 13:14:58 --> Model "User_model" initialized
+INFO - 2018-12-29 13:14:58 --> Model "Approver_model" initialized
+INFO - 2018-12-29 13:14:58 --> Model "Design_model" initialized
+INFO - 2018-12-29 13:14:58 --> Model "Procurement_model" initialized
+INFO - 2018-12-29 13:14:58 --> Model "Buyer_model" initialized
+INFO - 2018-12-29 13:14:58 --> Model "Vendor_model" initialized
+INFO - 2018-12-29 13:14:58 --> Model "Technicalevalutor_model" initialized
+INFO - 2018-12-29 13:14:58 --> Model "Commericalevaluator_model" initialized
+DEBUG - 2018-12-29 13:14:58 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2018-12-29 13:14:58 --> User_agent class already loaded. Second attempt ignored.
+DEBUG - 2018-12-29 13:14:58 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2018-12-29 13:14:58 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2018-12-29 13:14:58 --> Encryption Class Initialized
+INFO - 2018-12-29 13:14:58 --> Helper loaded: form_helper
+INFO - 2018-12-29 13:14:58 --> Form Validation Class Initialized
+INFO - 2018-12-29 13:14:58 --> File loaded: /var/www/html/lnt_bid/application/views/template/template_header.php
+INFO - 2018-12-29 13:14:58 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/template/template_top_head.php
+INFO - 2018-12-29 13:14:58 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/template/template_side_bar.php
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined variable: result_drafted /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 17
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'mr_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 19
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'buyer_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 20
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: bid_date_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 24
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: bid_details_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 27
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: bid_vendors_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 30
+ERROR - 2018-12-29 13:14:58 --> Severity: Warning --> Invalid argument supplied for foreach() /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 30
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 34
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'mr_no' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 34
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 35
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'job_code_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 35
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 36
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'materilal_category_id_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 36
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 37
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'approver_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 37
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 38
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'commerical_evalution' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 38
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 39
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'date_required' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 39
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 40
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'date_creation' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 40
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 41
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'edit_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 41
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 42
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'status' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 42
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 43
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'resubmit_count' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 43
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'bid_ref_no' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 141
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 151
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 152
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 153
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'date_publish' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 169
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'date_closing' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 186
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'bid_title' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 220
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'period_work_detail' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 228
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'work_detail_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 243
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'location_detail' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 251
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'bid_start_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 350
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'bid_query_closed_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 358
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'bid_closed_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 371
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Trying to get property 'bid_detail_description' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 379
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined index: files_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 419
+ERROR - 2018-12-29 13:14:58 --> Severity: Warning --> Invalid argument supplied for foreach() /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 419
+ERROR - 2018-12-29 13:14:58 --> Severity: Notice --> Undefined variable: result_vendor_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 468
+INFO - 2018-12-29 13:14:58 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php
+INFO - 2018-12-29 13:14:58 --> File loaded: /var/www/html/lnt_bid/application/views/template/template_footer.php
+INFO - 2018-12-29 13:14:58 --> Final output sent to browser
+DEBUG - 2018-12-29 13:14:58 --> Total execution time: 0.0340
+INFO - 2018-12-29 13:15:24 --> Config Class Initialized
+INFO - 2018-12-29 13:15:24 --> Hooks Class Initialized
+DEBUG - 2018-12-29 13:15:24 --> UTF-8 Support Enabled
+INFO - 2018-12-29 13:15:24 --> Utf8 Class Initialized
+INFO - 2018-12-29 13:15:24 --> URI Class Initialized
+INFO - 2018-12-29 13:15:24 --> Router Class Initialized
+INFO - 2018-12-29 13:15:24 --> Output Class Initialized
+INFO - 2018-12-29 13:15:24 --> Security Class Initialized
+DEBUG - 2018-12-29 13:15:24 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-12-29 13:15:24 --> Input Class Initialized
+INFO - 2018-12-29 13:15:24 --> Language Class Initialized
+INFO - 2018-12-29 13:15:24 --> Loader Class Initialized
+INFO - 2018-12-29 13:15:24 --> Helper loaded: url_helper
+INFO - 2018-12-29 13:15:24 --> Helper loaded: file_helper
+INFO - 2018-12-29 13:15:24 --> Encrypt Class Initialized
+DEBUG - 2018-12-29 13:15:24 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-12-29 13:15:24 --> Session: Class initialized using 'files' driver.
+INFO - 2018-12-29 13:15:24 --> User Agent Class Initialized
+INFO - 2018-12-29 13:15:24 --> Controller Class Initialized
+INFO - 2018-12-29 13:15:24 --> Database Driver Class Initialized
+INFO - 2018-12-29 13:15:24 --> Model "User_model" initialized
+INFO - 2018-12-29 13:15:24 --> Model "Approver_model" initialized
+INFO - 2018-12-29 13:15:24 --> Model "Design_model" initialized
+INFO - 2018-12-29 13:15:24 --> Model "Procurement_model" initialized
+INFO - 2018-12-29 13:15:24 --> Model "Buyer_model" initialized
+INFO - 2018-12-29 13:15:24 --> Model "Vendor_model" initialized
+INFO - 2018-12-29 13:15:24 --> Model "Technicalevalutor_model" initialized
+INFO - 2018-12-29 13:15:24 --> Model "Commericalevaluator_model" initialized
+DEBUG - 2018-12-29 13:15:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2018-12-29 13:15:24 --> User_agent class already loaded. Second attempt ignored.
+DEBUG - 2018-12-29 13:15:24 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2018-12-29 13:15:24 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2018-12-29 13:15:24 --> Encryption Class Initialized
+INFO - 2018-12-29 13:15:24 --> Helper loaded: form_helper
+INFO - 2018-12-29 13:15:24 --> Form Validation Class Initialized
+INFO - 2018-12-29 13:15:24 --> File loaded: /var/www/html/lnt_bid/application/views/template/template_header.php
+INFO - 2018-12-29 13:15:24 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/template/template_top_head.php
+INFO - 2018-12-29 13:15:24 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/template/template_side_bar.php
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined variable: result_drafted /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 17
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'mr_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 19
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'buyer_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 20
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: bid_date_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 24
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: bid_details_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 27
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: bid_vendors_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 30
+ERROR - 2018-12-29 13:15:24 --> Severity: Warning --> Invalid argument supplied for foreach() /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 30
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 34
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'mr_no' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 34
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 35
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'job_code_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 35
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 36
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'materilal_category_id_slno' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 36
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 37
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'approver_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 37
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 38
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'commerical_evalution' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 38
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 39
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'date_required' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 39
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 40
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'date_creation' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 40
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 41
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'edit_id' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 41
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 42
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'status' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 42
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: mr_details /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 43
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'resubmit_count' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 43
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'bid_ref_no' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 141
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 151
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 152
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'mode_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 153
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'date_publish' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 169
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'date_closing' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 186
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'bid_title' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 220
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'period_work_detail' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 228
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'work_detail_bid' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 243
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'location_detail' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 251
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'bid_start_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 350
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'bid_query_closed_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 358
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'bid_closed_date' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 371
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Trying to get property 'bid_detail_description' of non-object /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 379
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined index: files_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 419
+ERROR - 2018-12-29 13:15:24 --> Severity: Warning --> Invalid argument supplied for foreach() /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 419
+ERROR - 2018-12-29 13:15:24 --> Severity: Notice --> Undefined variable: result_vendor_list /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php 468
+INFO - 2018-12-29 13:15:24 --> File loaded: /var/www/html/lnt_bid/application/views/comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new.php
+INFO - 2018-12-29 13:15:24 --> File loaded: /var/www/html/lnt_bid/application/views/template/template_footer.php
+INFO - 2018-12-29 13:15:24 --> Final output sent to browser
+DEBUG - 2018-12-29 13:15:24 --> Total execution time: 0.0184

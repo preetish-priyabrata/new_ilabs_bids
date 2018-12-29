@@ -174,8 +174,8 @@ $mr_slno=$bid_list->mr_slno;
 											<div class="form-group row m-b-15">
 												<label class="col-form-label col-md-3" for="bid_Id">Bid Id</label>
 												<div class="col-md-9">
-													<input class="form-control-plaintext m-b-5" placeholder="Enter Bid Id " onkeyup="get_bid_ref(2)" name="bid_Id" id="bid_Id" type="text"  value="<?=$bid_list->bid_id?>" required="" >
-													<span id="job_code_error2"></span><br>
+													<input class="form-control-plaintext m-b-5" placeholder="Enter Bid Id " onkeyup="get_bid_ref(2)" name="bid_Id" id="bid_Id" type="text"  value=" >
+													
 
 												</div>
 											</div>
