@@ -8,7 +8,7 @@ class Technicalevalutor_model extends CI_Model{
   	$status='1';
   	$this->db->select('*');
     $this->db->from('master_bid_technicalevaluation');
-      $this->db->join('master_bid', ' (master_bid.Slno_bid = master_bid_technicalevaluation.master_bid_id  AND master_bid_technicalevaluation.status_bid=1 ) ', 'right outer' );
+      $this->db->join('master_bid', ' (master_bid.Slno_bid = master_bid_technicalevaluation.master_bid_id  AND master_bid_technicalevaluation.status_bid=0 ) ', 'right outer' );
                 // $this->db->join('city', 'city.user_id = users.id','left');
       $this->db->where('master_bid.status_bid', $status); 
       $this->db->where('master_bid_technicalevaluation.technical_id_person', $value); 
@@ -32,7 +32,7 @@ class Technicalevalutor_model extends CI_Model{
     $status='1';
     $this->db->select('*');
     $this->db->from('master_bid_technicalevaluation');
-      $this->db->join('master_bid', ' (master_bid.Slno_bid = master_bid_technicalevaluation.master_bid_id  AND master_bid_technicalevaluation.status_bid=1 ) ', 'right outer' );
+      $this->db->join('master_bid', ' (master_bid.Slno_bid = master_bid_technicalevaluation.master_bid_id  AND master_bid_technicalevaluation.status_bid=0 ) ', 'right outer' );
       $this->db->join('master_bid_date_details', 'master_bid_date_details.master_bid_id = master_bid.Slno_bid','left');
       $this->db->where('master_bid.status_bid', $status); 
       $this->db->where('master_bid.Slno_bid', $value1); 

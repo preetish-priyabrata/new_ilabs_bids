@@ -396,10 +396,11 @@ $route['buyer-send-bid-commerical-rank-order']='buyeruser/buyer_send_bid_commeri
 $route['buyer-bid-send-commerical-view/(:any)/(:any)']='buyeruser/buyer_bid_send_commerical_view/$1/$2';
 $route['bid-commerical-entry-logistic']='buyeruser/buyer_bid_commerical_entry_logistic';
 $route['query-panel-buyer-commerical']='buyeruser/query_panel_buyer_commerical';
+$route['buyer-bid-query-commerical-intimation/(:any)/(:any)']='buyeruser/buyer_bid_query_commerical_intimation/$1/$2';
 
 #################################################################################################################################
 #
-#Technical Evalutor section
+#Technical Evaluator section
 #
 ##################################################################################################################################
 $route['user-technical-evalutor-home']='technicalevalutor/tech_evalutor_home';
@@ -419,6 +420,7 @@ $route['tech-evalutor-logout']='technicalevalutor/tech_evalutor_logout';
 #################################################################################################################################
 $route['user-commerical-evalutor-home']='commericalevalutor/comm_evalutor_home';
 $route['user-commerical-evaluator-bid-new-list']='commericalevalutor/commerical_evaluator_bid_new_list';
+$route['user-commerical-evaluator-view-details-commerical-bid-new/(:any)/(:any)']='commericalevalutor/commerical_evaluator_view_details_commerical_bid_new/$1/$2';
 $route['comm-evalutor-logout-by-pass']='commericalevalutor/comm_evalutor_logout_bypass';
 $route['comm-evalutor-logout']='commericalevalutor/comm_evalutor_logout';
 ######################################################################################################################################

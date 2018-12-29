@@ -166,7 +166,9 @@
     margin: 5px auto;
     line-height: 30px;
     position: relative;
-    padding-left: 28px; }
+    padding-left: 28px; 
+    
+  }
     .daterangepicker .calendar-time select.disabled {
       color: #ccc;
       cursor: not-allowed; }

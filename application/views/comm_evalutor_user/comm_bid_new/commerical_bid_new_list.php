@@ -96,8 +96,9 @@ $list_success_bid=$this->comm_eva_db->commerical_evaluator_bid_new_list($comm_sl
 		                                </td>
 
 
-                                      <td><a href="<?=base_url()?>user-technical-evaluator-view-details-technical-bid-new/<?=$bid_key_id->Slno_bid?>/<?=$bid_key_id->category?>" class="btn btn-sm btn-info" >View</a></td>
+                                      
 
+                                      <td><a href="<?=base_url()?>user-commerical-evaluator-view-details-commerical-bid-new/<?=$bid_key_id->Slno_bid?>/<?=$bid_key_id->category?>" class="btn btn-sm btn-info" >View</a></td>
 
 
 

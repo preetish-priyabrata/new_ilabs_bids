@@ -23,7 +23,7 @@
 }
 .datepicker-dropdown {
   top: 0;
-  left: 0;
+  left: 16px;
 }
 .datepicker-dropdown:before {
   content: '';
@@ -471,4 +471,3 @@
   margin-left: -5px;
   margin-right: -5px;
 }
-/*# sourceMappingURL=bootstrap-datepicker.css.map */

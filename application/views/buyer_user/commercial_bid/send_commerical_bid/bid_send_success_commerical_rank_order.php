@@ -87,7 +87,7 @@ $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,
 						        				$mode_bid=$key_techniacl->mode_bid;
 						        				if($mode_bid=='Rank Order Bid'){
 							        				$category=$key_techniacl->category;
-
+							        					$sent_imteration=base_url()."buyer-bid-query-commerical-intimation/".$Slno_bid."/".$category;
 							        				switch ($category) {
 							        					case '1':
 							        						$edit=base_url()."buyer-bid-send-commerical-view/".$Slno_bid."/".$category;
@@ -116,7 +116,7 @@ $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,
 							        					<td><?=$key_techniacl->mode_bid?></td>
 							        					<td><b style='color: green'> Send</b></td>
 							        					<td><a href="<?=$edit?>" class="btn-info btn-sm "><i class="fa fa-tv"></i> View</a> || <a href="<?=$send?>" class="btn-warning btn-sm"><i class="fa fa-question-circle" aria-hidden="true"></i> Query</a> <br>
-							        					<br> <a href="#" class="btn-success btn-sm"> <i class="fa fa-paper-plane"></i> Sent invitation</a></td>
+							        					<br> <a href="<?=$sent_imteration?>" class="btn-success btn-sm"> <i class="fa fa-paper-plane"></i> Sent invitation</a></td>
 							        				</tr>
 
 							        				<?php

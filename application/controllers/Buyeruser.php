@@ -976,6 +976,16 @@ class Buyeruser extends CI_Controller {
 
     }
 
+     public function buyer_bid_query_commerical_intimation($value='',$value1=''){
+        $scripts='<script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script><script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script><script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-daterangepicker/moment.js"></script><script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script><script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script><script src="'.base_url().'file_css_admin/own_js_date_picker.js"></script>';
+          $data=array('title' =>"Drafted Information About Coomerical list",'script_js'=>$scripts,'menu_status'=>'3','sub_menu'=>'6','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'' );
+          $this->load->view('template/template_header',$data);
+          $this->load->view('buyer_user/template/template_top_head');
+          $this->load->view('buyer_user/template/template_side_bar',$data);
+          $this->load->view('buyer_user/commercial_bid/send_invitation/invitation_commerical',$data);
+          $this->load->view('template/template_footer',$data);
+       
+    }
 
 
 

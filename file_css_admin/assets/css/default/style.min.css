@@ -7978,8 +7978,14 @@ body .bootstrap-datetimepicker-widget .collapse.in+.picker-switch td span {
 
 body .bootstrap-datetimepicker-widget .picker-switch td span {
     display: block;
-    width: auto;
-    margin: -1px 0 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 320px;
+    /*width: auto;*/
+    /*margin: 0 0 0;*/
+    /*background-color: blue;*/
+    text-align: center;
+    /*float: left;*/
     background: #f2f3f4;
     height: 36px;
     line-height: 36px;
@@ -7991,6 +7997,7 @@ body .bootstrap-datetimepicker-widget .picker-switch td a {
 }
 
 body .bootstrap-datetimepicker-widget .picker-switch td span:hover {
+    /*background-color: red;*/
     background: #e9ecef
 }
 
@@ -8000,6 +8007,7 @@ body .bootstrap-datetimepicker-widget table td.hour:hover,
 body .bootstrap-datetimepicker-widget table td.minute:hover,
 body .bootstrap-datetimepicker-widget table td.second:hover,
 body .bootstrap-datetimepicker-widget table thead tr:first-child th:hover {
+    /*background-color: green;*/
     background: #f2f3f4
 }
 
