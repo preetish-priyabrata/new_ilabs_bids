@@ -88,6 +88,7 @@ $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,
 						        				if($mode_bid=='Rank Order Bid'){
 							        				$category=$key_techniacl->category;
 							        					$sent_imteration=base_url()."buyer-bid-query-commerical-intimation/".$Slno_bid."/".$category;
+							        					$sent_notifivation=base_url()."buyer-bid-query-commerical-inti-notification/".$Slno_bid."/".$category;
 							        				switch ($category) {
 							        					case '1':
 							        						$edit=base_url()."buyer-bid-send-commerical-view/".$Slno_bid."/".$category;
@@ -115,8 +116,15 @@ $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,
 							        					<td><?=$result_drafted_dates['bid_date_list'][0]->bid_query_closed_date?></td>
 							        					<td><?=$key_techniacl->mode_bid?></td>
 							        					<td><b style='color: green'> Send</b></td>
-							        					<td><a href="<?=$edit?>" class="btn-info btn-sm "><i class="fa fa-tv"></i> View</a> || <a href="<?=$send?>" class="btn-warning btn-sm"><i class="fa fa-question-circle" aria-hidden="true"></i> Query</a> <br>
-							        					<br> <a href="<?=$sent_imteration?>" class="btn-success btn-sm"> <i class="fa fa-paper-plane"></i> Sent invitation</a></td>
+							        					<td><a href="<?=$edit?>" class="btn-info btn-sm "><i class="fa fa-tv"></i> View</a> || <a href="<?=$send?>" class="btn-warning btn-sm"><i class="fa fa-question-circle" aria-hidden="true"></i> Query</a>
+							        						<?php if($key_techniacl->count_id==0){?>							        					<br>
+							        					<br> <a href="<?=$sent_imteration?>" class="btn-success btn-sm"> <i class="fa fa-paper-plane"></i> Sent invitation</a>
+							        				<?php }else{
+							        					?>
+							        					<br>
+							        					<br> <a href="<?=$sent_notifivation?>" class="btn btn-purple btn-sm"> <i class="fa fa-paper-plane"></i> Sent Notifications</a>
+							        					<?php }?> 
+							        				</td>
 							        				</tr>
 
 							        				<?php

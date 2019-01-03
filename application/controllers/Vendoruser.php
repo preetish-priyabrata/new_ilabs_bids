@@ -787,9 +787,17 @@ class Vendoruser extends CI_Controller {
                $data_update = array('status_view'=>7,'submission_status'=>'1','submission_count'=>1);
                $data_update_id = array('slno_vendor' => $vendor_bid_id );
                $query_update_exe=$this->db->update('master_bid_vendor_commerical',$data_update,$data_update_id);
+                
+               if($this->input->post('auction') && $this->input->post('auction')=='bid' ){
+                $vurl=$this->input->post('url');
+                 $this->session->set_flashdata('success_message', 'successfully Commerical Bid Is closed submitted');
+                  redirect($vurl);
+               }else{
 
-              $this->session->set_flashdata('success_message', 'successfully Commerical Bid Is closed submitted');
-              redirect('user-vendor-new-commerical');
+                  $this->session->set_flashdata('success_message', 'successfully Commerical Bid Is closed submitted');
+                  redirect('user-vendor-new-commerical');
+               }
+
             break;
           case '12': // opne bid with moi
             
@@ -980,8 +988,15 @@ class Vendoruser extends CI_Controller {
                $data_update_id = array('slno_vendor' => $vendor_bid_id );
                $query_update_exe=$this->db->update('master_bid_vendor_commerical',$data_update,$data_update_id);
 
-              $this->session->set_flashdata('success_message', 'successfully Commerical Bid Is closed submitted');
-              redirect('user-vendor-new-commerical');
+              if($this->input->post('auction') && $this->input->post('auction')=='bid'){
+                $vurl=$this->input->post('url');
+                 $this->session->set_flashdata('success_message', 'successfully Commerical Bid Is closed submitted');
+                  redirect($vurl);
+               }else{
+
+                  $this->session->set_flashdata('success_message', 'successfully Commerical Bid Is closed submitted');
+                  redirect('user-vendor-new-commerical');
+               }
             break;
           case '13': //open bid with logistic
               
@@ -1180,8 +1195,15 @@ class Vendoruser extends CI_Controller {
                $data_update_id = array('slno_vendor' => $vendor_bid_id );
                $query_update_exe=$this->db->update('master_bid_vendor_commerical',$data_update,$data_update_id);
 
-              $this->session->set_flashdata('success_message', 'successfully Commerical Bid Is open submitted');
-              redirect('user-vendor-new-commerical'); 
+              if($this->input->post('auction') && $this->input->post('auction')=='bid' ){
+                $vurl=$this->input->post('url');
+                 $this->session->set_flashdata('success_message', 'successfully Commerical Bid Is closed submitted');
+                  redirect($vurl);
+               }else{
+
+                  $this->session->set_flashdata('success_message', 'successfully Commerical Bid Is closed submitted');
+                  redirect('user-vendor-new-commerical');
+               }
             break;
           default:
             # code...
@@ -1192,13 +1214,70 @@ class Vendoruser extends CI_Controller {
 
      
     }
-   //Array ( [master_bid_id] => 2 [vendor_bid_id] => 8 [vendor_id] => ven121@gmail.com [mode_bid] => Closed Bid [mode_bid_id] => 2 [Category] => 3 [bid_ref] => 559 [Slno_logic_comm] => Array ( [7] => 7 [8] => 8 [9] => 9 [10] => 10 ) [vehicle_name] => Array ( [7] => 504ponds [8] => vehicle10 [9] => vehicle10 [10] => vehicle12 ) [vehicle_capacity] => Array ( [7] => 5ponds [8] => 8000ponds [9] => 5ponds [10] => 60000ponds ) [vehicle_details] => Array ( [7] => tyyy [8] => XYZ [9] => 2345 [10] => abc ) [vehicle_nos] => Array ( [7] => 1 [8] => 1 [9] => 1 [10] => 1 ) [from_location] => Array ( [7] => bhu [8] => sailahree vihar [9] => sailahree vihar [10] => irc ) [to_location] => Array ( [7] => bhu [8] => sailahree vihar [9] => sailahree vihar [10] => irc ) [cost] => Array ( [7] => 3445 [8] => 7543 [9] => 676 [10] => 734 ) [price] => Array ( [7] => 3445.00 [8] => 7543.00 [9] => 676.00 [10] => 734.00 ) [sub_total] => 12398.00 [total_tax] => 044.00 [total_landed] => 12442.00 [user_assumption] => 0.00 [delivery_basis] => hfyty [gaurantee_warranty] => uytr [delivery_schedule] => ubv [payment_terms] => ffgf [validity_of_offer] => uihggf [security_BG] => gfg [liquidity_damage] => fgt [remarks] => dfggf )
-   //
-  //Array ( [master_bid_id] => 4 [vendor_bid_id] => 20 [vendor_id] => ven121@gmail.com [mode_bid] => Simple Bid [mode_bid_id] => 1 [Category] => 2 [bid_ref] => qq  [slno_mat] => Array ( [1] => 1 [2] => 2 [3] => 3 ) [item_name] => Array ( [1] => Progressing cavity pump. [2] => Pump [3] => Rotary lobe pump ) [item_id] => Array ( [1] => Mat003 [2] => Mat001 [3] => Mat002 ) [item_qnt] => Array ( [1] => 10 [2] => 11 [3] => 15 ) [item_uom] => Array ( [1] => Capacity [2] => Horse Power [3] => Max Pump volume ) [cost] => Array ( [1] => 7656 [2] => 7898 [3] => 43w56 ) [price] => Array ( [1] => 76560.00 [2] => 86878.00 [3] => 645.00 ) [sub_total] => 164083.00 [total_tax] => 5656 [total_landed] => 169739.00 [user_assumption] => [delivery_basis] => tyrtf [gaurantee_warranty] => uyhg [delivery_schedule] => xfddfd [payment_terms] => gvb [validity_of_offer] => vhtfr [security_BG] => ghvfg [liquidity_damage] => gyfg [remarks] => jhbnhh )
+  public function vendor_new_notification_list($value=''){
 
+    $scripts='';
+     $data=array('title' =>"Vendor Notification",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
+     $this->load->view('vendors_user/vendor_template/v_template_header',$data);
+     $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
+     $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
+     $this->load->view('vendors_user/vendor_notification/view_notification_list',$data);
+     $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
+  }
+  public function vendor_view_detail_noticfaction($value,$value1){
+   
+    if(($value1!="") && ($value!="")){
+      $Vendor_email_id=$this->session->userdata('Vendor_email_id');
+      if($value1!=1){
+        $data_id = array('slno_approve' =>$value,'vendor_id' => $Vendor_email_id );
+        $update = array('view_status' => 1 );
+        $this->db->update('master_vendor_notifications',$update,$data_id);
+      }
+      $scripts='';
+      $data=array('title' =>"Vendor Notification",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','slno_approve'=>$value);
+       $this->load->view('vendors_user/vendor_template/v_template_header',$data);
+       $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
+       $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
+       $this->load->view('vendors_user/vendor_notification/view_notification_list_details',$data);
+       $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
+    }else{
+      $this->session->set_flashdata('error_message', 'something went worng');
+      redirect('user-vendor-home'); 
+    }
+   
+  }
+  public function vendor_new_auction_list($value=''){
+     $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
+      $data=array('title' =>"Vendor Notification",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','slno_approve'=>$value);
+       $this->load->view('vendors_user/vendor_template/v_template_header',$data);
+       $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
+       $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
+       $this->load->view('vendors_user/vendor_bid_details/vendor_bid_details_list',$data);
+       $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
+  }
+  public function vendor_rank_bid_order($value='',$value1='',$value2='',$value3=''){
+    if(($value1!="") && ($value!="") &&($value2!="")&&($value3!="")){
+      if($value==3){
+         $page="vendors_user/RANK_ENTRY/rank_page2_logistic";
+      }else if(($value==2) || ($value==3)){
+        $page="vendors_user/RANK_ENTRY/rank_page1_mo_sci";
+      }else{
+        $this->session->set_flashdata('error_message', 'something went worng');
+        redirect('user-vendor-home'); 
+      }
 
-
-    //Array ( [master_bid_id] => 4 [vendor_bid_id] => 20 [vendor_id] => ven121@gmail.com [mode_bid] => Simple Bid [mode_bid_id] => 1 [Category] => 2 [bid_ref] => qq  [slno_mat] => Array ( [1] => 1 [2] => 2 [3] => 3 ) [item_name] => Array ( [1] => Progressing cavity pump. [2] => Pump [3] => Rotary lobe pump ) [item_id] => Array ( [1] => Mat003 [2] => Mat001 [3] => Mat002 ) [item_qnt] => Array ( [1] => 10 [2] => 11 [3] => 15 ) [item_uom] => Array ( [1] => Capacity [2] => Horse Power [3] => Max Pump volume ) [cost] => Array ( [1] => 45645 [2] => 879 [3] => 65 ) [price] => Array ( [1] => 456450.00 [2] => 9669.00 [3] => 975.00 ) [sub_total] => 467094.00 [total_tax] => 654.897 [total_landed] => 467748.90 [user_assumption] => 0.00 [delivery_basis] => 5436 [gaurantee_warranty] => 867 [delivery_schedule] => 865 [payment_terms] => 897 [validity_of_offer] => 887 [security_BG] => 8656 [liquidity_damage] => 477 [remarks] => 4589 )
+       $scripts='<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script> <script src="'.base_url().'file_css_admin/clocl.js"></script><script type="text/javascript"  src="'.base_url().'file_css_admin/counter/jquery.countdownTimer.js"></script>';
+      $data=array('title' =>"Vendor Notification",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1,'value2'=>$value2,'value3'=>$value3);
+      $this->load->view('vendors_user/vendor_template/v_template_header',$data);
+       $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
+       $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
+       $this->load->view($page,$data);
+       $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
+    }else{
+      $this->session->set_flashdata('error_message', 'something went worng');
+      redirect('user-vendor-home'); 
+    }
+  }
 
   
 

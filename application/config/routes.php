@@ -397,6 +397,9 @@ $route['buyer-bid-send-commerical-view/(:any)/(:any)']='buyeruser/buyer_bid_send
 $route['bid-commerical-entry-logistic']='buyeruser/buyer_bid_commerical_entry_logistic';
 $route['query-panel-buyer-commerical']='buyeruser/query_panel_buyer_commerical';
 $route['buyer-bid-query-commerical-intimation/(:any)/(:any)']='buyeruser/buyer_bid_query_commerical_intimation/$1/$2';
+$route['buyer-bid-query-commerical-inti-notification/(:any)/(:any)']='buyeruser/buyer_bid_query_commerical_inti_notification/$1/$2';
+
+$route['buyer-bid-rank-invitation-to-vendor-com']='buyeruser/buyer_bid_rank_invitation_to_vendor_com';
 
 #################################################################################################################################
 #
@@ -456,11 +459,17 @@ $route['vendor-bid-query-commerical']='vendoruser/vendor_bid_query_commerical';
 $route['user-vendor-bid-view-commerical-details/(:any)/(:any)/(:any)']='vendoruser/vendor_bid_view_commerical_details/$1/$2/$3';
 $route['user-vendor-bid-submission-commerical/(:any)/(:any)/(:any)/(:any)']='vendoruser/vendor_bid_submission_commerical/$1/$2/$3/$4';
 $route['user-vendor-bid-submission-commerical-save']='vendoruser/vendor_bid_submission_commerical_save_s_C';
+$route['user-vendor-new-notification-list']='vendoruser/vendor_new_notification_list';
+$route['vendor-view-detail-noticfaction/(:any)/(:any)']='vendoruser/vendor_view_detail_noticfaction/$1/$2';
+$route['user-vendor-new-auction-list']='vendoruser/vendor_new_auction_list';
+$route['vendor-rank-bid-order/(:any)/(:any)/(:any)/(:any)']='vendoruser/vendor_rank_bid_order/$1/$2/$3/$4';
 // $route['user-vendor-bid-submission-commerical-save']='vendoruser/vendor_bid_submission_commerical_save_s';
 // vendor_logout
 // vendor_logout_bypass
 $route['vendor-logout']='vendoruser/vendor_logout';
 $route['vendor-logout-pass']='vendoruser/vendor_logout_bypass';
+
+
 
 
 ######################################################################################################################################

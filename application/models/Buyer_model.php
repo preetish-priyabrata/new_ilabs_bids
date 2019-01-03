@@ -314,7 +314,30 @@ class Buyer_model extends CI_Model {
     // code...
 		}
 }
-
+public function buyer_get_vendor_information($value=''){
+      $this->db->select('*');
+    $this->db->from('master_bid_vendor_commerical');
+      $this->db->join('master_vendor_detail', ' (master_vendor_detail.Vendor_email_id = master_bid_vendor_commerical.vendor_id  AND master_vendor_detail.Status=1 ) ', 'right outer' );
+                // $this->db->join('city', 'city.user_id = users.id','left');
+      // $this->db->where('master_bid.status_bid', $status); 
+      $this->db->where('master_bid_vendor_commerical.master_bid_id', $value); 
+      $query = $this->db->get();  
+      // echo $this->db->last_query();
+      //   $data_array_vend = array('master_bid_id' => $value, 'status'=>$value1);
+      // $this->db->select('vendor_id');
+      // $query = $this->db->get_where('master_bid_vendor',$data_array_vend);
+      if($query->num_rows() == 0){
+        $data_send = array('no_bid_vendors' =>2 );
+        return $data_send;
+        exit;
+      }else{
+        $results=$query->result();
+        $data_send = array('no_bid_vendors' =>1, 'bid_vendors_list'=>$results);
+        return $data_send;
+        exit;
+      }
+      # code...
+    }
 public function query_panel_buyer_commerical($value='',$value1=''){
       $data_array_query = array('bid_slno' => $value, 'status_responds'=>$value1);
 

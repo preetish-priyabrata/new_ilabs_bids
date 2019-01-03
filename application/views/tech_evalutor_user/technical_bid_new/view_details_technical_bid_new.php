@@ -9,7 +9,7 @@ $value1=$value1; // material id of vendor
 $tech_slno=$this->session->userdata('tech_slno');
 $list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_bid_information($tech_slno,$value);
 if($list_success_bid['no_bid']!=1){
-	$this->session->set_flashdata('error_message',  'Some thing went worng Try Again In page please contact admin user');
+	$this->session->set_flashdata('error_message',  'Something went wrong Try Again In page please contact admin user');
     redirect('user-technical-evalutor-home');
 }
 $result_drafted=$this->tech_eva_db->technical_evalutor_get_bid_information($value);

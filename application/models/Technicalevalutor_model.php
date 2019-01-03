@@ -70,7 +70,7 @@ class Technicalevalutor_model extends CI_Model{
       // $this->db->where('master_bid.status_bid', $status); 
       $this->db->where('master_bid_vendor.master_bid_id', $value); 
       $query = $this->db->get();  
-
+      // echo $this->db->last_query();
       //   $data_array_vend = array('master_bid_id' => $value, 'status'=>$value1);
       // $this->db->select('vendor_id');
       // $query = $this->db->get_where('master_bid_vendor',$data_array_vend);

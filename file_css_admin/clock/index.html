@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Angular-Clock</title>
+        <link href='//fonts.googleapis.com/css?family=Syncopate:400,700' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Rationale' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="./dist/angular-clock.css">
+        <link rel="stylesheet" href="./demo/lib/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./demo/lib/css/github.css">
+        <link rel="stylesheet" href="./demo/lib/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="./demo/app.css" rel="stylesheet">
+    </head>
+
+    <body ng-app="examples" id="top">
+     
+        <div class="container-fluid">
+            <div class="text-center aspect-ratio" id="container" ng-controller="HeadCtrl">
+                <div style="width:200px;margin:0 auto;">
+                    <ds-widget-clock theme="theme" show-digital="digital" show-analog  digital-format="'hh:mm:ss a EEEE'"></ds-widget-clock>
+                    
+                </div>
+            </div>
+        </div>
+                
+
+        <script src="./demo/lib/js/angular.min.js"></script>
+        <script src="./demo/lib/js/ui-bootstrap-tpls.min.js"></script>
+        <script src="./demo/lib/js/rainbow.min.js"></script>
+        <script src="./demo/lib/js/generic.js"></script>
+        <script src="./demo/lib/js/html.js"></script>
+        <script src="./demo/lib/js/javascript.js"></script>
+        <script src="./angular-clock.js"></script>
+        <script src="./demo/lib/js/smoothscroll.min.js"></script>
+        <script src="./demo/app.js"></script>
+       
+    </body>
+
+</html>

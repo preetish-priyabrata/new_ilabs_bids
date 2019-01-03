@@ -10,6 +10,7 @@ class Buyeruser extends CI_Controller {
             $this->load->model('design_model', 'design_user');
             $this->load->model('procurement_model', 'procurement_user');
             $this->load->model('buyer_model','buyer_user');
+            $this->load->model('technicalevalutor_model','tech_eva_db');
             // imedate database link
             $this->load->database();
 
@@ -978,7 +979,7 @@ class Buyeruser extends CI_Controller {
 
      public function buyer_bid_query_commerical_intimation($value='',$value1=''){
         $scripts='<script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script><script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script><script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-daterangepicker/moment.js"></script><script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script><script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script><script src="'.base_url().'file_css_admin/own_js_date_picker.js"></script>';
-          $data=array('title' =>"Drafted Information About Coomerical list",'script_js'=>$scripts,'menu_status'=>'3','sub_menu'=>'6','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'' );
+          $data=array('title' =>"Sending bid Information",'script_js'=>$scripts,'menu_status'=>'3','sub_menu'=>'6','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'' ,'value'=>$value,'value1'=>$value1 );
           $this->load->view('template/template_header',$data);
           $this->load->view('buyer_user/template/template_top_head');
           $this->load->view('buyer_user/template/template_side_bar',$data);
@@ -986,8 +987,89 @@ class Buyeruser extends CI_Controller {
           $this->load->view('template/template_footer',$data);
        
     }
+    public function buyer_bid_rank_invitation_to_vendor_com(){     
+        $master_bid_id=$this->input->post('master_bid_id');
+        $category=$this->input->post('category');
+        $bid_ref=$this->input->post('bid_ref');
+        $bid_id=$this->input->post('bid_id');
+        $Starting=$this->input->post('Starting');
+        $ending=$this->input->post('ending');
+        $timer=$this->input->post('timer');
+        $no_of_entry=$this->input->post('no_of_entry');
+        $Technical_ev=$this->input->post('Technical_ev');
+        $slno_vendor_approve=$this->input->post('slno_vendor_approve');
+        $vendor_id_approve=$this->input->post('vendor_id_approve');
+        $slno_vendor_not=$this->input->post('slno_vendor_not');
+        $vendor_id_not=$this->input->post('vendor_id_not');
+        if(!empty($vendor_id_approve)){
+            $basic_invitation = array('master_bid_id'=>$master_bid_id, 'master_bid_start'=>$Starting, 'master_bid_end'=>$ending, 'ref_no'=>$bid_ref, 'ref_id'=>$bid_id, 'no_time_entry'=>$no_of_entry, 'commerical_user_id'=>$Technical_ev, 'status_process'=>'1','category'=>$category);
+            $query_invitation=$this->db->insert('master_bid_invitation_rank', $basic_invitation);
+            $laast_id=$this->db->insert_id();
+            if($query_invitation){
+                foreach ($slno_vendor_approve as $key_id_ven => $value_id_ven) {  
+                    
+                    $vendor_id_bid=$slno_vendor_approve[$key_id_ven];
+                    $vendor_id=$vendor_id_approve[$key_id_ven];
+                    $approve_vendor = array('master_bid_id'=>$master_bid_id, 'invi_slno_id'=>$laast_id, 'vendor_id_bid'=>$vendor_id_bid, 'vendor_id'=>$vendor_id, 'status'=>1,'bid_ref'=>$bid_ref, 'bid_id'=>$bid_id, 'start_date'=>$Starting, 'end_date'=>$ending, 'no_of_times'=>$no_of_entry,'category'=>$category);
+                    $this->db->insert('master_bid_invi_rank_approvals',$approve_vendor);
+                }
+                foreach ($slno_vendor_approve as $key_id_ven => $value_id_ven) { 
+                    $message="A Rank order reverse auction shall be conducted for the bid no  ".$bid_ref." dated on ".$Starting." you are requested to participate. <br> <p>For any query send your queries accross ther application no " ;
+                    $vendor_id_bid=$slno_vendor_approve[$key_id_ven];
+                    $vendor_id=$vendor_id_approve[$key_id_ven];
+                    $approve_vendor = array('vendor_id_bid'=>$vendor_id_bid, 'vendor_id'=>$vendor_id, 'message'=>$message);
+                    $this->db->insert('master_vendor_notifications',$approve_vendor);
+                }
+                if(!empty($vendor_id_not)){
+                    foreach ($slno_vendor_not as $key_id_ven => $value_id_ven) {  
+                        $vendor_bid_id=$slno_vendor_not[$key_id_ven];
+                        $vendor_id=$vendor_id_not[$key_id_ven];
+                        $approve_vendor = array('master_bid_id'=>$master_bid_id, 'invi_slno_id'=>$laast_id, 'vendor_bid_id'=>$vendor_bid_id, 'vendor_id'=>$vendor_id);
+                        $this->db->insert('master_bid_invi_rank_not_app',$approve_vendor);
+                    }
+                }
+                // `Slno_bid``count_id`
+                $data_update_cou = array('count_id' =>1);
+                $data_id = array('Slno_bid' => $master_bid_id);
+                $this->db->update('master_bid_commerical',$data_update_cou,$data_id);
+                
+                 $this->session->set_flashdata('success_message', 'successfull Rank event is created  '); // here is message is been toasted
 
+                 redirect('buyer-send-bid-commerical-rank-order');
+            }else{
+                $this->session->set_flashdata('error_message', 'Something went worng!');
+                redirect('buyer-bid-query-commerical-intimation/'.$master_bid_id.'/'.$category);
+            }
 
+        }else{
+            $this->session->set_flashdata('error_message', 'No Vendor has submitted commerical bid for this rank biding !');
+            redirect('buyer-bid-query-commerical-intimation/'.$master_bid_id.'/'.$category);
+        }
+    }
+    public function buyer_bid_query_commerical_inti_notification($value='',$value1=''){
+       
+       $data_get = array('master_bid_id' =>$value ,'category'=>$value1 );
+       $query= $this->db->get_where('master_bid_invi_rank_approvals',$data_get);
+        if($query->num_rows() == 0){
+            $this->session->set_flashdata('error_message', 'Something went worng!');
+            redirect('buyer-send-bid-commerical-rank-order');
+        }else{
+           foreach ($query->result() as $key_id => $value_id) {          
+                 $bid_ref=$value_id->bid_ref;
+                 $Starting=$value_id->start_date;
+                 $vendor_id_bid=$value_id->vendor_id_bid;
+                 $vendor_id=$value_id->vendor_id;
+                 $message="A Rank order reverse auction shall be conducted for the bid no  ".$bid_ref." dated on ".$Starting." you are requested to participate. <br> <p>For any query send your queries accross ther application no " ;                    
+                        $approve_vendor = array('vendor_id_bid'=>$vendor_id_bid, 'vendor_id'=>$vendor_id, 'message'=>$message);
+                        $this->db->insert('master_vendor_notifications',$approve_vendor);
+              
+           }
+             $this->session->set_flashdata('success_message', 'Successfull notification is send bid '.$bid_ref); // here is message is been toasted
+
+             redirect('buyer-send-bid-commerical-rank-order');
+        }
+
+    }
 
 
 
