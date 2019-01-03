@@ -93,11 +93,11 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
 				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 			</div>
-			<h4 class="panel-title">Create Techinical REF</h4>
+			<h4 class="panel-title">Publishing Bid</h4>
 		</div>
 		<div class="panel-body">
 			<div class="alert alert-secondary">
-                <span style="color: red"> *</span> All mandory fields shall be duly filled up
+                <span style="color: red"> #</span> Here No Change Is Possible Only Conformation Of sending bid
             </div>
 			<form action="<?=base_url()?>bid-tech-entry" method="POST"  id="bid_tech" name="bid_tech" class="bid_tech">
 
@@ -654,8 +654,8 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 
 				<div class="form-group row pull-right">
                     <div class="col-md-12">
-											<a  href="<?=base_url()?>user-buyer-conform-send/<?=$value?>/1" class="btn btn-sm btn-success"  onclick="return confirm('Are you sure you want to Sent this Bid?');"> Do You Want send ?</a>
-											<a  href="<?=base_url()?>user-buyer-home" class="btn btn-sm btn-danger"> Dont Want send ?</a>
+											<a  href="<?=base_url()?>user-buyer-conform-send/<?=$value?>/1" class="btn btn-sm btn-success"  onclick="return confirm('Are you sure want to Send this Techinal Bid?');"> Do You Want send Techincal Bid ?</a>
+											<a  href="<?=base_url()?>user-buyer-home" class="btn btn-sm btn-danger"> Dont Want send Technical ?</a>
 
 										<!-- <input type="submit" id="spl" class="btn btn-sm btn-primary m-r-5" name="for" value="Save"> -->
 											<!-- <button type="submit" class="btn btn-sm btn-primary m-r-5">Save</button> -->

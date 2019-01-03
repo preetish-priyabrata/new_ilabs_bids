@@ -758,7 +758,7 @@ class Buyeruser extends CI_Controller {
                   if($query_bid_master_date){
                       $query_bid_master_vendor=$this->db->update('master_bid_vendor',$master_bid_vendor_up,$id_master_bid_common); // master bid vendor update stastus
                       if($query_bid_master_vendor){
-                        $this->session->set_flashdata('success_message', 'Successfull Bid is send to vendor and Techinical community');
+                        $this->session->set_flashdata('success_message', 'Successfull Bid is sent to vendor and Techinical community');
                         redirect('user-buyer-home');
                       }else{
                         $this->session->set_flashdata('error_msg', 'Some Error occured Try Again !!!!!!!');
