@@ -163,7 +163,7 @@ class Vendoruser extends CI_Controller {
     /**
      * [vendor_new_tech_view_details description]
      * @param  string $value  [slno_vendor]
-     * @param  string $value1 [category]
+     * @param  string $value1 [category Sci=>1 Moi =>2 Logistic=>3]
      * @param  string $value2 [status_view]
      * @return [type]         [description]
      */
@@ -174,13 +174,13 @@ class Vendoruser extends CI_Controller {
         $query=$this->db->update('master_bid_vendor',$data_update,$data_id);
       }
         switch ($value1) {
-          case '1':
-            $page="'vendors_user/New_Technical/view_details_technical_bid'";
+          case '1': //Sci
+            $page="vendors_user/New_Technical/view_details_technical_bid";
             break;
-          case '2':
+          case '2': //MOI
               $page='vendors_user/New_Technical/view_details_technical_bid';
               break;
-          case '3':
+          case '3': // logistic
               $page='vendors_user/New_Technical/view_details_technical_bid_logistic' ;
                 break;
           default:
