@@ -115,7 +115,7 @@ if(empty($created_session_id)){
 					</a>
 					<ul class="dropdown-menu">
 						<li class="arrow"></li>
-						<li><a href="javascript:;">Change Password</a></li>
+						<li><a href="<?=base_url()?>vendor-change-password-view">Change Password</a></li>
 						<!-- <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li> -->
 						<!-- <li><a href="javascript:;">Calendar</a></li> -->
 						<!-- <li><a href="javascript:;">Setting</a></li> -->

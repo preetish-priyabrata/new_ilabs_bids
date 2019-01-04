@@ -107,7 +107,54 @@ class Vendoruser extends CI_Controller {
         $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
 
     }
+    public function vendor_change_password_view(){
+      $scripts='';
+      $data=array('title' =>"Vendor Dashboard",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
+      $this->load->view('vendors_user/vendor_template/v_template_header',$data);
+      $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
+      $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
 
+      $this->load->view('vendors_user/dashboard/change_password',$data);
+      $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);    
+    }
+    public function vendor_change_password_save(){
+      print_r($this->input->post());
+      // Array ( [current_password] => 123 [new_password] => 789 )
+      $new_password=$this->input->post('new_password'); 
+      $current_password=$this->input->post('current_password');
+      $Vendor_email_id=$this->session->userdata('Vendor_email_id');
+      if(empty($Vendor_email_id)){        
+        redirect('vendor-logout-pass');
+      }
+      $data_check=array('Vendor_email_id'=>$Vendor_email_id);
+      $query_user=$this->db->get_where('master_vendor_detail',$data_check);
+      if($query_user->num_rows()==1){
+        $hass=md5($current_password);
+        // ,'Password_hash'=>md5($current_password)
+        $result_vendor=$query_user->result();
+        $pass_hash=$result_vendor[0]->Password_hash;
+        if($pass_hash==$hass){
+          $update_data=array('Password_hash'=>md5($new_password),'Password'=>$new_password);
+          $data_id=array('Vendor_email_id'=>$Vendor_email_id);
+          $query_update=$this->db->update('master_vendor_detail',$update_data,$data_id) ;
+          if($query_update){
+            $this->session->set_flashdata('success_message', 'Successfull Password word ');
+            redirect('user-vendor-home');
+          }else{
+            $this->session->set_flashdata('error_message', 'Some thing went worng Please try again!');
+            redirect('user-vendor-home');
+          }
+        }else{
+          $this->session->set_flashdata('error_message', 'Current Password did not matched Please try again');
+          redirect('user-vendor-home');
+        }
+
+    }else{
+      $this->session->set_flashdata('error_message', 'Some thing went worng Please try again');
+      redirect('user-vendor-home');
+    }
+
+    }
     public function vendor_new_technical($value=''){
 
         $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
@@ -187,7 +234,7 @@ class Vendoruser extends CI_Controller {
             // code...
             break;
         }
-     $scripts='';
+        $scripts='';
             $data=array('title' =>"Vendor Dashboard",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1);
 
             $this->load->view('vendors_user/vendor_template/v_template_header',$data);
@@ -404,6 +451,15 @@ class Vendoruser extends CI_Controller {
            $this->load->view('vendors_user/submission_tech_bid/submission_bid',$data);
            $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
     }
+    public function vendor_tech_bid_submission_tokens_view($value='',$value1='',$value2=''){
+      $scripts='';
+      $data=array('title' =>"View Techinal Details of submission",'script_js'=>$scripts ,'menu_status'=>'','sub_menu'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'token'=>$value1,'master_bid_id'=>$value2);
+      $this->load->view('vendors_user/vendor_template/v_template_header',$data);
+      $this->load->view('vendors_user/vendor_template/v_template_top_head',$data);
+      $this->load->view('vendors_user/vendor_template/v_template_top_menu',$data);
+      $this->load->view('vendors_user/submission_tech_bid/submission_bid_view',$data);
+      $this->load->view('vendors_user/vendor_template/v_template_top_footer',$data);
+    }
     public function vendor_file_upload_data($value=''){
 
 
@@ -471,6 +527,39 @@ class Vendoruser extends CI_Controller {
                 }
 
                 break;
+                case 'files_info_vendors_view':
+                $data_array_check = array('token_id'=>$token, 'master_bid_id'=>$master_bid_id, 'vendor_id'=>$Vendor_email_id,  'bid_user_slno'=>$value_slno );
+                  $result_file=$this->vendor_db_users->get_vendors_tech_bid_file_list($data_array_check);
+                  if($result_file['no_file_vendor']==2){
+                      echo "<p class='text-center' style='color:red'><b>No File Attachment is found for this MR Request no</b></p>";
+                  }else if($result_file['no_file_vendor']==1){
+                      ?>
+                        <table class="table table-bordered" cellpadding="10" cellspacing="1" width="100%">
+                          <thead>
+                              <tr>
+                                  <th><strong>File Name</strong></th>
+                                  <th><strong>Click View</strong></th>
+                                  
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <?php foreach($result_file['file_vendors_list'] as $key_files){ ?>
+                                  <tr>
+                                      <td><strong><?=$key_files->file_name?></strong></td>
+                                      <td><strong><a target="_blank" href="<?=base_url()?>upload_files/vendor_file_tech/<?=$key_files->file_attach?>">Click View</a> </strong></td>
+                                      
+                                  </tr>
+  
+  
+                              <?php }?>
+  
+                          </tbody>
+                      </table>
+                      <?php
+  
+                  }
+  
+                  break;
             case 'files_info_delete':
                 $file_id=$this->input->post('file_id');
                 $this->db->where('slno_tech_file', $file_id);

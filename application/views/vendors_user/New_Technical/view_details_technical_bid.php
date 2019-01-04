@@ -238,7 +238,7 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 															}
 														
 														}else{
-															if($submitted_status==1){  echo "---"; }else{?> <a target="_blank" href="<?=base_url().'user-vendor-tech-bid-submission-tokens/'.$value.'/'.$submission->token_no .'/'.$submission->master_bid_id ?>">Click View</a><?php }
+															if($submitted_status==1){ ?> <a target="_blank" href="<?=base_url().'user-vendor-tech-bid-submission-tokens-view/'.$value.'/'.$submission->token_no .'/'.$submission->master_bid_id ?>">View Send </a><?php  }else{?> <a target="_blank" href="<?=base_url().'user-vendor-tech-bid-submission-tokens/'.$value.'/'.$submission->token_no .'/'.$submission->master_bid_id ?>">Click View</a><?php }
 														}
 														?>
 												 	</strong>

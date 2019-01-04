@@ -448,6 +448,7 @@ $route['vendor-page-final']='vendoruser/vendor_page_final';
 $route['user-vendor-bid-submission/(:any)']='vendoruser/vendor_tech_bid_submission/$1';
 //  this is inter transfer of token for redirect
 $route['user-vendor-tech-bid-submission-tokens/(:any)/(:any)/(:any)']='vendoruser/vendor_tech_bid_submission_tokens/$1/$2/$3';
+$route['user-vendor-tech-bid-submission-tokens-view/(:any)/(:any)/(:any)']='vendoruser/vendor_tech_bid_submission_tokens_view/$1/$2/$3';
 $route['vendor-file-upload-data']='vendoruser/vendor_file_upload_data';
 $route['vendor-tech-file-new-bid-submission']='vendoruser/vendor_tech_file_new_bid_submission';
 
@@ -468,6 +469,8 @@ $route['vendor-rank-bid-order/(:any)/(:any)/(:any)/(:any)']='vendoruser/vendor_r
 // vendor_logout_bypass
 $route['vendor-logout']='vendoruser/vendor_logout';
 $route['vendor-logout-pass']='vendoruser/vendor_logout_bypass';
+$route['vendor-change-password-view']='vendoruser/vendor_change_password_view';
+$route['vendor-change-password-save']='vendoruser/vendor_change_password_save';
 
 
 
