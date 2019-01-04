@@ -159,7 +159,7 @@ if($result_title['no_new_tech']!=1){
    $(document).ready(function (e) {
    		file_uploaded();
    		$('#sub').on('click', function () {
-   			alert('hello');
+   			// alert('hello');
    			var value_slno =$('#value_slno').val();
 			var value_keys_id=$('#key_values_slno').val();
 			var master_bid_id=$('#master_bid_id').val();
