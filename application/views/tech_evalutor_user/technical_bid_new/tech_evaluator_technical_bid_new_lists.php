@@ -96,7 +96,9 @@ $list_success_bid=$this->tech_eva_db->technical_evaluator_bid_new_lists($tech_sl
 		                                </td>
 
 
-                                      <td><a href="<?=base_url()?>user-technical-evaluator-view-details-technical-bid-new/<?=$bid_key_id->Slno_bid?>/<?=$bid_key_id->category?>" class="btn btn-sm btn-info" >View</a></td>
+                                      <td><a href="<?=base_url()?>user-technical-evaluator-view-details-technical-bid-new/<?=$bid_key_id->Slno_bid?>/<?=$bid_key_id->category?>" class="btn btn-sm btn-yahoo"  style="background:#720E9E; color:white" title="Here vendor information about submission of bidding view and appoved vendor">View & Approve</a>
+									  || <a href="<?=base_url()?>user-technical-evaluator-view-details-technical-bid-new-complete-view/<?=$bid_key_id->Slno_bid?>/<?=$bid_key_id->category?>" class="btn btn-sm btn-lime" title="Click Here Closed Bid Sent information of approved vendors" >Submit Approvals</a>
+									  </td>
 
 
 

@@ -408,6 +408,7 @@ $route['buyer-bid-rank-invitation-to-vendor-com']='buyeruser/buyer_bid_rank_invi
 ##################################################################################################################################
 $route['user-technical-evalutor-home']='technicalevalutor/tech_evalutor_home';
 $route['user-technical-evaluator-bid-new-list']='technicalevalutor/technical_evaluator_bid_new_list';
+$route['user-technical-evaluator-view-details-technical-bid-new-complete-view/(:any)/(:any)']='technicalevalutor/technical_evaluator_view_details_technical_bid_new_complete_view/$1/$2';
 $route['user-technical-evaluator-view-details-technical-bid-new/(:any)/(:any)']='technicalevalutor/technical_evaluator_view_details_technical_bid_new/$1/$2';
 $route['technical-evalutor-get-approved-reject/(:any)/(:any)/(:any)']='technicalevalutor/technical_evalutor_get_approved_reject/$1/$2/$3';
 $route['technical-evalutor-get-approved-reject-save']='technicalevalutor/technical_evalutor_get_approved_reject_save';
