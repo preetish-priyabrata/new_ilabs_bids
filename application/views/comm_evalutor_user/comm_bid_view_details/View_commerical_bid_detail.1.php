@@ -2,15 +2,14 @@
 $commerical_email_id=$this->session->userdata('commerical_email_id');
 if(empty($commerical_email_id)){
 
-	redirect('buy-logout-by-pass');
+	redirect('comm-evalutor-logout-by-pass');
 }
 $Slno_bid=$value=$value;
 $value1=$value1;
-$result_drafted=$this->comm_eva_db->commerical_bid_details_information($Slno_bid,1);
-// $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,1,$value);
+$result_drafted=$this->comm_eva_db->commerical_bid_details_information($value,1);
 $bid_list=$result_drafted['bid_list'][0];
 if($result_drafted['no_bid']!=1){
-	 $this->session->set_flashdata('error_message', 'The Information Trying access is invalid');
+	$this->session->set_flashdata('error_message', 'The Information Trying access is invalid');
 	redirect('user-buyer-home');
 }
 $mr_slno=$bid_list->mr_slno;
@@ -25,33 +24,33 @@ $value_bid_details=$result_drafted_bid_details['bid_details_list'][0]; // bid de
 //bid vendor inserted
 $result_drafted_bid_details_vendor = $this->buyer_user->drafted_bid_vendor_information_details_commerical($Slno_bid,1);
 foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
- $value_bid_details_vendor[]=$key->vendor_id;
+	$value_bid_details_vendor[]=$key->vendor_id;
 }
 
- $mr_no=$get_mr_id['mr_details'][0]->mr_no;
- $job_code_id=$get_mr_id['mr_details'][0]->job_code_id;
- $materilal_category_id_slno=$get_mr_id['mr_details'][0]->materilal_category_id_slno;
- $approver_id=$get_mr_id['mr_details'][0]->approver_id;
- $techinal_evalution=$get_mr_id['mr_details'][0]->techinal_evalution;
- $date_required=$get_mr_id['mr_details'][0]->date_required;
- $date_creation=$get_mr_id['mr_details'][0]->date_creation;
- $edit_id=$get_mr_id['mr_details'][0]->edit_id;
- $status_mr=$get_mr_id['mr_details'][0]->status;
- $resubmit_count=$get_mr_id['mr_details'][0]->resubmit_count;
+	$mr_no=$get_mr_id['mr_details'][0]->mr_no;
+	$job_code_id=$get_mr_id['mr_details'][0]->job_code_id;
+	$materilal_category_id_slno=$get_mr_id['mr_details'][0]->materilal_category_id_slno;
+	$approver_id=$get_mr_id['mr_details'][0]->approver_id;
+	$techinal_evalution=$get_mr_id['mr_details'][0]->techinal_evalution;
+	$date_required=$get_mr_id['mr_details'][0]->date_required;
+	$date_creation=$get_mr_id['mr_details'][0]->date_creation;
+	$edit_id=$get_mr_id['mr_details'][0]->edit_id;
+	$status_mr=$get_mr_id['mr_details'][0]->status;
+	$resubmit_count=$get_mr_id['mr_details'][0]->resubmit_count;
  // $query_item_details_list=$this->design_user->get_design_master_mr_items_material_single($edit_id,$mr_no,$mr_slno);
- $result_file=$this->design_user->get_design_mr_file_list($mr_slno,$mr_no);
+	$result_file=$this->design_user->get_design_mr_file_list($mr_slno,$mr_no);
 
- $get_list_vendors=$this->buyer_user->get_buyer_vendors_list($value1);
+	$get_list_vendors=$this->buyer_user->get_buyer_vendors_list($value1);
 
- $result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id,$mr_no,$mr_slno);
+	$result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id,$mr_no,$mr_slno);
 
- $query_mr_location_list=$this->design_user->get_design_master_mr_location_details($edit_id,$mr_no,$mr_slno);
+	$query_mr_location_list=$this->design_user->get_design_master_mr_location_details($edit_id,$mr_no,$mr_slno);
 
- $get_location=$this->design_user->get_design_master_loaction_list();
- $query_item_details_list=$this->design_user->get_design_master_mr_items_material_single($edit_id,$mr_no,$mr_slno);
+	$get_location=$this->design_user->get_design_master_loaction_list();
+	$query_item_details_list=$this->design_user->get_design_master_mr_items_material_single($edit_id,$mr_no,$mr_slno);
 
- $data_get_list_commerical = array('master_bid_id' =>$Slno_bid );
- $query_get_list=$this->db->get_where('master_buyer_material_details',$data_get_list_commerical);
+	$data_get_list_commerical = array('master_bid_id' =>$Slno_bid );
+	$query_get_list=$this->db->get_where('master_buyer_material_details',$data_get_list_commerical);
 ?>
 
 <div class="sidebar-bg"></div>
@@ -642,3 +641,215 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 	</div>
 </div>
 
+<script type="text/javascript">
+
+	function get_bid_ref(id) {
+
+
+		if(id==1){
+					var job_code=document.getElementById('bid_ref_no').value;
+					var pass1 = document.getElementById('bid_ref_no');
+					var message = document.getElementById('job_code_error1');
+
+   					var goodColor = "#0C6";
+    				var badColor = "#FF9B37";
+					var results;
+					if(job_code!=""){
+						// alert(job_code);
+					  	$.ajax({
+						  	url:'<?=base_url()?>get-buyer-bid-check',
+						    method: 'post',
+						    data: {field_id:'1',job_codes:job_code},
+						    // dataType: 'json',
+						    success: function(response){
+						    // alert(response);
+						    	if(response==1){
+									pass1.style.backgroundColor = goodColor;
+							        message.style.color = goodColor;
+							        message.innerHTML = "valid Bid Ref code";
+							        $('#spl').show();
+							        results=1;
+							        return 1;
+
+								}else if(response==2){
+									pass1.style.backgroundColor = badColor;
+							        message.style.color = badColor;
+							        message.innerHTML = "invalid Bid Ref code";
+							        results=2;
+							        $('#bid_ref_no').val('');
+							        $('#spl').hide();
+							         return false;
+
+
+								}
+							}
+						});
+						
+					}else{
+						pass1.style.backgroundColor = badColor;
+						message.style.color = badColor;
+						message.innerHTML = "Should not left blank";
+						 return false;
+					}
+		}else if(id==2){
+			var job_code=document.getElementById('bid_Id').value;
+			var pass1 = document.getElementById('bid_Id');
+			var message = document.getElementById('job_code_error2');
+
+   			var goodColor = "#0C6";
+    		var badColor = "#FF9B37";
+			if(job_code!=""){
+			   $.ajax({
+									url:'<?=base_url()?>get-buyer-bid-check',
+									method: 'post',
+									data: {field_id:'2',job_codes:job_code},
+									    // dataType: 'json',
+									success: function(response){
+									    if(response==1){
+											pass1.style.backgroundColor = goodColor;
+									        message.style.color = goodColor;
+									        message.innerHTML = "valid Bid id code";
+									        $('#spl').show();
+									        // return 	get_bid_ref(true);
+									        // return "preetish";
+
+
+										}else if(response==2){
+											pass1.style.backgroundColor = badColor;
+									        message.style.color = badColor;
+									        message.innerHTML = "invalid Bid id code";
+									        $('#bid_Id').val('');
+									        $('#spl').hide();
+									         return false;
+
+										}
+
+									}
+								})
+			  		// alert(values_ids);
+			  		// console.log(values_ids);
+
+					}else{
+						pass1.style.backgroundColor = badColor;
+						message.style.color = badColor;
+						message.innerHTML = "Should not left blank";
+						 return false;
+					}
+		}
+	}
+			function check_before_submiting(){
+					console.log(get_bid_ref(1));
+					console.log(get_bid_ref(2));
+					if((get_bid_ref('1')==1)||(get_bid_ref('1')===true)){
+						// alert(get_bid_ref(1));
+						if((get_bid_ref('2')==1)||(get_bid_ref('2')===true)){
+							// alert(get_bid_ref(2));
+
+							return 1;
+						}
+					}
+				}
+
+
+			// }
+			$('#bid_tech').submit(function(){
+				console.log(check_before_submiting());
+							if(!$('#bid_tech input[type="checkbox"]').is(':checked')){
+							      alert("Please check at least one Vendor.");
+							      return false;
+							  }else{
+
+							  		document.getElementById("bid_tech").submit(); //form submission
+
+							  }
+							    // }else{
+							    // 	check_before_submiting();
+							    // }
+							});
+							  //
+function file_delete(id) {
+		var actions_file='files_info_delete';
+    	var value4 = $('#value4').val();
+		var slno_Mr_no = $('#slno_Mr_no').val();
+		queryString_id = 'actions_file='+actions_file+'&value4='+ value4+'&slno_Mr_no='+slno_Mr_no+'&file_id='+id;
+
+		jQuery.ajax({
+			url: "<?php echo base_url(); ?>buyer-file-upload-data",
+			data:queryString_id,
+			type: "POST",
+			success:function(data){
+				if(data){
+					file_uploaded();
+                    alert('Successfull attach file is deleted ');
+				}else{
+					file_uploaded();
+                    alert('Unable attached file deleted');
+				}
+			}
+		});
+		// body...
+	}
+
+function file_uploaded(){
+		var actions_file='files_info';
+    	var value4 = $('#value4').val();
+		var slno_Mr_no = $('#slno_Mr_no').val();
+		queryString_id = 'actions_file='+actions_file+'&value4='+ value4+'&slno_Mr_no='+slno_Mr_no;
+
+		jQuery.ajax({
+			url: "<?php echo base_url(); ?>buyer-file-upload-data",
+			data:queryString_id,
+			type: "POST",
+			success:function(data){
+				$("#cart-item-files").html(data);
+			}
+		});
+
+	}
+ $(document).ready(function (e) {
+ 	$('#spl').hide();
+
+   		file_uploaded();
+        $('#sub').on('click', function () {
+        	var actions_file='files_uploaded_details';
+        	var value4 = $('#value4').val();
+			var slno_Mr_no = $('#slno_Mr_no').val();
+            var file_data = $('#job_files').prop('files')[0];
+            if(file_data!=""){
+                var form_data = new FormData();
+                form_data.append('file', file_data);
+                form_data.append('value4', value4);
+          		form_data.append('slno_Mr_no', slno_Mr_no);
+          		form_data.append('actions_file', actions_file);
+
+                $.ajax({
+                    url: '<?php echo base_url(); ?>buyer-file-upload-data', // point to server-side controller method
+                    dataType: 'text', // what to expect back from the server
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    type: 'post',
+                    success: function (response) {
+                    	if(response==1){
+                    		file_uploaded();
+                    		alert('File Is successfully attached ');
+
+                    	}else if(response==2){
+                    		alert('Same File name is found ');
+                    	}else{
+                    		alert('Some thing went worng Please check internet connection ');
+                    	}
+                        // $('#msg').html(response); // display success response from the server
+                    }
+                    // error: function (response) {
+                    //     $('#msg').html(response); // display error response from the server
+                    // }
+                });
+            }else{
+            	alert('Please Attachment Some file click on upload');
+            }
+
+        });
+    });
+</script>

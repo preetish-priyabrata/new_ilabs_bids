@@ -25,7 +25,8 @@
 	
 	<script src="<?=base_url()?>file_css_admin/assets/plugins/jquery/jquery-3.2.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="<?=base_url()?>file_css_admin/assets/plugins/pace/pace.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/0.5.6/pace.min.js"></script>
+	<!-- <script src="<?=base_url()?>file_css_admin/assets/plugins/pace/pace.min.js"></script> -->
 	<script src="<?=base_url()?>file_css_admin/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 	<script src="<?=base_url()?>file_css_admin/assets/plugins/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
