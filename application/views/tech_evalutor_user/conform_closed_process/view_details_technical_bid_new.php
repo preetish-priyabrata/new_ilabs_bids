@@ -460,6 +460,7 @@ $mr_slno=$bid_list->mr_slno;
 								                        </thead>
 									                    <tbody>
 									                    	<?php
+																$count_completed=0;
 									                            if($result_vendor_list['no_bid_vendors']==1){
 										                        	foreach($result_vendor_list['bid_vendors_list'] as $key_vendors){
 																		$Vendor_email_id=$key_vendors->Vendor_email_id;
@@ -482,6 +483,7 @@ $mr_slno=$bid_list->mr_slno;
 																						if(!empty($key_vendors->submission_status) && ($key_vendors->submission_status==1)){
 																							if(!empty($key_vendors->approval_status) && ($key_vendors->approval_status==1)){
 																								if($key_vendors->approval_status==1){
+																									$count_completed++;
 																									echo "<b style='color : green'>Approved</b>";
 																								}else{
 																										echo "<b style='color : red'>Resubmission Of Bid</b>";
@@ -532,6 +534,12 @@ $mr_slno=$bid_list->mr_slno;
 												</div>
 											</div>
 										</div>
+									</div>
+								</div>
+								<div class="form-group row pull-right">
+									<div class="col-md-12">
+										<button type="submit" class="btn btn-sm btn-primary m-r-5">Save</button>
+										<a  href="user-admin-home" class="btn btn-sm btn-default">Cancel</a> 
 									</div>
 								</div>
 							</div>
