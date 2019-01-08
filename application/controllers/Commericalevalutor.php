@@ -61,9 +61,9 @@ class Commericalevalutor extends CI_Controller {
             $this->load->view('comm_evalutor_user/template/template_top_head');
             $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
             if($value1==3){
-                 $this->load->view('comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new_logistic',$data);
+                 $this->load->view('comm_evalutor_user/comm_bid_view_details/view_commerical_bid_logistic_detail',$data);
             }else if(($value1==2) || ($value1==1)){
-                $this->load->view('comm_evalutor_user/comm_bid_new/view_details_commerical_bid_new',$data);
+                $this->load->view('comm_evalutor_user/comm_bid_view_details/View_commerical_bid_detail',$data);
                  
             }else{
                 $this->session->set_flashdata('error_message',  'Something went wrong Try Again!!!!');

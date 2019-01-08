@@ -48,4 +48,23 @@ class Commericalevaluator_model extends CI_Model{
         return $data_return;
       }
     }
+    public function commerical_bid_details_information($value2,$value1){
+      if(empty($value2)){
+      $data_id = array('status_bid'=>$value1);
+      }else if(!empty($value2)){
+        $data_id= array('Slno_bid' => $value2,'status_bid'=>$value1);
+      }
+      $query_mr_files =$this->db->get_where('master_bid_commerical',$data_id);
+      if($query_mr_files->num_rows() == 0){
+        $data_send = array('no_bid' =>2 );
+        return $data_send;
+        exit;
+      }else{
+        $results=$query_mr_files->result();
+        $data_send = array('no_bid' =>1, 'bid_list'=>$results);
+        return $data_send;
+        exit;
+      }
+     
+    }
 }
