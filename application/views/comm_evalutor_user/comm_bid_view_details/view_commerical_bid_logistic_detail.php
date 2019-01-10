@@ -652,7 +652,7 @@ if($result_drafted['no_bid']!=1){
 	</div>
 </div>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 	function get_bid_ref(id) {
 
@@ -868,4 +868,4 @@ function file_uploaded(){
 
         });
     });
-</script>
+</script> -->

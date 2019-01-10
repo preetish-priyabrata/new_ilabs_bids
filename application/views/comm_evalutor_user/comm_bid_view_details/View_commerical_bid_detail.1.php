@@ -633,7 +633,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 
 				<div class="form-group row pull-right">
                     <div class="col-md-12">
-											<a  href="<?=base_url()?>user-buyer-home" class="btn btn-sm btn-default">Cancel</a>
+						<a  href="<?=base_url()?>user-buyer-home" class="btn btn-sm btn-default">Cancel</a>
                     </div>
                 </div>
 			</form>
