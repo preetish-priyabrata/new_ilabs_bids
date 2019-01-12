@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 08, 2019 at 08:07 PM
+-- Generation Time: Jan 12, 2019 at 08:35 PM
 -- Server version: 5.7.24-0ubuntu0.18.04.1
 -- PHP Version: 7.2.10-0ubuntu0.18.04.1
 
@@ -489,16 +489,29 @@ CREATE TABLE `Ilab_master_bid_invi_rank_not_app` (
 
 CREATE TABLE `Ilab_master_bid_otp_commerical` (
   `slno_comm` int(11) NOT NULL,
-  `master_bid_id` varchar(255) NOT NULL,
-  `bid_slno` varchar(255) NOT NULL,
+  `master_bid_id` varchar(255) NOT NULL COMMENT 'commerial bid i serial no',
+  `bid_slno` varchar(255) DEFAULT NULL COMMENT 'buyser serial id',
   `type_bid` varchar(255) NOT NULL COMMENT '1-simple 2-closed',
-  `category_bid` varchar(255) NOT NULL,
-  `otp` int(11) NOT NULL COMMENT '1-sci 2-moi 3-log',
+  `category_bid` varchar(255) NOT NULL COMMENT '1-sci 2-moi 3-log ',
+  `otp` varchar(255) NOT NULL COMMENT 'otp',
+  `bid_name` varchar(255) NOT NULL COMMENT 'bid like closed simple rank order bid',
+  `user_id_process` varchar(255) NOT NULL COMMENT ' who has generated id',
   `status` int(11) NOT NULL DEFAULT '1' COMMENT '1-active 2-inactive',
   `match_status` int(11) NOT NULL DEFAULT '0' COMMENT '1-match 2-pending',
-  `date_entry` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `date_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date_entry` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'date time of entry',
+  `date_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'when status is chande date time',
+  `match_bid_id_user` varchar(255) DEFAULT NULL COMMENT 'who has try to match id'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Ilab_master_bid_otp_commerical`
+--
+
+INSERT INTO `Ilab_master_bid_otp_commerical` (`slno_comm`, `master_bid_id`, `bid_slno`, `type_bid`, `category_bid`, `otp`, `bid_name`, `user_id_process`, `status`, `match_status`, `date_entry`, `date_update`, `match_bid_id_user`) VALUES
+(1, '1', '2', '2', '1', '2019-01-11-3EXfp', 'Closed Bid', 'commerical@ilab.com', 1, 1, '2019-01-11 13:51:42', '2019-01-11 14:28:22', 'commerical@ilab.com'),
+(2, '1', '2', '2', '1', '2019-01-12-pRwiv', 'Closed Bid', 'commerical@ilab.com', 1, 2, '2019-01-12 07:16:44', '2019-01-12 07:16:44', NULL),
+(3, '1', '2', '2', '1', '2019-01-12-y1wRP', 'Closed Bid', 'commerical@ilab.com', 1, 1, '2019-01-12 09:51:24', '2019-01-12 09:51:50', 'commerical@ilab.com'),
+(4, '1', '2', '2', '1', '2019-01-12-AJ3Nr', 'Closed Bid', 'commerical@ilab.com', 1, 1, '2019-01-12 12:24:34', '2019-01-12 12:24:50', 'commerical@ilab.com');
 
 -- --------------------------------------------------------
 
@@ -2667,7 +2680,13 @@ INSERT INTO `Ilab_master_session_history` (`slno_history`, `user_id`, `username`
 (829, 'commerical@ilab.com', 'user3', 10, '{\"browser\":\"Firefox\",\"browserVersion\":\"65.0\",\"platform\":\"Windows 8.1\",\"full_user_agent_string\":\"Mozilla\\/5.0 (Windows NT 6.3; Win64; x64; rv:65.0) Gecko\\/20100101 Firefox\\/65.0\"}', '192.168.0.7', '2019-01-08', '18:35:56', 1, NULL, NULL, '3pho76eq8s31lcn6ipu58kc31ir07gv1'),
 (830, 'commerical@ilab.com', 'user3', 10, '{\"browser\":\"Chrome\",\"browserVersion\":\"71.0.3578.98\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/71.0.3578.98 Safari\\/537.36\"}', '192.168.0.4', '2019-01-08', '18:49:30', 1, NULL, NULL, '0vh1veu81fipgkrvr9ncbs30dkdiplc8'),
 (831, 'commerical@ilab.com', 'user3', 10, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2019-01-08', '18:58:15', 1, NULL, NULL, 'a6e767mubg8a27k62ccauj9ront5k1h0'),
-(832, 'commerical@ilab.com', 'user3', 10, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2019-01-08', '19:00:13', 1, NULL, NULL, 'nqm36pn2v8dj31jm25g26ued6efnlvvv');
+(832, 'commerical@ilab.com', 'user3', 10, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2019-01-08', '19:00:13', 1, NULL, NULL, 'nqm36pn2v8dj31jm25g26ued6efnlvvv'),
+(833, 'commerical@ilab.com', 'user3', 10, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2019-01-10', '11:51:05', 1, NULL, NULL, '3uajr2550pvbjkvs3c8k1bl7h4g8p9q7'),
+(834, 'commerical@ilab.com', 'user3', 10, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2019-01-11', '17:02:50', 1, NULL, NULL, 'svqbi5rmal7no5ddbtvlsf0jq11fo7gg'),
+(835, 'commerical@ilab.com', 'user3', 10, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2019-01-11', '17:51:07', 1, NULL, NULL, '4gtgko1bs8kliofq5u0vkjahni3nqsbe'),
+(836, 'commerical@ilab.com', 'user3', 10, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2019-01-12', '12:23:00', 1, NULL, NULL, '94hnmed4be31bertefd3s3p20g42k4o4'),
+(837, 'commerical@ilab.com', 'user3', 10, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2019-01-12', '15:19:52', 1, NULL, NULL, 'u4ki3sb60v65sb940uvdp1uv5frt857b'),
+(838, 'commerical@ilab.com', 'user3', 10, '{\"browser\":\"Firefox\",\"browserVersion\":\"64.0\",\"platform\":\"Linux\",\"full_user_agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko\\/20100101 Firefox\\/64.0\"}', '192.168.0.4', '2019-01-12', '17:51:17', 1, NULL, NULL, 'jo3a5oqulrb2e545kfa41lggl3ogar54');
 
 -- --------------------------------------------------------
 
@@ -4163,7 +4182,7 @@ ALTER TABLE `Ilab_master_bid_invi_rank_not_app`
 -- AUTO_INCREMENT for table `Ilab_master_bid_otp_commerical`
 --
 ALTER TABLE `Ilab_master_bid_otp_commerical`
-  MODIFY `slno_comm` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `slno_comm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `Ilab_master_bid_query`
 --
@@ -4368,7 +4387,7 @@ ALTER TABLE `Ilab_master_rankorder_item_total_temp`
 -- AUTO_INCREMENT for table `Ilab_master_session_history`
 --
 ALTER TABLE `Ilab_master_session_history`
-  MODIFY `slno_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=833;
+  MODIFY `slno_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=839;
 --
 -- AUTO_INCREMENT for table `Ilab_master_session_history_vendors`
 --
