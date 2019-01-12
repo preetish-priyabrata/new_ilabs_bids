@@ -292,13 +292,13 @@ class Commericalevalutor extends CI_Controller {
                         break;
                     case '21': //Closed bid Sci
                         $scripts='';
-                        $data=array('title' =>"Here otp is been verified",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
 
-                        $this->load->view('template/template_header',$data);
-                        $this->load->view('comm_evalutor_user/template/template_top_head');
-                        $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
                         $this->load->view('comm_evalutor_user/commerical_bid_statement/commerical_get_list_vendor_moi_sci_c_o',$data);
-                        $this->load->view('template/template_footer',$data);
+                        // $this->load->view('template/template_footer',$data);
                         break;
                     case '22': // closed  Moi
                         # code...

@@ -546,8 +546,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 								</div>
 							</div>
 							<!-- part Accordion 4 End -->
-
-							 <div class="card">
+							<div class="card">
 							    <div class="card-header text-center">
 							      	<a class="collapsed card-link" data-toggle="collapse" href="#collapseFive">
 							       		Commerical Evaluator / Vendor Selection
@@ -558,31 +557,26 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 							       		<h5 class="text-left">Commerical Evaluator / Vendor Selection</h5>
 										<hr style="background: lightblue">
 										<!-- row Start -->
-										<div class="row">
-											
-											<div class="col-md-12 col-lg-12">
-
-												<div class="row">
-													<div class="col-lg-12">
-														<table class="table table-bordered" cellpadding="10" cellspacing="1" width="100%">
-									                        <thead>
-									                            <tr>
-									                                <th><strong>Vendor Name </strong></th>
-									                                <th><strong>Vendor View</strong></th>
-
-									                            </tr>
-									                        </thead>
-									                        <tbody>
-																						<?php
-																								if($get_list_vendors['No_vendors']==1){
-																									foreach($get_list_vendors['vendors_lists'] as $key_vendors){
-																										$Vendor_email_id=$key_vendors->Vendor_email_id;
-																					 ?>
-																										<tr>
-																					<?php
-																												if (in_array($Vendor_email_id, $value_bid_details_vendor,true)){
-																					?>
-																													<td><?=$key_vendors->Vendor_name?></td>
+										<div class="row">											
+											<div class="col-lg-12">
+												<table class="table table-bordered" cellpadding="10" cellspacing="1" width="100%">
+						                        	<thead>
+							                            <tr>
+							                                <th><strong>Vendor Name </strong></th>
+							                                <th><strong>Vendor View</strong></th>
+							                            </tr>
+							                        </thead>
+							                        <tbody>
+												<?php
+														if($get_list_vendors['No_vendors']==1){
+															foreach($get_list_vendors['vendors_lists'] as $key_vendors){
+																$Vendor_email_id=$key_vendors->Vendor_email_id;
+												?>
+												<tr>
+											<?php
+												if (in_array($Vendor_email_id, $value_bid_details_vendor,true)){
+											?>
+												<td><?=$key_vendors->Vendor_name?></td>
 																													<td>
 
 																														<p>Organisation Name : <?=$key_vendors->Organisation_name?></p>
