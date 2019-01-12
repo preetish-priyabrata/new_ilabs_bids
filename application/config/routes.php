@@ -426,6 +426,9 @@ $route['user-commerical-evalutor-home']='commericalevalutor/comm_evalutor_home';
 $route['user-commerical-evaluator-bid-new-list']='commericalevalutor/commerical_evaluator_bid_new_list';
 $route['user-commerical-evaluator-view-details-commerical-bid-new/(:any)/(:any)']='commericalevalutor/commerical_evaluator_view_details_commerical_bid_new/$1/$2';
 $route['generate-otp-bid-referecnce/(:any)/(:any)/(:any)/(:any)/(:any)']='commericalevalutor/commerical_generate_otp_bid_referecnce/$1/$2/$3/$4/$5';
+$route['commerical-otp-verification']='commericalevalutor/commerical_otp_verification';
+$route['commerical-otp-verification-fail/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)']='commericalevalutor/commerical_otp_verification_fail/$1/$2/$3/$4/$5/$6';
+$route['commerical-otp-verification-success/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)']='commericalevalutor/commerical_otp_verification_success/$1/$2/$3/$4/$5/$6';
 $route['comm-evalutor-logout-by-pass']='commericalevalutor/comm_evalutor_logout_bypass';
 $route['comm-evalutor-logout']='commericalevalutor/comm_evalutor_logout';
 ######################################################################################################################################
