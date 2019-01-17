@@ -318,9 +318,13 @@ class Design_model extends CI_Model {
      * [design_mr_drafted_list description] here is the drafted version of mr list
      * @return [type] [description]
      */
-    public function design_mr_drafted_list($value=''){
+    public function design_mr_drafted_list($value='',$value1=''){
       if(!empty($value)){
         $this->db->where('job_code_id ',$value);
+      }
+      //  this been changed please find error not me back 16 jan 2019
+      if(!empty($value1)){
+        $this->db->where('creators_id ',$value1);
       }
       $this->db->where('status ', 4);
       $this->db->or_where('status ', 5);

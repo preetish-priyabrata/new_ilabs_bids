@@ -572,44 +572,37 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 															foreach($get_list_vendors['vendors_lists'] as $key_vendors){
 																$Vendor_email_id=$key_vendors->Vendor_email_id;
 												?>
-												<tr>
-											<?php
-												if (in_array($Vendor_email_id, $value_bid_details_vendor,true)){
-											?>
-												<td><?=$key_vendors->Vendor_name?></td>
-																													<td>
-
-																														<p>Organisation Name : <?=$key_vendors->Organisation_name?></p>
-																														<p>Vendor Mobile : <?=$key_vendors->Mobile_no?></p>
-																														<p>Vendor Address : <?=$key_vendors->Organisation_address?></p>
-																													</td>
-																					<?php
-																												}
-																												?>
-
-										                                </tr>
-
-
-									                         	 <?php
-									                         	 	 }
-
-									                        	}
+														<tr>
+													<?php
+														if (in_array($Vendor_email_id, $value_bid_details_vendor,true)){
+													?>
+															<td><?=$key_vendors->Vendor_name?></td>
+															<td>
+																<p>Organisation Name : <?=$key_vendors->Organisation_name?></p>
+																<p>Vendor Mobile : <?=$key_vendors->Mobile_no?></p>
+																<p>Vendor Address : <?=$key_vendors->Organisation_address?></p>
+															</td>
+													<?php
+														}
+													?>
+					                                </tr>
+								                <?php
+					                         	 	 }
+					                        	}
 									                        ?>
 
-									                        </tbody>
-									                    </table>
-													</div>
-												</div>
+									                </tbody>
+									            </table>
 											</div>
 										</div>
-
-
-							      	</div>
+									</div>
+								</div>
+					      	</div>
 							    </div>
 							</div>
 						</div>
-					</div>
-				</div>
+					<!-- </div>
+				</div> -->
 
 
 				<div class="form-group row pull-right">

@@ -5,7 +5,7 @@ if(empty($email_id)){
 	redirect('bu-logout-by-pass');
 }
 $job_Code_id=$job_Code_id;
-$result_drafted=$this->design_user->design_mr_drafted_list($job_Code_id);
+$result_drafted=$this->design_user->design_mr_drafted_list($job_Code_id,$email_id);
 ?>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">

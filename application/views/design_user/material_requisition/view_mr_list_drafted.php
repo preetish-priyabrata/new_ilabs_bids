@@ -4,7 +4,7 @@ if(empty($email_id)){
 	
 	redirect('bu-logout-by-pass');
 }
-$result_drafted=$this->design_user->design_mr_drafted_list();
+$result_drafted=$this->design_user->design_mr_drafted_list('',$email_id);
 ?>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
@@ -70,84 +70,86 @@ $result_drafted=$this->design_user->design_mr_drafted_list();
 					        	<?php 
 					        		$x=0;
 					        		// print_r($result_drafted);
-					        		foreach ($result_drafted['drafted_list'] as $value_list) {
-					        			$x++;
-					        			
-					        			$last_id=$value_list->slno_mr;
-					        		?>
-					        		<tr>
-						        		<td><?=$x?></td>								                
-						                <td><?=$value_list->job_code_id?></td>
-						                <td><?=$value_list->mr_no?></td>
-						                <td><?=$value_list->material_category_name?></td>
-						                <td><?=$value_list->date_creation?></td>       
-	                                   <td><?php $Status=$value_list->status;
-						                if($Status==4){
-						                	echo "Part-I Completed";
-						                }else if($Status==5){
-						                	echo "Part II Completed";
-						                }else{
-						                	echo "--";
-						                }
+					        		if($result_drafted['no_drafted']==1){
+						        		foreach ($result_drafted['drafted_list'] as $value_list) {
+						        			$x++;
+						        			
+						        			$last_id=$value_list->slno_mr;
+						        		?>
+						        		<tr>
+							        		<td><?=$x?></td>								                
+							                <td><?=$value_list->job_code_id?></td>
+							                <td><?=$value_list->mr_no?></td>
+							                <td><?=$value_list->material_category_name?></td>
+							                <td><?=$value_list->date_creation?></td>       
+		                                   <td><?php $Status=$value_list->status;
+							                if($Status==4){
+							                	echo "Part-I Completed";
+							                }else if($Status==5){
+							                	echo "Part II Completed";
+							                }else{
+							                	echo "--";
+							                }
 
-						                ?></td>
-						                
-						                <td>
-						                	<div class="btn-group">
-												<a href="#" class="btn btn-purple btn-sm">Action</a>
-												<a href="#" class="btn btn-purple dropdown-toggle" data-toggle="dropdown"></a>
-												<ul class="dropdown-menu pull-right">	
-													<?php 
-														switch ($value_list->materilal_category_id_slno) {
-															case '1':
-						                                   
-															if($Status==4){
-						                                    	$edit=('design-new-mr-order-first/'.$last_id.'/'.'1/'.$last_id);
-						                                	}else if($Status==5){
-						                                		$edit=('design-new-mr-order-first-edit/'.$last_id.'/'.'1/'.$last_id);
-						                                	}
-						                                    
-						                                    break;
-						                                case '2':
-						                                    if($Status==4){
-						                                    	$edit=('design-new-mr-order-second/'.$last_id.'/'.'2/'.$last_id);
-						                                	}else if($Status==5){
-						                                		$edit=('design-new-mr-order-second-edit/'.$last_id.'/'.'2/'.$last_id);
-						                                	}
-						                                    
-						                                    
-						                                    break;
-						                                case '3':
-						                                     if($Status==4){
-						                                    	$edit=('design-new-mr-order-third/'.$last_id.'/'.'3/'.$last_id);
-						                                	}else if($Status==5){
-						                                		$edit=('design-new-mr-order-third-edit/'.$last_id.'/'.'3/'.$last_id);
-						                                	}
-						                                    
-						                                   
-						                                    break;
-						                                
-						                                default:
-						                                    $this->session->set_flashdata('error_message', ' Something went wrong ');
-						                                    $edit=('user-design-home');
-						                                    break;
-													 	}
-													 ?>										  	
-													<li><a   <?php echo "href='".$edit."'";?> >Edit </a></li>
-													<li class="divider"></li>
-													<!-- <li><a <?php echo "href='change-category-status/".$user_id."/".$slno_id."/3' ";?> onclick="return confirm('Are you sure you want to delete this category?');">Delete</a></li> -->
-												</ul>
-											</div>
-	                                   </td>
-	                                   <!-- <td></td> -->
-															  
-						            </tr>
+							                ?></td>
+							                
+							                <td>
+							                	<div class="btn-group">
+													<a href="#" class="btn btn-purple btn-sm">Action</a>
+													<a href="#" class="btn btn-purple dropdown-toggle" data-toggle="dropdown"></a>
+													<ul class="dropdown-menu pull-right">	
+														<?php 
+															switch ($value_list->materilal_category_id_slno) {
+																case '1':
+							                                   
+																if($Status==4){
+							                                    	$edit=('design-new-mr-order-first/'.$last_id.'/'.'1/'.$last_id);
+							                                	}else if($Status==5){
+							                                		$edit=('design-new-mr-order-first-edit/'.$last_id.'/'.'1/'.$last_id);
+							                                	}
+							                                    
+							                                    break;
+							                                case '2':
+							                                    if($Status==4){
+							                                    	$edit=('design-new-mr-order-second/'.$last_id.'/'.'2/'.$last_id);
+							                                	}else if($Status==5){
+							                                		$edit=('design-new-mr-order-second-edit/'.$last_id.'/'.'2/'.$last_id);
+							                                	}
+							                                    
+							                                    
+							                                    break;
+							                                case '3':
+							                                     if($Status==4){
+							                                    	$edit=('design-new-mr-order-third/'.$last_id.'/'.'3/'.$last_id);
+							                                	}else if($Status==5){
+							                                		$edit=('design-new-mr-order-third-edit/'.$last_id.'/'.'3/'.$last_id);
+							                                	}
+							                                    
+							                                   
+							                                    break;
+							                                
+							                                default:
+							                                    $this->session->set_flashdata('error_message', ' Something went wrong ');
+							                                    $edit=('user-design-home');
+							                                    break;
+														 	}
+														 ?>										  	
+														<li><a   <?php echo "href='".$edit."'";?> >Edit </a></li>
+														<li class="divider"></li>
+														<!-- <li><a <?php echo "href='change-category-status/".$user_id."/".$slno_id."/3' ";?> onclick="return confirm('Are you sure you want to delete this category?');">Delete</a></li> -->
+													</ul>
+												</div>
+		                                   </td>
+		                                   <!-- <td></td> -->
+																  
+							            </tr>
 
-					        		<?php 
+						        		<?php 
 
 
 
-					        		}				        	
+						        		}			
+						        		}	        	
 					        	?>
 					        </tbody>				        
 					    </table>
