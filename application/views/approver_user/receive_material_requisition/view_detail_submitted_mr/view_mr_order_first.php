@@ -68,7 +68,7 @@ if($value2!=$value){
 				<div class="panel-body">
 					
 					<div class="alert alert-secondary">
-                    	<span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                    	<span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                     </div>
 					<form action="<?=base_url()?>approver-add-new-mr-save-formII" id="upload_form" method="POST" enctype=multipart/form-data>
 						<div class="row">
@@ -113,7 +113,7 @@ if($value2!=$value){
 								</div>
 							 	
 								<div class="form-group row m-b-15">
-									<label class="col-form-label col-md-3" for="tech_evalution">Technical Evalution 
+									<label class="col-form-label col-md-3" for="tech_evalution">Technical Evaluation 
 
 									</label>
 									<div class="col-md-9">

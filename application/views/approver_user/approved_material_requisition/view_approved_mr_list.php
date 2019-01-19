@@ -19,7 +19,7 @@ $result_drafted=$this->approver_user->approver_mr_receive_list($email_id,$type);
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="<?=base_url()?>user-design-home">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Material Requisition</a></li>
-				<li class="breadcrumb-item active">View Approved Material Requisition List</li>
+				<li class="breadcrumb-item active"> View Approved Material Requisition List</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
@@ -45,7 +45,7 @@ $result_drafted=$this->approver_user->approver_mr_receive_list($email_id,$type);
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 					</div>
 					
-					<h4 class="panel-title">Approved Material Requisition List</h4>
+					<h4 class="panel-title"> Approved Material Requisition List</h4>
 				</div>
 				<div class="panel-body">		
 					<!-- table-responsive -->

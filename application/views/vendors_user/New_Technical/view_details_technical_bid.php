@@ -202,7 +202,7 @@ $query_item_details_list=$this->design_user->get_design_master_mr_items_material
 								<tr>
 										<th><strong>Date  Creation</strong></th>
 										<th><strong>Status</strong></th>
-										<th><strong>comment</strong></th>										
+										<th><strong>Comment</strong></th>										
 										<th><strong>Click View</strong></th>
 
 								</tr>

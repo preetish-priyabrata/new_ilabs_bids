@@ -53,12 +53,8 @@ $get_rank=array();
 foreach ($query_bid_sub->result() as $key_id) {
 	// print_r($key_id);
 	$array_vedeor_id[]= ($key_id->Vendor_id);
-	// $x++;
-	// if($key_id->Slno_rankorder_item_total==$id){
- // 		$rank=$x;
- // 		$sub_total=$key_id->sub_total;
- // 	}
-	//$get_rank[] = array('Slno_total' => $key_id->Slno_rankorder_item_total,'date_id'=> $key_id->date, 'sub_total'=>$key_id->sub_total);
+	
+
 }
 // print_r($array_vedeor_id);
 $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
@@ -75,7 +71,7 @@ $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	
 	</head>
 	<style type="text/css">
 		html ,body {
@@ -83,6 +79,7 @@ $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
 			margin: 0;
 			width: 100%;
 			height: auto;
+			background-color: white;
 		}
 		/* display this row with flex and use wrap (= respect columns' widths) */
 
@@ -108,12 +105,41 @@ $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
 		  padding: 20px 20px 10px;
 		  /*color: #fff;*/
 		}
+		.no-gutters {
+		  margin-right: 0;
+		  margin-left: 0;
+
+		  > .col,
+		  > [class*="col-"] {
+		    padding-right: 0;
+		    padding-left: 0;
+		  }
+		}
 
 	</style>
 	<body >
+		<?php if(!empty($this->session->flashdata('success_message'))){?>
+			<div class="alert alert-success fade show">
+			  <span class="close" data-dismiss="alert">×</span>
+			  <strong>Success!</strong>
+			  <?=$this->session->flashdata('success_message')?> 
+			  <!-- <a href="#" class="alert-link">an example link</a>.  -->
+			</div>
+			<?php 
+			} if(!empty($this->session->flashdata('error_message'))){?>
+			<div class="alert alert-danger fade show">
+			  <span class="close" data-dismiss="alert">×</span>
+			  <strong>Error !</strong>
+			  <?=$this->session->flashdata('error_message')?> 
+			  <!-- <a href="#" class="alert-link">an example link</a>.  -->
+			</div>
+			<?php 
+			}
+			 // print_r($this->session->userdata());
+			 ?>
 		<form action="<?=base_url()?>commerrical-user-send-approve-nofication" method="POST"  id="bid_tech" name="bid_tech" class="bid_tech">
 		<div class="container-fluid">
-			<div class="row">
+			<div class="row ">
 				<div class="jumbotron text-center" style="margin-bottom:0 ; width: 100%; padding: 1em">
 					<h1>LARSEN & TOUBRO LIMITED</h1>
 				  	<p>Center Procurement Dept , MMH SBG , <br>
@@ -125,16 +151,58 @@ $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
 				</div>
 			</div>
 			<hr>
+
+
+
+
+
+			<input type="hidden" name="type_bid" value="<?=$type_bid?>">
+			<input type="hidden" name="master_bid_id" value="<?=$master_bid_id?>">
+			<input type="hidden" name="category_id" value="<?=$category_id?>">
+			<input type="hidden" name="bid_name" value="<?=$bid_name?>">
+			<input type="hidden" name="buyer_bid" value="<?=$buyer_bid?>">
+			<input type="hidden" name="last_otp_id" value="<?=$last_otp_id?>">
+
 			<!-- <div class="container"> -->
 			    <!-- <h1>Same height columns in Bootstrap</h1> -->
-			    <div class="row row-flex">
+			    <div class="row row-flex no-gutters">
 			      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" >
 			        <div class="content colour-1">
 			        	<?php 
 			        	// Array ( [0] => stdClass Object ( [Slno_bid] => 1 [buyer_slno] => 2 [bid_date_entry] => 2019-01-08 [bid_ref] => jd [bid_id] => ss [category] => 1 [mode_bid] => Closed Bid [technical_bid_type] => 2 [status_bid] => 1 [mr_slno] => 2 [mr_no] => 2019-01-08-TaYy1 [job_code] => 0770 [edit_id] => 1 [material_category_name] => standard catalogued item [ sci tech ] [bid_title] => SUPPLY OF CLOTHING ARTICLES FOR NCC CADETS OF NCC DIRECTORATE DELHI [bid_description] => ss [data_entry] => 2019-01-08 17:36:44 [bid_creator_id] => buy1@ilab.com [date_publish] => 2019-01-05 [date_closing] => 2019-01-31 [count_id] => 0 ) ) 
 			        	// print_r($bid_table->result());
 			        	?>
-			        	<h5>Bid Details</h5>
+			        	
+			        	 <!-- <table class="table table-borderless text-center">
+						    <thead>
+						      <tr>
+						        <th colspan="2" ><h5>Bid Details</h5></th>
+						        
+						      </tr>
+						    </thead>
+						    <tbody>
+						      <tr>
+						        <td><div class="form-group row m-b-15">
+							<label class="col-form-label col-3" for="activity_name">PR Nos</label></div></td>
+						        
+						        <td>
+						        	<div class="form-group row m-b-15">
+						        		<input readonly  class="form-control-plaintext" placeholder="Enter Activity name" name="Project_Name" id="Project_Name" type="text" value="<?=$row_job_code->Project_Name?>" required="">
+						       		 </div>
+						        </td>
+						      </tr>
+						      <tr>
+						        <td>Mary</td>
+						        <td>Moe</td>
+						        <td>mary@example.com</td>
+						      </tr>
+						      <tr>
+						        <td>July</td>
+						        <td>Dooley</td>
+						        <td>july@example.com</td>
+						      </tr>
+						    </tbody>
+						  </table> -->
 			        	<div class="form-group row m-b-15">
 							<label class="col-form-label col-md-3" for="Project_Name">Project</label>
 							<div class="col-md-9">
@@ -187,7 +255,7 @@ $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
 						<div class="form-group row m-b-15">
 							<label class="col-form-label col-md-3" for="mode_bid">ACE Value</label>
 							<div class="col-md-9">
-							<input readonly  class="form-control-plaintext" placeholder="Enter Activity name" name="mode_bid" id="mode_bid" type="text" value="<?=$bid_info_buyer[0]->mode_bid?>" required="">
+							<input readonly  class="form-control-plaintext" placeholder="Enter Activity name" name="mode_bid" id="mode_bid" type="text" value="<?=$bid_info_buyer[0]->ACE_Value?>" required="">
 								
 							</div>
 						</div>
@@ -256,6 +324,8 @@ $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
 			        </div>
 			      </div> -->
 			    </div>
+			      <div class="w-100"></div>
+
 			    <!-- here table of comparasation -->
 			    <div class="row">
 			    	<div class="table-responsive">
@@ -347,7 +417,7 @@ $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
 								   <td><?=$key_value->item_uom?></td>
 								   <td><?=$key_value->item_qnt?></td>		  
 								   <td>
-								 		<select>
+								 		<select class="form-control" name="vendor_apporved[<?=$slno_mat?>]">
 								 			<?php 
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				echo "<option value=".$userid_ven.">".$userid_ven."</option>";
@@ -849,16 +919,49 @@ $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
 		                           
 			                       
 			                    </tr>
+			                      <!-- Remarks -->
+			                     <tr>   
+		                    		<th></th>                         	
+			                        <th colspan="4"><strong>Notification</strong></th> 
+			                        <?php 
+								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
+								 				$id_count=$times_repeat[$userid_ven];
+								 				$date_remarks= array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid,'field_name'=>'remarks');
+						 						$data_remarks=$this->db->get_where('master_closed_bid_item_misc',$date_remarks);
+								 				// 
+								 				
+								 				?>
+								 				<th>
+								 					<select  class="form-control" name="vendor_notification[]">
+								 						<option value="">--Please Select For Notification--</option>
+								 						<option value="<?=$userid_ven?>"><?=$userid_ven?></option>
+								 					</select>
+								 					
+								 				</th>
+								 				</th>
+								 					<?php
+								 				
+								 				
+								 			}
+										?>
+		                           
+			                       
+			                    </tr>
                         </tbody>
                     </table>
                    
 
                 </div>
 			    </div>
-			    <div class="form-group row pull-right">
+			    <div class="w-100"></div>
+			    
+			    <div class="w-100"></div>
+			    <div class="form-group row push-right float-right">
                     <div class="col-md-12">
-						<a href="<?=base_url()?>generate-otp-bid-referecnce/" class="btn btn-sm btn-lime">Notification </a>
-						<a  href="<?=base_url()?>user-commerical-evalutor-home" class="btn btn-sm btn-default">Home</a>
+                    	<input type="submit" name="Submit_btn" class="btn btn-sm btn-primary" onclick="return confirm('Are you sure want to send Notification?');" value="Notification">
+                    	<input type="submit" name="Submit_btn" class="btn btn-sm btn-success" onclick="return confirm('Are you sure want to Approved And Completed process bidding?');" value="Approved And Complete">
+						<!-- <a href="<?=base_url()?>generate-otp-bid-referecnce/" class="btn btn-sm btn-primary">Notification </a> -->
+						<a  href="<?=base_url()?>user-commerical-evalutor-home" class="btn btn-sm btn-info">Home</a>
                     </div>
                 </div>
 			    

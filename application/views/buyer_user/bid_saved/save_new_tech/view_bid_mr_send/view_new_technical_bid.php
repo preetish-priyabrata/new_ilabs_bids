@@ -97,7 +97,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 		</div>
 		<div class="panel-body">
 			<div class="alert alert-secondary">
-                <span style="color: red"> #</span> Here No Change Is Possible Only Conformation Of sending bid
+                <span style="color: red"> #</span> Here No Change Is Possible Only Confirmation Of Sending Bid
             </div>
 			<form action="<?=base_url()?>bid-tech-entry" method="POST"  id="bid_tech" name="bid_tech" class="bid_tech">
 
@@ -160,7 +160,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 					</div>
 					<div class="col-md-6 col-lg-6">
 						<div class="form-group row m-b-15">
-							<label class="col-form-label col-md-3" for="tech_evalution">Technical Evalution </label>
+							<label class="col-form-label col-md-3" for="tech_evalution">Technical Evaluation </label>
 							<div class="col-md-9">
 								<?php if($techinal_evalution==2){?>
 								<input type="text" readonly class="form-control-plaintext" value="No" />
@@ -438,7 +438,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 													<label class="col-form-label col-md-3" for="date_clearfication_bid">Bid Clearfication Date <span style="color: red">*</span></label>
 													<div class="col-md-9">
 														<input class="form-control m-b-5 datepickers" placeholder="EnterBid Clearfication Date" name="date_clearfication_bid" id="date_clearfication_bid" type="text" required="" value="<?=$value_bid_dates->bid_query_closed_date?>">
-														<small class="f-s-12 text-grey-darker">Please Select Bid Clearfication Date</small>
+														<small class="f-s-12 text-grey-darker">Please Select Bid Cl arfication Date</small>
 													</div>
 												</div>
 												<!-- part e end -->

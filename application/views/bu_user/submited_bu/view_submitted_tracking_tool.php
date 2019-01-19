@@ -20,11 +20,11 @@ $resutl=$this->user->get_bu_trackinh(1,'');
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="<?=base_url()?>user-design-home">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">BTP Tracking Tool</a></li>
-				<li class="breadcrumb-item active">Submited Tracking Tool</li>
+				<li class="breadcrumb-item active"> Submitted Tracking Tool</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header"> >Submitted Tracking Tool List </h1>
+			<h1 class="page-header"> Submitted Tracking Tool List </h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -46,7 +46,7 @@ $resutl=$this->user->get_bu_trackinh(1,'');
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 					</div>
 					
-					<h4 class="panel-title">>Drafted Tracking Tool List</h4>
+					<h4 class="panel-title"> Drafted Tracking Tool List</h4>
 				</div>
 				<div class="panel-body">		
 					<div class="table-responsive">
@@ -58,7 +58,7 @@ $resutl=$this->user->get_bu_trackinh(1,'');
 					                <th>PO No.</th>
 					                <th>Date Of PO</th>	                
 					              	<th>Update Date</th>					              	
-					              	<th>Submited by</th>					              	
+					              	<th>Submitted by</th>					              	
 					                <th>Action</th>
 					            </tr>
 					        </thead>	

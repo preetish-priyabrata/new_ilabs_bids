@@ -219,7 +219,7 @@ class Commericalevalutor extends CI_Controller {
                 $data_update_id= array('slno_comm' =>$last_otp_id);
                 $query_update_otp=$this->db->update('master_bid_otp_commerical',$update_status,$data_update_id);
                 if($query_update_otp){
-                     $this->session->set_flashdata('success_message',  'Entered Otp Is not matching some portion of otp is missing ');
+                     $this->session->set_flashdata('success_message',  'Otp Is been match and view commerical Information');
                     redirect('commerical-otp-verification-success/'.$type_bid.'/'.$master_bid_id.'/'.$category_id.'/'.$bid_name.'/'.$buyer_bid.'/'.$last_otp_id);
                 }else{
                      $this->session->set_flashdata('error_message',  'Something went worng');
@@ -325,8 +325,60 @@ class Commericalevalutor extends CI_Controller {
                 redirect('user-commerical-evalutor-home');
             }
     }
+    /**
+     * [commerrical_user_send_approve_nofication here notifact
+     * @return [type] [description]
+     */
+    public function commerrical_user_send_approve_nofication(){
+        // print_r($this->input->post());
+        // 
+        // 
+        $data_not=$this->input->post();
+        $type_bid=$this->input->post('type_bid');
+        $master_bid_id=$this->input->post('master_bid_id');
+        $category_id=$this->input->post('category_id');
+        $bid_name=$this->input->post('bid_name');
+        $buyer_bid=$this->input->post('buyer_bid');
+        $last_otp_id=$this->input->post('last_otp_id');
+        $bid_name_url = urldecode($bid_name);
+        $Submit_btn=$this->input->post('Submit_btn');
+        $vendor_notification=$this->input->post('vendor_notification');
 
+        switch ($Submit_btn) {
+            case 'Notification':
+                if(!empty(array_filter($vendor_notification))){
 
+                    // redirect('commerrical-user-send-nofication-vendor');
+                    $this->commerrical_user_send_approve_nofication_vendor();
+                }else{
+                       $this->session->set_flashdata('error_message',  'No Vendor Is been Assign to notifiy please Select vendor and Send again');
+                    redirect('commerical-otp-verification-success/'.$type_bid.'/'.$master_bid_id.'/'.$category_id.'/'.$bid_name_url.'/'.$buyer_bid.'/'.$last_otp_id);
+                }
+                break;
+            case 'Approved And Complete':
+                # code...
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+        
+
+        // commerrical-user-send-approve-nofication
+        // Array ( [type_bid] => 2 [master_bid_id] => [category_id] => 1 [bid_name] => Closed%20Bid [buyer_bid] => 2 [last_otp_id] => 11 [Project_Name] => project 1 [activity_name] => [location_detail] => Bhubanswar [bid_id] => ss [bid_start_date] => 2019-01-01 [bid_closed_date] => 2019-01-31 [mode_bid] => 500003.00 [time_date_creation] => 2019-01-08 17:03:20 [creators_id] => design2@ilab.com [vendor_apporved] => Array ( [1] => vender@ilab.com [2] => vender@ilab.com [3] => vender@ilab.com [4] => vender@ilab.com ) [vendor_notification] => Array ( [0] => [1] => ) [Submit_btn] => Notification ) 
+    }
+// commerrical_user_send_approve_nofication_vendor
+// commerrical_user_send_approve_vendor
+    public function commerrical_user_send_approve_nofication_vendor($value=''){
+        echo "<pre>";
+        print_r($value);
+        // echo "<br<";
+       print_r($this->input->post());
+    }
+    public function commerrical_user_send_approve_vendor(){
+        # code...
+    }
 
 
 

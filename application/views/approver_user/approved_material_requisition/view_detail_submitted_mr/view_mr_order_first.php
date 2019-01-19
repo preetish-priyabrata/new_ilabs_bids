@@ -114,7 +114,7 @@ if($value2!=$value){
 								</div>
 							 	
 								<div class="form-group row m-b-15">
-									<label class="col-form-label col-md-3" for="tech_evalution">Technical Evalution 
+									<label class="col-form-label col-md-3" for="tech_evalution">Technical Evaluation 
 
 									</label>
 									<div class="col-md-9">

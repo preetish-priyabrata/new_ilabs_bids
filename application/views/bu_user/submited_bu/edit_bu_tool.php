@@ -82,7 +82,7 @@ $data_received=$resutl['received_list'][0];
 				
 					<div class="panel-body">
 					<div class="alert alert-secondary">
-                       	<span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                       	<span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                     </div>	
                     <form action="<?=base_url()?>bu-update-tracking-save" method="POST">
                     <input type="hidden" name="Slno_tracking" value="<?=$data_received->Slno_tracking?>">					

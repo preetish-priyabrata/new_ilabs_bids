@@ -56,7 +56,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 		</div>
 		<div class="panel-body">
 			<div class="alert alert-secondary">
-				<span style="color: red"> *</span> All mandory fields shall be duly filled up
+				<span style="color: red"> *</span> All mandatory fields shall be duly filled up
 			</div>
 			<form action="<?=base_url()?>design-add-new-mr-save-formII" id="upload_form" method="POST" enctype=multipart/form-data>
 				<div class="row">

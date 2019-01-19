@@ -20,11 +20,11 @@ $resutl=$this->user->get_bu_trackinh(2,'');
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="<?=base_url()?>user-design-home">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">BTP Tracking Tool</a></li>
-				<li class="breadcrumb-item active">Drafted Tracking Tool</li>
+				<li class="breadcrumb-item active"> Drafted Tracking Tool</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header"> >Drafted Tracking Tool List </h1>
+			<h1 class="page-header"> Drafted Tracking Tool List </h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -58,7 +58,7 @@ $resutl=$this->user->get_bu_trackinh(2,'');
 					                <th>PO No.</th>
 					                <th>Date Of PO</th>	                
 					              	<th>Update Date</th>					              	
-					              	<th>Submited by</th>					              	
+					              	<th>Submitted by</th>					              	
 					                <th>Action</th>
 					            </tr>
 					        </thead>	
