@@ -471,7 +471,34 @@ class Commericalevalutor extends CI_Controller {
       
        switch ($cob_type_bid_cat) {
            case '11': // simple bid with SCI
-               # code...
+                $vendor_apporved=$this->input->post('vendor_apporved');
+                 $slno_mat_mateial=$this->input->post('slno_mat_mateial');
+                 foreach ($slno_mat_mateial as $key_id => $value_slno) {
+                     // `Slno_simple_item`, `Simple_id_slno`, `Bid_master_id_com`, `Item_name`, `Item_id`, `Quantity`, `Uom_unit`, `Unit_price`, `Total_unitprice`, `date_entry`, `Comm_item_slno`, `Mr_item_slno`, `bid_slno`, `Vendor_id`
+                     $single_vendor=$vendor_apporved[$value_slno];
+                     // echo "<br>";
+                     // echo "<pre>";
+                     $data_indety = array('Bid_master_id_com' => $master_bid_id,'Vendor_id'=>$single_vendor,'comm_item_slno'=>$value_slno);
+                     $this->db->order_by('date_entry','DESC');
+                     $this->db->limit(1); 
+                     $query_get_item=$this->db->get_where('master_closed_bid_item',$data_indety);
+                     // echo $this->db->last_query();
+                     $vend_info=$query_get_item->result();
+                     // print_r($query_get_item->result());
+                     //  echo "<br>";
+                       $array_insert_bid = array('Simple_id_slno' =>$vend_info[0]->Simple_id_slno,'Bid_master_id_com' => $vend_info[0]->Bid_master_id_com,'Item_name' =>$vend_info[0]->Item_name ,'Quantity' => $vend_info[0]->Quantity,'Uom_unit' =>$vend_info[0]->Uom_unit ,'Unit_price' =>$vend_info[0]->Unit_price ,'Total_unitprice' =>$vend_info[0]->Total_unitprice ,'date_entry' => $vend_info[0]->date_entry,'Comm_item_slno' =>$vend_info[0]->Comm_item_slno,'Mr_item_slno' =>$vend_info[0]->Mr_item_slno ,'Item_id' =>$vend_info[0]->Item_id,'bid_slno' =>$vend_info[0]->bid_slno ,'Vendor_id' =>$vend_info[0]->Vendor_id,'commerical_entry_name'=>$commerical_email_id,'Slno_simple_item_m'=>$vend_info[0]->Slno_simple_item);
+                       $this->db->insert('master_final_simple_bid_item',$array_insert_bid);
+
+                 }
+                 $data_update_master = array('status_bid' => 6);
+                 $data_master_id = array('Slno_bid' => $master_bid_id );
+
+                 $data__master_bid_ids = array('master_bid_id' => $master_bid_id );
+                $this->db->update('master_bid_commerical',$data_update_master,$data_master_id);
+                $this->db->update('master_bid_commericalevaluation',$data_update_master,$data__master_bid_ids);
+                
+                $this->session->set_flashdata('success_message',  'Bid Approved vendor successfully Has been Completed');
+                 redirect('commerical-otp-verification-success-view/'.$type_bid.'/'.$master_bid_id.'/'.$category_id.'/'.$bid_name_url.'/'.$buyer_bid.'/'.$last_otp_id);
                break;
             case '12': //Simple Bid with Moi
                # code...
