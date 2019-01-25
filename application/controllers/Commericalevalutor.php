@@ -484,7 +484,7 @@ class Commericalevalutor extends CI_Controller {
                        $this->db->insert('master_final_closed_bid_item',$array_insert_bid);
 
                  }
-            
+                // master_bid_commericalevaluation.master_bid_id  AND master_bid_commericalevaluation.status_bid=0 
                # code...
                break;
             case '22': //closed Bid with moi
