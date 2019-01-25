@@ -22,12 +22,12 @@ $list_success_bid=$this->comm_eva_db->commerical_evaluator_bid_new_list($comm_sl
 			<!-- begin breadcrumb -->
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="<?=base_url()?>user-buyer-home">Home</a></li>
-				<li class="breadcrumb-item"><a href="javascript:;">Commerical Bid New</a></li>
-				<li class="breadcrumb-item active">List of Commerical Bid New List</li>
+				<li class="breadcrumb-item"><a href="javascript:;">Commercial Bid New</a></li>
+				<li class="breadcrumb-item active">List of Commercial Bid New List</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">List of Commerical Bid New</h1>
+			<h1 class="page-header">List of Commercial Bid New</h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -49,7 +49,7 @@ $list_success_bid=$this->comm_eva_db->commerical_evaluator_bid_new_list($comm_sl
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 					</div>
 
-					<h4 class="panel-title">Commerical Bid New List</h4>
+					<h4 class="panel-title">Commercial Bid New List</h4>
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">

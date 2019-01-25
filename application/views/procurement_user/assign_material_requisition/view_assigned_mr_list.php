@@ -23,7 +23,7 @@ $result_drafted=$this->procurement_user->procurement_mr_receive_list($email_id,$
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header"> View Histroy Material Requisition </h1>
+			<h1 class="page-header"> View History Material Requisition </h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -45,7 +45,7 @@ $result_drafted=$this->procurement_user->procurement_mr_receive_list($email_id,$
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 					</div>
 					
-					<h4 class="panel-title">Histroy of Assign Buyer to Material Requisition </h4>
+					<h4 class="panel-title">History of Assign Buyer to Material Requisition </h4>
 				</div>
 				<div class="panel-body">		
 					<div class="table-responsive">

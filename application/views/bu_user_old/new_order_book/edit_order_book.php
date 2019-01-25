@@ -84,7 +84,7 @@ if(empty($email_id)){
 						    	<br>
 					 
 					<div class="alert alert-secondary">
-                        <span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                        <span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                     </div>
 					<form action="<?=base_url()?>bu-edit-new-order-book-save" method="POST" >
 						<div class="row">

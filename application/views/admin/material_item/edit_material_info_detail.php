@@ -66,7 +66,7 @@ if($value1_convered_id==$value2){
 				</div>
 				<div class="panel-body">
 					<div class="alert alert-secondary">
-                        		<span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                        		<span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                         	</div>
 					<form action="<?=base_url()?>admin-edit-Material-Item-save" method="POST" >
 						<input type="hidden" name="value1" value="<?=$value1?>">
@@ -129,7 +129,7 @@ if($value1_convered_id==$value2){
 												}?>											
 										</select>
 										
-										<small class="f-s-12 text-grey-darker">Please Select category name </small>
+										<small class="f-s-12 text-grey-darker">Please Select Category Name </small>
 									</div>
 								</div>
 								

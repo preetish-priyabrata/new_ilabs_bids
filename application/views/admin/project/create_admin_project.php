@@ -15,11 +15,11 @@ if(empty($email_id)){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item active"><a href="<?=base_url()?>user-admin-home" class="fa fa-home ">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Project</a></li>
-				<li class="breadcrumb-item active">Create News Project</li>
+				<li class="breadcrumb-item active">Create New Project</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">Create Project form </h1>
+			<h1 class="page-header">Create Project Form </h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -46,7 +46,7 @@ if(empty($email_id)){
 				</div>
 				<div class="panel-body">
 					<div class="alert alert-secondary">
-                        		<span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                        		<span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                         	</div>
 					<form action="admin-add-project-save"  onsubmit="return check_before_submiting()" id="project_code_form" method="POST" >
 						<div class="row">

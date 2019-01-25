@@ -15,7 +15,7 @@ if(empty($email_id)){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item active"><a href="user-admin-home" class="fa fa-home ">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Material Item</a></li>
-				<li class="breadcrumb-item active">Create News Material Item</li>
+				<li class="breadcrumb-item active">Create New Material Item</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
@@ -46,7 +46,7 @@ if(empty($email_id)){
 				</div>
 				<div class="panel-body">
 					<div class="alert alert-secondary">
-                        		<span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                        		<span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                         	</div>
 					<form action="admin-add-Material-Item-save" method="POST" >
 						<div class="row">
@@ -103,7 +103,7 @@ if(empty($email_id)){
 												}?>											
 										</select>
 										
-										<small class="f-s-12 text-grey-darker">Please Select category name </small>
+										<small class="f-s-12 text-grey-darker">Please Select category Name </small>
 									</div>
 								</div>
 								

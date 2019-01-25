@@ -209,11 +209,11 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 												</div>
 
 												<div class="form-group row m-b-15">
-													<label class="col-form-label col-md-3" for="bid_ref_no">Bid Ref No <span style="color: red">*</span></label>
+													<label class="col-form-label col-md-3" for="bid_ref_no">Bid Ref No.<span style="color: red">*</span></label>
 													<div class="col-md-9">
 														<input class="form-control m-b-5" onkeyup="get_bid_ref(1)" placeholder="Enter Bid Ref No" name="bid_ref_no" value="<?=$bid_list->bid_ref?>" id="bid_ref_no" type="text" required="" >
 														<span id="job_code_error1"></span><br>
-														<small class="f-s-12 text-grey-darker">Here enter Bid Ref No Should Be Unique</small>
+														<small class="f-s-12 text-grey-darker">Here enter Bid Ref No. Should Be Unique</small>
 													</div>
 												</div>
 
@@ -869,7 +869,7 @@ function file_uploaded(){
                     	}else if(response==2){
                     		alert('Same File name is found ');
                     	}else{
-                    		alert('Some thing went worng Please check internet connection ');
+                    		alert('Something went wrong Please check internet connection ');
                     	}
                         // $('#msg').html(response); // display success response from the server
                     }

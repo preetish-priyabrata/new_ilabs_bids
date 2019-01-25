@@ -107,10 +107,10 @@ $data_received=$resutl['received_list'][0];
 												</div>
 											</div>
 											<div class="form-group row m-b-15">
-												<label class="col-form-label col-md-3" for="Po_no"> PO No <span style="color: red">*</span></label>
+												<label class="col-form-label col-md-3" for="Po_no"> PO No. <span style="color: red">*</span></label>
 												<div class="col-md-9">
 													<input class="form-control m-b-5" placeholder="Enter PO No" name="Po_no" id="Po_no" type="text" required="" value="<?=$data_received->Po_no?>">
-													<small class="f-s-12 text-grey-darker">Here enter PO No</small>
+													<small class="f-s-12 text-grey-darker">Here enter PO No.</small>
 												</div>
 											</div>
 											<div class="form-group row m-b-15">
@@ -317,7 +317,7 @@ $data_received=$resutl['received_list'][0];
 													<label class="col-form-label col-md-3" for="Invoice_value">Invoice Value Gross in RS l</label>
 													<div class="col-md-9">
 														<input class="form-control m-b-5" placeholder="Enter Invoice Value Gross" name="Invoice_value" id="Invoice_value" type="text" value="<?=$data_received->Invoice_value?>">
-														<small class="f-s-12 text-grey-darker">Here enter Invoice Value Gross in RS l</small>
+														<small class="f-s-12 text-grey-darker">Here enter Invoice Value Gross in RS L</small>
 													</div>
 												</div>
 												<div class="form-group row m-b-15">
@@ -341,7 +341,7 @@ $data_received=$resutl['received_list'][0];
                         <div class="col-md-12">
                            
                            	 <button type="submit" class="btn btn-sm btn-info m-r-5" name="send_button" value="send">Send</button>
-                            <a  href="<?=base_url()?>user-design-home" class="btn btn-sm btn-danger">Cancel</a> 
+                            <a  href="<?=base_url()?>user-bu-home" class="btn btn-sm btn-danger">Cancel</a> 
                         </div>
                     </div>
 				</form>

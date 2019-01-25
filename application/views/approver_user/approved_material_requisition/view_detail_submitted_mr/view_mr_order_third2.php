@@ -65,7 +65,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 				<div class="row">
 					<div class="col-md-6 col-lg-6">
 						<div class="form-group row m-b-15">
-							<label class="col-form-label col-md-3" for="activity_name">MR No
+							<label class="col-form-label col-md-3" for="activity_name">MR No.
 							 <!-- <span style="color: red">*</span> -->
 							</label>
 							<div class="col-md-9">

@@ -21,7 +21,7 @@ if(empty($email_id)){
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">View Vehicle capacity List </h1>
+			<h1 class="page-header">View Vehicle Capacity List </h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -43,7 +43,7 @@ if(empty($email_id)){
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 					</div>
 					
-					<h4 class="panel-title">Vehicle capacity List</h4>
+					<h4 class="panel-title">Vehicle Capacity List</h4>
 				</div>
 				<div class="panel-body">
 					
@@ -57,7 +57,7 @@ if(empty($email_id)){
 					        <thead>
 					            <tr>
 					                <th>Slno .</th>					              
-					                <th>Vehicle capacity</th>					               				                
+					                <th>Vehicle Capacity</th>					               				                
 					                <th>Status</th>					                
 					                <th>Action</th>
 					            </tr>

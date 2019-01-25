@@ -41,7 +41,7 @@ if($value1_convered_id==$value2){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item active"><a href="<?=base_url()?>user-admin-home" class="fa fa-home ">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Vendors</a></li>
-				<li class="breadcrumb-item"><a href="<?=base_url()?>admin-view-vendors">View Vendors Lsit</a></li>
+				<li class="breadcrumb-item"><a href="<?=base_url()?>admin-view-vendors">View Vendors List</a></li>
 				<li class="breadcrumb-item"><a href="<?=base_url()?>admin-view-vendor-info/<?=$value1.'/'.$value2?>">View Vendors Details</a></li>
 				<li class="breadcrumb-item active">Adding New Operation Details </li>
 			</ol>

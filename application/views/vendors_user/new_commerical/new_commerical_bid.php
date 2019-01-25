@@ -19,7 +19,7 @@ $result_new_bid=$this->vendor_db_users->vendor_new_technical_bid_list_commerical
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">New Commerical Bid<small></small></h1>
+			<h1 class="page-header">New Commercial Bid<small></small></h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">

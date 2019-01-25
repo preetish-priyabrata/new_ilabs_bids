@@ -343,19 +343,27 @@ class Commericalevalutor extends CI_Controller {
         $bid_name_url = urldecode($bid_name);
         $Submit_btn=$this->input->post('Submit_btn');
         $vendor_notification=$this->input->post('vendor_notification');
-
+        $vendor_apporved=$this->input->post('vendor_apporved');
         switch ($Submit_btn) {
             case 'Notification':
                 if(!empty(array_filter($vendor_notification))){
 
                     // redirect('commerrical-user-send-nofication-vendor');
-                    $this->commerrical_user_send_approve_nofication_vendor();
+                    $this->commerrical_user_send_approve_nofication_vendor($data_not);
                 }else{
                        $this->session->set_flashdata('error_message',  'No Vendor Is been Assign to notifiy please Select vendor and Send again');
                     redirect('commerical-otp-verification-success/'.$type_bid.'/'.$master_bid_id.'/'.$category_id.'/'.$bid_name_url.'/'.$buyer_bid.'/'.$last_otp_id);
                 }
                 break;
             case 'Approved And Complete':
+                if(!empty(array_filter($vendor_apporved))){
+
+                    // redirect('commerrical-user-send-nofication-vendor');
+                    $this->commerrical_user_send_approve_vendor($data_not);
+                }else{
+                       $this->session->set_flashdata('error_message',  'No Vendor Is been Assign to notifiy please Select vendor and Send again');
+                    redirect('commerical-otp-verification-success/'.$type_bid.'/'.$master_bid_id.'/'.$category_id.'/'.$bid_name_url.'/'.$buyer_bid.'/'.$last_otp_id);
+                }
                 # code...
                 break;
             
@@ -371,13 +379,133 @@ class Commericalevalutor extends CI_Controller {
 // commerrical_user_send_approve_nofication_vendor
 // commerrical_user_send_approve_vendor
     public function commerrical_user_send_approve_nofication_vendor($value=''){
-        echo "<pre>";
-        print_r($value);
-        // echo "<br<";
-       print_r($this->input->post());
+        $type_bid=$this->input->post('type_bid');
+        $master_bid_id=$this->input->post('master_bid_id');
+        $category_id=$this->input->post('category_id');
+        $bid_name=$this->input->post('bid_name');
+        $buyer_bid=$this->input->post('buyer_bid');
+        $last_otp_id=$this->input->post('last_otp_id');
+        $bid_name_url = urldecode($bid_name);
+        $vendor_notification=$this->input->post('vendor_notification');
+
+        if(!empty($this->input->post())){
+           $scripts='<script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script><script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script><script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-daterangepicker/moment.js"></script><script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script><script src="'.base_url().'file_css_admin/assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script><script src="'.base_url().'file_css_admin/own_js_date_picker.js"></script>';
+            $data=array('title' =>"Here otp is been verified",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$type_bid,'master_bid_id'=>$master_bid_id,'category_id'=>$category_id,'bid_name'=>$bid_name_url,'buyer_bid'=>$buyer_bid,'last_otp_id'=>$last_otp_id,'vendor_notification'=>$vendor_notification);
+
+            $this->load->view('template/template_header',$data);
+            $this->load->view('comm_evalutor_user/template/template_top_head');
+            $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+            $this->load->view('comm_evalutor_user/commerical_notification/index',$data);
+            $this->load->view('template/template_footer',$data);
+
+        }else{
+            $this->session->set_flashdata('error_message',  'Some thing went worng');
+            redirect('user-commerical-evalutor-home');
+            exit;
+        }
+        
     }
+    public function commerrical_user_Channel_send_approve_nofication(){
+        // Array ( [type_bid] => 2 [master_bid_id] => 1 [category_id] => 1 [bid_name] => Closed Bid [buyer_bid] => 2 [last_otp_id] => 11 [end_dete_submitio] => 01/29/2019 9:53 PM [Message] => As you are aware there were many questions on handing exception with the latest changes with POM in Selenium C# 3.14 and above, I have created separate Lecture to address this issue with custom extension of [Vendor_email_id] => Array ( [0] => vender@ilab.com [1] => ven121@gmail.com ) [slno_vendor] => Array ( [0] => 1 [1] => 3 ) ) 
+        $type_bid=$this->input->post('type_bid');
+        $master_bid_id=$this->input->post('master_bid_id');
+        $category_id=$this->input->post('category_id');
+        $bid_name=$this->input->post('bid_name');
+        $buyer_bid=$this->input->post('buyer_bid');
+        $last_otp_id=$this->input->post('last_otp_id');
+        $end_dete_submitio=$this->input->post('end_dete_submitio');
+        $Message=$this->input->post('Message');
+        $Vendor_email_id=$this->input->post('Vendor_email_id');
+        $slno_vendor=$this->input->post('slno_vendor');
+      // print_r($this->input->post());
+      // $data_get = array('master_bid_id' =>$value ,'category'=>$value1 );
+      //  $query= $this->db->get_where('master_bid_invi_rank_approvals',$data_get);
+        
+            foreach ($Vendor_email_id as $key_id => $value_id) {  
+                $slno_vendor_id=$slno_vendor[$key_id];                                    
+                $approve_vendor = array('vendor_id_bid'=>$slno_vendor_id, 'vendor_id'=>$value_id, 'message'=>$Message);           
+                $this->db->insert('master_vendor_notifications',$approve_vendor);                      
+                $update_status = array('status_view' =>8 , 'negotiable_date'=>$end_dete_submitio);
+                $update_id = array('slno_vendor' => $slno_vendor_id,'vendor_id'=> $value_id);
+                $this->db->update('master_bid_vendor_commerical',$update_status,$update_id);
+              
+           }
+           // `master_bid_id`, `messsage`, `vendor_send_id`, `end_submission_date`
+           $data_insert = array('master_bid_id' => $master_bid_id,'messsage'=>$Message,'vendor_send_id'=>json_encode($Vendor_email_id) ,'end_submission_date'=>$end_dete_submitio);
+             $this->db->insert('master_commercial_notifications',$data_insert);      
+             $this->session->set_flashdata('success_message', 'Successfull notification is send bid '.$bid_ref); // here is message is been toasted
+
+             redirect('user-commerical-evalutor-home');
+        
+    }
+    // Array ( [type_bid] => 2 [master_bid_id] => 1 [category_id] => 1 [bid_name] => Closed%20Bid [buyer_bid] => 2 [last_otp_id] => 11 [Project_Name] => project 1 [activity_name] => [location_detail] => Bhubanswar [bid_id] => ss [bid_start_date] => 2019-01-01 [bid_closed_date] => 2019-01-31 [mode_bid] => 500003.00 [time_date_creation] => 2019-01-08 17:03:20 [creators_id] => design2@ilab.com [vendor_apporved] => Array ( [1] => vender@ilab.com [2] => ven121@gmail.com [3] => ven121@gmail.com [4] => vender@ilab.com ) [vendor_notification] => Array ( [0] => [1] => [2] => ) [Submit_btn] => Approved And Complete ) 
     public function commerrical_user_send_approve_vendor(){
-        # code...
+        $commerical_email_id=$this->session->userdata('commerical_email_id');
+        if(empty($commerical_email_id)){
+            
+            redirect('comm-evalutor-logout-by-pass');
+        }
+        $type_bid=$this->input->post('type_bid');
+        $master_bid_id=$this->input->post('master_bid_id');
+        $category_id=$this->input->post('category_id');
+        $bid_name=$this->input->post('bid_name');
+        $buyer_bid=$this->input->post('buyer_bid');
+        $last_otp_id=$this->input->post('last_otp_id');
+        $Project_Name=$this->input->post('Project_Name'); 
+        $cob_type_bid_cat=$type_bid.$category_id;
+      
+       switch ($cob_type_bid_cat) {
+           case '11': // simple bid with SCI
+               # code...
+               break;
+            case '12': //Simple Bid with Moi
+               # code...
+               break;
+            case '13': //simple bid with logistics
+               # code...
+               break;
+           case '21': // closed  bid with  SCi
+                 $vendor_apporved=$this->input->post('vendor_apporved');
+                 $slno_mat_mateial=$this->input->post('slno_mat_mateial');
+                 foreach ($slno_mat_mateial as $key_id => $value_slno) {
+                     
+                     $single_vendor=$vendor_apporved[$value_slno];
+                     // echo "<br>";
+                     // echo "<pre>";
+                     $data_indety = array('Bid_master_id_com' => $master_bid_id,'Vendor_id'=>$single_vendor,'comm_item_slno'=>$value_slno);
+                     $this->db->order_by('date_entry','DESC');
+                     $this->db->limit(1); 
+                     $query_get_item=$this->db->get_where('master_closed_bid_item',$data_indety);
+                     // echo $this->db->last_query();
+                     $vend_info=$query_get_item->result();
+                     // print_r($query_get_item->result());
+                     //  echo "<br>";
+                       $array_insert_bid = array('closed_id_slno' =>$vend_info[0]->closed_id_slno,'Bid_master_id_com' => $vend_info[0]->Bid_master_id_com,'Item_name' =>$vend_info[0]->Item_name ,'Quantity' => $vend_info[0]->Quantity,'Uom_unit' =>$vend_info[0]->Uom_unit ,'Unit_price' =>$vend_info[0]->Unit_price ,'Total_unitprice' =>$vend_info[0]->Total_unitprice ,'date_entry' => $vend_info[0]->date_entry,'comm_item_slno' =>$vend_info[0]->comm_item_slno,'Mr_item_slno' =>$vend_info[0]->Mr_item_slno ,'Item_id' =>$vend_info[0]->Item_id,'Bid_slno' =>$vend_info[0]->Bid_slno ,'Vendor_id' =>$vend_info[0]->Vendor_id,'commerical_entry_name'=>$commerical_email_id,'Slno_closed_item_m'=>$vend_info[0]->Slno_closed_item);
+                       $this->db->insert('master_final_closed_bid_item',$array_insert_bid);
+
+                 }
+            
+               # code...
+               break;
+            case '22': //closed Bid with moi
+               # code...
+               break;
+            case '23': // closed bid with logistics
+               # code...
+               break;
+            case '31': // rank  with  SCI
+               # code...
+               break;
+            case '32': //Rank With MOI
+               # code...
+               break;
+            case '33': //Rank with Logistic
+               # code...
+               break;
+           default:
+               # code...
+               break;
+       }
     }
 
 

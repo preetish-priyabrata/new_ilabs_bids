@@ -17,7 +17,7 @@ if(empty($email_id)){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="user-admin-home">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Section</a></li>
-				<li class="breadcrumb-item active">View Section Lsit</li>
+				<li class="breadcrumb-item active">View Section List</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->

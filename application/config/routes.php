@@ -431,6 +431,7 @@ $route['commerical-otp-verification-fail/(:any)/(:any)/(:any)/(:any)/(:any)/(:an
 $route['commerical-otp-verification-success/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)']='commericalevalutor/commerical_otp_verification_success/$1/$2/$3/$4/$5/$6';
 
 $route['commerrical-user-send-approve-nofication']='commericalevalutor/commerrical_user_send_approve_nofication';
+$route['commerical-user-send-approve-nofication']='commericalevalutor/commerrical_user_Channel_send_approve_nofication';
 $route['commerrical-user-send-nofication-vendor']='commericalevalutor/commerrical_user_send_approve_nofication_vendor';
 $route['commerrical-user-send-approve-vendor']='commericalevalutor/commerrical_user_send_approve_vendor';
 $route['comm-evalutor-logout-by-pass']='commericalevalutor/comm_evalutor_logout_bypass';

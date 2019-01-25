@@ -29,7 +29,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 	</ol>
 	<!-- end breadcrumb -->
 	<!-- begin page-header -->
-	<h1 class="page-header">Assign Material Requisition   </h1>
+	<h1 class="page-header">Assign Material Requisition  </h1>
 <!-- end page-header error_message -->
 	<?php if(!empty($this->session->flashdata('success_message'))){?>
 		<div class="alert alert-success fade show">
@@ -66,7 +66,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 				<div class="row">
 					<div class="col-md-6 col-lg-6">
 						<div class="form-group row m-b-15">
-							<label class="col-form-label col-md-3" for="activity_name">MR No
+							<label class="col-form-label col-md-3" for="activity_name">MR No.
 							 <!-- <span style="color: red">*</span> -->
 							</label>
 							<div class="col-md-9">
@@ -138,7 +138,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 						</div>
 
 						<div class="form-group row m-b-15">
-							<label class="col-form-label col-md-3" for="tech_evalution">Technical Evalution 
+							<label class="col-form-label col-md-3" for="tech_evalution">Technical Evaluation 
 								<!-- <span style="color: red">*</span> -->
 							</label>
 							<div class="col-md-9">							
@@ -312,7 +312,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
                                        <th>Vehicle Type</th>
                                         <th>Capacity</th>
                                         <th>Details</th>                                        
-                                        <th>No</th>
+                                        <th>No.</th>
                                         <th>From Location</th>
                                         <th>To Location</th>
                                         <th>Purpose</th>

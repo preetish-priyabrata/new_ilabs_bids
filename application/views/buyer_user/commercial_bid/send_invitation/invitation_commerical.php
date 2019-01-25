@@ -65,7 +65,7 @@ $result_vendor_list=$this->buyer_user->buyer_get_vendor_information($value);// v
 				</div>
 				<div class="panel-body">
 					<div class="alert alert-secondary">
-                        <span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                        <span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                     </div>
 					<form action="<?=base_url()?>buyer-bid-rank-invitation-to-vendor-com" method="POST" >
 						<input type="hidden" name="master_bid_id" value="<?=$value?>">
@@ -113,11 +113,11 @@ $result_vendor_list=$this->buyer_user->buyer_get_vendor_information($value);// v
 									<label class="col-form-label col-md-3" for="activity_name">Bid Max Entry <span style="color: red">*</span></label>
 									<div class="col-md-9">
 										<input class="form-control m-b-5" placeholder="Enter Activity name" name="no_of_entry" id="no_of_entry" type="text" required="">
-										<small class="f-s-12 text-grey-darker">Here enter Bid Max no of Entry </small>
+										<small class="f-s-12 text-grey-darker">Here enter Bid Max no. of Entry </small>
 									</div>
 								</div>
 								<div class="form-group row m-b-15">
-									<label class="col-form-label col-md-3" for="Technical_ev" >Commerical Evaluator Name <span style="color: red">*</span></label>
+									<label class="col-form-label col-md-3" for="Technical_ev" >Commercial Evaluator Name <span style="color: red">*</span></label>
 									<div class="col-md-9">
 										<?php
 										$data_array_approver=$this->buyer_user->get_user_generic_list('1','0','0','10','','');
@@ -142,7 +142,7 @@ $result_vendor_list=$this->buyer_user->buyer_get_vendor_information($value);// v
 											?>
 
 										</select>
-										<small class="f-s-12 text-grey-darker">Select Commerical Evaluator </small>
+										<small class="f-s-12 text-grey-darker">Select Commercial Evaluator </small>
 									</div>
 								</div>
 							 

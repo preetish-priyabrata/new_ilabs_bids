@@ -34,12 +34,12 @@ if(empty($email_id)){
 			<!-- begin breadcrumb -->
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item active"><a href="user-admin-home" class="fa fa-home ">Home</a></li>
-				<li class="breadcrumb-item"><a href="javascript:;">other Charge</a></li>
-				<li class="breadcrumb-item active">Edit other Charge</li>
+				<li class="breadcrumb-item"><a href="javascript:;">Other Charges</a></li>
+				<li class="breadcrumb-item active">Edit other Charges</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">Edit other Charge Form </h1>
+			<h1 class="page-header">Edit other Charges Form </h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -62,11 +62,11 @@ if(empty($email_id)){
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 					</div>
-					<h4 class="panel-title">Edit other Charge Information</h4>
+					<h4 class="panel-title">Edit other Charges Information</h4>
 				</div>
 				<div class="panel-body">
 					<div class="alert alert-secondary">
-                    	<span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                    	<span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                     </div>
 					<form action="<?=base_url()?>admin-edit-other-charge-save" method="POST" >						
 						<input type="hidden" name="value1" value="<?=$value1?>">
@@ -74,10 +74,10 @@ if(empty($email_id)){
 						<div class="row">
 							<div class="col-md-6 col-lg-6">
 							 	<div class="form-group row m-b-15">
-									<label class="col-form-label col-md-3" for="Charges_name">other Charge Name <span style="color: red">*</span></label>
+									<label class="col-form-label col-md-3" for="Charges_name">Other Charges Name <span style="color: red">*</span></label>
 									<div class="col-md-9">
 										<input class="form-control m-b-5" placeholder="Enter other Charge name" name="Charges_name" id="Charges_name" type="text" required="" value="<?=$row->Charges_name?>">
-										<small class="f-s-12 text-grey-darker">Here enter other Charge name</small>
+										<small class="f-s-12 text-grey-darker">Here enter other Charges name</small>
 									</div>
 								</div>								
 							</div>

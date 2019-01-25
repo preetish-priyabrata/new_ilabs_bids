@@ -66,7 +66,7 @@ if(empty($email_id)){
 				</div>
 				<div class="panel-body">
 					<div class="alert alert-secondary">
-                    	<span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                    	<span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                     </div>
 					<form action="<?=base_url()?>admin-edit-category-save" method="POST" >						
 						<input type="hidden" name="value1" value="<?=$value1?>">

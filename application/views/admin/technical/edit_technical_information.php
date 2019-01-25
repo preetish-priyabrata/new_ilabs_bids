@@ -18,7 +18,7 @@ if(empty($email_id)){
 		$row=$result_technical[0];
 			// `Slno_technical`, `technical_name`, `technical_desc`, `technical_id`, `category_slno`, `status`, `date_entry`, `time_entry`
 	}else{
-		$this->session->set_flashdata('error_message', 'Some thing went Wrong');
+		$this->session->set_flashdata('error_message', 'Something went Wrong');
 	    // After that you need to used redirect function instead of load view such as                 
 	    redirect('user-admin-home');
 	}
@@ -64,7 +64,7 @@ if(empty($email_id)){
 				</div>
 				<div class="panel-body">
 					<div class="alert alert-secondary">
-                        		<span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                        		<span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                         	</div>
 					<form action="<?=base_url()?>admin-edit-technical-save" method="POST" >
 						<div class="row">
@@ -121,7 +121,7 @@ if(empty($email_id)){
 												}?>											
 										</select>
 										
-										<small class="f-s-12 text-grey-darker">Please Select category name </small>
+										<small class="f-s-12 text-grey-darker">Please Select Category Name </small>
 									</div>
 								</div>
 								

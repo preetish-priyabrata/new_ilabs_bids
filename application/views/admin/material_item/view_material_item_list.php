@@ -17,7 +17,7 @@ if(empty($email_id)){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="user-admin-home">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Material Item</a></li>
-				<li class="breadcrumb-item active">View Material Item Lsit</li>
+				<li class="breadcrumb-item active">View Material Item List</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
@@ -56,7 +56,7 @@ if(empty($email_id)){
 						<table id="example" class="display" style="width:100%">
 					        <thead>
 					            <tr>
-					                <th>Slno .</th>
+					                <th>SlNo.</th>
 					                <th>Material Item Name</th>	
 					                <th>Material Item Id</th>	
 					                <th>Category Name</th>					                

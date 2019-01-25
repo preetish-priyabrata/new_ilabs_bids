@@ -45,7 +45,7 @@ if($value1_convered_id==$value2){
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">View vendor information</h1>
+			<h1 class="page-header">View Vendor Information</h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">

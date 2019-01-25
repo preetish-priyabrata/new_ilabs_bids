@@ -116,7 +116,7 @@ $result_drafted=$this->procurement_user->procurement_mr_receive_list($email_id,$
 						                		echo $Username=$get_creator['list_user'][0]->Username
 						                	?>						                	
 						                </td>        
-	                                   <td><a href="<?=$view?>" class="btn btn-purple btn-sm">View / Forword</a></td>   
+	                                   <td><a href="<?=$view?>" class="btn btn-purple btn-sm">View / Forward</a></td>   
 	                                   <!-- <td></td> -->
 															  
 						            </tr>

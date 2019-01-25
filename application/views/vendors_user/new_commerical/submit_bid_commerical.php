@@ -1,4 +1,4 @@
-<?php
+ <?php
 $Vendor_email_id=$this->session->userdata('Vendor_email_id');
 if(empty($Vendor_email_id)){
 
@@ -19,11 +19,11 @@ if($result_title['no_new_tech']!=1){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
 		      <li class="breadcrumb-item"><a href="javascript:;">Page Options</a></li>
-				<li class="breadcrumb-item active">Submit Commerical Bid</li>
+				<li class="breadcrumb-item active">Submit Commercial Bid</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">Creating New Bid For Commerical Submission</h1>
+			<h1 class="page-header">Creating New Bid For Commercial Submission</h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -53,7 +53,7 @@ if($result_title['no_new_tech']!=1){
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 					</div>
-					<h4 class="panel-title">Create New Commerical Bid </h4>
+					<h4 class="panel-title">Create New Commercial Bid </h4>
 				</div>
 				<div class="panel-body">
           <h4 class="panel-title ">Title Bid  : <h5><?=$result_title['new_tech_list'][0]->title?></h5></h4>

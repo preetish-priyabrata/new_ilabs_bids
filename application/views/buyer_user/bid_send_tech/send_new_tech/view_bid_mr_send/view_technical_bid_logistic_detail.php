@@ -63,7 +63,7 @@ if($result_drafted['no_bid']!=1){
 		</div>
 		<div class="panel-body">
 			<div class="alert alert-secondary">
-                <span style="color: red"> *</span> All mandory fields shall be duly filled up
+                <span style="color: red"> *</span> All mandatory fields shall be duly filled up
             </div>
            <?php
            // print_r($result_drafted);
@@ -123,7 +123,7 @@ if($result_drafted['no_bid']!=1){
 
 					<div class="col-md-6 col-lg-6">
 						<div class="form-group row m-b-15">
-							<label class="col-form-label col-md-3" for="activity_name">MR No </label>
+							<label class="col-form-label col-md-3" for="activity_name">MR No. </label>
 							<div class="col-md-9">
 								<input readonly class="form-control-plaintext-plaintext" name="mr_no" value="<?=$mr_no?>" required="" >
 							</div>
@@ -163,7 +163,7 @@ if($result_drafted['no_bid']!=1){
 					</div>
 					<div class="col-md-6 col-lg-6">
 						<div class="form-group row m-b-15">
-							<label class="col-form-label col-md-3" for="tech_evalution">Technical Evalution </label>
+							<label class="col-form-label col-md-3" for="tech_evalution">Technical Evaluation </label>
 							<div class="col-md-9">
 								<?php if($techinal_evalution==2){?>
 								<input type="text" readonly class="form-control-plaintext-plaintext" value="No" />
@@ -245,7 +245,7 @@ if($result_drafted['no_bid']!=1){
 												</div>
 
 												<div class="form-group row m-b-15">
-													<label class="col-form-label col-md-3" for="bid_ref_no">Bid Ref No</label>
+													<label class="col-form-label col-md-3" for="bid_ref_no">Bid Ref No.</label>
 													<div class="col-md-9">
 														<input class="form-control-plaintext m-b-5" onkeyup="get_bid_ref(1)" placeholder="Enter Bid Ref No" name="bid_ref_no" value="<?=$bid_list->bid_ref?>" id="bid_ref_no" type="text" required="" >
 														<span id="job_code_error1"></span><br>
@@ -257,7 +257,7 @@ if($result_drafted['no_bid']!=1){
 													<label class="col-form-label col-md-3" for="bid_method">Mode Of Selection</label>
 													<div class="col-md-9">
 												  		<select disabled class="form-control-plaintext" id="bid_method"  name="bid_method" required="">
-												    		<option value="">--Please Select Mod Of Selection--</option>
+												    		<option value="">--Please Select Mode Of Selection--</option>
 												    		<option value="Closed Bid" <?php if($bid_list->mode_bid=="Closed Bid"){ echo "selected"; }?>>Closed Bid </option>
 												    		<option value="Rank Order Bid" <?php if($bid_list->mode_bid=="Rank Order Bid"){ echo "selected"; }?>>Rank Order Bid </option>
 												    		<option value="Simple Bid" <?php if($bid_list->mode_bid=="Simple Bid"){ echo "selected"; }?>>Simple Bid </option>
@@ -377,7 +377,7 @@ if($result_drafted['no_bid']!=1){
 															<th>Vehicle Type</th>
 															<th>Capacity</th>
 															<th>Details</th>
-															<th>No</th>
+															<th>No.</th>
 															<th>From Location</th>
 															<th>To Location</th>
 															<th>Purpose</th>
@@ -446,7 +446,7 @@ if($result_drafted['no_bid']!=1){
 												</div>
 
 												<div class="form-group row m-b-15">
-													<label class="col-form-label col-md-3" for="date_clearfication_bid">Bid Clearfication Date</label>
+													<label class="col-form-label col-md-3" for="date_clearfication_bid">Bid Clarfication Date</label>
 													<div class="col-md-9">
 														<input class="form-control-plaintext m-b-5 datepickers" placeholder="EnterBid Clearfication Date" name="date_clearfication_bid" id="date_clearfication_bid" type="text" required="" value="<?=$value_bid_dates->bid_query_closed_date?>">
 

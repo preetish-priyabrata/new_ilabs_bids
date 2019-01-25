@@ -59,7 +59,7 @@ if($result_title['no_new_tech']!=1){
           <h4 class="panel-title ">Title Bid  : <h5><?=$result_title['new_tech_list'][0]->title?></h5></h4>
           <hr style="height: 2px; background:  green">
           <div class="alert alert-secondary">
-            <span style="color: red"> *</span> All mandory fields shall be duly filled up
+            <span style="color: red"> *</span> All mandatory fields shall be duly filled up
         	</div>
 					<form action="<?=base_url()?>vendor-tech-file-new-bid-submission" method="POST" >
 						<div class="row">
@@ -99,7 +99,7 @@ if($result_title['no_new_tech']!=1){
 						<div class="form-group row pull-right">
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-sm btn-primary m-r-5">Save</button>
-                    <a  href="user-admin-home" class="btn btn-sm btn-default">Cancel</a>
+                    <a  href="<?=base_url()?>user-vendor-home" class="btn btn-sm btn-default">Cancel</a>
                 </div>
             </div>
 

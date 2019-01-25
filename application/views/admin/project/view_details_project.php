@@ -37,12 +37,12 @@ if($value1_convered_id==$value2){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item active"><a href="<?=base_url()?>user-admin-home" class="fa fa-home ">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Project</a></li>
-				<li class="breadcrumb-item"><a href="<?=base_url()?>admin-view-project">View Project Lsit</a></li>
+				<li class="breadcrumb-item"><a href="<?=base_url()?>admin-view-project">View Project List</a></li>
 				<li class="breadcrumb-item active">View Project Details</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">View project information</h1>
+			<h1 class="page-header">View Project Information</h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -171,8 +171,8 @@ if($value1_convered_id==$value2){
 								    <thead>
 										<tr>
 											<th>User Name</th>
-											<th>Email id</th>
-											<th>Mobile id </th>
+											<th>Email Id</th>
+											<th>Mobile Id </th>
 											<td>Action</td>
 										</tr>
 								    </thead>
@@ -205,8 +205,8 @@ if($value1_convered_id==$value2){
 								    <thead>
 										<tr>
 											<th>User Name</th>
-											<th>Email id</th>
-											<th>Mobile id </th>
+											<th>Email Id</th>
+											<th>Mobile Id </th>
 											<td>Action</td>
 										</tr>
 								    </thead>
@@ -225,7 +225,7 @@ if($value1_convered_id==$value2){
  								</table>
 						    </div>
 						    <div id="menu3" class="container tab-pane fade"><br>
-						     	  <h3>Project users list  <a href="<?=base_url()?>admin-assign-user-project/3/<?=$value1?>/<?=$value2?>/<?=$row->job_Code?>" class="btn btn-primary btn-sm pull-right"> Assign Project user </a></h3>
+						     	  <h3>Project users list  <a href="<?=base_url()?>admin-assign-user-project/3/<?=$value1?>/<?=$value2?>/<?=$row->job_Code?>" class="btn btn-primary btn-sm pull-right"> Assign Project User </a></h3>
 						      <?php 
 						      	$this->db->select('*');
 								$this->db->from('master_admin');

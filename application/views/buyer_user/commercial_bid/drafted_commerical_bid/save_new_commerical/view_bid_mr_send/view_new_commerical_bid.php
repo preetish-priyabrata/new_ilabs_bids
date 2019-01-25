@@ -97,7 +97,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 		</div>
 		<div class="panel-body">
 			<div class="alert alert-secondary">
-                <span style="color: red"> *</span> All mandory fields shall be duly filled up
+                <span style="color: red"> *</span> All mandatory fields shall be duly filled up
             </div>
 			<form action="<?=base_url()?>bid-tech-entry" method="POST"  id="bid_tech" name="bid_tech" class="bid_tech">
 
@@ -120,7 +120,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 
 					<div class="col-md-6 col-lg-6">
 						<div class="form-group row m-b-15">
-							<label class="col-form-label col-md-3" for="activity_name">MR No </label>
+							<label class="col-form-label col-md-3" for="activity_name">MR No. </label>
 							<div class="col-md-9">
 								<input readonly class="form-control-plaintext" name="mr_no" value="<?=$mr_no?>" required="" >
 							</div>
@@ -160,7 +160,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 					</div>
 					<div class="col-md-6 col-lg-6">
 						<div class="form-group row m-b-15">
-							<label class="col-form-label col-md-3" for="tech_evalution">Technical Evalution </label>
+							<label class="col-form-label col-md-3" for="tech_evalution">Technical Evaluation </label>
 							<div class="col-md-9">
 								<?php if($techinal_evalution==2){?>
 								<input type="text" readonly class="form-control-plaintext" value="No" />
@@ -209,11 +209,11 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 												</div>
 
 												<div class="form-group row m-b-15">
-													<label class="col-form-label col-md-3" for="bid_ref_no">Bid Ref No <span style="color: red">*</span></label>
+													<label class="col-form-label col-md-3" for="bid_ref_no">Bid Ref No. <span style="color: red">*</span></label>
 													<div class="col-md-9">
 														<input class="form-control m-b-5" onkeyup="get_bid_ref(1)" placeholder="Enter Bid Ref No" name="bid_ref_no" value="<?=$bid_list->bid_ref?>" id="bid_ref_no" type="text" required="" >
 														<span id="job_code_error1"></span><br>
-														<small class="f-s-12 text-grey-darker">Here enter Bid Ref No Should Be Unique</small>
+														<small class="f-s-12 text-grey-darker">Here enter Bid Ref No. Should Be Unique</small>
 													</div>
 												</div>
 
@@ -221,7 +221,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 													<label class="col-form-label col-md-3" for="bid_method">Mode Of Selection <span style="color: red">*</span></label>
 													<div class="col-md-9">
 												  		<select class="form-control" id="bid_method"  name="bid_method">
-												    		<option value="">--Please Select Mod Of Selection--</option>
+												    		<option value="">--Please Select Mode Of Selection--</option>
 												    		<option value="Closed Bid" <?php if($bid_list->mode_bid=="Closed Bid"){ echo "selected"; }?>>Closed Bid </option>
 												    		<option value="Rank Order Bid" <?php if($bid_list->mode_bid=="Rank Order Bid"){ echo "selected"; }?>>Rank Order Bid </option>
 												    		<option value="Simple Bid" <?php if($bid_list->mode_bid=="Simple Bid"){ echo "selected"; }?>>Simple Bid </option>
@@ -339,7 +339,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 					                                <thead>
 					                                    <tr>
 					                                        <th><strong>Name</strong></th>
-					                                        <th><strong>id</strong></th>
+					                                        <th><strong>Id</strong></th>
 					                                        <th><strong>Quantity</strong></th>
 					                                        <th><strong>UOM</strong></th>
 					                                        <th><strong>Technical Parameter</strong></th>
@@ -435,10 +435,10 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 												</div>
 
 												<div class="form-group row m-b-15">
-													<label class="col-form-label col-md-3" for="date_clearfication_bid">Bid Clearfication Date <span style="color: red">*</span></label>
+													<label class="col-form-label col-md-3" for="date_clearfication_bid">Bid Clarfication Date <span style="color: red">*</span></label>
 													<div class="col-md-9">
 														<input class="form-control m-b-5 datepickers" placeholder="EnterBid Clearfication Date" name="date_clearfication_bid" id="date_clearfication_bid" type="text" required="" value="<?=$value_bid_dates->bid_query_closed_date?>">
-														<small class="f-s-12 text-grey-darker">Please Select Bid Clearfication Date</small>
+														<small class="f-s-12 text-grey-darker">Please Select Bid Clarfication Date</small>
 													</div>
 												</div>
 												<!-- part e end -->
@@ -546,19 +546,19 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 							 <div class="card">
 							    <div class="card-header text-center">
 							      	<a class="collapsed card-link" data-toggle="collapse" href="#collapseFive">
-							       		Commerical Evaluator / Vendor Selection
+							       		Commercial Evaluator / Vendor Selection
 							      	</a>
 							    </div>
 							    <div id="collapseFive" class="collapse" data-parent="#accordion">
 							      	<div class="card-body">
-							       		<h5 class="text-left">Commerical Evaluator / Vendor Selection</h5>
+							       		<h5 class="text-left">Commercial Evaluator / Vendor Selection</h5>
 										<hr style="background: lightblue">
 										<!-- row Start -->
 										<div class="row">
 											<!-- part g -->
 											<div class="col-md-6 col-lg-6">
 												<div class="form-group row m-b-15">
-													<label class="col-form-label col-md-3" for="Technical_ev" >Commerical Evaluator Name <span style="color: red">*</span></label>
+													<label class="col-form-label col-md-3" for="Technical_ev" >Commercial Evaluator Name <span style="color: red">*</span></label>
 													<div class="col-md-9">
 														<?php
 														$data_array_approver=$this->buyer_user->get_user_generic_list('1','0','0','10','','');
@@ -583,7 +583,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 															?>
 
 														</select>
-														<small class="f-s-12 text-grey-darker">Select Commerical Evaluator </small>
+														<small class="f-s-12 text-grey-darker">Select Commercial Evaluator </small>
 													</div>
 												</div>
 
@@ -656,7 +656,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 
 				<div class="form-group row pull-right">
                     <div class="col-md-12">
-											<a  href="<?=base_url()?>user-buyer-conform-send/<?=$value?>/2" class="btn btn-sm btn-success"  onclick="return confirm('Are you sure you want to Sent this Bid?');"> Do You Want send Commerical Bid ?</a>
+											<a  href="<?=base_url()?>user-buyer-conform-send/<?=$value?>/2" class="btn btn-sm btn-success"  onclick="return confirm('Are you sure you want to Sent this Bid?');"> Do You Want send Commercial Bid ?</a>
 											<a  href="<?=base_url()?>user-buyer-home" class="btn btn-sm btn-danger"> Dont Want send ?</a>
 
 										<!-- <input type="submit" id="spl" class="btn btn-sm btn-primary m-r-5" name="for" value="Save"> -->

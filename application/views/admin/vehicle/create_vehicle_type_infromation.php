@@ -15,7 +15,7 @@ if(empty($email_id)){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item active"><a href="user-admin-home" class="fa fa-home ">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Vehicle List</a></li>
-				<li class="breadcrumb-item active">Create new vehicle Type info</li>
+				<li class="breadcrumb-item active">Create New Vehicle Type Info</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
@@ -46,14 +46,14 @@ if(empty($email_id)){
 				</div>
 				<div class="panel-body">
 					<div class="alert alert-secondary">
-                        <span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                        <span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                     </div>
 					<form action="admin-add-vehicle-type-save" method="POST" >
 						<div class="row">
 							<div class="col-md-6 col-lg-6">
 
 							 	<div class="form-group row m-b-15">
-									<label class="col-form-label col-md-3" for="type_of_name">Type of vehicle <span style="color: red">*</span></label>
+									<label class="col-form-label col-md-3" for="type_of_name">Type of Vehicle <span style="color: red">*</span></label>
 									<div class="col-md-9">
 										<input class="form-control m-b-5" onkeyup="get_id_vechile_type()" placeholder="Enter type of vehicle " name="type_of_name" id="type_of_name" type="text" required="">
 										<small class="f-s-12 text-grey-darker">Here enter Vehicle type</small>
@@ -116,7 +116,7 @@ if(empty($email_id)){
 					$('#save').hide();
 
 				}else{
-					$('#error').html('Some Thing Went Wrong');
+					$('#error').html('SomeThing Went Wrong');
 					$('#save').hide();
 				}
 			}

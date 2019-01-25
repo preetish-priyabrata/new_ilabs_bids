@@ -18,11 +18,11 @@ $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item active"><a href="#" class="fa fa-home ">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Send Bid Information</a></li>
-				<li class="breadcrumb-item active">Send Bid Information of Commerical</li>
+				<li class="breadcrumb-item active">Send Bid Information of Commercial</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">Send Information Of Commerical Bid</h1>
+			<h1 class="page-header">Send Information Of Commercial Bid</h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">

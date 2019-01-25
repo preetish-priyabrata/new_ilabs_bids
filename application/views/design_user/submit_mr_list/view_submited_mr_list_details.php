@@ -61,7 +61,7 @@ $result_drafted=$this->design_user->design_mr_submited_list($job_Code_id);
 					            <tr>
 					                <th>Slno .</th>
 					                <th>Job Code</th>
-					                <th>MR No</th>
+					                <th>MR No.</th>
 					                <th>Material Category</th>	  
 					                <th>Date Create MR</th>
 					                <th>Re-submit</th>

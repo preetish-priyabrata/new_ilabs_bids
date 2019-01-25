@@ -48,7 +48,7 @@ if(empty($email_id)){
 				<div class="panel-body">
 					
 					<div class="pull-right">
-						<a href="admin-add-vehicle-type" class="btn btn-info fa fa-puzzle-piece " role="button" title="here new vehicle is been created">  New vehicle Type info</a>
+						<a href="admin-add-vehicle-type" class="btn btn-info fa fa-puzzle-piece " role="button" title="here new vehicle is been created">  New Vehicle Type info</a>
 					</div>
 					<br>
 					<br>
@@ -57,7 +57,7 @@ if(empty($email_id)){
 					        <thead>
 					            <tr>
 					                <th>Slno .</th>
-					                <th>Type of vehicle</th>	
+					                <th>Type of Vehicle</th>	
 					               				                
 					                <th>Status</th>					                
 					                <th>Action</th>

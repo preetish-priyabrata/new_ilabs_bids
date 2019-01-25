@@ -70,7 +70,7 @@ if($value1_convered_id==$value2){
 				<li class="breadcrumb-item"><a href="javascript:;">Project</a></li>
 				<li class="breadcrumb-item"><a href="<?=base_url()?>admin-view-project">View Project Lsit</a></li>
 				<li class="breadcrumb-item"><a href="<?=base_url()?>admin-project-view-details/<?=$value1.'/'.$value2?>">View Project Details</a></li>
-				<li class="breadcrumb-item active">Assign <?=$user?> User To Job Code </li>
+				<li class="breadcrumb-item active">Assign <?=$user?>User To Job Code </li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->

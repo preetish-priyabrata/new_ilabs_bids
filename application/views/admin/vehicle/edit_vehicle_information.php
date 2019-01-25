@@ -45,7 +45,7 @@ if($value1_convered_id==$value2){
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">Edit vehicle information</h1>
+			<h1 class="page-header">Edit Vehicle information</h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -86,7 +86,7 @@ if($value1_convered_id==$value2){
 					<div class="col-lg-12">
 						<!-- begin nav-tabs -->						
 					  	<div class="alert alert-secondary">
-                        		<span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                        		<span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                         	</div>
 						 <div class="tab-content">
 						   
@@ -114,13 +114,13 @@ if($value1_convered_id==$value2){
 													}?>
 
 												</select>
-												<small class="f-s-12 text-grey-darker">Select Vehicle type</small>
+												<small class="f-s-12 text-grey-darker">Select Vehicle Type</small>
 												
 											</div>
 										</div>
 
 										<div class="form-group row m-b-15">
-											<label class="col-form-label col-md-3" for="vehicle_capacity" ">Vehicle capacity <span style="color: red">*</span></label>
+											<label class="col-form-label col-md-3" for="vehicle_capacity" ">Vehicle Capacity <span style="color: red">*</span></label>
 											<div class="col-md-9">
 												<!-- <input class="form-control m-b-5" name="vehicle_capacity" id="vehicle_capacity" type="text" required="" value="<?=$values->vehicle_capacity?>"> -->
 												<?php $get_capactiy_vehicle=$this->user->admin_get_vechile_capacity();?>
@@ -137,7 +137,7 @@ if($value1_convered_id==$value2){
 													}?>
 
 												</select>
-												<small class="f-s-12 text-grey-darker">Select Vehicle capacity</small>
+												<small class="f-s-12 text-grey-darker">Select Vehicle Capacity</small>
 												
 											</div>
 										</div>

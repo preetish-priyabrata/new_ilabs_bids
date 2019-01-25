@@ -67,7 +67,7 @@ $result_drafted=$this->buyer_user->drafted_bid_information($email_id,4,'');
 					        <thead>
 					            <tr>
 					                <th>Slno .</th>
-					                <th>Bid Ref No</th>				                      
+					                <th>Bid Ref No.</th>				                      
 					              	<th>Bid Start Date</th>
 
 					              	<th>Bid End Date</th>

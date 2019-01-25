@@ -193,7 +193,7 @@ $data_get_list_commerical = array('master_bid_id' =>$master_bid_id_com );
 								<td ><input type="text"  class="form-control" id="delivery_basis" name="delivery_basis"  required="" /></td>
 							</tr>
 							<tr>
-								<td colspan="6">Gaurantee / Warranty</td>
+								<td colspan="6">Guarantee / Warranty</td>
 								<td ><input type="text" class="form-control" id="gaurantee_warranty" name="gaurantee_warranty"  required="" /></td>
 							</tr>
 							<tr>

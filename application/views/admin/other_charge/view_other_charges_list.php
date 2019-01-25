@@ -16,12 +16,12 @@ if(empty($email_id)){
 			<!-- begin breadcrumb -->
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="user-admin-home">Home</a></li>
-				<li class="breadcrumb-item"><a href="javascript:;">Other charges</a></li>
-				<li class="breadcrumb-item active">View Other charges Lsit</li>
+				<li class="breadcrumb-item"><a href="javascript:;">Other Charges</a></li>
+				<li class="breadcrumb-item active">View Other Charges Listt</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">View Other charges List </h1>
+			<h1 class="page-header">View Other charges List</h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -43,12 +43,12 @@ if(empty($email_id)){
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 					</div>
 					
-					<h4 class="panel-title">Other charges List</h4>
+					<h4 class="panel-title">Other Charges List</h4>
 				</div>
 				<div class="panel-body">
 					
 					<div class="pull-right">
-						<a href="admin-add-Other-charges" class="btn btn-info fa fa-puzzle-piece " role="button" title="Click here new Other charges is been created">  New Other charges</a>
+						<a href="admin-add-Other-charges" class="btn btn-info fa fa-puzzle-piece " role="button" title="Click here new Other charges is been created">  New Other Charges</a>
 					</div>
 					<br>
 					<br>
@@ -57,7 +57,7 @@ if(empty($email_id)){
 					        <thead>
 					            <tr>
 					                <th>Slno .</th>
-					                <th>Other charges Name</th>					                
+					                <th>Other Charges Name</th>					                
 					                <th>Status</th>					                
 					                <th>Action</th>
 					            </tr>

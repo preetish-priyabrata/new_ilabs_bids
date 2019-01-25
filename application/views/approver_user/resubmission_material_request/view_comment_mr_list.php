@@ -131,7 +131,7 @@ $result_drafted=$this->approver_user->approver_mr_receive_list($email_id,$type);
 						                		}
 						                ?>
 						                 </td>     
-	                                   <td><a href="<?=$view?>" class="btn btn-purple btn-sm">view more</a></td>   
+	                                   <td><a href="<?=$view?>" class="btn btn-purple btn-sm">view More</a></td>   
 	                                   <!-- <td></td> -->
 															  
 						            </tr>

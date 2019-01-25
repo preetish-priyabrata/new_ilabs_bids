@@ -229,7 +229,7 @@ if($resutl['no_received']==2){
 													<label class="col-form-label col-md-3" for="Qty_receipt_at_site">Qnty Receive At Site</label>
 													<div class="col-md-9">
 														<input class="form-control m-b-5" placeholder="Enter Qnty Receive At Site" name="Qty_receipt_at_site" id="Qty_receipt_at_site" type="text" value="<?=$data_received->Qty_receipt_at_site?>">
-														<small class="f-s-12 text-grey-darker">Here enter Qnty Receive At Site </small>
+														<small class="f-s-12 text-grey-darker">Here enter Qnty Received At Site </small>
 													</div>
 												</div>
 												<div class="form-group row m-b-15">
@@ -297,10 +297,10 @@ if($resutl['no_received']==2){
 											</div>
 											<div class="col-md-6 col-lg-6">
 												<div class="form-group row m-b-15">
-													<label class="col-form-label col-md-3" for="Invoice_value">Invoice Value Gross in RS l</label>
+													<label class="col-form-label col-md-3" for="Invoice_value">Invoice Value Gross in RS L</label>
 													<div class="col-md-9">
 														<input class="form-control m-b-5" placeholder="Enter Invoice Value Gross" name="Invoice_value" id="Invoice_value" type="text" value="<?=$data_received->Invoice_value?>">
-														<small class="f-s-12 text-grey-darker">Here enter Invoice Value Gross in RS l</small>
+														<small class="f-s-12 text-grey-darker">Here enter Invoice Value Gross in RS L</small>
 													</div>
 												</div>
 												<div class="form-group row m-b-15">
@@ -324,7 +324,7 @@ if($resutl['no_received']==2){
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-sm btn-primary m-r-5" name="send_button" value="save">Save</button>
                            	 <button type="submit" class="btn btn-sm btn-info m-r-5" name="send_button" value="send">Send</button>
-                            <a  href="<?=base_url()?>user-design-home" class="btn btn-sm btn-danger">Cancel</a> 
+                            <a  href="<?=base_url()?>user-buuser-home" class="btn btn-sm btn-danger">Cancel</a> 
                         </div>
                     </div>
 				</form>

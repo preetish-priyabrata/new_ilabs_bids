@@ -171,8 +171,8 @@ if($value1_convered_id==$value2){
 								    <thead>
 										<tr>
 											<th>User Name</th>
-											<th>Email id</th>
-											<th>Mobile id </th>
+											<th>Email Id</th>
+											<th>Mobile Id </th>
 											
 										</tr>
 								    </thead>
@@ -205,8 +205,8 @@ if($value1_convered_id==$value2){
 								    <thead>
 										<tr>
 											<th>User Name</th>
-											<th>Email id</th>
-											<th>Mobile id </th>
+											<th>Email Id</th>
+											<th>Mobile Id </th>
 											
 										</tr>
 								    </thead>
@@ -239,8 +239,8 @@ if($value1_convered_id==$value2){
 								    <thead>
 										<tr>
 											<th>User Name</th>
-											<th>Email id</th>
-											<th>Mobile id </th>
+											<th>Email Id</th>
+											<th>Mobile Id </th>
 											<td>Action</td>
 										</tr>
 								    </thead>
@@ -273,8 +273,8 @@ if($value1_convered_id==$value2){
 								    <thead>
 										<tr>
 											<th>User Name</th>
-											<th>Email id</th>
-											<th>Mobile id </th>
+											<th>Email Id</th>
+											<th>Mobile Id </th>
 											
 										</tr>
 								    </thead>
@@ -308,8 +308,8 @@ if($value1_convered_id==$value2){
 								    <thead>
 										<tr>
 											<th>User Name</th>
-											<th>Email id</th>
-											<th>Mobile id </th>
+											<th>Email Id</th>
+											<th>Mobile Id </th>
 											
 										</tr>
 								    </thead>

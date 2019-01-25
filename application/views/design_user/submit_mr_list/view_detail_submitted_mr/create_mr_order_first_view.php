@@ -67,13 +67,13 @@ if($value2!=$value){
 				<div class="panel-body">
 					
 					<div class="alert alert-secondary">
-                        		<span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                        		<span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                         	</div>
 					<form action="<?=base_url()?>design-add-new-mr-save-formII" id="upload_form" method="POST" enctype=multipart/form-data>
 						<div class="row">
 							<div class="col-md-6 col-lg-6">
 								<div class="form-group row m-b-15">
-									<label class="col-form-label col-md-3" for="activity_name">MR No <span style="color: red">*</span></label>
+									<label class="col-form-label col-md-3" for="activity_name">MR No. <span style="color: red">*</span></label>
 									<div class="col-md-9">
 										<?php
 										$get_mr_id=$this->design_user->get_design_mr_no_deatils($value);
@@ -109,7 +109,7 @@ if($value2!=$value){
 								</div>
 							 	
 								<div class="form-group row m-b-15">
-									<label class="col-form-label col-md-3" for="tech_evalution">Technical Evalution <span style="color: red">*</span></label>
+									<label class="col-form-label col-md-3" for="tech_evalution">Technical Evaluation <span style="color: red">*</span></label>
 									<div class="col-md-9">
 										<!-- <input class="form-control m-b-5" placeholder="Enter Activity name" name="activity_name" id="activity_name" type="text" required=""> -->
 										<select name="tech_evalution" class="form-control m-b-5" id="tech_evalution" readonly>
@@ -491,7 +491,7 @@ function get_value_check(id,value_id) {
                     	}else if(response==2){
                     		alert('Same File name is found ');
                     	}else{
-                    		alert('Some thing went worng Please check internet connection ');
+                    		alert('Something went wrong Please check internet connection ');
                     	}
                         // $('#msg').html(response); // display success response from the server
                     }
@@ -500,7 +500,7 @@ function get_value_check(id,value_id) {
                     // }
                 });
             }else{
-            	alert('Please Attachment Some file click on upload');
+            	alert('Please Attachment Some files click on upload');
             }
 
         });

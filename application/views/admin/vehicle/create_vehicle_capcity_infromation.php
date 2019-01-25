@@ -15,11 +15,11 @@ if(empty($email_id)){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item active"><a href="user-admin-home" class="fa fa-home ">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Vehicle List</a></li>
-				<li class="breadcrumb-item active">Create new vehicle Capcity info</li>
+				<li class="breadcrumb-item active">Create New Vehicle Capacity Info</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">Create New Vehicle Capcity Information </h1>
+			<h1 class="page-header">Create New Vehicle Capacity Information </h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -42,11 +42,11 @@ if(empty($email_id)){
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 					</div>
-					<h4 class="panel-title">Add New Vehicle Capcity Information</h4>
+					<h4 class="panel-title">Add New Vehicle Capacity Information</h4>
 				</div>
 				<div class="panel-body">
 					<div class="alert alert-secondary">
-                        <span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                        <span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                     </div>
 					<form action="admin-add-vehicle-capacity-save" method="POST" >
 						<div class="row">

@@ -133,7 +133,7 @@ $mode_bid=$result_title['new_tech_list'][0]->mode_bid;
 								<th>Vehicle Type</th>
 								<th>Capacity</th>
 								<th>Details</th>
-								<th>No</th>
+								<th>No.</th>
 								<th>From Location</th>
 								<th>To Location</th>
 								<th>Unit Price</th>
@@ -184,7 +184,7 @@ $mode_bid=$result_title['new_tech_list'][0]->mode_bid;
 								<td ><input type="text"  class="form-control" id="delivery_basis" name="delivery_basis"  required="" /></td>
 							</tr>
 							<tr>
-								<td colspan="7">Gaurantee / Warranty</td>
+								<td colspan="7">Guarantee / Warranty</td>
 								<td ><input type="text" class="form-control" id="gaurantee_warranty" name="gaurantee_warranty"  required="" /></td>
 							</tr>
 							<tr>

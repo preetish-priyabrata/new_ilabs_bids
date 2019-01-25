@@ -17,7 +17,7 @@ if(empty($email_id)){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="user-admin-home">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Vehicle</a></li>
-				<li class="breadcrumb-item active">View vehicle List</li>
+				<li class="breadcrumb-item active">View Vehicle List</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
@@ -48,7 +48,7 @@ if(empty($email_id)){
 				<div class="panel-body">
 					
 					<div class="pull-right">
-						<a href="admin-add-vehicle" class="btn btn-info fa fa-puzzle-piece " role="button" title="here new vehicle is been created">  New vehicle info</a>
+						<a href="admin-add-vehicle" class="btn btn-info fa fa-puzzle-piece " role="button" title="here new vehicle is been created">  New Vehicle Info</a>
 					</div>
 					<br>
 					<br>
@@ -56,10 +56,10 @@ if(empty($email_id)){
 						<table id="example" class="display" style="width:100%">
 					        <thead>
 					            <tr>
-					                <th>Slno .</th>
-					                <th>Type of vehicle</th>	
-					                <th>Vehicle capacity</th>	
-					                <th>Vehicle description</th>					                
+					                <th>Slno.</th>
+					                <th>Type of Vehicle</th>	
+					                <th>Vehicle Capacity</th>	
+					                <th>Vehicle Description</th>					                
 					                <th>Status</th>					                
 					                <th>Action</th>
 					            </tr>

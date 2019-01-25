@@ -60,7 +60,7 @@ if($list_success_bid['no_bid']!=1){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item active"><a href="#" class="fa fa-home ">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Bid Information</a></li>
-				<li class="breadcrumb-item"><a href="<?=base_url()?>user-technical-evaluator-bid-new-list">Commerical Bid Active Bid </a></li>
+				<li class="breadcrumb-item"><a href="<?=base_url()?>user-technical-evaluator-bid-new-list">Commercial Bid Active Bid </a></li>
 				<li class="breadcrumb-item active">Bid Details Information</li>
 			</ol>
 			<!-- end breadcrumb -->
@@ -127,7 +127,7 @@ if($list_success_bid['no_bid']!=1){
 											</div>
 
 											<div class="form-group row m-b-15">
-												<label class="col-form-label col-md-3" for="bid_ref_no">Bid Ref No</label>
+												<label class="col-form-label col-md-3" for="bid_ref_no">Bid Ref No.</label>
 												<div class="col-md-9">
 													<input class="form-control-plaintext m-b-5" onkeyup="get_bid_ref(1)" placeholder="Enter Bid Ref No" name="bid_ref_no" value=" "bid_ref_no" type="text" required="" >
 													
@@ -296,7 +296,7 @@ if($list_success_bid['no_bid']!=1){
 												</div>
 											</div>
 											<div class="form-group row m-b-15">
-												<label class="col-form-label col-md-3">Bid Clearification Date </label>
+												<label class="col-form-label col-md-3">Bid Clarification Date </label>
 												<div class="col-md-9">
 													<input class="form-control-plaintext" name="date_clearification_bid" type="text" required="">
 

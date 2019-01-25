@@ -74,7 +74,7 @@ if($value2!=$value){
 						<div class="row">
 							<div class="col-md-6 col-lg-6">
 								<div class="form-group row m-b-15">
-									<label class="col-form-label col-md-3" for="activity_name">MR No <span style="color: red">*</span></label>
+									<label class="col-form-label col-md-3" for="activity_name">MR No. <span style="color: red">*</span></label>
 									<div class="col-md-9">
 										<?php
 										$get_mr_id=$this->design_user->get_design_mr_no_deatils($value);

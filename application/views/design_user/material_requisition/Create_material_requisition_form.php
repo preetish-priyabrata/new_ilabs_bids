@@ -56,20 +56,20 @@ if(empty($email_id)){
 				<div class="panel-body">
 					
 					<div class="alert alert-secondary">
-                        		<span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                        		<span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                         	</div>
 					<form action="design-add-new-mr-save" method="POST" >
 						<div class="row">
 							<div class="col-md-6 col-lg-6">
 								<div class="form-group row m-b-15">
-									<label class="col-form-label col-md-3" for="activity_name">MR No <span style="color: red">*</span></label>
+									<label class="col-form-label col-md-3" for="activity_name">MR No. <span style="color: red">*</span></label>
 									<div class="col-md-9">
 										<?php
 										$get_mr_id=$this->design_user->get_design_mr_no();	
 
 										?>
 										<input class="form-control m-b-5"  name="Mr_no" id="Mr_no" type="text" value="<?=$get_mr_id?>" required="" readonly>
-										<small class="f-s-12 text-grey-darker">MR No</small>
+										<small class="f-s-12 text-grey-darker">MR No.</small>
 									</div>
 								</div>
 							 	<div class="form-group row m-b-15">
@@ -88,14 +88,14 @@ if(empty($email_id)){
 									</div>
 								</div>
 								<div class="form-group row m-b-15">
-									<label class="col-form-label col-md-3" for="tech_evalution">Technical Evalution <span style="color: red">*</span></label>
+									<label class="col-form-label col-md-3" for="tech_evalution">Technical Evaluation <span style="color: red">*</span></label>
 									<div class="col-md-9">
 										<!-- <input class="form-control m-b-5" placeholder="Enter Activity name" name="activity_name" id="activity_name" type="text" required=""> -->
 										<select name="tech_evalution" class="form-control m-b-5" id="tech_evalution">
 											<option value="2">No</option>
 											<option value="1">Yes</option>
 										</select>
-										<small class="f-s-12 text-grey-darker">Select Technical Evalution</small>
+										<small class="f-s-12 text-grey-darker">Select Technical Evaluation</small>
 									</div>
 								</div>
 

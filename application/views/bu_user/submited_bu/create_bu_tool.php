@@ -90,10 +90,10 @@ if($resutl['no_received']==2){
 												</div>
 											</div>
 											<div class="form-group row m-b-15">
-												<label class="col-form-label col-md-3" for="Po_no"> PO No <span style="color: red">*</span></label>
+												<label class="col-form-label col-md-3" for="Po_no"> PO No. <span style="color: red">*</span></label>
 												<div class="col-md-9">
 													<input class="form-control m-b-5" placeholder="Enter PO No" name="Po_no" id="Po_no" type="text" required="" disabled value="<?=$data_received->Po_no?>">
-													<small class="f-s-12 text-grey-darker">Here enter PO No</small>
+													<small class="f-s-12 text-grey-darker">Here enter PO No.</small>
 												</div>
 											</div>
 											<div class="form-group row m-b-15">
@@ -323,7 +323,7 @@ if($resutl['no_received']==2){
 				  	<div class="form-group row pull-right">
                         <div class="col-md-12">
                            
-                            <a  href="<?=base_url()?>user-design-home" class="btn btn-sm btn-danger">Cancel</a> 
+                            <a  href="<?=base_url()?>user-bu-home" class="btn btn-sm btn-danger">Cancel</a> 
                         </div>
                     </div>
 				</form>

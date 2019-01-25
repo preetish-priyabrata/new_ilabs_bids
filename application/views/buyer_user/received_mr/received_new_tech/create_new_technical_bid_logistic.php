@@ -76,11 +76,11 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
 				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 			</div>
-			<h4 class="panel-title">Create Techinical REF</h4>
+			<h4 class="panel-title">Create Technical REF</h4>
 		</div>
 		<div class="panel-body">
 			<div class="alert alert-secondary">
-                <span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                <span style="color: red"> *</span> All mandatory fields shall be duly filled up 
             </div>
 			<form action="<?=base_url()?>bid-tech-entry" method="POST"  id="bid_tech" name="bid_tech" class="bid_tech">
 				
@@ -103,7 +103,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 
 					<div class="col-md-6 col-lg-6">
 						<div class="form-group row m-b-15">
-							<label class="col-form-label col-md-3" for="activity_name">MR No </label>
+							<label class="col-form-label col-md-3" for="activity_name">MR No. </label>
 							<div class="col-md-9">
 								<input readonly class="form-control-plaintext" name="mr_no" value="<?=$mr_no?>" required="" >
 							</div>
@@ -143,7 +143,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 					</div>
 					<div class="col-md-6 col-lg-6">
 						<div class="form-group row m-b-15">
-							<label class="col-form-label col-md-3" for="tech_evalution">Technical Evalution </label>
+							<label class="col-form-label col-md-3" for="tech_evalution">Technical Evaluation </label>
 							<div class="col-md-9">					
 								<?php if($techinal_evalution==2){?>
 								<input type="text" readonly class="form-control-plaintext" value="No" />
@@ -225,11 +225,11 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 												</div>
 
 												<div class="form-group row m-b-15">
-													<label class="col-form-label col-md-3" for="bid_ref_no">Bid Ref No <span style="color: red">*</span></label>
+													<label class="col-form-label col-md-3" for="bid_ref_no">Bid Ref No. <span style="color: red">*</span></label>
 													<div class="col-md-9">
 														<input class="form-control m-b-5" onkeyup="get_bid_ref(1)" placeholder="Enter Bid Ref No" name="bid_ref_no" id="bid_ref_no" type="text" required="" >
 														<span id="job_code_error1"></span><br>	
-														<small class="f-s-12 text-grey-darker">Here enter Bid Ref No Should Be Unique</small>
+														<small class="f-s-12 text-grey-darker">Here enter Bid Ref No. Should Be Unique</small>
 													</div>
 												</div>
 
@@ -237,7 +237,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 													<label class="col-form-label col-md-3" for="bid_method">Mode Of Selection <span style="color: red">*</span></label>
 													<div class="col-md-9">
 												  		<select class="form-control" id="bid_method"  name="bid_method">
-												    		<option value="">--Please Select Mod Of Selection--</option>
+												    		<option value="">--Please Select Mode Of Selection--</option>
 												    		<option value="Closed Bid">Closed Bid </option>
 												    		<option value="Rank Order Bid">Rank Order Bid </option>
 												    		<option value="Simple Bid">Simple Bid </option>
@@ -357,7 +357,7 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 															<th>Vehicle Type</th>
 															<th>Capacity</th>
 															<th>Details</th>                                        
-															<th>No</th>
+															<th>No.</th>
 															<th>From Location</th>
 															<th>To Location</th>
 															<th>Purpose</th>
@@ -426,10 +426,10 @@ $get_location=$this->design_user->get_design_master_loaction_list();
 												</div>
 
 												<div class="form-group row m-b-15">
-													<label class="col-form-label col-md-3" for="date_clearfication_bid">Bid Clearfication Date <span style="color: red">*</span></label>
+													<label class="col-form-label col-md-3" for="date_clearfication_bid">Bid Clarification Date <span style="color: red">*</span></label>
 													<div class="col-md-9">
 														<input class="form-control m-b-5 datepickers" placeholder="EnterBid Clearfication Date" name="date_clearfication_bid" id="date_clearfication_bid" type="text" required="" >
-														<small class="f-s-12 text-grey-darker">Please Select Bid Clearfication Date</small>
+														<small class="f-s-12 text-grey-darker">Please Select Bid Clarification Date</small>
 													</div>
 												</div>
 												<!-- part e end -->

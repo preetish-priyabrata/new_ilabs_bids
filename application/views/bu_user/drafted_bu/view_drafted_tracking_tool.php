@@ -20,7 +20,7 @@ $resutl=$this->user->get_bu_trackinh(2,'');
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="<?=base_url()?>user-design-home">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">BTP Tracking Tool</a></li>
-				<li class="breadcrumb-item active"> Drafted Tracking Tool</li>
+				<li class="breadcrumb-item active"> Drafted Tracking Tool </li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
@@ -46,7 +46,7 @@ $resutl=$this->user->get_bu_trackinh(2,'');
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 					</div>
 					
-					<h4 class="panel-title"> Tracking Tool List</h4>
+					<h4 class="panel-title"> Tracking Tool List </h4>
 				</div>
 				<div class="panel-body">		
 					<div class="table-responsive">

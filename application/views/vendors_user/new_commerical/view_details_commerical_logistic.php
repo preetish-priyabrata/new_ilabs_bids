@@ -156,7 +156,7 @@ $result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id
 									<th>Vehicle Type</th>
 									<th>Capacity</th>
 									<th>Details</th>
-									<th>No</th>
+									<th>No.</th>
 									<th>From Location</th>
 									<th>To Location</th>
 									<th>Purpose</th>
@@ -197,7 +197,7 @@ $result_vechile=$this->design_user->get_design_master_mr_vechile_single($edit_id
 			</div>
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
-					<h5 class="text-center">Attach File Information</h5>
+					<h5 class="text-center">Attached File Information</h5>
 					<hr style="height: 3px;background: #0257ab;margin-top: 1.5rem; margin-bottom: 1.5rem"/>
 					<table class="table table-bordered" cellpadding="10" cellspacing="1" width="100%">
 						<thead>

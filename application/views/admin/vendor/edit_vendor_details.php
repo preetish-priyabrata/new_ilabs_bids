@@ -45,7 +45,7 @@ if($value1_convered_id==$value2){
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">Edit vendor information</h1>
+			<h1 class="page-header">Edit Vendor Information</h1>
 			<!-- end page-header -->
 			<?php if(!empty($this->session->flashdata('success_message'))){?>
 			<div class="alert alert-success fade show">
@@ -86,7 +86,7 @@ if($value1_convered_id==$value2){
 					<div class="col-lg-12">
 						<!-- begin nav-tabs -->						
 					  	<div class="alert alert-secondary">
-                        		<span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                        		<span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                         	</div>
 						 <div class="tab-content">
 						   

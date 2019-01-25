@@ -17,7 +17,7 @@ if(empty($email_id)){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="user-admin-home">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Location</a></li>
-				<li class="breadcrumb-item active">View Location  Lsit</li>
+				<li class="breadcrumb-item active">View Location  List</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
@@ -48,7 +48,7 @@ if(empty($email_id)){
 				<div class="panel-body">
 
 					<div class="pull-right">
-						<a href="admin-add-Location" class="btn btn-info fa fa-puzzle-piece " role="button" title="hre new Category is been created">  New Location</a>
+						<a href="admin-add-Location" class="btn btn-info fa fa-puzzle-piece " role="button" title="hre new Category is been created">New Location</a>
 					</div>
 					<br>
 					<br>
@@ -201,7 +201,7 @@ function get_check_location(id) {
 					$('#save_'+id).hide();
 
 				}else{
-					$('#error_'+id).html('Some Thing Went Wrong');
+					$('#error_'+id).html('SomeThing Went Wrong');
 					$('#save_'+id).hide();
 				}
 			}

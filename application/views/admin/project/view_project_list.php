@@ -32,7 +32,7 @@ if(empty($email_id)){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item"><a href="<?=base_url()?>user-admin-home">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Project</a></li>
-				<li class="breadcrumb-item active">View Project Lsit</li>
+				<li class="breadcrumb-item active">View Project List</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->

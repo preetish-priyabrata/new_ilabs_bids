@@ -15,7 +15,7 @@ if(empty($email_id)){
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item active"><a href="user-admin-home" class="fa fa-home ">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Vendor List</a></li>
-				<li class="breadcrumb-item active">Create new vendor</li>
+				<li class="breadcrumb-item active">Create New vendor</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
@@ -46,7 +46,7 @@ if(empty($email_id)){
 				</div>
 				<div class="panel-body">
 					<div class="alert alert-secondary">
-                        <span style="color: red"> *</span> All mandory fields shall be duly filled up 
+                        <span style="color: red"> *</span> All mandatory fields shall be duly filled up 
                     </div>
 					<form action="admin-add-vendors-save" method="POST" >
 						<div class="row">

@@ -61,7 +61,7 @@ $mr_slno=$bid_list->mr_slno;
 			<ol class="breadcrumb pull-right">
 				<li class="breadcrumb-item active"><a href="#" class="fa fa-home ">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Bid Information</a></li>
-				<li class="breadcrumb-item"><a href="<?=base_url()?>user-technical-evaluator-bid-new-list">Commerical Bid Active Bid </a></li>
+				<li class="breadcrumb-item"><a href="<?=base_url()?>user-technical-evaluator-bid-new-list">Commercial Bid Active Bid </a></li>
 				<li class="breadcrumb-item active">Bid Details Information</li>
 			</ol>
 			<!-- end breadcrumb -->

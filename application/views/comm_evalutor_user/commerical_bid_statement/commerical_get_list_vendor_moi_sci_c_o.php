@@ -56,8 +56,14 @@ foreach ($query_bid_sub->result() as $key_id) {
 	
 
 }
+if(!empty($array_vedeor_id)){
+	$final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
+}else{
+	  $this->session->set_flashdata('error_message',  'Sorry No vendor has Submitted Commerical information. Please Ask Buyer For looking to it . Here is bid id and bid reference no "' .$bid_info_buyer[0]->bid_id.'/'.$bid_info_buyer[0]->bid_ref.'"');
+	redirect('user-commerical-evalutor-home');
+}
 // print_r($array_vedeor_id);
-$final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
+
 // 			// // $data_return = array('rank' => $rank,'sub_total'=>$sub_total );
 			
 // 			//  // $rank;
@@ -115,7 +121,70 @@ $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
 		    padding-left: 0;
 		  }
 		}
-
+		table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  /*table-layout: fixed;*/
+  width: 100%;
+}
+table tr {
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+table tr:nth-child(even) {
+  background: #f8f8f8;  
+}
+table th,
+table td {
+  padding: .625em;
+  text-align: left;
+}
+table th {
+  background: #999;
+  color: #fff;
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+table tr td:last-child{
+	/*padding: .625em;*/
+    background: #ccc;
+    /*last-child*/
+    /*nth-child*/
+}
+/*table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+table tr {
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+table tr:nth-child(even) {
+  background: #f8f8f8;  
+}
+table th,
+table td {
+  padding: .625em;
+  text-align: left;
+}
+table th {
+  background: #999;
+  color: #fff;
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}*/
 	</style>
 	<body >
 		<?php if(!empty($this->session->flashdata('success_message'))){?>
@@ -337,7 +406,7 @@ $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
 			    	<table class="table table-bordered" border="1" cellpadding="10" cellspacing="1" width="100%">
                         <thead>
                             <tr>   
-                            	<th>#</th>                         	
+                            	<th  scope="row">#</th>                         	
                                 <th><strong>Name</strong></th>                             
                                 <th><strong>UOM</strong></th>
                                	<th><strong>Quantity</strong></th>
@@ -350,23 +419,23 @@ $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
 
 						 						<table class="table-bordered" cellpadding="10" cellspacing="1" width="100%">
 						 							<tr>
-						 								<th width="25%">Currency</th>
+						 								<th width="25%"  scope="row">Currency</th>
 						 								<th>
 						 									<table class="table-bordered" cellpadding="10" cellspacing="1" width="100%">
 						 									<thead>
 									 							<tr>
-									 								<th width="25%" colspan = "3"><p class="text-center"> Quoted Price(INR)</p></th>
+									 								<th width="25%" colspan = "3"  scope="row"><p class="text-center"> Quoted Price(INR)</p></th>
 									 								<?php 
 								 										if($id_count!=1){
 								 										for ($i=1; $i <$id_count ; $i++) {
 								 											?>
-									 								 <th width="25%" colspan = "3"><p class="text-center"> Negotiated Price <?=$i?> (INR)</p></th>
+									 								 <th width="25%" colspan = "3"  scope="row"><p class="text-center"> Negotiated Price <?=$i?> (INR)</p></th>
 									 								<?php }}?>
 									 							</tr>
 									 						</thead>
 								 							<tbody>
 								 								<tr>
-								 									<th width="25%">Unit Rate</th>
+								 									<th width="25%"  scope="row">Unit Rate</th>
 										 							<th width="25%">Converted Rate</th>
 										 							<th width="25%">Total Price</th>
 										 					<?php 
@@ -374,7 +443,7 @@ $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
 											 							for ($i=1; $i <$id_count ; $i++) { 
 											 				?>
 						 									
-							 									<th width="25%"> Unit Rate</th>
+							 									<th width="25%"  scope="row"> Unit Rate</th>
 									 							<th width="25%">Converted Rate</th>
 									 							<th width="25%">Total Price</th>
 															
@@ -409,6 +478,7 @@ $final_id_vendor=array_unique($array_vedeor_id); // will remove duplicate values
                         			$slno_mat=$key_value->slno_mat;
                         		$x++;
                         		?>
+                        		<input type="hidden" name="slno_mat_mateial[]" value="<?=$slno_mat?>">
                         		<tr>
                         		</tr>
                         		<tr>
