@@ -282,7 +282,14 @@ class Commericalevalutor extends CI_Controller {
             // echo "wait here for processing";
                 switch ($bid_type) {
                     case '11': //Simple bid sci
-                        # code...
+                          $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view('comm_evalutor_user/commerical_bid_statement/simple_bid/commerical_get_list_vendor_moi_sci_c_o',$data);
+                        // $this->load->view('template/template_footer',$data);
                         break;
                     case '12': //Simple bid Moi
                         # code...
@@ -297,11 +304,18 @@ class Commericalevalutor extends CI_Controller {
                         // $this->load->view('template/template_header',$data);
                         // $this->load->view('comm_evalutor_user/template/template_top_head');
                         // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
-                        $this->load->view('comm_evalutor_user/commerical_bid_statement/commerical_get_list_vendor_moi_sci_c_o',$data);
+                        $this->load->view('comm_evalutor_user/commerical_bid_statement/closed_bid/commerical_get_list_vendor_moi_sci_c_o',$data);
                         // $this->load->view('template/template_footer',$data);
                         break;
                     case '22': // closed  Moi
-                        # code...
+                         $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view('comm_evalutor_user/commerical_bid_statement/closed_bid/commerical_get_list_vendor_moi_sci_c_o_part_moi',$data);
+                        // $this->load->view('template/template_footer',$data);
                         break;
                     case '23': // closed Logistic
                         # code...
@@ -453,6 +467,7 @@ class Commericalevalutor extends CI_Controller {
         $last_otp_id=$this->input->post('last_otp_id');
         $Project_Name=$this->input->post('Project_Name'); 
         $cob_type_bid_cat=$type_bid.$category_id;
+        $bid_name_url = urldecode($bid_name);
       
        switch ($cob_type_bid_cat) {
            case '11': // simple bid with SCI
@@ -484,11 +499,44 @@ class Commericalevalutor extends CI_Controller {
                        $this->db->insert('master_final_closed_bid_item',$array_insert_bid);
 
                  }
-                 // dd
-                // master_bid_commericalevaluation.master_bid_id  AND master_bid_commericalevaluation.status_bid=0 
-               # code...
+                 $data_update_master = array('status_bid' => 6);
+                 $data_master_id = array('Slno_bid' => $master_bid_id );
+
+                 $data__master_bid_ids = array('master_bid_id' => $master_bid_id );
+                $this->db->update('master_bid_commerical',$data_update_master,$data_master_id);
+                $this->db->update('master_bid_commericalevaluation',$data_update_master,$data__master_bid_ids);
+                
+                $this->session->set_flashdata('success_message',  'Bid Approved vendor successfully Has been Completed');
+                 redirect('commerical-otp-verification-success-view/'.$type_bid.'/'.$master_bid_id.'/'.$category_id.'/'.$bid_name_url.'/'.$buyer_bid.'/'.$last_otp_id);
+                // redirect('user-commerical-evalutor-home');
                break;
             case '22': //closed Bid with moi
+                $vendor_apporved=$this->input->post('vendor_apporved');
+                $slno_mat_mateial=$this->input->post('slno_mat_mateial');
+                foreach ($slno_mat_mateial as $key_id => $value_slno) {
+                     
+                     $single_vendor=$vendor_apporved[$value_slno];
+                     
+                     $data_indety = array('Bid_master_id_com' => $master_bid_id,'Vendor_id'=>$single_vendor,'comm_item_slno'=>$value_slno);
+                     $this->db->order_by('date_entry','DESC');
+                     $this->db->limit(1); 
+                     $query_get_item=$this->db->get_where('master_closed_bid_item',$data_indety);
+                    
+                     $vend_info=$query_get_item->result();
+                     
+                       $array_insert_bid = array('closed_id_slno' =>$vend_info[0]->closed_id_slno,'Bid_master_id_com' => $vend_info[0]->Bid_master_id_com,'Item_name' =>$vend_info[0]->Item_name ,'Quantity' => $vend_info[0]->Quantity,'Uom_unit' =>$vend_info[0]->Uom_unit ,'Unit_price' =>$vend_info[0]->Unit_price ,'Total_unitprice' =>$vend_info[0]->Total_unitprice ,'date_entry' => $vend_info[0]->date_entry,'comm_item_slno' =>$vend_info[0]->comm_item_slno,'Mr_item_slno' =>$vend_info[0]->Mr_item_slno ,'Item_id' =>$vend_info[0]->Item_id,'Bid_slno' =>$vend_info[0]->Bid_slno ,'Vendor_id' =>$vend_info[0]->Vendor_id,'commerical_entry_name'=>$commerical_email_id,'Slno_closed_item_m'=>$vend_info[0]->Slno_closed_item);
+                       $this->db->insert('master_final_closed_bid_item',$array_insert_bid);
+
+                 }
+                 $data_update_master = array('status_bid' => 6);
+                 $data_master_id = array('Slno_bid' => $master_bid_id );
+
+                 $data__master_bid_ids = array('master_bid_id' => $master_bid_id );
+                $this->db->update('master_bid_commerical',$data_update_master,$data_master_id);
+                $this->db->update('master_bid_commericalevaluation',$data_update_master,$data__master_bid_ids);
+                
+                $this->session->set_flashdata('success_message',  'Bid Approved vendor successfully Has been Completed');
+                 redirect('commerical-otp-verification-success-view/'.$type_bid.'/'.$master_bid_id.'/'.$category_id.'/'.$bid_name_url.'/'.$buyer_bid.'/'.$last_otp_id);
                # code...
                break;
             case '23': // closed bid with logistics
@@ -509,7 +557,67 @@ class Commericalevalutor extends CI_Controller {
        }
     }
 
+    public function commerical_otp_verification_success_view($value='',$value1='',$value2="",$value3="",$value4="",$value5=""){
+        $commerical_email_id=$this->session->userdata('commerical_email_id');
+         if(empty($commerical_email_id)){
+            
+            redirect('comm-evalutor-logout-by-pass');
+        }
+        if (!empty($value) &&!empty($value1) && !empty($value2) && !empty($value3) && !empty($value4) && !empty($value5)) {
+            $bid_type=$value.$value2;
+            // echo "wait here for processing";
+                switch ($bid_type) {
+                    case '11': //Simple bid sci
+                        # code...
+                        break;
+                    case '12': //Simple bid Moi
+                        # code...
+                        break;
+                    case '13': //Simple bid close
+                        # code...
+                        break;
+                    case '21': //Closed bid Sci
+                        $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
 
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view('comm_evalutor_user/commerical_bid_statement_view/closed_bid/commerical_get_list_vendor_moi_sci_c_o_view',$data);
+                        // $this->load->view('template/template_footer',$data);
+                        break;
+                    case '22': // closed  Moi
+                          $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view('comm_evalutor_user/commerical_bid_statement_view/closed_bid/commerical_get_list_vendor_moi_sci_c_o_part_moi_view',$data);
+                        // $this->load->view('template/template_footer',$data);
+                        break;
+                    case '23': // closed Logistic
+                        # code...
+                        break;
+                    case '31': //  rank order Sci
+                        # code...
+                        break;
+                    case '32': // rank bid  MOI
+                        # code...
+                        break;
+                    case '33': //rank bid logistics
+                        # code...
+                        break;
+                    
+                    default:
+                        # code...
+                        break;
+                }
+            }else{
+                $this->session->set_flashdata('error_message',  'Fore full accessing system please contact andmin for it');
+                redirect('user-commerical-evalutor-home');
+            }
+    }
 
 
     //
