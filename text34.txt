@@ -1,1 +1,66 @@
-hello
+TRUNCATE `Ilab_master_bid`;
+TRUNCATE `Ilab_master_bid_commerical`;
+TRUNCATE `Ilab_master_bid_commericalevaluation`;
+TRUNCATE `Ilab_master_bid_date_details`;
+TRUNCATE `Ilab_master_bid_date_details_commerical`;
+TRUNCATE `Ilab_master_bid_details`;
+TRUNCATE `Ilab_master_bid_details_commerical`;
+TRUNCATE `Ilab_master_bid_file_commerical`;
+TRUNCATE `Ilab_master_bid_file_technical`;
+TRUNCATE `Ilab_master_bid_invitation_rank`;
+TRUNCATE `Ilab_master_bid_invi_otp`;
+TRUNCATE `Ilab_master_bid_invi_rank_approvals`;
+TRUNCATE `Ilab_master_bid_invi_rank_not_app`;
+TRUNCATE `Ilab_master_bid_otp_commerical`;
+TRUNCATE `Ilab_master_bid_query`;
+TRUNCATE `Ilab_master_bid_query_commerical`;
+TRUNCATE `Ilab_master_bid_technicalevaluation`;
+TRUNCATE `Ilab_master_bid_vendor`;
+TRUNCATE `Ilab_master_bid_vendor_commerical`;
+TRUNCATE `Ilab_master_bid_vendor_file_details`;
+TRUNCATE `Ilab_master_buyer_material_details`;
+TRUNCATE `Ilab_master_buyer_MR`;
+TRUNCATE `Ilab_master_closed_bid`;
+
+TRUNCATE `Ilab_master_closed_bid_item`;
+TRUNCATE `Ilab_master_closed_bid_item_misc`;
+TRUNCATE `Ilab_master_closed_bid_item_total`;
+TRUNCATE `Ilab_master_closed_bid_logistics`;
+TRUNCATE `Ilab_master_commercial_notifications`;
+TRUNCATE `Ilab_master_final_closed_bid_item`;
+TRUNCATE `Ilab_master_final_simple_bid_item`;
+TRUNCATE `Ilab_master_mr_approver_order`;
+TRUNCATE `Ilab_master_mr_file_upload`;
+TRUNCATE `Ilab_master_mr_job_comments`;
+
+TRUNCATE `Ilab_master_mr_location`;
+TRUNCATE `Ilab_master_mr_technical_parameter_info`;
+TRUNCATE `Ilab_master_mr_vehicle_mr_detail`;
+TRUNCATE `Ilab_master_procurement_MR`;
+TRUNCATE `Ilab_master_rankorder_bid`;
+TRUNCATE `Ilab_master_rankorder_bid_item`;
+TRUNCATE `Ilab_master_rankorder_bid_item_misc`;
+TRUNCATE `Ilab_master_rankorder_bid_item_misc_temp`;
+TRUNCATE `Ilab_master_rankorder_bid_item_temp`;
+TRUNCATE `Ilab_master_rankorder_bid_logistics`;
+TRUNCATE `Ilab_master_rankorder_bid_logistics_temp`;
+TRUNCATE `Ilab_master_rankorder_bid_temp`;
+TRUNCATE `Ilab_master_rankorder_item_total`;
+TRUNCATE `Ilab_master_rankorder_item_total_temp`;
+TRUNCATE `Ilab_master_session_history`;
+TRUNCATE `Ilab_master_session_history_vendors`;
+
+TRUNCATE `Ilab_master_simple_bid`;
+TRUNCATE `Ilab_master_simple_bid_item`;
+TRUNCATE `Ilab_master_simple_bid_item_misc`;
+TRUNCATE `Ilab_master_simple_bid_item_total`;
+TRUNCATE `Ilab_master_simple_bid_logistic`;
+TRUNCATE `Ilab_master_vendor_file_token`;
+TRUNCATE `Ilab_master_vendor_notifications`;
+TRUNCATE `Ilab_master_vendor_tech_token_bid`;
+
+
+
+TRUNCATE `Ilab_master_mr_job_details`;
+
+TRUNCATE `Ilab_master_mr_material_item`;
