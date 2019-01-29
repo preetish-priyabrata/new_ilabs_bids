@@ -37,7 +37,7 @@
 					    </a>
 						<ul class="sub-menu">
 						    <li class="<?php if($sub_menu==1){ echo 'active'; }?>"><a href="<?=base_url()?>user-commerical-evaluator-bid-new-list" >Commerical Bid Active Bid  </a></li>
-						    <li class="<?php if($sub_menu==2){ echo 'active'; }?>"><a href="<?=base_url()?>procurement-new-mr-conform" >History Of Buyer Assignment</a></li>
+						    <li class="<?php if($sub_menu==3){ echo 'active'; }?>"><a href="<?=base_url()?>user-commerical-evaluator-bid-complete-list" >History Of Commerical completed Bid </a></li>
 
 						</ul>
 					</li>

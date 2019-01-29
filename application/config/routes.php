@@ -435,6 +435,9 @@ $route['commerical-otp-verification-success-view/(:any)/(:any)/(:any)/(:any)/(:a
 $route['commerrical-user-send-approve-nofication']='commericalevalutor/commerrical_user_send_approve_nofication';
 $route['commerical-user-send-approve-nofication']='commericalevalutor/commerrical_user_Channel_send_approve_nofication';
 $route['commerrical-user-send-nofication-vendor']='commericalevalutor/commerrical_user_send_approve_nofication_vendor';
+
+
+$route['user-commerical-evaluator-bid-complete-list']='commericalevalutor/user_commerical_evaluator_bid_complete_list';
 $route['commerrical-user-send-approve-vendor']='commericalevalutor/commerrical_user_send_approve_vendor';
 $route['comm-evalutor-logout-by-pass']='commericalevalutor/comm_evalutor_logout_bypass';
 $route['comm-evalutor-logout']='commericalevalutor/comm_evalutor_logout';

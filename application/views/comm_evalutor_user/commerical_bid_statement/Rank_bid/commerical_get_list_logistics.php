@@ -49,7 +49,7 @@ $get_rank=array();
 			// $this->db->order_by('sub_total', "asc");
 			$this->db->order_by('sub_total', 'ASC');
 			$this->db->order_by('date', "asc");
-			$query_bid_sub=$this->db->get_where('master_simple_bid_item_total',$data);
+			$query_bid_sub=$this->db->get_where('master_rankorder_item_total',$data);
 
 foreach ($query_bid_sub->result() as $key_id) {
 	// print_r($key_id);
@@ -494,8 +494,8 @@ table td {
 								 	 <?php
 						 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 						 				$id_count=$times_repeat[$userid_ven];
-						 				$date_im = array('Vendor_id' => $userid_ven,'bid_master_id_com'=> $Slno_bid,'comm_item_slno'=>$slno_mat);
-						 				$data_ve_item=$this->db->get_where('master_simple_bid_logistic',$date_im);
+						 				$date_im = array('vendor_id' => $userid_ven,'bid_master_id_com'=> $Slno_bid,'comm_item_slno'=>$slno_mat);
+						 				$data_ve_item=$this->db->get_where('master_rankorder_bid_logistics',$date_im);
 						 				?>
 						 				<td>
 
@@ -544,7 +544,7 @@ table td {
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				$id_count=$times_repeat[$userid_ven];
 								 				$date_Short = array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid);
-						 						$data_Short=$this->db->get_where('master_simple_bid_item_total',$date_Short);
+						 						$data_Short=$this->db->get_where('master_rankorder_item_total',$date_Short);
 								 				?>
 								 				<th>
 								 					<table class="table-bordered" cellpadding="10" cellspacing="1" width="100%">
@@ -580,7 +580,7 @@ table td {
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				$id_count=$times_repeat[$userid_ven];
 								 				$date_tax= array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid);
-						 						$data_tax=$this->db->get_where('master_simple_bid_item_total',$date_tax);
+						 						$data_tax=$this->db->get_where('master_rankorder_item_total',$date_tax);
 								 				?>
 								 				<th>
 								 					<table class="table-bordered" cellpadding="10" cellspacing="1" width="100%">
@@ -615,7 +615,7 @@ table td {
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				$id_count=$times_repeat[$userid_ven];
 								 				$date_total= array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid);
-						 						$data_total=$this->db->get_where('master_simple_bid_item_total',$date_total);
+						 						$data_total=$this->db->get_where('master_rankorder_item_total',$date_total);
 								 				?>
 								 				<th>
 								 					<table class="table-bordered" cellpadding="10" cellspacing="1" width="100%">
@@ -652,7 +652,7 @@ table td {
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				$id_count=$times_repeat[$userid_ven];
 								 				$date_user_assumption_charge= array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid);
-						 						$data_user_assumption_charge=$this->db->get_where('master_simple_bid_item_total',$date_user_assumption_charge);
+						 						$data_user_assumption_charge=$this->db->get_where('master_rankorder_item_total',$date_user_assumption_charge);
 								 				?>
 								 				<th>
 								 					<table class="table-bordered" cellpadding="10" cellspacing="1" width="100%">
@@ -689,7 +689,7 @@ table td {
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				$id_count=$times_repeat[$userid_ven];
 								 				$date_delivery_basis= array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid,'field_name'=>'delivery basis');
-						 						$data_delivery_basis=$this->db->get_where('master_simple_bid_item_misc',$date_delivery_basis);
+						 						$data_delivery_basis=$this->db->get_where('master_rankorder_bid_item_misc',$date_delivery_basis);
 								 				//
 
 								 				?>
@@ -727,7 +727,7 @@ table td {
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				$id_count=$times_repeat[$userid_ven];
 								 				$date_gaurantee= array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid,'field_name'=>'gaurantee warranty');
-						 						$data_gaurantee=$this->db->get_where('master_simple_bid_item_misc',$date_gaurantee);
+						 						$data_gaurantee=$this->db->get_where('master_rankorder_bid_item_misc',$date_gaurantee);
 								 				//
 
 								 				?>
@@ -764,7 +764,7 @@ table td {
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				$id_count=$times_repeat[$userid_ven];
 								 				$date_delivery= array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid,'field_name'=>'delivery schedule');
-						 						$data_delivery=$this->db->get_where('master_simple_bid_item_misc',$date_delivery);
+						 						$data_delivery=$this->db->get_where('master_rankorder_bid_item_misc',$date_delivery);
 								 				//
 
 								 				?>
@@ -803,7 +803,7 @@ table td {
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				$id_count=$times_repeat[$userid_ven];
 								 				$date_payment= array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid,'field_name'=>'payment terms');
-						 						$data_payment=$this->db->get_where('master_simple_bid_item_misc',$date_payment);
+						 						$data_payment=$this->db->get_where('master_rankorder_bid_item_misc',$date_payment);
 								 				//
 
 								 				?>
@@ -841,7 +841,7 @@ table td {
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				$id_count=$times_repeat[$userid_ven];
 								 				$date_validity= array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid,'field_name'=>'validity of offer');
-						 						$data_validity=$this->db->get_where('master_simple_bid_item_misc',$date_validity);
+						 						$data_validity=$this->db->get_where('master_rankorder_bid_item_misc',$date_validity);
 								 				//
 
 								 				?>
@@ -879,7 +879,7 @@ table td {
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				$id_count=$times_repeat[$userid_ven];
 								 				$date_security= array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid,'field_name'=>'security BG');
-						 						$data_security=$this->db->get_where('master_simple_bid_item_misc',$date_security);
+						 						$data_security=$this->db->get_where('master_rankorder_bid_item_misc',$date_security);
 								 				//
 
 								 				?>
@@ -916,7 +916,7 @@ table td {
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				$id_count=$times_repeat[$userid_ven];
 								 				$date_liquidity= array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid,'field_name'=>'liquidity damage');
-						 						$data_liquidity=$this->db->get_where('master_simple_bid_item_misc',$date_liquidity);
+						 						$data_liquidity=$this->db->get_where('master_rankorder_bid_item_misc',$date_liquidity);
 								 				//
 
 								 				?>
@@ -955,7 +955,7 @@ table td {
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				$id_count=$times_repeat[$userid_ven];
 								 				$date_remarks= array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid,'field_name'=>'remarks');
-						 						$data_remarks=$this->db->get_where('master_simple_bid_item_misc',$date_remarks);
+						 						$data_remarks=$this->db->get_where('master_rankorder_bid_item_misc',$date_remarks);
 								 				//
 
 								 				?>
@@ -993,7 +993,7 @@ table td {
 								 			foreach ($final_id_vendor as $key_ven_id =>$userid_ven) {
 								 				$id_count=$times_repeat[$userid_ven];
 								 				$date_remarks= array('Vendor_id' => $userid_ven,'master_bid_id_com'=> $Slno_bid,'field_name'=>'remarks');
-						 						$data_remarks=$this->db->get_where('master_simple_bid_item_misc',$date_remarks);
+						 						$data_remarks=$this->db->get_where('master_rankorder_bid_item_misc',$date_remarks);
 								 				//
 
 								 				?>
