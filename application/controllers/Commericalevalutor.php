@@ -416,7 +416,14 @@ class Commericalevalutor extends CI_Controller {
                         // $this->load->view('template/template_footer',$data);
                         break;
                     case '13': //Simple bid close
-                        # code...
+                         $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view('comm_evalutor_user/commerical_bid_statement/simple_bid/commerical_get_list_logistics',$data);
+                        // $this->load->view('template/template_footer',$data);
                         break;
                     case '21': //Closed bid Sci
                         $scripts='';
@@ -504,7 +511,7 @@ class Commericalevalutor extends CI_Controller {
                      $data_indety = array('Bid_master_id_com' => $master_bid_id,'Vendor_id'=>$single_vendor,'comm_item_slno'=>$value_slno);
                      $this->db->order_by('date_entry','DESC');
                      $this->db->limit(1); 
-                     $query_get_item=$this->db->get_where('master_closed_bid_item',$data_indety);
+                     $query_get_item=$this->db->get_where('master_simple_bid_item',$data_indety);
                      // echo $this->db->last_query();
                      $vend_info=$query_get_item->result();
                      // print_r($query_get_item->result());
@@ -534,7 +541,7 @@ class Commericalevalutor extends CI_Controller {
                      $data_indety = array('Bid_master_id_com' => $master_bid_id,'Vendor_id'=>$single_vendor,'comm_item_slno'=>$value_slno);
                      $this->db->order_by('date_entry','DESC');
                      $this->db->limit(1); 
-                     $query_get_item=$this->db->get_where('master_closed_bid_item',$data_indety);
+                     $query_get_item=$this->db->get_where('master_simple_bid_item',$data_indety);
                      // echo $this->db->last_query();
                      $vend_info=$query_get_item->result();
                      // print_r($query_get_item->result());
@@ -554,7 +561,39 @@ class Commericalevalutor extends CI_Controller {
                  redirect('commerical-otp-verification-success-view/'.$type_bid.'/'.$master_bid_id.'/'.$category_id.'/'.$bid_name_url.'/'.$buyer_bid.'/'.$last_otp_id);
                break;
             case '13': //simple bid with logistics
-               # code...
+            // Array ( [type_bid] => 1 [master_bid_id] => 5 [category_id] => 3 [bid_name] => Simple%20Bid [buyer_bid] => 5 [last_otp_id] => 26 [Project_Name] => project 1 [activity_name] => [location_detail] => bbsr [bid_id] => 421 [bid_start_date] => 2019-01-27 [bid_closed_date] => 2019-01-31 [mode_bid] => [time_date_creation] => 2019-01-28 20:09:10 [creators_id] => design2@ilab.com [slno_mat_mateial] => Array ( [0] => 17 [1] => 18 [2] => 19 [3] => 20 ) [vendor_apporved] => Array ( [17] => ven97@gmail.com [18] => ven97@gmail.com [19] => ven121@gmail.com [20] => ven121@gmail.com ) [vendor_notification] => Array ( [0] => [1] => ) [Submit_btn] => Approved And Complete ) 
+               print_r($this->input->post());
+
+                $vendor_apporved=$this->input->post('vendor_apporved');
+                 $slno_mat_mateial=$this->input->post('slno_mat_mateial');
+                 foreach ($slno_mat_mateial as $key_id => $value_slno) {
+                     // `Slno_simple_item`, `Simple_id_slno`, `Bid_master_id_com`, `Item_name`, `Item_id`, `Quantity`, `Uom_unit`, `Unit_price`, `Total_unitprice`, `date_entry`, `Comm_item_slno`, `Mr_item_slno`, `bid_slno`, `Vendor_id`
+                     $single_vendor=$vendor_apporved[$value_slno];
+                     // echo "<br>";
+                     // echo "<pre>";
+                     $data_indety = array('bid_master_id_com' => $master_bid_id,'Vendor_id'=>$single_vendor,'comm_item_slno'=>$value_slno);
+                     $this->db->order_by('date_entry','DESC');
+                     $this->db->limit(1); 
+                     $query_get_item=$this->db->get_where('master_simple_bid_logistic',$data_indety);
+                     // echo $this->db->last_query();
+                     $vend_info=$query_get_item->result();
+                     // print_r($query_get_item->result());
+                     //  echo "<br>";
+                     
+                       // $array_insert_bid = array('Simple_id_slno' =>$vend_info[0]->Simple_id_slno,'Bid_master_id_com' => $vend_info[0]->Bid_master_id_com,'Item_name' =>$vend_info[0]->Item_name ,'Quantity' => $vend_info[0]->Quantity,'Uom_unit' =>$vend_info[0]->Uom_unit ,'Unit_price' =>$vend_info[0]->Unit_price ,'Total_unitprice' =>$vend_info[0]->Total_unitprice ,'date_entry' => $vend_info[0]->date_entry,'Comm_item_slno' =>$vend_info[0]->Comm_item_slno,'Mr_item_slno' =>$vend_info[0]->Mr_item_slno ,'Item_id' =>$vend_info[0]->Item_id,'bid_slno' =>$vend_info[0]->bid_slno ,'Vendor_id' =>$vend_info[0]->Vendor_id,'commerical_entry_name'=>$commerical_email_id,'Slno_simple_item_m'=>$vend_info[0]->Slno_simple_item);
+                       $array_insert_bid=array('simple_id_slno'=>$vend_info[0]->simple_id_slno , 'bid_master_id_com'=>$vend_info[0]->bid_master_id_com , 'vehicle_type'=>$vend_info[0]->vehicle_type , 'capacity'=>$vend_info[0]->capacity , 'detail'=>$vend_info[0]->detail , 'no'=>$vend_info[0]->no , 'from_location'=>$vend_info[0]->from_location , 'to_location'=>$vend_info[0]->to_location , 'unit_price'=>$vend_info[0]->unit_price , 'total_unit_price'=>$vend_info[0]->total_unit_price , 'date_entry'=>$vend_info[0]->date_entry , 'comm_item_slno'=>$vend_info[0]->comm_item_slno , 'mr_item_slno'=>$vend_info[0]->mr_item_slno , 'vendor_bid_slno'=>$vend_info[0]->vendor_bid_slno , 'Vendor_id'=>$vend_info[0]->Vendor_id , 'Slno_simple_item_m'=>$vend_info[0]->Slno_simple_item,  'commerical_entry_name'=>$commerical_email_id);
+                       $this->db->insert('master_final_simple_bid_logistic',$array_insert_bid);
+
+                 }
+                 $data_update_master = array('status_bid' => 6);
+                 $data_master_id = array('Slno_bid' => $master_bid_id );
+
+                 $data__master_bid_ids = array('master_bid_id' => $master_bid_id );
+                $this->db->update('master_bid_commerical',$data_update_master,$data_master_id);
+                $this->db->update('master_bid_commericalevaluation',$data_update_master,$data__master_bid_ids);
+                
+                $this->session->set_flashdata('success_message',  'Bid Approved vendor successfully Has been Completed');
+                 redirect('commerical-otp-verification-success-view/'.$type_bid.'/'.$master_bid_id.'/'.$category_id.'/'.$bid_name_url.'/'.$buyer_bid.'/'.$last_otp_id);
                break;
            case '21': // closed  bid with  SCi
                  $vendor_apporved=$this->input->post('vendor_apporved');
@@ -630,7 +669,7 @@ class Commericalevalutor extends CI_Controller {
                      $data_indety = array('Bid_master_id_com' => $master_bid_id,'Vendor_id'=>$single_vendor,'comm_item_slno'=>$value_slno);
                      $this->db->order_by('date_entry','DESC');
                      $this->db->limit(1); 
-                     $query_get_item=$this->db->get_where('master_closed_bid_item',$data_indety);
+                     $query_get_item=$this->db->get_where('master_rankorder_bid_item',$data_indety);
                      // echo $this->db->last_query();
                      $vend_info=$query_get_item->result();
                      
@@ -659,7 +698,7 @@ class Commericalevalutor extends CI_Controller {
                      $data_indety = array('Bid_master_id_com' => $master_bid_id,'Vendor_id'=>$single_vendor,'comm_item_slno'=>$value_slno);
                      $this->db->order_by('date_entry','DESC');
                      $this->db->limit(1); 
-                     $query_get_item=$this->db->get_where('master_closed_bid_item',$data_indety);
+                     $query_get_item=$this->db->get_where('master_rankorder_bid_item',$data_indety);
                      // echo $this->db->last_query();
                      $vend_info=$query_get_item->result();
                      
@@ -717,7 +756,14 @@ class Commericalevalutor extends CI_Controller {
                         // $this->load->view('template/template_footer',$data);
                         break;
                     case '13': //Simple bid close
-                        # code...
+                         $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view('comm_evalutor_user/commerical_bid_statement_view/simple_bid/commerical_get_list_logistics.php',$data);
+                        // $this->load->view('template/template_footer',$data);
                         break;
                     case '21': //Closed bid Sci
                         $scripts='';

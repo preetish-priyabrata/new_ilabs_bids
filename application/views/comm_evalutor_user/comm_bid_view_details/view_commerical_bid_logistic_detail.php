@@ -4,9 +4,30 @@ if(empty($commerical_email_id)){
 
 	redirect('comm-evalutor-logout-by-pass');
 }
-$Slno_bid=$value=$value; // bid id serial
-$value1=$value1; // material category
-$result_drafted=$this->comm_eva_db->commerical_bid_details_information($value,1);
+$Slno_bid=$value=$value; // serial id bid master_id
+$value1=$value1; // category_id
+$result_drafted=$this->comm_eva_db->commerical_bid_details_information($Slno_bid,1);
+$mode_bid=$result_drafted['bid_list'][0]->mode_bid;
+$buyer_slno=$result_drafted['bid_list'][0]->buyer_slno;
+switch ($mode_bid) {
+	case 'Closed Bid':
+		$type_bid=2;
+		break;
+	case 'Simple Bid':
+		$type_bid=1;
+		break;
+	case 'Rank Order Bid':
+		$type_bid=3;
+		break;
+
+	default:
+		$this->session->set_flashdata('error_message', 'The Information Trying access is invalid');
+		redirect('user-buyer-home');
+		break;
+}
+// $Slno_bid=$value=$value; // bid id serial
+// $value1=$value1; // material category
+// $result_drafted=$this->comm_eva_db->commerical_bid_details_information($value,1);
 $bid_list=$result_drafted['bid_list'][0];
 if($result_drafted['no_bid']!=1){
 	 $this->session->set_flashdata('error_message', 'The Information Trying access is invalid');
@@ -550,48 +571,19 @@ if($result_drafted['no_bid']!=1){
 						 <div class="card">
 							   <div class="card-header text-center">
 							      	<a class="collapsed card-link" data-toggle="collapse" href="#collapseFive">
-							       		Technical Evaluator / Vendor Selection
+							       		 Vendor List
 							      	</a>
 							    </div>
 							    <div id="collapseFive" class="collapse" data-parent="#accordion">
 							      	<div class="card-body">
-							       		<h5 class="text-left">Technical Evaluator / Vendor Selection</h5>
+							       		<h5 class="text-left"> Vendor List</h5>
 										<hr style="background: lightblue">
 										<!-- row Start -->
 										<div class="row">
+											
+								
 											<!-- part g -->
-											<div class="col-md-6 col-lg-6">
-												<div class="form-group row m-b-15">
-													<label class="col-form-label col-md-3" for="Technical_ev" >Technical Evaluator Name</label>
-													<div class="col-md-9">
-														<?php
-														$data_array_approver=$this->buyer_user->get_user_generic_list('1','0','0','9','','');
-
-														?>
-
-														<select name="Technical_ev"  class="form-control-plaintext m-b-5" id="Technical_ev" required="" >
-															<?php
-															if($data_array_approver['no_user']==2){?>
-																<option value="">--No Technical Evaluator Is found--</option>
-																<?php
-															}else if($data_array_approver['no_user']==1){
-																?>
-																<option value="">--Select Technical Evaluator--</option>
-															<?php
-																foreach ($data_array_approver['user_approver'] as $key_approver) {
-																	echo "<option value='".$key_approver->slno."'>".$key_approver->Username." [ ".$key_approver->email_id." ]</option>";
-																}
-															}
-															?>
-
-														</select>
-														<small class="f-s-12 text-grey-darker">Select Technical Evaluator </small>
-													</div>
-												</div>
-
-											</div>
-											<!-- part g -->
-											<div class="col-md-6 col-lg-6">
+											<div class="col-md-12 col-lg-12">
 
 												<div class="row">
 													<div class="col-lg-12">
@@ -644,7 +636,8 @@ if($result_drafted['no_bid']!=1){
 									</div>
 									<div class="form-group row pull-right">
                     <div class="col-md-12">
-                        <a  href="<?=base_url()?>user-buyer-home" class="btn btn-sm btn-default">Cancel</a>
+                        	<a href="<?=base_url()?>generate-otp-bid-referecnce/<?=$type_bid?>/<?=$Slno_bid?>/<?=$value1?>/<?=$mode_bid?>/<?=$buyer_slno?>" class="btn btn-sm btn-lime">Generate Otp for Comparate Statement</a>
+						<a  href="<?=base_url()?>user-commerical-evalutor-home" class="btn btn-sm btn-default">Home</a>
                     </div>
                 </div>
 			</form>
