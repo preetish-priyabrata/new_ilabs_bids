@@ -168,7 +168,7 @@ class Commericalevalutor extends CI_Controller {
             redirect('comm-evalutor-logout-by-pass');
         }
         $scripts='';
-    //   $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
+   
           $data=array('title' =>"Detail Information Of bid",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1);
             $this->load->view('template/template_header',$data);
             $this->load->view('comm_evalutor_user/template/template_top_head');
@@ -890,13 +890,53 @@ class Commericalevalutor extends CI_Controller {
                 redirect('user-commerical-evalutor-home');
             }
     }
+    public function commerical_evaluator_view_details_commerical_bid_completed($value='',$value1=''){
+        $commerical_email_id=$this->session->userdata('commerical_email_id');
+         if(empty($commerical_email_id)){
+
+            redirect('comm-evalutor-logout-by-pass');
+        }
+        $scripts='';
+   
+          $data=array('title' =>"Detail Information Of bid",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','value'=>$value,'value1'=>$value1);
+            $this->load->view('template/template_header',$data);
+            $this->load->view('comm_evalutor_user/template/template_top_head');
+            $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+            if($value1==3){
+                 $this->load->view('comm_evalutor_user/comm_bid_view_details/view_commerical_bid_logistic_detail',$data);
+            }else if(($value1==2) || ($value1==1)){
+                $this->load->view('comm_evalutor_user/comm_bid_view_details/View_commerical_bid_detail',$data);
+
+            }else{
+                $this->session->set_flashdata('error_message',  'Something went wrong Try Again!!!!');
+                redirect('user-commerical-evalutor-home');
+            }
+
+            $this->load->view('template/template_footer',$data);
+    }
+
+
+
+    
     /**
      * [user_commerical_evaluator_bid_complete_list description]
      * @param  string $value [description]
      * @return [type]        [description]
      */
     public function user_commerical_evaluator_bid_complete_list($value=''){
-        
+          $commerical_email_id=$this->session->userdata('commerical_email_id');
+         if(empty($commerical_email_id)){
+
+            redirect('comm-evalutor-logout-by-pass');
+        }
+      $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
+          $data=array('title' =>"New Bid List",'script_js'=>$scripts,'menu_status'=>'1','sub_menu'=>'3','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
+
+            $this->load->view('template/template_header',$data);
+            $this->load->view('comm_evalutor_user/template/template_top_head');
+            $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+            $this->load->view('comm_evalutor_user/comm_bid_completed/commerical_bid_new_list',$data);
+            $this->load->view('template/template_footer',$data);
     }
 
     //

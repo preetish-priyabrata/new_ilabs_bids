@@ -425,6 +425,7 @@ $route['tech-evalutor-logout']='technicalevalutor/tech_evalutor_logout';
 $route['user-commerical-evalutor-home']='commericalevalutor/comm_evalutor_home';
 $route['user-commerical-evaluator-bid-new-list']='commericalevalutor/commerical_evaluator_bid_new_list';
 $route['user-commerical-evaluator-view-details-commerical-bid-new/(:any)/(:any)']='commericalevalutor/commerical_evaluator_view_details_commerical_bid_new/$1/$2';
+$route['user-commerical-evaluator-view-details-commerical-bid-completed/(:any)/(:any)']='commericalevalutor/commerical_evaluator_view_details_commerical_bid_completed/$1/$2';
 $route['generate-otp-bid-referecnce/(:any)/(:any)/(:any)/(:any)/(:any)']='commericalevalutor/commerical_generate_otp_bid_referecnce/$1/$2/$3/$4/$5';
 $route['commerical-otp-verification']='commericalevalutor/commerical_otp_verification';
 $route['commerical-otp-verification-fail/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)']='commericalevalutor/commerical_otp_verification_fail/$1/$2/$3/$4/$5/$6';
@@ -435,8 +436,6 @@ $route['commerical-otp-verification-success-view/(:any)/(:any)/(:any)/(:any)/(:a
 $route['commerrical-user-send-approve-nofication']='commericalevalutor/commerrical_user_send_approve_nofication';
 $route['commerical-user-send-approve-nofication']='commericalevalutor/commerrical_user_Channel_send_approve_nofication';
 $route['commerrical-user-send-nofication-vendor']='commericalevalutor/commerrical_user_send_approve_nofication_vendor';
-
-
 $route['user-commerical-evaluator-bid-complete-list']='commericalevalutor/user_commerical_evaluator_bid_complete_list';
 $route['commerrical-user-send-approve-vendor']='commericalevalutor/commerrical_user_send_approve_vendor';
 $route['comm-evalutor-logout-by-pass']='commericalevalutor/comm_evalutor_logout_bypass';
