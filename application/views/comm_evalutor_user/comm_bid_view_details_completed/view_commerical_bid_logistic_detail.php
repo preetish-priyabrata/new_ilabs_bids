@@ -4,20 +4,21 @@ if(empty($commerical_email_id)){
 
 	redirect('comm-evalutor-logout-by-pass');
 }
+$otp=rand();
 $Slno_bid=$value=$value; // serial id bid master_id
 $value1=$value1; // category_id
-$result_drafted=$this->comm_eva_db->commerical_bid_details_information($Slno_bid,1);
+$result_drafted=$this->comm_eva_db->commerical_bid_details_information_completed($Slno_bid,6);
 $mode_bid=$result_drafted['bid_list'][0]->mode_bid;
 $buyer_slno=$result_drafted['bid_list'][0]->buyer_slno;
 switch ($mode_bid) {
 	case 'Closed Bid':
-		$type_bid=2;
+		$type_bid="commerical-otp-verification-success-view/2/".$Slno_bid."/".$value1."/".$mode_bid."/".$buyer_slno."/".$otp;
 		break;
 	case 'Simple Bid':
-		$type_bid=1;
+			$type_bid="commerical-otp-verification-success-view/1/".$Slno_bid."/".$value1."/".$mode_bid."/".$buyer_slno."/".$otp;
 		break;
 	case 'Rank Order Bid':
-		$type_bid=3;
+			$type_bid="commerical-otp-verification-success-view/3/".$Slno_bid."/".$value1."/".$mode_bid."/".$buyer_slno."/".$otp;
 		break;
 
 	default:
@@ -25,9 +26,6 @@ switch ($mode_bid) {
 		redirect('user-buyer-home');
 		break;
 }
-// $Slno_bid=$value=$value; // bid id serial
-// $value1=$value1; // material category
-// $result_drafted=$this->comm_eva_db->commerical_bid_details_information($value,1);
 $bid_list=$result_drafted['bid_list'][0];
 if($result_drafted['no_bid']!=1){
 	 $this->session->set_flashdata('error_message', 'The Information Trying access is invalid');
@@ -126,7 +124,7 @@ if($result_drafted['no_bid']!=1){
 						$data_get_list_commerical = array('master_bid_id_com' =>$Slno_bid );
  						$query_get_list=$this->db->get_where('master_logistic_vehicle_commerical',$data_get_list_commerical);
            ?>
-			<form action="#" method="POST"  id="bid_tech" name="bid_tech" class="bid_tech">
+			<form action="<?=base_url()?>bid-tech-entry" method="POST"  id="bid_tech" name="bid_tech" class="bid_tech">
 				<input class="form-control-plaintext m-b-5"  name="value4" id="value4" type="hidden" value="<?=$value4?>" required="" readonly>
 				<input class="form-control-plaintext m-b-5"  name="slno_Mr_no" id="slno_Mr_no" type="hidden" value="<?=$bid_list->mr_slno?>" required="" readonly>
 				<input class="form-control-plaintext m-b-5"  name="edit_id" id="edit_id" type="hidden" value="<?=$edit_id?>" required="" readonly>
@@ -636,7 +634,7 @@ if($result_drafted['no_bid']!=1){
 									</div>
 									<div class="form-group row pull-right">
                     <div class="col-md-12">
-                        	<a href="<?=base_url()?>generate-otp-bid-referecnce/<?=$type_bid?>/<?=$Slno_bid?>/<?=$value1?>/<?=$mode_bid?>/<?=$buyer_slno?>" class="btn btn-sm btn-lime">Generate Otp for Comparate Statement</a>
+                        		<a href="<?=base_url()?><?=$type_bid?>" class="btn btn-sm btn-lime">View Comparate Statement</a>
 						<a  href="<?=base_url()?>user-commerical-evalutor-home" class="btn btn-sm btn-default">Home</a>
                     </div>
                 </div>
@@ -645,220 +643,4 @@ if($result_drafted['no_bid']!=1){
 	</div>
 </div>
 
-<!-- <script type="text/javascript">
 
-	function get_bid_ref(id) {
-
-
-		if(id==1){
-					var job_code=document.getElementById('bid_ref_no').value;
-					var pass1 = document.getElementById('bid_ref_no');
-					var message = document.getElementById('job_code_error1');
-
-   					var goodColor = "#0C6";
-    				var badColor = "#FF9B37";
-					var results;
-					if(job_code!=""){
-						// alert(job_code);
-					  	$.ajax({
-						  	url:'<?=base_url()?>get-buyer-bid-check',
-						    method: 'post',
-						    data: {field_id:'1',job_codes:job_code},
-						    // dataType: 'json',
-						    success: function(response){
-						    // alert(response);
-						    	if(response==1){
-									pass1.style.backgroundColor = goodColor;
-							        message.style.color = goodColor;
-							        message.innerHTML = "valid Bid Ref code";
-							        $('#spl').show();
-							        results=1;
-							        return 1;
-
-								}else if(response==2){
-									pass1.style.backgroundColor = badColor;
-							        message.style.color = badColor;
-							        message.innerHTML = "invalid Bid Ref code";
-							        results=2;
-							        $('#bid_ref_no').val('');
-							        $('#spl').hide();
-							         return false;
-
-
-								}
-							}
-						});
-						// alert(results);
-					  	// if(results==1){
-					  	// 	return true;
-					  	// }else{
-					  	// 	return false;
-					  	// }
-					}else{
-						pass1.style.backgroundColor = badColor;
-						message.style.color = badColor;
-						message.innerHTML = "Should not left blank";
-						 return false;
-					}
-		}else if(id==2){
-			var job_code=document.getElementById('bid_Id').value;
-			var pass1 = document.getElementById('bid_Id');
-			var message = document.getElementById('job_code_error2');
-
-   			var goodColor = "#0C6";
-    		var badColor = "#FF9B37";
-			if(job_code!=""){
-			   $.ajax({
-									url:'<?=base_url()?>get-buyer-bid-check',
-									method: 'post',
-									data: {field_id:'2',job_codes:job_code},
-									    // dataType: 'json',
-									success: function(response){
-									    if(response==1){
-											pass1.style.backgroundColor = goodColor;
-									        message.style.color = goodColor;
-									        message.innerHTML = "valid Bid id code";
-									        $('#spl').show();
-									        // return 	get_bid_ref(true);
-									        // return "preetish";
-
-
-										}else if(response==2){
-											pass1.style.backgroundColor = badColor;
-									        message.style.color = badColor;
-									        message.innerHTML = "invalid Bid id code";
-									        $('#bid_Id').val('');
-									        $('#spl').hide();
-									         return false;
-
-										}
-
-									}
-								})
-			  		// alert(values_ids);
-			  		// console.log(values_ids);
-
-					}else{
-						pass1.style.backgroundColor = badColor;
-						message.style.color = badColor;
-						message.innerHTML = "Should not left blank";
-						 return false;
-					}
-		}
-	}
-			function check_before_submiting(){
-					console.log(get_bid_ref(1));
-					console.log(get_bid_ref(2));
-					if((get_bid_ref('1')==1)||(get_bid_ref('1')===true)){
-						// alert(get_bid_ref(1));
-						if((get_bid_ref('2')==1)||(get_bid_ref('2')===true)){
-							// alert(get_bid_ref(2));
-
-							return 1;
-						}
-					}
-				}
-
-
-			// }
-			$('#bid_tech').submit(function(){
-				console.log(check_before_submiting());
-							if(!$('#bid_tech input[type="checkbox"]').is(':checked')){
-							      alert("Please check at least one Vendor.");
-							      return false;
-							  }else{
-
-							  		document.getElementById("bid_tech").submit(); //form submission
-
-							  }
-							    // }else{
-							    // 	check_before_submiting();
-							    // }
-							});
-							  //
-function file_delete(id) {
-		var actions_file='files_info_delete';
-    	var value4 = $('#value4').val();
-		var slno_Mr_no = $('#slno_Mr_no').val();
-		queryString_id = 'actions_file='+actions_file+'&value4='+ value4+'&slno_Mr_no='+slno_Mr_no+'&file_id='+id;
-
-		jQuery.ajax({
-			url: "<?php echo base_url(); ?>buyer-file-upload-data",
-			data:queryString_id,
-			type: "POST",
-			success:function(data){
-				if(data){
-					file_uploaded();
-                    alert('Successfull attach file is deleted ');
-				}else{
-					file_uploaded();
-                    alert('Unable attached file deleted');
-				}
-			}
-		});
-		// body...
-	}
-
-function file_uploaded(){
-		var actions_file='files_info';
-    	var value4 = $('#value4').val();
-		var slno_Mr_no = $('#slno_Mr_no').val();
-		queryString_id = 'actions_file='+actions_file+'&value4='+ value4+'&slno_Mr_no='+slno_Mr_no;
-
-		jQuery.ajax({
-			url: "<?php echo base_url(); ?>buyer-file-upload-data",
-			data:queryString_id,
-			type: "POST",
-			success:function(data){
-				$("#cart-item-files").html(data);
-			}
-		});
-
-	}
- $(document).ready(function (e) {
- 	$('#spl').hide();
-
-   		file_uploaded();
-        $('#sub').on('click', function () {
-        	var actions_file='files_uploaded_details';
-        	var value4 = $('#value4').val();
-			var slno_Mr_no = $('#slno_Mr_no').val();
-            var file_data = $('#job_files').prop('files')[0];
-            if(file_data!=""){
-                var form_data = new FormData();
-                form_data.append('file', file_data);
-                form_data.append('value4', value4);
-          		form_data.append('slno_Mr_no', slno_Mr_no);
-          		form_data.append('actions_file', actions_file);
-
-                $.ajax({
-                    url: '<?php echo base_url(); ?>buyer-file-upload-data', // point to server-side controller method
-                    dataType: 'text', // what to expect back from the server
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data: form_data,
-                    type: 'post',
-                    success: function (response) {
-                    	if(response==1){
-                    		file_uploaded();
-                    		alert('File Is successfully attached ');
-
-                    	}else if(response==2){
-                    		alert('Same File name is found ');
-                    	}else{
-                    		alert('Some thing went worng Please check internet connection ');
-                    	}
-                        // $('#msg').html(response); // display success response from the server
-                    }
-                    // error: function (response) {
-                    //     $('#msg').html(response); // display error response from the server
-                    // }
-                });
-            }else{
-            	alert('Please Attachment Some file click on upload');
-            }
-
-        });
-    });
-</script> -->

@@ -4,20 +4,21 @@ if(empty($commerical_email_id)){
 
 	redirect('buy-logout-by-pass');
 }
+$otp=rand();
 $Slno_bid=$value=$value; // serial id bid master_id
 $value1=$value1; // category_id
-$result_drafted=$this->comm_eva_db->commerical_bid_details_information($Slno_bid,1);
+$result_drafted=$this->comm_eva_db->commerical_bid_details_information_completed($Slno_bid,6);
 $mode_bid=$result_drafted['bid_list'][0]->mode_bid;
 $buyer_slno=$result_drafted['bid_list'][0]->buyer_slno;
 switch ($mode_bid) {
 	case 'Closed Bid':
-		$type_bid=2;
+		$type_bid="commerical-otp-verification-success-view/2/".$Slno_bid."/".$value1."/".$mode_bid."/".$buyer_slno."/".$otp;
 		break;
 	case 'Simple Bid':
-		$type_bid=1;
+			$type_bid="commerical-otp-verification-success-view/1/".$Slno_bid."/".$value1."/".$mode_bid."/".$buyer_slno."/".$otp;
 		break;
 	case 'Rank Order Bid':
-		$type_bid=3;
+			$type_bid="commerical-otp-verification-success-view/3/".$Slno_bid."/".$value1."/".$mode_bid."/".$buyer_slno."/".$otp;
 		break;
 
 	default:
@@ -25,8 +26,7 @@ switch ($mode_bid) {
 		redirect('user-buyer-home');
 		break;
 }
-// print_r($result_drafted);
-// $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,1,$value);
+
 $bid_list=$result_drafted['bid_list'][0];
 if($result_drafted['no_bid']!=1){
 	 $this->session->set_flashdata('error_message', 'The Information Trying access is invalid');
@@ -119,10 +119,8 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 			<h4 class="panel-title">Commerical REF</h4>
 		</div>
 		<div class="panel-body">
-			<div class="alert alert-secondary">
-                <span style="color: red"> *</span> All mandory fields shall be duly filled up
-            </div>
-			<form action="#" method="POST"  id="bid_tech" name="bid_tech" class="bid_tech">
+		
+			<form action="#" method="#"  id="bid_tech" name="bid_tech" class="bid_tech">
 
 				<input class="form-control m-b-5"  name="slno_Mr_no" id="slno_Mr_no" type="hidden" value="<?=$bid_list->mr_slno?>" required="" readonly>
 				<input class="form-control m-b-5"  name="value4" id="value4" type="hidden" value="<?=$value4?>" required="" readonly>
@@ -607,7 +605,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 
 				<div class="form-group row pull-right">
                     <div class="col-md-12">
-						<a href="<?=base_url()?>generate-otp-bid-referecnce/<?=$type_bid?>/<?=$Slno_bid?>/<?=$value1?>/<?=$mode_bid?>/<?=$buyer_slno?>" class="btn btn-sm btn-lime">Generate Otp for Comparate Statement</a>
+						<a href="<?=base_url()?><?=$type_bid?>" class="btn btn-sm btn-lime">View Comparate Statement</a>
 						<a  href="<?=base_url()?>user-commerical-evalutor-home" class="btn btn-sm btn-default">Home</a>
                     </div>
                 </div>
