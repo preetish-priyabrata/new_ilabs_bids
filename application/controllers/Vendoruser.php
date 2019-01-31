@@ -1350,7 +1350,7 @@ class Vendoruser extends CI_Controller {
     if(($value1!="") && ($value!="") &&($value2!="")&&($value3!="")){
       if($value==3){
          $page="vendors_user/RANK_ENTRY/rank_page2_logistic";
-      }else if(($value==2) || ($value==3)){
+      }else if(($value==2) || ($value==1)){
         $page="vendors_user/RANK_ENTRY/rank_page1_mo_sci";
       }else{
         $this->session->set_flashdata('error_message', 'something went worng');

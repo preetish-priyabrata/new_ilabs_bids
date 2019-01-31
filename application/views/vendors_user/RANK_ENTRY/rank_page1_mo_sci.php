@@ -1,4 +1,6 @@
 <?php 
+// echo "string";
+// exit;
 $Vendor_email_id=$this->session->userdata('Vendor_email_id');
 if(empty($Vendor_email_id)){
 	
@@ -56,6 +58,7 @@ $case_bid=$mode_bid=$result_title['new_tech_list'][0]->mode_bid;
 $data_get_list_commerical = array('master_bid_id' =>$master_bid_id );
  $query_get_list=$this->db->get_where('master_buyer_material_details',$data_get_list_commerical);
 ?>
+
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>file_css_admin/counter/CSS/jquery.countdownTimer.css" />
 <style type="text/css">
 /*	.clock_back{
@@ -163,6 +166,7 @@ p {
 			}
 			 // print_r($this->session->userdata());
 			 ?>
+			 
 			<!-- begin panel -->
 			<div class="panel panel-inverse">
 				<div class="panel-heading">

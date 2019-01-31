@@ -80,6 +80,7 @@ $result_new_bid=$this->vendor_db_users->vendor_new_commerical_rank_bid($Vendor_e
 					        				$today=strtotime(date('Y-m-d H:i:s'));
 					        				$x++;
 					        				?>
+					        				<tr>
 					        				<td><?=$x?></td>
 					        				<td><?=$bid_rank_ids->bid_ref?></td>
 					        				<td><?=$bid_rank_ids->start_date?></td>
@@ -111,6 +112,9 @@ $result_new_bid=$this->vendor_db_users->vendor_new_commerical_rank_bid($Vendor_e
 					        				<?php
 					        				# code...
 					        			}
+					        			?>
+					        		</tr>
+					        			<?php 
 
 
 					        		}?>
