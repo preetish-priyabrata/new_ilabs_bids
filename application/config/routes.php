@@ -393,11 +393,20 @@ $route['buyer-drafted-bid-commerical']='buyeruser/user_buyer_bid_drafted_commeri
 $route['buyer-bid-commerical-sent/(:any)/(:any)']='buyeruser/buyer_bid_sent_commerical/$1/$2';
 $route['buyer-send-bid-commerical']='buyeruser/buyer_send_bid_commerical';
 $route['buyer-send-bid-commerical-rank-order']='buyeruser/buyer_send_bid_commerical_rank_order';
+
+$route['buyer-send-bid-commerical-rank-order-history']='buyeruser/buyer_send_bid_commerical_rank_order_history';
+
+$route['buyer-send-bid-commerical-history']='buyeruser/buyer_send_bid_commerical_history';
+
 $route['buyer-bid-send-commerical-view/(:any)/(:any)']='buyeruser/buyer_bid_send_commerical_view/$1/$2';
+$route['buyer-bid-send-commerical-view-history/(:any)/(:any)']='buyeruser/buyer_bid_send_commerical_view_history/$1/$2';
+
 $route['bid-commerical-entry-logistic']='buyeruser/buyer_bid_commerical_entry_logistic';
 $route['query-panel-buyer-commerical']='buyeruser/query_panel_buyer_commerical';
 $route['buyer-bid-query-commerical-intimation/(:any)/(:any)']='buyeruser/buyer_bid_query_commerical_intimation/$1/$2';
 $route['buyer-bid-query-commerical-inti-notification/(:any)/(:any)']='buyeruser/buyer_bid_query_commerical_inti_notification/$1/$2';
+
+$route['buyer-otp-verification-success/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)']='buyeruser/buyer_commerical_otp_verification_success_view/$1/$2/$3/$4/$5/$6';
 
 $route['buyer-bid-rank-invitation-to-vendor-com']='buyeruser/buyer_bid_rank_invitation_to_vendor_com';
 

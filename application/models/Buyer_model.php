@@ -175,6 +175,33 @@ class Buyer_model extends CI_Model {
         exit;
       }
     }
+    /**
+     * [drafted_bid_information_commerical_completed description]
+     * @param  string $value  [EMAIL ID]
+     * @param  string $value1 [status]
+     * @return [type]         [data_send]
+     * @return [data_send[no_bid]] [1->have list of data 2-> not having list of data]
+     * @return [data_send[bid_list]] [List Of array of table which will contain Bid is been send or saved]
+     */
+    public function drafted_bid_information_commerical_completed($value='',$value1='',$value2=''){ 
+    // HeRE VALUE ->  , VALUE1->status
+      
+      $data_id = array('status_bid'=>$value1,'bid_creator_id'=>$value);
+      if(!empty($value2)){
+        $data_id= array('Slno_bid' => $value2,'status_bid'=>$value1,'bid_creator_id'=>$value);
+      }
+      $query_mr_files =$this->db->get_where('master_bid_commerical',$data_id);
+      if($query_mr_files->num_rows() == 0){
+        $data_send = array('no_bid' =>2 );
+        return $data_send;
+        exit;
+      }else{
+        $results=$query_mr_files->result();
+        $data_send = array('no_bid' =>1, 'bid_list'=>$results);
+        return $data_send;
+        exit;
+      }
+    }
 		/**
 		 * [drafted_bid_information_DATE Here Date infromation section will be shown]
 		 * @param  string $value  [description]

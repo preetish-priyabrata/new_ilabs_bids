@@ -4,10 +4,14 @@ if(empty($email_id)){
 
 	redirect('buy-logout-by-pass');
 }
+
+
 $Slno_bid=$value=$value;
 $value1=$value1;
 $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,1,$value);
 $bid_list=$result_drafted['bid_list'][0];
+
+
 if($result_drafted['no_bid']!=1){
 	 $this->session->set_flashdata('error_message', 'The Information Trying access is invalid');
 	redirect('user-buyer-home');
@@ -184,7 +188,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="col-md-12 col-lg-12">
 						<div id="accordion">
@@ -337,7 +341,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 											<!-- part d end here -->
 										</div>
 										<hr>
-										
+
 										<div class="row">
 											<div class="col-lg-12">
 												<table class="table table-bordered" cellpadding="10" cellspacing="1" width="100%">
@@ -353,9 +357,9 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 					                                    </tr>
 					                                </thead>
 					                                <tbody>
-					                                	<?php 
+					                                	<?php
 					                                		foreach ($query_get_list->result() as $key_value) {
-					                                		
+
 					                                		?>
 					                                		<tr>
 						                                       <td><?=$key_value->item_name?></td>
@@ -363,7 +367,7 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 															   <td><?=$key_value->item_qnt?></td>
 															   <td><?=$key_value->item_uom?></td>
 															   <td>
-																	<?php 
+																	<?php
 															   			$tech_name=json_decode($key_value->tech_name);
 															   			foreach ($tech_name as $key_id) {
 															   				echo $key_id."<br>";
@@ -633,7 +637,8 @@ foreach ($result_drafted_bid_details_vendor['bid_vendors_list'] as $key) {
 
 				<div class="form-group row pull-right">
                     <div class="col-md-12">
-											<a  href="<?=base_url()?>user-buyer-home" class="btn btn-sm btn-default">Cancel</a>
+
+						<a  href="<?=base_url()?>user-buyer-home" class="btn btn-sm btn-default">Cancel</a>
                     </div>
                 </div>
 			</form>

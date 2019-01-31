@@ -878,7 +878,14 @@ class Commericalevalutor extends CI_Controller {
                         // $this->load->view('template/template_footer',$data);
                         break;
                     case '33': //rank bid logistics
-                        # code...
+                       $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view('comm_evalutor_user/commerical_bid_statement_view/rank_bid/commerical_get_list_logistics',$data);
+                        // $this->load->view('template/template_footer',$data);
                         break;
 
                     default:

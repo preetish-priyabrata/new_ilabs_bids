@@ -68,6 +68,20 @@
 						    <!-- <li><a href="index_v2.html">Dashboard v2</a></li> -->
 						</ul>
 					</li>
+					<li class="has-sub <?php if($menu_status==4){echo 'active';}?>">
+						<a href="javascript:;">
+					        <b class="caret"></b>
+						    <i class="fas fa-atlas"></i>
+						    <span>Completed Bid Information</span>
+					    </a>
+						<ul class="sub-menu">
+
+						    <li class="<?php if($sub_menu==7){ echo 'active'; }?>"><a href="<?=base_url()?>buyer-send-bid-tech" >Send Bid Information of Technical</a></li>
+						    <li class="<?php if($sub_menu==8){ echo 'active'; }?>"><a href="<?=base_url()?>buyer-send-bid-commerical-history" >Completed Bid Information of Commerical Simple / Closed</a></li>
+						     <li class="<?php if($sub_menu==9){ echo 'active'; }?>"><a href="<?=base_url()?>buyer-send-bid-commerical-rank-order" >Send Bid Information of Commerical Rank order</a></li>
+						    <!-- <li><a href="index_v2.html">Dashboard v2</a></li> -->
+						</ul>
+					</li>
 
 
 

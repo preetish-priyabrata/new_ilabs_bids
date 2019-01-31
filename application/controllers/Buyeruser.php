@@ -508,7 +508,7 @@ class Buyeruser extends CI_Controller {
         $material_quantity=$this->input->post('material_quantity');
         $tech_name=$this->input->post('tech_name');
         $unit_price=$this->input->post('unit_price');
-        // print_r($this->input->post()); 
+        // print_r($this->input->post());
 
         if(!empty($vendor_array)){
             $data_bid_master = array('buyer_slno'=>$value4, 'bid_date_entry'=>$date_create, 'bid_ref'=>$bid_ref_no, 'bid_id'=>$bid_Id, 'category'=>$materials_id, 'mode_bid'=>$bid_method, 'technical_bid_type'=>$tech_evalution, 'status_bid'=>'4', 'mr_slno'=>$slno_Mr_no, 'mr_no'=>$mr_no, 'job_code'=>$job_code_id, 'edit_id'=>$edit_id,'material_category_name'=>$category_name,'bid_title'=>$bid_title,'bid_description'=>$bid_work_description,'bid_creator_id'=>$email_id,'date_publish'=>$date_publish,'date_closing'=>$date_closing);
@@ -518,7 +518,7 @@ class Buyeruser extends CI_Controller {
             if($query_bid_master){
 
                 foreach ($item_name as $key_value => $key_item_name) {
-       
+
                     $item_name_single=$key_item_name;
                     $slno_item_mr_single=$slno_item_mr[$key_value];
                     $item_id_single=$item_id[$key_value];
@@ -558,8 +558,8 @@ class Buyeruser extends CI_Controller {
         }else{
              $this->session->set_flashdata('error_message',  'No vendor is Selleted');
                 redirect('user-buyer-home');
-        }        
-    
+        }
+
     }
 
     public function buyer_bid_commerical_entry_logistic($value=''){
@@ -609,7 +609,7 @@ class Buyeruser extends CI_Controller {
         // $material_quantity=$this->input->post('material_quantity');
         // $tech_name=$this->input->post('tech_name');
         // $unit_price=$this->input->post('unit_price');
-        // print_r($this->input->post()); 
+        // print_r($this->input->post());
 
         if(!empty($vendor_array)){
             $data_bid_master = array('buyer_slno'=>$value4, 'bid_date_entry'=>$date_create, 'bid_ref'=>$bid_ref_no, 'bid_id'=>$bid_Id, 'category'=>$materials_id, 'mode_bid'=>$bid_method, 'technical_bid_type'=>$tech_evalution, 'status_bid'=>'4', 'mr_slno'=>$slno_Mr_no, 'mr_no'=>$mr_no, 'job_code'=>$job_code_id, 'edit_id'=>$edit_id,'material_category_name'=>$category_name,'bid_title'=>$bid_title,'bid_description'=>$bid_work_description,'bid_creator_id'=>$email_id,'date_publish'=>$date_publish,'date_closing'=>$date_closing);
@@ -633,7 +633,7 @@ class Buyeruser extends CI_Controller {
                     $query=$this->db->insert('master_logistic_vehicle_commerical',$data_vendor_comm);
                 }
 
-                
+
                 $data_title = array('bid_slno'=>$slno_Mr_no, 'buyer_slno'=>$value4, 'Title_bid'=>$bid_title, 'work_detail_bid'=>$bid_work_description, 'period_work_detail'=>$bid_period_work, 'location_detail'=>$bid_location_work, 'master_bid_id'=>$insert_id);
 
                 $query_title_master=$this->db->insert('master_bid_details_commerical',$data_title);
@@ -661,7 +661,7 @@ class Buyeruser extends CI_Controller {
         }else{
              $this->session->set_flashdata('error_message',  'No vendor is Selleted');
                 redirect('user-buyer-home');
-        }  
+        }
     }
     public function buyer_drafted_bid($value=''){
         $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
@@ -838,6 +838,16 @@ class Buyeruser extends CI_Controller {
           $this->load->view('template/template_footer',$data);
       // code...
     }
+    public function buyer_send_bid_commerical_rank_order_history($value=''){
+     $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
+         $data=array('title' =>"Buyer List Of Bid Successfull send Commerical List",'script_js'=>$scripts,'menu_status'=>'3','sub_menu'=>'6','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
+         $this->load->view('template/template_header',$data);
+         $this->load->view('buyer_user/template/template_top_head');
+         $this->load->view('buyer_user/template/template_side_bar',$data);
+         $this->load->view('buyer_user/commercial_bid/send_commerical_bid/bid_send_success_commerical_rank_order');
+         $this->load->view('template/template_footer',$data);
+     // code...
+   }
     /**
      * [buyer_bid_query_tech description]
      * @param  string $value  [bid seril no of master bid table]
@@ -985,9 +995,9 @@ class Buyeruser extends CI_Controller {
           $this->load->view('buyer_user/template/template_side_bar',$data);
           $this->load->view('buyer_user/commercial_bid/send_invitation/invitation_commerical',$data);
           $this->load->view('template/template_footer',$data);
-       
+
     }
-    public function buyer_bid_rank_invitation_to_vendor_com(){     
+    public function buyer_bid_rank_invitation_to_vendor_com(){
         $master_bid_id=$this->input->post('master_bid_id');
         $category=$this->input->post('category');
         $bid_ref=$this->input->post('bid_ref');
@@ -1006,14 +1016,14 @@ class Buyeruser extends CI_Controller {
             $query_invitation=$this->db->insert('master_bid_invitation_rank', $basic_invitation);
             $laast_id=$this->db->insert_id();
             if($query_invitation){
-                foreach ($slno_vendor_approve as $key_id_ven => $value_id_ven) {  
-                    
+                foreach ($slno_vendor_approve as $key_id_ven => $value_id_ven) {
+
                     $vendor_id_bid=$slno_vendor_approve[$key_id_ven];
                     $vendor_id=$vendor_id_approve[$key_id_ven];
                     $approve_vendor = array('master_bid_id'=>$master_bid_id, 'invi_slno_id'=>$laast_id, 'vendor_id_bid'=>$vendor_id_bid, 'vendor_id'=>$vendor_id, 'status'=>1,'bid_ref'=>$bid_ref, 'bid_id'=>$bid_id, 'start_date'=>$Starting, 'end_date'=>$ending, 'no_of_times'=>$no_of_entry,'category'=>$category);
                     $this->db->insert('master_bid_invi_rank_approvals',$approve_vendor);
                 }
-                foreach ($slno_vendor_approve as $key_id_ven => $value_id_ven) { 
+                foreach ($slno_vendor_approve as $key_id_ven => $value_id_ven) {
                     $message="A Rank order reverse auction shall be conducted for the bid no  ".$bid_ref." dated on ".$Starting." you are requested to participate. <br> <p>For any query send your queries accross ther application no " ;
                     $vendor_id_bid=$slno_vendor_approve[$key_id_ven];
                     $vendor_id=$vendor_id_approve[$key_id_ven];
@@ -1021,7 +1031,7 @@ class Buyeruser extends CI_Controller {
                     $this->db->insert('master_vendor_notifications',$approve_vendor);
                 }
                 if(!empty($vendor_id_not)){
-                    foreach ($slno_vendor_not as $key_id_ven => $value_id_ven) {  
+                    foreach ($slno_vendor_not as $key_id_ven => $value_id_ven) {
                         $vendor_bid_id=$slno_vendor_not[$key_id_ven];
                         $vendor_id=$vendor_id_not[$key_id_ven];
                         $approve_vendor = array('master_bid_id'=>$master_bid_id, 'invi_slno_id'=>$laast_id, 'vendor_bid_id'=>$vendor_bid_id, 'vendor_id'=>$vendor_id);
@@ -1032,7 +1042,7 @@ class Buyeruser extends CI_Controller {
                 $data_update_cou = array('count_id' =>1);
                 $data_id = array('Slno_bid' => $master_bid_id);
                 $this->db->update('master_bid_commerical',$data_update_cou,$data_id);
-                
+
                  $this->session->set_flashdata('success_message', 'successfull Rank event is created  '); // here is message is been toasted
 
                  redirect('buyer-send-bid-commerical-rank-order');
@@ -1047,22 +1057,22 @@ class Buyeruser extends CI_Controller {
         }
     }
     public function buyer_bid_query_commerical_inti_notification($value='',$value1=''){
-       
+
        $data_get = array('master_bid_id' =>$value ,'category'=>$value1 );
        $query= $this->db->get_where('master_bid_invi_rank_approvals',$data_get);
         if($query->num_rows() == 0){
             $this->session->set_flashdata('error_message', 'Something went worng!');
             redirect('buyer-send-bid-commerical-rank-order');
         }else{
-           foreach ($query->result() as $key_id => $value_id) {          
+           foreach ($query->result() as $key_id => $value_id) {
                  $bid_ref=$value_id->bid_ref;
                  $Starting=$value_id->start_date;
                  $vendor_id_bid=$value_id->vendor_id_bid;
                  $vendor_id=$value_id->vendor_id;
-                 $message="A Rank order reverse auction shall be conducted for the bid no  ".$bid_ref." dated on ".$Starting." you are requested to participate. <br> <p>For any query send your queries accross ther application no " ;                    
+                 $message="A Rank order reverse auction shall be conducted for the bid no  ".$bid_ref." dated on ".$Starting." you are requested to participate. <br> <p>For any query send your queries accross ther application no " ;
                         $approve_vendor = array('vendor_id_bid'=>$vendor_id_bid, 'vendor_id'=>$vendor_id, 'message'=>$message);
                         $this->db->insert('master_vendor_notifications',$approve_vendor);
-              
+
            }
              $this->session->set_flashdata('success_message', 'Successfull notification is send bid '.$bid_ref); // here is message is been toasted
 
@@ -1070,8 +1080,160 @@ class Buyeruser extends CI_Controller {
         }
 
     }
+    /**
+     * [buyer_send_bid_commerical_history here commerical list of bid which is send to vendor and commerical cummounity]
+     * @param  string $value [description]
+     * @return [type]        [description]
+     */
+    public function buyer_send_bid_commerical_history($value=''){
+      $scripts='<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script><script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script><script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> <script src="'.base_url().'file_css_admin/own_js.js"></script>';
+          $data=array('title' =>"List of bid completed by commerical evulation ",'script_js'=>$scripts,'menu_status'=>'8','sub_menu'=>'8','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'');
+          $this->load->view('template/template_header',$data);
+          $this->load->view('buyer_user/template/template_top_head');
+          $this->load->view('buyer_user/template/template_side_bar',$data);
+          $this->load->view('buyer_user/commercial_bid/send_commerical_bid_completed/bid_send_success_commerical');
+          $this->load->view('template/template_footer',$data);
+      // code...
+    }
+    public function buyer_bid_send_commerical_view_history($value='',$value1=''){
+        switch ($value1) {
+            case '1':
+                  $file_path="buyer_user/commercial_bid/send_commerical_bid_completed/send_new_commerical/view_bid_mr_send/View_commerical_bid_detail";
+                  # code...
+                  break;
+            case '2':
+                  $file_path="buyer_user/commercial_bid/send_commerical_bid_completed/send_new_commerical/view_bid_mr_send/View_commerical_bid_detail";
+                  # code...
+                  break;
+            case '3':
+                  $file_path="buyer_user/commercial_bid/send_commerical_bid_completed/send_new_commerical/view_bid_mr_send/view_commerical_bid_logistic_detail";
+                  # code...
+                  break;
 
+            default:
+                  # code...
+                  break;
+          }
+          $scripts='<script src="'.base_url().'file_css_admin/own_js_date_picker.js"></script>';
+              $data=array('title' =>"Detail Bid Information",'script_js'=>$scripts,'menu_status'=>'4','sub_menu'=>'8','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'' ,'value'=>$value,'value1'=>$value1);
+              $this->load->view('template/template_header',$data);
+              $this->load->view('buyer_user/template/template_top_head');
+              $this->load->view('buyer_user/template/template_side_bar',$data);
+              $this->load->view("$file_path",$data);
+              $this->load->view('template/template_footer',$data);
+    }
+    public function buyer_commerical_otp_verification_success_view($value='',$value1='',$value2="",$value3="",$value4="",$value5=""){
+      $email_id=$this->session->userdata('buy_email_id');
+      if(empty($email_id)){
 
+      redirect('buy-logout-by-pass');
+      }
+
+        if (!empty($value) &&!empty($value1) && !empty($value2) && !empty($value3) && !empty($value4) && !empty($value5)) {
+            $bid_type=$value.$value2;
+            $page_url="buyer_user/commercial_bid/commerical_bid_statement_view";
+            // echo "wait here for processing";
+                switch ($bid_type) {
+                    case '11': //Simple bid sci
+                          $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view($page_url.'/simple_bid/commerical_get_list_vendor_moi_sci_c_o_view',$data);
+                        // $this->load->view('template/template_footer',$data);
+                        break;
+                    case '12': //Simple bid Moi
+                        $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view($page_url.'/simple_bid/commerical_get_list_vendor_moi_sci_c_o_part_moi_view',$data);
+                        // $this->load->view('template/template_footer',$data);
+                        break;
+                    case '13': //Simple bid close
+                         $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view($page_url.'/simple_bid/commerical_get_list_logistics',$data);
+                        // $this->load->view('template/template_footer',$data);
+                        break;
+                    case '21': //Closed bid Sci
+                        $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view($page_url.'/closed_bid/commerical_get_list_vendor_moi_sci_c_o_view',$data);
+                        // $this->load->view('template/template_footer',$data);
+                        break;
+                    case '22': // closed  Moi
+                          $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view($page_url.'/closed_bid/commerical_get_list_vendor_moi_sci_c_o_part_moi_view',$data);
+                        // $this->load->view('template/template_footer',$data);
+                        break;
+                    case '23': // closed Logistic
+                        $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view($page_url.'/closed_bid/commerical_get_list_logistics',$data);
+                        // $this->load->view('template/template_footer',$data);
+                        break;
+                    case '31': //  rank order Sci
+                         $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view($page_url.'/rank_bid/commerical_get_list_vendor_moi_sci_c_o_view',$data);
+                        // $this->load->view('template/template_footer',$data);
+                        break;
+                    case '32': // rank bid  MOI
+                        $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view($page_url.'/rank_bid/commerical_get_list_vendor_moi_sci_c_o_part_moi_view',$data);
+                        // $this->load->view('template/template_footer',$data);
+                        break;
+                    case '33': //rank bid logistics
+                       $scripts='';
+                        $data=array('title' =>"Please Select Vendor List",'script_js'=>$scripts,'menu_status'=>'2','sub_menu'=>'2','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','sub_menu_1'=>'','sub_menu_2'=>'','sub_menu_3'=>'','type_bid'=>$value,'master_bid_id'=>$value1,'category_id'=>$value2,'bid_name'=>$value3,'buyer_bid'=>$value4,'last_otp_id'=>$value5);
+
+                        // $this->load->view('template/template_header',$data);
+                        // $this->load->view('comm_evalutor_user/template/template_top_head');
+                        // $this->load->view('comm_evalutor_user/template/template_side_bar',$data);
+                        $this->load->view($page_url.'/rank_bid/commerical_get_list_logistics',$data);
+                        // $this->load->view('template/template_footer',$data);
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
+            }else{
+                $this->session->set_flashdata('error_message',  'Fore full accessing system please contact andmin for it');
+                redirect('user-commerical-evalutor-home');
+            }
+    }
 
 
 
