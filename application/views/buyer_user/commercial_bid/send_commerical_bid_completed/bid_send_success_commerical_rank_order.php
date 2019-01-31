@@ -4,7 +4,7 @@ if(empty($email_id)){
 
 	redirect('buy-logout-by-pass');
 }
-$result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,1,'');
+$result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,6,'');
 
 ?>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
@@ -91,15 +91,15 @@ $result_drafted=$this->buyer_user->drafted_bid_information_commerical($email_id,
 							        					$sent_notifivation=base_url()."buyer-bid-query-commerical-inti-notification/".$Slno_bid."/".$category;
 							        				switch ($category) {
 							        					case '1':
-							        						$edit=base_url()."buyer-bid-send-commerical-view/".$Slno_bid."/".$category;
+							        						$edit=base_url()."buyer-bid-send-commerical-view-history/".$Slno_bid."/".$category;
 							        						$send=base_url()."buyer-bid-query-commerical/".$Slno_bid."/".$category;
 							        						break;
 							        					case '2':
-							        						$edit=base_url()."buyer-bid-send-commerical-view/".$Slno_bid."/".$category;
+							        						$edit=base_url()."buyer-bid-send-commerical-view-history/".$Slno_bid."/".$category;
 							        						$send=base_url()."buyer-bid-query-commerical/".$Slno_bid."/".$category;
 							        						break;
 							        					case '3':
-							        						$edit=base_url()."buyer-bid-send-commerical-view/".$Slno_bid."/".$category;
+							        						$edit=base_url()."buyer-bid-send-commerical-view-history/".$Slno_bid."/".$category;
 							        						$send=base_url()."buyer-bid-query-commerical/".$Slno_bid."/".$category;
 							        						break;
 							        					default:

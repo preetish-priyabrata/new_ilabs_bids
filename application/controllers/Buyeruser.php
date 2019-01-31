@@ -844,7 +844,7 @@ class Buyeruser extends CI_Controller {
          $this->load->view('template/template_header',$data);
          $this->load->view('buyer_user/template/template_top_head');
          $this->load->view('buyer_user/template/template_side_bar',$data);
-         $this->load->view('buyer_user/commercial_bid/send_commerical_bid/bid_send_success_commerical_rank_order');
+         $this->load->view('buyer_user/commercial_bid/send_commerical_bid_completed/bid_send_success_commerical_rank_order');
          $this->load->view('template/template_footer',$data);
      // code...
    }

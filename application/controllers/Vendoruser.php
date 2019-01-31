@@ -652,8 +652,10 @@ class Vendoruser extends CI_Controller {
       // Array ( [value_slno] => 2 [key_values_slno] => Jlj41WUg [master_bid_id] => 1 [Vendor_email_id] => ven121@gmail.com [file_name] => [new_file] => )
       # code...
     }
+    // Array ( [master_bid_id] => 15 [vendor_bid_id] => 161 [vendor_id] => ven121@gmail.com [mode_bid] => Rank Order Bid [mode_bid_id] => 3 [Category] => 3 [bid_ref] => 600 [Slno_logic_comm] => Array ( [49] => 49 [50] => 50 [51] => 51 [52] => 52 ) [vehicle_name] => Array ( [49] => vehicle10 [50] => vehicle10 [51] => vehicle12 [52] => vehicle12 ) [vehicle_capacity] => Array ( [49] => 5ponds [50] => 50s ponds [51] => 60000ponds [52] => 60000ponds ) [vehicle_details] => Array ( [49] => 2345 [50] => xxxxxx [51] => abc [52] => 12345 ) [vehicle_nos] => Array ( [49] => 15 [50] => 11 [51] => 17 [52] => 10 ) [from_location] => Array ( [49] => nayapali [50] => location1221 [51] => nayapali [52] => nayapali ) [to_location] => Array ( [49] => nayapali [50] => location1221 [51] => nayapali [52] => nayapali ) [cost] => Array ( [49] => 1000 [50] => 2000 [51] => 4000 [52] => 6000 ) [price] => Array ( [49] => 15000.00 [50] => 22000.00 [51] => 68000.00 [52] => 60000.00 ) [sub_total] => 165000.00 [total_tax] => 0.00 [total_landed] => 165000.00 [user_assumption] => 0.00 [delivery_basis] => no [gaurantee_warranty] => no [delivery_schedule] => no [payment_terms] => no [validity_of_offer] => no [security_BG] => no [liquidity_damage] => no [remarks] => no ) 
     public function vendor_bid_submission_commerical_save_s_C($value=''){
       // print_r($this->input->post());
+      // exit();
 
       $mode_bid_id=$this->input->post('mode_bid_id');
       $Category=$this->input->post('Category');
@@ -817,7 +819,7 @@ class Vendoruser extends CI_Controller {
             break;
           case '31' : //rank order bid for Sci
           // 
-
+          // exit();
               $basic_insert = array('Bid_master_id_rankorder'=>$master_bid_id, 'Bid_ref_no'=>$bid_ref, 'Bid_vendor_id'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id, 'type_of_bid'=>$mode_bid, 'category_id'=>$Category, 'type_bid_id'=>$mode_bid_id);
             $query_insert=$this->db->insert('master_rankorder_bid',$basic_insert);
              $last_bid_insert=$this->db->insert_id();
@@ -841,7 +843,7 @@ class Vendoruser extends CI_Controller {
               $cost_single=$cost[$key_id];
               $price_single=$price[$key_id];
 
-              $item_data = array('Rankorder_id_slno'=>$last_bid_insert, 'Bid_master_id_com'=>$master_bid_id, 'Item_name'=>$item_name_single, 'Item_id'=>$item_id_single, 'Quantity'=>$item_qnt_single, 'Uom_unit'=>$item_uom_single, 'Unit_price'=>$cost_single, 'Total_unitprice'=>$price_single, 'Comm_item_slno'=>$slno_mat_single,  'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id);
+              echo $item_data = array('Rankorder_id_slno'=>$last_bid_insert, 'Bid_master_id_com'=>$master_bid_id, 'Item_name'=>$item_name_single, 'Item_id'=>$item_id_single, 'Quantity'=>$item_qnt_single, 'Uom_unit'=>$item_uom_single, 'Unit_price'=>$cost_single, 'Total_unitprice'=>$price_single, 'Comm_item_slno'=>$slno_mat_single,  'Bid_slno'=>$vendor_bid_id, 'Vendor_id'=>$vendor_id);
               
                $query_vendor_insert=$this->db->insert('master_rankorder_bid_item',$item_data);
 
@@ -1250,7 +1252,7 @@ class Vendoruser extends CI_Controller {
                 $price_single=$price[$key_id];
 
                 $vechile_insert = array('rankorder_id_slno'=>$last_bid_insert, 'bid_master_id_com'=>$master_bid_id, 'vehicle_type'=>$vehicle_name_single, 'capacity'=>$vehicle_capacity_single, 'detail'=>$vehicle_details_single, 'no'=>$vehicle_nos_single, 'from_location'=>$from_location_single, 'to_location'=>$to_location_single, 'unit_price'=>$cost_single, 'total_unit_price'=>$price_single,  'comm_item_slno'=>$Slno_logic_comm_single,  'bid_slno'=>$vendor_bid_id, 'vendor_id'=>$vendor_id);
-                  $query_vendor_insert=$this->db->insert('master_closed_bid_logistics',$vechile_insert);
+                  $query_vendor_insert=$this->db->insert('master_rankorder_bid_logistics',$vechile_insert);
                 # code...
               }
               
